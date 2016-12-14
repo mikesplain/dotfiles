@@ -1,19 +1,16 @@
 [user]
 	# Name used in commit messages.
-	name = Mike McQuaid
+	name = Mike Splain
 	# Email used in commit messages.
-	email = mike@mikemcquaid.com
+	email = mike.splain@barkly.com
 [shell]
 	# Default SSH username.
 	username = mike
-[bintray]
-	# Bintray username.
-	username = mikemcquaid
 [github]
 	# GitHub username for command-line tools.
-	user = MikeMcQuaid
+	user = MikeSplain
 [alias]
-	# Push the current branch upstream to mikemcquaid using the same
+	# Push the current branch upstream to MikeSplain using the same
 	# branch name for the remote branch.
-	um = !(git remote -v | grep -q MikeMcQuaid || hub fork) \
-	    && git push --set-upstream MikeMcQuaid $(git current-branch)
+	um = !(git remote -v | grep -q MikeSplain || hub fork) \
+	    && git push --set-upstream MikeSplain $(git current-branch)
