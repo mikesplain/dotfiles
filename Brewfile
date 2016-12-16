@@ -7,7 +7,6 @@ tap 'homebrew/test-bot'
 cask 'java'
 
 brew 'ack'
-brew 'atlassian-plugin-sdk'
 brew 'autoconf'
 brew 'automake'
 brew 'awscli'
