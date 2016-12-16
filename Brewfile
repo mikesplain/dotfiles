@@ -127,7 +127,6 @@ cask 'dropbox'
 cask 'evernote'
 cask 'flux'
 cask 'github-desktop'
-cask 'github-desktop'
 cask 'google-chrome'
 cask 'gpgtools'
 cask 'helm'
@@ -153,7 +152,6 @@ cask 'thunderbird'
 cask 'tigervnc-viewer'
 cask 'torbrowser'
 cask 'transmission'
-cask 'transmission'
 cask 'transmit'
 cask 'unetbootin'
 cask 'vagrant-manager'
@@ -178,5 +176,4 @@ mas 'SourceTree', id: 411678673
 mas 'The Unarchiver', id: 425424353
 mas 'Tweetbot', id: 557168941
 mas 'Wallcat', id: 1000397973
-mas 'Xcode', id: 497799835
 mas 'Xcode', id: 497799835
