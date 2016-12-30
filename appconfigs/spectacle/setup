@@ -11,4 +11,18 @@ if [ $OSX ]; then
 
   mkdir -p "$SPECTACLECONFIGDIR"
   ln -sfv  "$APPCONFIGDIR/Shortcuts.json" "$SPECTACLECONFIGDIR/Shortcuts.json"
+
+  defaults write com.divisiblebyzero.Spectacle \
+    BackgroundAlertSuppressed \
+    -int 1
+  defaults write com.divisiblebyzero.Spectacle \
+    SUEnableAutomaticChecks \
+    -int 1
+  defaults write com.divisiblebyzero.Spectacle \
+    SUHasLaunchedBefore \
+    -int 1
+  defaults write com.divisiblebyzero.Spectacle \
+    StatusItemEnabled \
+    -int 0
+    
 fi
