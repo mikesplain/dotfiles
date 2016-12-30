@@ -6,7 +6,6 @@ matrix:
 script:
 - bash -n *.sh
 - "./script/setup"
-- "./script/bootstrap"
 - export PS1
 - bash -c "source ~/.bashrc"
 - zsh -c "source ~/.zshrc"
