@@ -127,10 +127,6 @@
 	## Shortened Existing Commands
 	p = pull
 	s = status --short --branch
-[instaweb]
-	# Use the Ruby WEBRick library when creating a `git instaweb`
-	# HTTP server.
-	httpd = webrick
 [diff]
 	# Use the OS X graphical three-way merge tool for graphical diffs.
 	tool = opendiff

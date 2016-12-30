@@ -4,17 +4,11 @@ Host *.brew.sh
 
 Host remote.github.net remote.github.com
 	ForwardAgent yes
-	User mikemcquaid
-
-Host linux-vm
-	HostName 172.16.42.141
+	User mikesplain
 
 Host *.github.com *.github.net *.githubapp.com
 	ForwardAgent no
-	User mikemcquaid
-
-Host * !heroku.com !github.com !github.net
-	RemoteForward 52698 localhost:52698
+	User mikesplain
 
 Host *
 	StrictHostKeyChecking ask
