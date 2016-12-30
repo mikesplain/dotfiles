@@ -5,6 +5,11 @@ My dot files shared between machines for ZSH, Bash, OSX, Linux, Cygwin and MSYS.
 
 This is my fork of Mike McQuaid's [awesome dotfiles](https://github.com/MikeMcQuaid/dotfiles).
 
+# Changes
+
+I've added appconfigs for specific apps I want setup.  Unfortunately many will be unique so I intend to use a ./setup config
+for each.
+
 ## Installation
 Customise the contents of [`gitconfig-user`](https://github.com/Mikesplain/dotfiles/blob/master/gitconfig-user).
 This is used for user-specific customisations of every other file.
