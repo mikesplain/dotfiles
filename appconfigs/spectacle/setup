@@ -1,4 +1,8 @@
 #!/bin/sh
 # Install app configs
 
-echo Test
+APPCONFIGDIR=$(dirname $0)
+SPECTACLECONFIGDIR="~/Library/Application Support/Spectacle"
+
+mkdir -p $SPECTACLECONFIGDIR
+ln -sfv  $APPCONFIGDIR/Shortcuts.json $SPECTACLECONFIGDIR/Shortcuts.json
