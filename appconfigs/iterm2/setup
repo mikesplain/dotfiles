@@ -5,6 +5,4 @@ APPCONFIGDIRREL=$(dirname $0)
 cd $APPCONFIGDIRREL
 APPCONFIGDIR=$(pwd -P)
 
-CONFIG=$(echo "'$(cat $APPCONFIGDIR/com.googlecode.iterm2.plist)'")
-
-defaults write com.googlecode.iterm2 $CONFIG
+defaults import com.googlecode.iterm2 $APPCONFIGDIR/com.googlecode.iterm2.xml
