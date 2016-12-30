@@ -9,6 +9,7 @@ tap 'homebrew/test-bot'
 cask 'java'
 cask 'docker'
 cask 'google-chrome'
+cask 'iterm2'
 
 brew 'ack'
 brew 'autoconf'
@@ -53,6 +54,7 @@ brew 'ipcalc'
 brew 'jq'
 brew 'jsonlint'
 brew 'kubernetes-cli'
+brew 'kubernetes-helm'
 brew 'libevent'
 brew 'libgcrypt'
 brew 'libgpg-error'
@@ -129,7 +131,6 @@ cask 'evernote'
 cask 'flux'
 cask 'github-desktop'
 cask 'gpgtools'
-cask 'kubernetes-helm'
 cask 'xquartz'
 cask 'inkscape'
 cask 'java'
@@ -166,7 +167,6 @@ cask 'zoomus'
 mas 'Deliveries', id: 924726344
 mas 'iMovie', id: 408981434
 mas 'Keynote', id: 409183694
-mas 'Mactracker', id: 430255202
 mas 'Microsoft Remote Desktop', id: 715768417
 mas 'Monosnap', id: 540348655
 mas 'Notability', id: 736189492
