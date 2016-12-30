@@ -14,7 +14,7 @@ for DOTFILE in *; do
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
+  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$|^appconfigs/$)' && continue
 
   # Don't install some files unless you're also called Mike.
   if echo $USER | grep -vq 'mike'
@@ -38,4 +38,9 @@ for DOTFILE in *; do
   else
     cp -rv "$DIRFILE" "$HOMEFILE"
   fi
+done
+
+cd appconfigs
+for APPCONFIGS in *
+  sh $APPCONFIGS/setup
 done
