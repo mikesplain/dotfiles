@@ -87,6 +87,7 @@ alias sha256="shasum -a 256"
 alias ack="ag"
 alias z="zeus"
 alias zt="zeus test"
+alias git="hub"
 
 # Platform-specific stuff
 if quiet_which brew

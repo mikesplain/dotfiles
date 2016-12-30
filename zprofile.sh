@@ -47,17 +47,6 @@ svn_branch() {
   echo "(${SVN_BRANCH#branches/}) "
 }
 
-if [ $USER = "root" ]
-then
-  PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
-elif [ -n "${SSH_CONNECTION}" ]
-then
-  PROMPT='%{$fg_bold[cyan]%}%m %{$fg_bold[blue]%}# %b%f'
-else
-  PROMPT='%{$fg_bold[green]%}%m %{$fg_bold[blue]%}# %b%f'
-fi
-RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
-
 # more OS X/Bash-like word jumps
 export WORDCHARS=''
 
@@ -70,7 +59,6 @@ bindkey -e
 # fix delete key on OSX
 [ $OSX ] && bindkey "\e[3~" delete-char
 
-ZSH_THEME="wedisagree"
 ## for tmux bar
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
