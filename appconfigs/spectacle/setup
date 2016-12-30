@@ -1,0 +1,14 @@
+#!/bin/sh
+# Install app configs
+
+if [ $OSX ]; then
+
+  APPCONFIGDIRREL=$(dirname $0)
+  cd $APPCONFIGDIRREL
+  APPCONFIGDIR=$(pwd -P)
+
+  SPECTACLECONFIGDIR="$HOME/Library/Application Support/Spectacle"
+
+  mkdir -p "$SPECTACLECONFIGDIR"
+  ln -sfv  "$APPCONFIGDIR/Shortcuts.json" "$SPECTACLECONFIGDIR/Shortcuts.json"
+fi
