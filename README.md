@@ -15,8 +15,7 @@ after checkout to symlink (or copy) everything in this directory to your home di
 ## Status
 I'm using these on all my personal machines.
 
-[![Build Status](https://travis-ci.org/MikeSplain/dotfiles.svg?branch=master)](https://travis-ci.org/MikeSplain/dotfiles)
-
+[![Build Status](https://travis-ci.org/mikesplain/dotfiles.svg?branch=master)](https://travis-ci.org/mikesplain/dotfiles)
 
 
 ## License

@@ -88,6 +88,8 @@ alias ack="ag"
 alias z="zeus"
 alias zt="zeus test"
 
+alias gg="git status"
+
 # Platform-specific stuff
 if quiet_which brew
 then
