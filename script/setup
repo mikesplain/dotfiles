@@ -81,3 +81,10 @@ defaults write com.ragingmenace.MenuMeters \
 defaults write com.ragingmenace.MenuMeters \
   com.ragingmenace.MenuMeterDisk \
   -int 0
+
+# General Mac Config
+
+# Minimize to app
+defaults write com.apple.dock minimize-to-application -int 1
+# Switch to Dark theme
+osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
