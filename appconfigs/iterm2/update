@@ -1,0 +1,4 @@
+#!/bin/sh
+# Updates iterm defaults from defaults.
+
+defaults read com.googlecode.iterm2 > com.googlecode.iterm2.plist
