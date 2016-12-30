@@ -1,0 +1,9 @@
+#!/bin/sh
+# Sets up powerline
+
+pip install --user powerline-status psutil bzr pyuv
+
+git clone https://github.com/powerline/fonts $TMPDIR/powerline
+"$TMPDIR/powerline/install.sh"
+
+rm -rf $TMPDIR/powerline
