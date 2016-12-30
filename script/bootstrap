@@ -1,0 +1,4 @@
+#!/bin/bash
+# Install additional things
+
+sh <(curl https://j.mp/spf13-vim3 -L)
