@@ -10,6 +10,7 @@ cask 'java'
 cask 'docker'
 cask 'google-chrome'
 cask 'iterm2'
+cask 'caffeine'
 
 brew 'ack'
 brew 'autoconf'
