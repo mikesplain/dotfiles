@@ -41,6 +41,8 @@ for DOTFILE in *; do
 done
 
 cd appconfigs
-for APPCONFIGS in *
-  sh $APPCONFIGS/setup
+for APPCONFIG in *; do
+  [ -f $APPCONFIG ] && continue
+  echo "Setting up $APPCONFIG"
+  "$APPCONFIG/setup" 2> /dev/null
 done
