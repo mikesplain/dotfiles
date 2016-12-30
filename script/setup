@@ -44,5 +44,5 @@ cd appconfigs
 for APPCONFIG in *; do
   [ -f $APPCONFIG ] && continue
   echo "Setting up $APPCONFIG"
-  "$APPCONFIG/setup" 2> /dev/null
+  "$APPCONFIG/setup"
 done
