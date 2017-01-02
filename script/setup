@@ -94,3 +94,5 @@ sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int
 sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Show battery percent by default
 defaults write com.apple.menuextra.battery ShowPercent -string YES
+# Minimize to app in tray
+defaults write com.apple.dock minimize-to-application -int 1
