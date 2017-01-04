@@ -55,10 +55,8 @@ if ! [ -d $HOME/.spf13-vim-3 ]; then
   curl https://j.mp/spf13-vim3 -L | sh
 fi
 
-if ! [ -d $HOME/.oh-my-zsh ]; then
-  echo "Installing oh-my-zsh"
-  zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
+# Install ohmyzsh
+. "$DOTFILESDIR/ohmyzsh.sh"
 
 # Setup Menumeters
 
