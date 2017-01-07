@@ -194,3 +194,6 @@
 	verbose = true
 [github]
 	user = mikesplain
+[user]
+	name = Mike Splain
+	email = mike.splain@gmail.com
