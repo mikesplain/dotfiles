@@ -32,3 +32,5 @@ endif
 
 " disable mouse integration
 set mouse=
+
+set backspace=start,eol,indent
