@@ -149,6 +149,7 @@ cask 'psequel'
 cask 'sequel-pro'
 cask 'skype'
 cask 'slack'
+cask 'sourcetree'
 cask 'spectacle'
 cask 'spotify'
 cask 'steam'
@@ -175,7 +176,6 @@ mas 'Monosnap', id: 540348655
 mas 'Notability', id: 736189492
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
-mas 'SourceTree', id: 411678673
 mas 'The Unarchiver', id: 425424353
 mas 'Tweetbot', id: 557168941
 mas 'Wallcat', id: 1000397973
