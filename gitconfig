@@ -152,7 +152,7 @@
 	keepTemporaries = false
 [mergetool "opendiff"]
 	# Use a script to setup opendiff correctly for Git merges.
-	path = git-mergetool-opendiff
+	path = opendiff
 [apply]
 	# Cleanup whitespace by default when apply patches.
 	whitespace = fix
@@ -197,3 +197,9 @@
 [user]
 	name = Mike Splain
 	email = mike.splain@gmail.com
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
