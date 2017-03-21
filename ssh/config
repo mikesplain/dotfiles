@@ -17,3 +17,11 @@ Host *
 	IdentityFile ~/.ssh/id_rsa
 	ControlMaster auto
 	ControlPath /tmp/ssh-%r@%h:%p.socket
+
+# --- SourceTree Generated ---
+Host mikesplain-GitHub
+	HostName github.com
+	User mikesplain
+	PreferredAuthentications publickey
+	IdentityFile /Users/mike/.ssh/mikesplain_GitHub
+# ----------------------------

@@ -97,3 +97,5 @@ defaults write com.apple.dock minimize-to-application -int 1
 
 # Setup go path
 mkdir -p $HOME/code/go
+
+pip install speedtest-cli
