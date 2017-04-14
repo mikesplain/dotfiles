@@ -14,13 +14,13 @@ set hlsearch
 set incsearch
 
 " indentation
-set autoindent
-set smarttab
-if has("autocmd")
-  filetype on
-  filetype indent on
-  filetype plugin on
-endif
+"set autoindent
+"set smarttab
+"if has("autocmd")
+"  filetype on
+"  filetype indent on
+"  filetype plugin on
+"endif
 
 " whitespace
 if has("multi_byte")
@@ -32,5 +32,3 @@ endif
 
 " disable mouse integration
 set mouse=
-
-set backspace=start,eol,indent

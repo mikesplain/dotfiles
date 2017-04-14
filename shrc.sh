@@ -93,7 +93,7 @@ alias git="hub"
 if quiet_which brew
 then
   export BINTRAY_USER="$(git config bintray.username)"
-  export BREW_PREFIX=$(brew --prefix)
+  export HOMEBREW_PREFIX=$(brew --prefix)
   export BREW_REPO=$(brew --repo)
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_ANALYTICS=1
@@ -103,7 +103,7 @@ then
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   if [ "$USER" = "brewadmin" ]
   then
-    export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$BREW_PREFIX/bin"
+    export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$HOMEBREW_PREFIX/bin"
   fi
 
   alias hbc="cd $BREW_REPO/Library/Taps/homebrew/homebrew-core"
@@ -147,7 +147,7 @@ then
 
   add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
   add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-  add_to_path_end "$BREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
+  add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
 
   alias ls="ls -F"
   alias ql="qlmanage -p 1>/dev/null"
@@ -206,7 +206,7 @@ fi
 quiet_which dircolors && eval $(dircolors -b)
 
 # More colours with grc
-[ -f "$BREW_PREFIX/etc/grc.bashrc" ] && source "$BREW_PREFIX/etc/grc.bashrc"
+[ -f "$HOMEBREW_PREFIX/etc/grc.bashrc" ] && source "$HOMEBREW_PREFIX/etc/grc.bashrc"
 
 # Save directory changes
 cd() {
