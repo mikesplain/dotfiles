@@ -10,6 +10,9 @@ Host *.github.com *.github.net *.githubapp.com
 	ForwardAgent no
 	User mikesplain
 
+Host bastion.*
+    ForwardAgent yes
+
 Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
