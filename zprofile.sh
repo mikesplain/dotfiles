@@ -78,6 +78,10 @@ compdef _c c
 source <(kubectl completion zsh)
 
 # Source barkly file if it exists
-if [ -f "$HOME/.barklyrc" ]; then
-  source "$HOME/.barklyrc"
+if [ -f "$HOME/.env/splain.sh" ]; then
+  source "$HOME/.env/splain.sh"
+fi
+
+if [ -f "$HOME/.env/kops.sh" ]; then
+  source "$HOME/.env/kops.sh"
 fi
