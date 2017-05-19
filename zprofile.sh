@@ -75,7 +75,7 @@ _c() { _files -W ~/cylent -/; }
 compdef _c c
 
 # Kubectl Completions
-source <(kubectl completion zsh)
+#source <(kubectl completion zsh)
 
 # Source barkly file if it exists
 if [ -f "$HOME/.env/splain.sh" ]; then
