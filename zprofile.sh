@@ -67,15 +67,12 @@ eval "$(thefuck --alias)"
 # Fix sierra issue: https://github.com/tmux/tmux/issues/475
 export EVENT_NOKQUEUE=1
 
-plugins=(git brew ruby bundler docker)
+plugins=(git brew docker)
 
 c() { cd ~/cylent/$1;  }
 
 _c() { _files -W ~/cylent -/; }
 compdef _c c
-
-# Kubectl Completions
-#source <(kubectl completion zsh)
 
 # Source barkly file if it exists
 if [ -f "$HOME/.env/splain.sh" ]; then
