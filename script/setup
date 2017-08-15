@@ -96,6 +96,6 @@ defaults write com.apple.menuextra.battery ShowPercent -string YES
 defaults write com.apple.dock minimize-to-application -int 1
 
 # Setup go path
-mkdir -p $HOME/code/go
+mkdir -p $HOME/go
 
 pip install speedtest-cli
