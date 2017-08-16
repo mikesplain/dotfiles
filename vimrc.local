@@ -33,3 +33,4 @@ endif
 " disable mouse integration
 set mouse=
 
+color peaksea
