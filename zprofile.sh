@@ -74,6 +74,9 @@ c() { cd ~/cylent/$1;  }
 _c() { _files -W ~/cylent -/; }
 compdef _c c
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # Source barkly file if it exists
 if [ -f "$HOME/.env/splain.sh" ]; then
   source "$HOME/.env/splain.sh"
