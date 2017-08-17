@@ -69,10 +69,17 @@ export EVENT_NOKQUEUE=1
 
 plugins=(git brew docker)
 
+# Shortcut and autocomplete for ~/cylent
 c() { cd ~/cylent/$1;  }
 
 _c() { _files -W ~/cylent -/; }
 compdef _c c
+
+# Shortcut and autocomplete for ~/go
+godir() { cd ~/go/$1;  }
+
+_godir() { _files -W ~/go -/; }
+compdef _godir godir
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
