@@ -90,6 +90,7 @@ alias ack="ag"
 alias z="zeus"
 alias zt="zeus test"
 alias git="hub"
+alias k='kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
 
 # Platform-specific stuff
 if quiet_which brew
