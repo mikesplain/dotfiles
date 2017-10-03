@@ -221,16 +221,16 @@ cd() {
 }
 
 # Use ruby-prof to generate a call stack
-ruby-call-stack() {
-  ruby-prof --printer=call_stack --file=call_stack.html -- "$@"
-}
+# ruby-call-stack() {
+#   ruby-prof --printer=call_stack --file=call_stack.html -- "$@"
+# }
 
 # Use ruby-prof to generate a call stack
-rails-clean-migrate-branch() {
-  [ -n "$1" ] || return
-  git checkout master && git pull --rebase && rake db:setup db:migrate &&
-    git checkout -f "$1" && rake db:migrate
-}
+# rails-clean-migrate-branch() {
+#   [ -n "$1" ] || return
+#   git checkout master && git pull --rebase && rake db:setup db:migrate &&
+#     git checkout -f "$1" && rake db:migrate
+# }
 
 # Pretty-print JSON files
 json() {
