@@ -130,7 +130,7 @@ brew 'wakeonlan'
 brew 'watch'
 brew 'wget'
 brew 'zsh'
-brew 'mikesplain/versions/kubernetes-cli14'
+brew 'kubernetes-cli'
 
 cask '1password'
 cask 'alfred'
