@@ -150,7 +150,7 @@ cask 'github'
 cask 'google-cloud-sdk'
 
 cask 'google-chrome'
-cask 'google-drive'
+cask 'google-drive-file-stream'
 cask 'gpgtools'
 cask 'inkscape'
 cask 'intellij-idea-ce'
