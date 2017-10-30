@@ -5,6 +5,9 @@ DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 
+# Install ohmyzsh
+. "$DOTFILESDIR/script/ohmyzsh.sh"
+
 [ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
@@ -55,9 +58,6 @@ if ! [ -d $HOME/.spf13-vim-3 ]; then
   curl https://j.mp/spf13-vim3 -L | sh
 fi
 
-# Install ohmyzsh
-. "$DOTFILESDIR/script/ohmyzsh.sh"
-
 # Setup Menumeters
 
 defaults write com.ragingmenace.MenuMeters \
@@ -85,7 +85,7 @@ defaults write com.ragingmenace.MenuMeters \
 # Minimize to app
 defaults write com.apple.dock minimize-to-application -int 1
 # Switch to Dark theme
-osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
+# osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
 # Turn on tap to click by default
 sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -99,3 +99,6 @@ defaults write com.apple.dock minimize-to-application -int 1
 mkdir -p $HOME/go
 
 pip install speedtest-cli
+
+# Auto unhide Library
+chflags nohidden ~/Library
