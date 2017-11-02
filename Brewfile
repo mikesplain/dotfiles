@@ -152,6 +152,7 @@ cask 'google-cloud-sdk'
 
 cask 'google-chrome'
 cask 'google-drive-file-stream'
+cask 'gogland'
 cask 'gpgtools'
 cask 'inkscape'
 cask 'intellij-idea-ce'
