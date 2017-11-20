@@ -80,6 +80,10 @@ defaults write com.ragingmenace.MenuMeters \
   com.ragingmenace.MenuMeterDisk \
   -int 0
 
+# Fix Logitech MX Master
+# https://www.reddit.com/r/MouseReview/comments/79fb7z/mx_master_2s_thumbwheel_scrolling_lags_has_play/
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
 # General Mac Config
 
 # Minimize to app
