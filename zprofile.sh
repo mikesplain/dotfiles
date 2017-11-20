@@ -62,7 +62,7 @@ bindkey -e
 ## for tmux bar
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-eval "$(thefuck --alias)"
+eval $(thefuck --alias)
 
 # Fix sierra issue: https://github.com/tmux/tmux/issues/475
 export EVENT_NOKQUEUE=1
