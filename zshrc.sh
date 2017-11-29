@@ -1,8 +1,5 @@
 # debugging slowness:
-# env ZSH_PROF= zsh -ic zprof
-# if [[ -v ZSH_PROF ]]; then
-#   zmodload zsh/zprof
-# fi
+# zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -109,3 +106,5 @@ setopt share_history
 
 # Don't hang up background jobs
 setopt no_hup
+
+# zprof
