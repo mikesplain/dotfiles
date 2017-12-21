@@ -8,7 +8,6 @@ env:
 - CHSH_PREFIX=sudo
 script:
 - bash -n *.sh
-- which zsh
 - "./script/setup"
 - export PS1
 - bash -c "source ~/.bashrc"
