@@ -4,6 +4,8 @@ matrix:
   include:
   - os: linux
 sudo: required
+env:
+- CHSH_PREFIX=sudo
 script:
 - bash -n *.sh
 - which zsh
