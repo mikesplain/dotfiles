@@ -3,6 +3,7 @@ os: osx
 matrix:
   include:
   - os: linux
+sudo: required
 script:
 - bash -n *.sh
 - "./script/setup"
