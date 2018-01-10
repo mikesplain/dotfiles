@@ -200,7 +200,7 @@ cask 'zterm'
 mas 'Deliveries', id: 924726344
 mas 'iMovie', id: 408981434
 mas 'Keynote', id: 409183694
-mas 'Microsoft Remote Desktop', id: 715768417
+# mas 'Microsoft Remote Desktop', id: 715768417
 mas 'Monosnap', id: 540348655
 mas 'Notability', id: 736189492
 mas 'Numbers', id: 409203825
