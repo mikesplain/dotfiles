@@ -72,7 +72,7 @@ brew 'grc'
 brew 'heroku'
 brew 'lua'
 brew 'highlight'
-brew 'htop'
+# brew 'htop'
 brew 'httperf'
 brew 'hub'
 brew 'iftop'
@@ -156,7 +156,7 @@ cask 'google-cloud-sdk'
 
 cask 'google-chrome'
 cask 'google-drive-file-stream'
-cask 'gpgtools'
+cask 'gpg-suite'
 cask 'intellij-idea-ce'
 cask 'iterm2'
 cask 'joinme'
@@ -201,12 +201,12 @@ cask 'zterm'
 mas 'Deliveries', id: 924726344
 mas 'iMovie', id: 408981434
 mas 'Keynote', id: 409183694
-mas 'Microsoft Remote Desktop', id: 715768417
+# mas 'Microsoft Remote Desktop', id: 715768417
 mas 'Monosnap', id: 540348655
 mas 'Notability', id: 736189492
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
-mas 'Remote Desktop', id: 409907375
+# mas 'Remote Desktop', id: 409907375
 mas 'The Unarchiver', id: 425424353
 mas 'Things3', id: 904280696
 mas 'Tweetbot', id: 557168941
