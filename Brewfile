@@ -9,7 +9,7 @@ tap 'homebrew/versions'
 tap 'mikesplain/versions'
  
 cask 'xquartz'
-cask 'java9'
+cask 'java8'
 
 brew 'ack'
 brew 'gdbm'
