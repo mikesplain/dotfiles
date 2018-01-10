@@ -205,7 +205,7 @@ mas 'Monosnap', id: 540348655
 mas 'Notability', id: 736189492
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
-mas 'Remote Desktop', id: 409907375
+# mas 'Remote Desktop', id: 409907375
 mas 'The Unarchiver', id: 425424353
 mas 'Things3', id: 904280696
 mas 'Tweetbot', id: 557168941
