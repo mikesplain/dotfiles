@@ -6,7 +6,9 @@ cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 
 # Install ohmyzsh
-. "$DOTFILESDIR/script/ohmyzsh.sh"
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  . "$DOTFILESDIR/script/ohmyzsh.sh"
+fi
 
 [ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
@@ -53,10 +55,10 @@ for APPCONFIG in *; do
 done
 
 # Install additional things
-if ! [ -d $HOME/.spf13-vim-3 ]; then
-  echo "Installing spf13-vim3"
-  curl https://j.mp/spf13-vim3 -L | sh
-fi
+# if ! [ -d $HOME/.spf13-vim-3 ]; then
+#   echo "Installing spf13-vim3"
+#   curl https://j.mp/spf13-vim3 -L | sh
+# fi
 
 # Setup Menumeters
 
@@ -103,6 +105,11 @@ defaults write com.apple.dock minimize-to-application -int 1
 mkdir -p $HOME/go
 
 pip install speedtest-cli
+pip install macvim
+
+# Install spacevim
+curl -sLf https://spacevim.org/install.sh | bash
+
 
 # Auto unhide Library
 chflags nohidden ~/Library
