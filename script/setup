@@ -105,7 +105,7 @@ defaults write com.apple.dock minimize-to-application -int 1
 mkdir -p $HOME/go
 
 pip install speedtest-cli
-pip install macvim
+pip install neovim
 
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash
