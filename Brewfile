@@ -135,6 +135,7 @@ brew 'watch'
 brew 'wget'
 brew 'zsh'
 brew 'kubernetes-cli'
+brew 'libdvdcss'
 
 cask '1password'
 cask 'alfred'
