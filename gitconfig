@@ -17,7 +17,7 @@
 	enabled = 1
 [core]
 	# Exclude everything this file. Used for general exclusions.
-	excludesfile = /Users/Mike/.gitignore
+	excludesfile = /Users/mikesplain/.gitignore_global
 	# Set attributes on files. Used for general diff improvements.
 	attributesfile = ~/.gitattributes
 	# Don't prompt for commit messages for merge commits.
@@ -130,7 +130,7 @@
 	s = status --short --branch
 [diff]
 	# Use the OS X graphical three-way merge tool for graphical diffs.
-	tool = opendiff
+	tool = Kaleidoscope
 	# Use the slower but better patience diff algorithm
 	algorithm = patience
 	# Use new diff algorithm to make e.g. function diffs look better.
@@ -142,7 +142,7 @@
 	path = opendiff
 [merge]
 	# Use the OS X graphical three-way merge tool for graphical merges.
-	tool = opendiff
+	tool = Kaleidoscope
 [mergetool]
 	# Don't prompt before opening the merge tool.
 	prompt = false
@@ -201,5 +201,13 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /usr/local/Caskroom/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
+
