@@ -197,9 +197,9 @@ then
 
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR="$GIT_EDITOR"
-elif quiet_which vim
+elif quiet_which nvim
 then
-  export EDITOR="vim"
+  export EDITOR="nvim"
 elif quiet_which vi
 then
   export EDITOR="vi"
