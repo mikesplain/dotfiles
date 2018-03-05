@@ -93,7 +93,7 @@ if [ -f "$HOME/.env/kops.sh" ]; then
   source "$HOME/.env/kops.sh"
 fi
 
-if type nvim > /dev/null 2>&1; then
-  alias vi='nvim'
-  alias vim='nvim'
-fi
+# if type nvim > /dev/null 2>&1; then
+#   alias vi='nvim'
+#   alias vim='nvim'
+# fi
