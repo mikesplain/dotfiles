@@ -23,7 +23,7 @@
 	# Don't prompt for commit messages for merge commits.
 	mergeoptions = --no-edit
     # editor = /usr/bin/vim
-	editor = /usr/local/bin/nvim
+	editor = /usr/bin/vim
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
@@ -200,7 +200,7 @@
 	email = mike.splain@gmail.com
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
