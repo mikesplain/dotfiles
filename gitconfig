@@ -23,7 +23,7 @@
 	# Don't prompt for commit messages for merge commits.
 	mergeoptions = --no-edit
     # editor = /usr/bin/vim
-	editor = /usr/bin/vim
+	editor = /usr/bin/nvim
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
