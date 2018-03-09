@@ -8,7 +8,7 @@ tap 'homebrew/services'
 tap 'homebrew/test-bot'
 tap 'homebrew/versions'
 tap 'mikesplain/versions'
- 
+
 cask 'xquartz'
 cask 'java8'
 
@@ -85,6 +85,8 @@ brew 'node'
 brew 'jsonlint'
 brew 'kubernetes-cli'
 brew 'kops'
+brew 'kubectx'
+brew 'kube-ps1'
 brew 'python'
 brew 'mercurial'
 brew 'kubernetes-helm'
