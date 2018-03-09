@@ -18,13 +18,13 @@ field() {
 
 # Setup paths
 remove_from_path() {
-  [ -d $1 ] || return
+  [ -d "$1" ] || return
   # Doesn't work for first item in the PATH but I don't care.
-  export PATH=$(echo $PATH | sed -e "s|:$1||") 2>/dev/null
+    export PATH=${PATH//:$1/}
 }
 
 add_to_path_start() {
-  [ -d $1 ] || return
+  [ -d "$1" ] || return
   remove_from_path "$1"
   export PATH="$1:$PATH"
 }
@@ -41,34 +41,24 @@ force_add_to_path_start() {
 }
 
 quiet_which() {
-  which $1 &>/dev/null
+  which "$1" &>/dev/null
 }
 
-add_to_path_end "$HOME/Documents/Scripts"
-add_to_path_end "$HOME/Documents/Scripts/thirdparty"
-add_to_path_end "$HOME/Scripts"
-add_to_path_end "$HOME/Scripts/thirdparty"
 add_to_path_end "$HOME/Library/Python/2.7/bin"
 add_to_path_end "$HOME/Library/Python/3.6/bin"
-add_to_path_end "$HOME/.gem/ruby/2.1.0/bin"
-add_to_path_end "$HOME/.gem/ruby/2.0.0/bin"
-add_to_path_end "$HOME/.gem/ruby/1.8/bin"
-add_to_path_end "$HOME/.rbenv/bin"
-add_to_path_end "$HOME/.cabal/bin"
-add_to_path_end "/Applications/GitX.app/Contents/Resources"
-add_to_path_end "/Applications/TextMate.app/Contents/Resources"
-add_to_path_end "/Applications/GitHub.app/Contents/MacOS"
-add_to_path_end "/data/github/shell/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
-add_to_path_start "$HOME/Homebrew/bin"
-add_to_path_start "$HOME/Homebrew/sbin"
+
 # Brew python
 add_to_path_start "/usr/local/opt/python@2/libexec/bin"
 add_to_path_start "/usr/local/lib/python2.7/site-packages"
 
 # Run rbenv if it exists
-quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
+# quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
+rbenv() {
+  eval "$(command rbenv init -)"
+  rbenv "$@"
+}
 
 # Aliases
 alias mkdir="mkdir -vp"
@@ -205,6 +195,8 @@ then
   export EDITOR="vi"
 fi
 
+# [ -f "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh" ] && source "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh"
+
 # Run dircolors if it exists
 quiet_which dircolors && eval $(dircolors -b)
 
@@ -219,6 +211,10 @@ cd() {
   pwd > "$HOME/.lastpwd"
   ls
 }
+
+# Disable thefuck
+# eval $(thefuck --alias)
+# eval $(thefuck --alias --enable-experimental-instant-mode)
 
 # Use ruby-prof to generate a call stack
 # ruby-call-stack() {

@@ -107,6 +107,8 @@
 	merge-base-master = merge-base origin/master HEAD
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base-master)
+    # Push when upstream needs to be set
+    pushup = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset

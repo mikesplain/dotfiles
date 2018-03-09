@@ -2,7 +2,15 @@
 source ~/.shprofile
 
 # Enable completions
-autoload -U compinit && compinit
+# autoload -U compinit && compinit
+# From https://gist.github.com/ctechols/ca1035271ad134841284
+setopt extendedglob
+autoload -Uz compinit
+if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
 if which brew &>/dev/null
 then
@@ -61,8 +69,6 @@ bindkey -e
 
 ## for tmux bar
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
-eval $(thefuck --alias)
 
 # Fix sierra issue: https://github.com/tmux/tmux/issues/475
 export EVENT_NOKQUEUE=1
