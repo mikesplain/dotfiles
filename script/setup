@@ -113,3 +113,6 @@ curl -sLf https://spacevim.org/install.sh | bash
 
 # Auto unhide Library
 chflags nohidden ~/Library
+
+git clone https://github.com/gpakosz/.tmux.git $HOME/.tmux
+ln -s -f $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
