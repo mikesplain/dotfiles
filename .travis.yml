@@ -9,6 +9,7 @@ matrix:
 sudo: required
 script:
 - bash -n *.sh
+- brew bundle
 - "./script/setup"
 - export PS1
 - bash -c "source ~/.bashrc"
