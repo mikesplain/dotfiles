@@ -6,3 +6,5 @@ bundle/cache
 secrets
 rbenv/*/
 .DS_Store
+
+SpaceVim.d/.netrwhist

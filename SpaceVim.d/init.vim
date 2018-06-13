@@ -57,3 +57,4 @@ let g:chromatica#libclang_path = '/Applications/Xcode.app/Contents/Developer/Too
 
 " Prevent syntax highlighting on wide lines.  Fixes issues with kubectl last-applied-configuration
 set synmaxcol=240
+set timeoutlen=250
