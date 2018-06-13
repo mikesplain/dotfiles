@@ -1,7 +1,9 @@
-/ssh/id_ed25519
-/ssh/id_rsa
-/ssh/github_rsa*
-/ssh/known_hosts
+ssh/id_ed25519
+ssh/id_rsa
+ssh/github_rsa*
+ssh/known_hosts
+ssh/google*
+ssh/*Github
 bundle/cache
 secrets
 rbenv/*/

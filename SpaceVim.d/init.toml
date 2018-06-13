@@ -1,0 +1,6 @@
+[options]
+  bootstrap_before = "myspacevim#before"
+
+[[layers]]
+  name = "shell"
+  default_position = "bottom"
