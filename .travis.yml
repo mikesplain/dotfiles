@@ -1,11 +1,12 @@
 language: objective-c
-os: osx
 matrix:
   include:
   - os: linux
+    env: CHSH_PREFIX=sudo
+  - os: osx
+    osx_image: xcode9.4
+    env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
 sudo: required
-env:
-- CHSH_PREFIX=sudo
 script:
 - bash -n *.sh
 - "./script/setup"
