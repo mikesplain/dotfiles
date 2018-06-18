@@ -53,6 +53,9 @@ function! myspacevim#before() abort
   
   let g:spacevim_enable_neomake = 1
   let g:spacevim_filemanager = 'nerdtree'
+  " Set nerdtree to display hidden files by default
+  let g:NERDTreeShowHidden = 1
+
   let g:spacevim_layers_shell_default_position = "bottom"
   
   let g:chromatica#libclang_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
