@@ -4,12 +4,12 @@ matrix:
   - os: linux
     env: CHSH_PREFIX=sudo
   - os: osx
-    osx_image: xcode9.4
+    osx_image: xcode9.3
     env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
 sudo: required
 script:
 - bash -n *.sh
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo spctl --master-disable && brew update && travis_wait 30 brew bundle; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo spctl --master-disable && brew update && brew bundle; fi
 - "./script/setup"
 - export PS1
 - bash -c "source ~/.bashrc"
