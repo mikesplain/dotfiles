@@ -42,6 +42,7 @@ function! myspacevim#before() abort
   let g:clang2_placeholder_prev = ''
   
   let g:spacevim_enable_neomake = 1
+  let g:neomake_open_list = 0
   let g:spacevim_filemanager = 'nerdtree'
   " Set nerdtree to display hidden files by default
   let g:NERDTreeShowHidden = 1
