@@ -38,12 +38,6 @@ function! myspacevim#before() abort
   if executable('vint')
       call add(g:neomake_vim_enabled_makers, 'vint')
   endif
-  " if has('python3')
-  " In brew python now == python3
-  if has('python')
-      let g:ctrlp_map = ''
-      nnoremap <silent> <C-p> :Denite file_rec<CR>
-  endif
   let g:clang2_placeholder_next = ''
   let g:clang2_placeholder_prev = ''
   
