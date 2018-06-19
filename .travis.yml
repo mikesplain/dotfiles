@@ -9,7 +9,7 @@ matrix:
 sudo: required
 script:
 - bash -n *.sh
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo spctl --master-disable && brew update && brew bundle; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then script/test-install.sh; fi
 - "./script/setup"
 - export PS1
 - bash -c "source ~/.bashrc"
