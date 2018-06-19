@@ -2,7 +2,9 @@
 
 sudo spctl --master-disable
 brew update
-# To install brew bundle
-brew bundle
-brew bundle list --taps | xargs -n1 brew tap
-brew bundle list --brews | xargs -n1 brew install
+
+# Remove casks and mas since they're big
+sed -i '' 's/.*cask.*//g' Brewfile
+sed -i '' 's/.*mas.*//g' Brewfile
+
+brew bundle install
