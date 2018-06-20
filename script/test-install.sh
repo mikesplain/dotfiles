@@ -10,4 +10,4 @@ sed -i '' 's/.*mas.*//g' Brewfile
 # Remove iftop since it gives a sudo error
 sed -i '' 's/.*iftop.*//g' Brewfile
 
-brew bundle install
+brew bundle install --no-upgrade
