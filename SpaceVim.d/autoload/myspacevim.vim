@@ -3,7 +3,7 @@ function! myspacevim#before() abort
   let g:spacevim_enable_debug = 1
   let g:spacevim_realtime_leader_guide = 1
   let g:spacevim_automatic_update = 0
-  
+
   call SpaceVim#layers#load('incsearch')
   call SpaceVim#layers#load('lang#c')
   call SpaceVim#layers#load('lang#elixir')
@@ -40,7 +40,7 @@ function! myspacevim#before() abort
   endif
   let g:clang2_placeholder_next = ''
   let g:clang2_placeholder_prev = ''
-  
+
   let g:spacevim_enable_neomake = 1
   let g:neomake_open_list = 0
   let g:spacevim_filemanager = 'nerdtree'
@@ -48,11 +48,12 @@ function! myspacevim#before() abort
   let g:NERDTreeShowHidden = 1
 
   let g:spacevim_layers_shell_default_position = "bottom"
-  
+
   let g:chromatica#libclang_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
-  
+
   " Prevent syntax highlighting on wide lines.  Fixes issues with kubectl last-applied-configuration
   set synmaxcol=240
   " Time for spacevim bar to show up (ms)
   set timeoutlen=250
+  set mouse=r
 endfunction
