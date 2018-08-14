@@ -10,4 +10,7 @@ sed -i '' 's/^mas.*//g' Brewfile
 # Remove iftop since it gives a sudo error
 sed -i '' 's/.*iftop.*//g' Brewfile
 
+# For linux
+brew cask install homebrew/cask-versions/java8
+
 brew bundle install --no-upgrade
