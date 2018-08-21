@@ -8,7 +8,7 @@ matrix:
 sudo: required
 script:
 - bash -n *.sh
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then script/test-install.sh; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then script/test-install.sh; else apt-get update && apt-get install zsh -yq; fi
 - "./script/setup"
 - export PS1
 - bash -c "source ~/.bashrc"
