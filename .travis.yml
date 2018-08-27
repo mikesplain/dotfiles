@@ -1,4 +1,3 @@
-language: objective-c
 matrix:
   include:
   - os: linux
@@ -9,7 +8,7 @@ matrix:
 sudo: required
 script:
 - bash -n *.sh
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then script/test-install.sh; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then script/test-install.sh; else sudo apt-get update && sudo apt-get install zsh -y; fi
 - "./script/setup"
 - export PS1
 - bash -c "source ~/.bashrc"
