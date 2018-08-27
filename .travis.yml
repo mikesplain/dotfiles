@@ -5,6 +5,12 @@ matrix:
   - os: osx
     osx_image: xcode9.3
     env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
+  - os: osx
+    osx_image: xcode9.4 
+    env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
+  - os: osx
+    osx_image: xcode10
+    env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
 sudo: required
 script:
 - bash -n *.sh
