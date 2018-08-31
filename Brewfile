@@ -7,6 +7,7 @@ tap 'homebrew/services'
 tap 'homebrew/test-bot'
 tap 'mikesplain/versions'
 tap 'jesseduffield/lazygit'
+tap 'bazelbuild/tap', pin: true
 
 cask 'xquartz'
 cask 'java8'
