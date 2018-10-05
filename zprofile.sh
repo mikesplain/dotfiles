@@ -75,10 +75,10 @@ export EVENT_NOKQUEUE=1
 
 plugins=(git brew docker)
 
-# Shortcut and autocomplete for ~/cylent
-c() { cd ~/cylent/$1;  }
+# Shortcut and autocomplete for ~/code
+c() { cd ~/code/$1;  }
 
-_c() { _files -W ~/cylent -/; }
+_c() { _files -W ~/code -/; }
 compdef _c c
 
 # Shortcut and autocomplete for ~/go
