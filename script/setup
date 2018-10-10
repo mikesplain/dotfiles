@@ -101,6 +101,12 @@ defaults write com.apple.menuextra.battery ShowPercent -string YES
 # Minimize to app in tray
 defaults write com.apple.dock minimize-to-application -int 1
 
+# Finder
+# Show status bar with free space at bottom of finder
+defaults write com.apple.finder ShowStatusBar 1
+# Show Pathbar in finder
+defaults write com.apple.finder ShowPathbar 1
+
 # Setup go path
 mkdir -p $HOME/go
 
