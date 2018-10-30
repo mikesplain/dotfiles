@@ -19,7 +19,7 @@ Host *
 	NoHostAuthenticationForLocalhost yes
 	IdentityFile ~/.ssh/id_rsa
 	ControlMaster auto
-	ControlPath /tmp/ssh-%r@%h:%p.socket
+	ControlPath /tmp/ssh-%C.socket
 
 # --- SourceTree Generated ---
 Host mikesplain-GitHub
