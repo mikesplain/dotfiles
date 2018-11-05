@@ -22,6 +22,9 @@ then
   export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
+# Remove Ruby on command line
+RPROMPT=''
+
 # Enable regex moving
 autoload -U zmv
 
