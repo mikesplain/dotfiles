@@ -1,6 +1,8 @@
 # load shared shell configuration
 source ~/.shprofile
 
+plugins=(git brew docker zsh-completions)
+
 # Enable completions
 # autoload -U compinit && compinit
 # From https://gist.github.com/ctechols/ca1035271ad134841284
@@ -76,7 +78,6 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 # Fix sierra issue: https://github.com/tmux/tmux/issues/475
 export EVENT_NOKQUEUE=1
 
-plugins=(git brew docker)
 
 # Shortcut and autocomplete for ~/code
 c() { cd ~/code/$1;  }
