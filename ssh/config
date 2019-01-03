@@ -10,6 +10,11 @@ Host *.github.com *.github.net *.githubapp.com
 	ForwardAgent no
 	User mikesplain
 
+Host *.ec2.internal
+  CanonicalizeHostname yes
+  CanonicalizeMaxDots 3
+  CanonicalDomains sslip.io
+
 Host bastion.*
     ForwardAgent yes
 
