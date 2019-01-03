@@ -10,3 +10,4 @@ rbenv/*/
 .DS_Store
 
 SpaceVim.d/.netrwhist
+gitconfig-user

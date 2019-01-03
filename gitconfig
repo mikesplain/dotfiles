@@ -1,5 +1,14 @@
+[github]
+	user = MikeSplain
+[user]
+	# Name used in commit messages.
+	name = Mike Splain
+	# Email used in commit messages.
+	email = mike.splain@gmail.com
+
 [include]
 	path = ~/.gitconfig-user
+
 [color]
 	# Colour terminal command output when possible.
 	ui = auto
@@ -196,14 +205,10 @@
 [commit]
 	# Show the diff as a comment in the commit message template.
 	verbose = true
-[github]
-	user = mikesplain
-[user]
-	name = Mike Splain
-	email = mike.splain@gmail.com
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -215,3 +220,5 @@
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
     trustExitCode = true
 
+[diff "sopsdiffer"]
+	textconv = sops -d
