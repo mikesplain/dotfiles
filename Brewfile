@@ -92,7 +92,7 @@ brew 'md5sha1sum'
 brew 'msgpack'
 brew 'ncdu'
 brew 'pcre'
-brew 'nginx', restart_service: true
+#brew 'nginx', restart_service: true
 brew 'nmap'
 brew 'node-build'
 brew 'nodenv'
