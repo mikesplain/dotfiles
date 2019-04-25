@@ -15,6 +15,11 @@ Host *.ec2.internal
   CanonicalizeMaxDots 3
   CanonicalDomains sslip.io
 
+Host *.us-east-2.compute.internal
+  CanonicalizeHostname yes
+  CanonicalizeMaxDots 3
+  CanonicalDomains sslip.io
+
 Host bastion.*
     ForwardAgent yes
 
