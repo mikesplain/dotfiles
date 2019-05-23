@@ -10,6 +10,9 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   . "$DOTFILESDIR/script/ohmyzsh.sh"
 fi
 
+# Setup zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 [ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1

@@ -1,8 +1,6 @@
 # load shared shell configuration
 source ~/.shprofile
 
-plugins=(git brew docker zsh-completions)
-
 # Enable completions
 # autoload -U compinit && compinit
 # From https://gist.github.com/ctechols/ca1035271ad134841284
