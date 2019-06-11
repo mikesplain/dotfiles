@@ -238,3 +238,5 @@ json() {
 
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
+
+add_to_path_end "${KREW_ROOT:-$HOME/.krew}/bin"
