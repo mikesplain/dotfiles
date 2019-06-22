@@ -10,7 +10,7 @@ tap 'jesseduffield/lazygit'
 tap 'bazelbuild/tap', pin: true
 
 cask 'xquartz'
-cask 'java8'
+#cask 'java8'
 
 brew 'ack'
 brew 'ag'
