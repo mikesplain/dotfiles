@@ -62,7 +62,7 @@ brew 'grc'
 brew 'heroku/brew/heroku'
 brew 'lua'
 brew 'highlight'
-# brew 'htop'
+brew 'htop'
 brew 'httperf'
 brew 'hub'
 brew 'iftop'
@@ -70,20 +70,17 @@ brew 'ipcalc'
 brew 'iperf'
 brew 'oniguruma'
 brew 'jq'
-brew 'node'
 brew 'jsonlint'
 brew 'kubernetes-cli'
 brew 'kops'
 brew 'kubectx'
 brew 'kube-ps1'
 brew 'python'
-# brew 'mercurial'
 brew 'kubernetes-helm'
 brew 'libevent'
 brew 'libssh'
 brew 'libusb-compat'
 brew 'neovim'
-# brew 'macvim'
 brew 'makedepend'
 brew 'mas'
 brew 'dep'
@@ -92,10 +89,7 @@ brew 'md5sha1sum'
 brew 'msgpack'
 brew 'ncdu'
 brew 'pcre'
-#brew 'nginx', restart_service: true
 brew 'nmap'
-brew 'node-build'
-brew 'nodenv'
 brew 'ossp-uuid'
 brew 'packer'
 brew 'perl'
@@ -157,10 +151,8 @@ cask 'iterm2'
 cask 'kaleidoscope'
 cask 'keepingyouawake'
 cask 'keybase'
-# cask 'launchrocket'
 cask 'libreoffice'
 cask 'logitech-options'
-# cask 'microsoft-office'
 cask 'minikube'
 cask 'ngrok'
 cask 'openoffice'
@@ -194,12 +186,12 @@ cask 'zterm'
 
 mas 'Deliveries', id: 924726344
 mas 'iMovie', id: 408981434
-mas 'Keynote', id: 409183694
+# mas 'Keynote', id: 409183694
 # mas 'Microsoft Remote Desktop', id: 715768417
-mas 'Monosnap', id: 540348655
+# mas 'Monosnap', id: 540348655
 mas 'Notability', id: 736189492
-mas 'Numbers', id: 409203825
-mas 'Pages', id: 409201541
+# mas 'Numbers', id: 409203825
+# mas 'Pages', id: 409201541
 # mas 'Remote Desktop', id: 409907375
 mas 'The Unarchiver', id: 425424353
 mas 'Things3', id: 904280696
