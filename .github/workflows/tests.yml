@@ -21,6 +21,10 @@ jobs:
     - name: Test script/setup
       run: bash script/setup
 
+    - name: Brewfile
+      run: script/test-install.sh
+      if: matrix.os == 'macOS-latest'
+
     - name: Test bashrc
       run: bash -c "source ~/.bashrc"
 
