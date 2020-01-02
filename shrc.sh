@@ -144,14 +144,18 @@ then
   add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
 
-  alias ls="ls -F"
+  if quiet_which exa
+  then
+    alias ls="exa -Fg"
+  else
+    alias ls="ls -F"
+  fi
+
   alias ql="qlmanage -p 1>/dev/null"
   alias locate="mdfind -name"
   alias cpwd="pwd | tr -d '\n' | pbcopy"
   alias finder-hide="setfile -a V"
-
-  # Old default Curl is broken for Git on Leopard.
-  [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
+  alias fork="fork_cli"
 elif [ $LINUX ]
 then
   quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
