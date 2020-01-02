@@ -22,7 +22,7 @@ jobs:
       run: bash script/setup
 
     - name: Brewfile
-      run: script/test-install.sh
+      run: bash script/test-install.sh
       if: matrix.os == 'macOS-latest'
 
     - name: Test bashrc

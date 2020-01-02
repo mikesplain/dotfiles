@@ -6,11 +6,8 @@ tap 'homebrew/core'
 tap 'homebrew/services'
 tap 'homebrew/test-bot'
 tap 'mikesplain/versions'
-tap 'jesseduffield/lazygit'
-tap 'bazelbuild/tap', pin: true
 
 cask 'xquartz'
-#cask 'java8'
 
 brew 'ack'
 brew 'ag'
@@ -128,7 +125,7 @@ brew 'wget'
 brew 'zsh'
 brew 'kubernetes-cli'
 brew 'libdvdcss'
-brew 'lazygit'
+brew 'jesseduffield/lazygit/lazygit'
 
 cask '1password'
 cask 'alfred'
