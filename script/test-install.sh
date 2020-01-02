@@ -11,6 +11,8 @@ sed -i '' 's/^mas.*//g' Brewfile
 sed -i '' 's/.*iftop.*//g' Brewfile
 
 # For linux
-brew cask install homebrew/cask-versions/java8
+# brew cask install homebrew/cask-versions/java8
+brew install python
+brew link --overwrite python
 
 brew bundle install --no-upgrade
