@@ -27,3 +27,7 @@ jobs:
     - name: Test zshrc
       run: zsh -c "source ~/.zshrc"
       if: matrix.os == 'macOS-latest'
+
+    - name: Brewfile
+      run: bash script/test-install.sh
+      if: matrix.os == 'macOS-latest'
