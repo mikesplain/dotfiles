@@ -12,6 +12,8 @@ sed -i '' 's/.*iftop.*//g' Brewfile
 
 # For linux
 # brew cask install homebrew/cask-versions/java8
+brew unlink python
+brew unlink python@2
 brew upgrade python
 brew link --overwrite python
 
