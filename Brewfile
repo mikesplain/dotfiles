@@ -1,13 +1,14 @@
-tap 'homebrew/cask-drivers'
-tap 'homebrew/cask-versions'
 tap 'github/bootstrap'
 tap 'homebrew/bundle'
+tap 'homebrew/cask-drivers'
+tap 'homebrew/cask-versions'
 tap 'homebrew/core'
 tap 'homebrew/services'
 tap 'homebrew/test-bot'
 tap 'mikesplain/versions'
-tap "heroku/brew"
 tap "bazelbuild/tap"
+tap "heroku/brew"
+tap "jesseduffield/lazygit"
 
 # cask 'xquartz'
 cask "adoptopenjdk8"

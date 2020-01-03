@@ -17,4 +17,9 @@ brew unlink python@2
 brew upgrade python
 brew link --overwrite python
 
+brew unlink node
+brew unlink node@2
+brew upgrade node
+brew link --overwrite node
+
 brew bundle install --no-upgrade
