@@ -1,12 +1,17 @@
 #!/bin/sh
 # Install app configs
 
+APPCONFIGDIRREL=$(dirname $0)
+cd $APPCONFIGDIRREL
+APPCONFIGDIR=$(pwd -P)
+
+
+# Spectacle doesn't sort it's config so it changes constantly.
+# To fix we copy its checked in config to the real config file and ignore it in git.
+
+cp $APPCONFIGDIR/Shortcuts.json.checkedin $APPCONFIGDIR/Shortcuts.json
+
 if [ $OSX ]; then
-
-  APPCONFIGDIRREL=$(dirname $0)
-  cd $APPCONFIGDIRREL
-  APPCONFIGDIR=$(pwd -P)
-
   SPECTACLECONFIGDIR="$HOME/Library/Application Support/Spectacle"
 
   mkdir -p "$SPECTACLECONFIGDIR"
@@ -24,5 +29,5 @@ if [ $OSX ]; then
   defaults write com.divisiblebyzero.Spectacle \
     StatusItemEnabled \
     -int 0
-    
+
 fi
