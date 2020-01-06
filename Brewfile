@@ -1,197 +1,206 @@
-tap 'github/bootstrap'
-tap 'homebrew/bundle'
-tap 'homebrew/cask-drivers'
-tap 'homebrew/cask-versions'
-tap 'homebrew/core'
-tap 'homebrew/services'
-tap 'homebrew/test-bot'
-tap 'mikesplain/versions'
-tap "bazelbuild/tap"
-tap "heroku/brew"
-tap "jesseduffield/lazygit"
-
-# cask 'xquartz'
-cask "adoptopenjdk8"
-
-brew 'ack'
-brew 'ag'
-brew 'gdbm'
-brew 'xz'
-brew 'python3'
-# brew 'asciinema'
-brew 'autoconf'
-brew 'exa'
-brew 'fd'
-brew 'automake'
-brew 'awscli'
-brew 'boost'
-brew 'git'
-brew 'bazelbuild/tap/bazelisk'
-brew 'buildifier'
-brew 'glide'
-brew 'isl'
-brew 'cmake'
-brew 'cscope'
-brew 'curl'
-brew 'libgpg-error'
-brew 'libassuan'
-brew 'libgcrypt'
-brew 'libksba'
-brew 'pth'
-brew 'libyaml'
-brew 'ec2-api-tools'
-brew 'findutils'
-brew 'libpng'
-brew 'freetype'
-brew 'fontconfig'
-brew 'gmp'
-brew 'mpfr'
-brew 'moreutils'
-brew 'libmpc'
-brew 'jpeg'
-brew 'gd'
-brew 'gettext'
-brew 'git-crypt'
-brew 'git-lfs'
-brew 'gnu-tar'
-brew 'libusb'
-brew 'pinentry'
-brew 'gnupg'
-brew 'govendor'
-brew 'gpg'
-brew 'libtool'
-brew 'graphviz'
-brew 'grc'
-brew 'heroku/brew/heroku'
-brew 'lua'
-brew 'highlight'
-brew 'htop'
-brew 'httperf'
-brew 'hub'
-brew 'iftop'
-brew 'ipcalc'
-brew 'iperf'
-brew 'oniguruma'
-brew 'jq'
-brew 'jsonlint'
-brew 'kubernetes-cli'
-brew 'kops'
-brew 'kubectx'
-brew 'kube-ps1'
-brew 'python'
-brew 'kubernetes-helm'
-brew 'libevent'
-brew 'libssh'
-brew 'libusb-compat'
-brew 'neovim'
-brew 'makedepend'
-brew 'mas'
-brew 'dep'
-brew 'maven'
-brew 'md5sha1sum'
-brew 'msgpack'
-brew 'ncdu'
-brew 'pcre'
-brew 'nmap'
-brew 'ossp-uuid'
-brew 'packer'
-brew 'perl'
-brew 'postgresql'
-brew 'rainbarf'
-brew 'ruby-build'
-brew 'rbenv'
-brew 'rbenv-default-gems'
-brew 'reattach-to-user-namespace'
-brew 'ripgrep'
-brew 'ruby'
-brew 's3cmd'
-brew 'shellcheck'
-brew 'slackcat'
-brew 'socat'
-brew 'ssh-copy-id'
-brew 'stern'
-brew 'telnet'
-brew 'terraform'
-brew 'thefuck'
-brew 'tmate'
-brew 'tmux'
-brew 'tree'
-brew 'utf8proc'
-brew 'vegeta'
-brew 'vim'
-brew 'wakeonlan'
-brew 'watch'
-brew 'wget'
-brew 'zsh'
-brew 'kubernetes-cli'
-brew 'libdvdcss'
-brew 'jesseduffield/lazygit/lazygit'
-
-cask '1password'
-cask 'alfred'
-cask 'atom'
-cask 'caffeine'
-cask 'cakebrew'
-cask 'charles'
-cask 'disk-inventory-x'
-cask 'docker'
-cask 'dropbox'
-cask 'etcher'
-cask 'evernote'
-cask 'firefox'
-cask 'github'
-cask 'google-cloud-sdk'
-cask "fork"
-cask 'google-chrome'
-cask 'google-drive-file-stream'
-cask 'gpg-suite'
-cask 'iterm2'
-cask 'kaleidoscope'
-cask 'keepingyouawake'
-cask 'keybase'
-cask 'libreoffice'
-cask 'logitech-options'
-cask 'minikube'
-cask 'ngrok'
-cask 'openoffice'
-cask 'private-internet-access'
-cask 'psequel'
-cask 'sequel-pro'
-cask 'signal'
-cask 'skype'
-cask 'slack'
-cask 'sourcetree'
-cask 'spectacle'
-cask 'spotify'
-cask 'superduper'
-cask 'textual'
-cask 'thunderbird'
-cask 'tigervnc-viewer'
-cask 'tor-browser'
-cask 'transmission'
-cask 'transmit'
-cask 'tunnelblick'
-cask 'unetbootin'
-cask 'vagrant'
-cask 'vagrant-manager'
-cask 'virtualbox'
-cask 'visual-studio-code'
-cask 'vlc'
-cask 'menumeters'
-cask 'zoomus'
-cask 'zterm'
-
-mas 'Deliveries', id: 924726344
-mas 'iMovie', id: 408981434
-# mas 'Keynote', id: 409183694
-# mas 'Microsoft Remote Desktop', id: 715768417
-# mas 'Monosnap', id: 540348655
-mas 'Notability', id: 736189492
-# mas 'Numbers', id: 409203825
-# mas 'Pages', id: 409201541
-# mas 'Remote Desktop', id: 409907375
-mas 'The Unarchiver', id: 425424353
-mas 'Things3', id: 904280696
-mas 'Tweetbot', id: 557168941
-mas 'Wallcat', id: 1000397973
-# mas 'Xcode', id: 497799835
+tap "github/bootstrap"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "homebrew/test-bot"
+tap "homebrew/versions"
+tap "mikesplain/versions"
+brew "ack"
+brew "ossp-uuid"
+brew "ansible"
+brew "apr-util"
+brew "arm-linux-gnueabihf-binutils"
+brew "asciinema"
+brew "autoconf"
+brew "automake"
+brew "awscli"
+brew "bazel"
+brew "icu4c"
+brew "carthage"
+brew "cloog"
+brew "cmake"
+brew "cocoapods"
+brew "coreutils"
+brew "cowsay"
+brew "cscope"
+brew "curl"
+brew "go"
+brew "dep"
+brew "libksba"
+brew "pth"
+brew "dirmngr"
+brew "dnsmasq"
+brew "docker", link: false
+brew "docker-compose", link: false
+brew "docker-machine", link: false
+brew "ec2-api-tools"
+brew "findutils"
+brew "fontconfig"
+brew "gcc@5"
+brew "gd"
+brew "gettext"
+brew "git"
+brew "git-crypt"
+brew "git-lfs"
+brew "libffi"
+brew "glib"
+brew "glide"
+brew "gmp@4"
+brew "gnu-tar"
+brew "nettle"
+brew "libusb"
+brew "gnupg", link: false
+brew "govendor"
+brew "gpg-agent"
+brew "gts"
+brew "graphviz"
+brew "grc"
+brew "helm"
+brew "heroku"
+brew "highlight"
+brew "htop"
+brew "httperf"
+brew "hub"
+brew "hugo"
+brew "icdiff"
+brew "libxml2"
+brew "libimobiledevice", args: ["HEAD"]
+brew "ideviceinstaller"
+brew "iftop"
+brew "ios-deploy"
+brew "ipcalc"
+brew "iperf"
+brew "isl@0.11"
+brew "isl@0.12"
+brew "isl@0.14"
+brew "oniguruma"
+brew "jq"
+brew "jsonlint"
+brew "keybase"
+brew "kops"
+brew "libdvdcss"
+brew "libmpc@0.8"
+brew "libtool"
+brew "libusb-compat"
+brew "lynx"
+brew "mackup"
+brew "makedepend"
+brew "mas"
+brew "maven"
+brew "md5sha1sum", link: false
+brew "mercurial"
+brew "minikube"
+brew "mono"
+brew "moreutils"
+brew "mosh"
+brew "msgpack"
+brew "ncdu"
+brew "neovim"
+brew "nginx", restart_service: true
+brew "nmap"
+brew "pkg-config"
+brew "node-build"
+brew "nodenv"
+brew "nyx"
+brew "packer"
+brew "postgresql"
+brew "rainbarf"
+brew "rbenv"
+brew "rbenv-default-gems"
+brew "rbenv-gemset"
+brew "reattach-to-user-namespace"
+brew "redis"
+brew "ripgrep"
+brew "ruby"
+brew "s3cmd"
+brew "shellcheck"
+brew "slackcat"
+brew "socat"
+brew "speedtest-cli"
+brew "ssh-copy-id"
+brew "stern"
+brew "tcpflow"
+brew "telnet"
+brew "terraform"
+brew "testdisk"
+brew "thefuck"
+brew "tmate"
+brew "tmux"
+brew "tor"
+brew "tree"
+brew "utf8proc"
+brew "vegeta"
+brew "vim"
+brew "wakeonlan"
+brew "watch"
+brew "weechat"
+brew "wget"
+brew "wifi-password"
+brew "yarn"
+brew "zsh"
+cask "1password"
+cask "adobe-acrobat-reader"
+cask "alfred"
+cask "balenaetcher"
+cask "blender"
+cask "charles"
+cask "dropbox"
+cask "freecad"
+cask "google-cloud-sdk"
+cask "google-drive-file-stream"
+cask "gpg-suite"
+cask "handbrake"
+cask "iterm2"
+cask "java"
+cask "java8"
+cask "keybase"
+cask "libreoffice"
+cask "logitech-options"
+cask "microsoft-remote-desktop-beta"
+cask "minikube"
+cask "ngrok"
+cask "parsec"
+cask "private-internet-access"
+cask "pycharm-ce"
+cask "sequel-pro"
+cask "sketch"
+cask "sketchup"
+cask "skype"
+cask "slack"
+cask "sling"
+cask "sonos"
+cask "spectacle"
+cask "steam"
+cask "superduper"
+cask "torbrowser"
+cask "transmission"
+cask "ultimaker-cura"
+cask "vagrant"
+cask "vagrant-manager"
+cask "virtualbox"
+cask "vlc"
+cask "xquartz"
+cask "zoomus"
+mas "Deliveries", id: 924726344
+mas "Disk Diag", id: 672206759
+mas "Final Cut Pro", id: 424389933
+mas "Harvest", id: 506189836
+mas "iMovie", id: 408981434
+mas "iPhoto", id: 408981381
+mas "JPEGmini Lite", id: 525742250
+mas "Keynote", id: 409183694
+mas "Monosnap", id: 540348655
+mas "Motion", id: 434290957
+mas "NetSpot", id: 514951692
+mas "Notability", id: 736189492
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "SourceTree", id: 411678673
+mas "The Unarchiver", id: 425424353
+mas "Things", id: 904280696
+mas "Tweetbot", id: 557168941
+mas "Wallcat", id: 1000397973
+mas "Xcode", id: 497799835
