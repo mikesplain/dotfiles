@@ -9,6 +9,7 @@ tap 'mikesplain/versions'
 tap "bazelbuild/tap"
 tap "heroku/brew"
 tap "jesseduffield/lazygit"
+tap "atombender/ktail"
 
 # cask 'xquartz'
 cask "adoptopenjdk8"
@@ -76,6 +77,8 @@ brew 'jq'
 brew 'jsonlint'
 brew 'kind'
 brew 'kubernetes-cli'
+brew 'fzf'
+brew 'atombender/ktail/ktail'
 brew 'kops'
 brew 'kubectx'
 brew 'kube-ps1'
