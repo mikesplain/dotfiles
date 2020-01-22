@@ -156,7 +156,6 @@ then
   alias locate="mdfind -name"
   alias cpwd="pwd | tr -d '\n' | pbcopy"
   alias finder-hide="setfile -a V"
-  alias fork="fork_cli"
 elif [ $LINUX ]
 then
   quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
