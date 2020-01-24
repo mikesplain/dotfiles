@@ -80,7 +80,8 @@ alias ack="ag"
 alias z="zeus"
 alias zt="zeus test"
 alias git="hub"
-alias k='kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
+alias k='kubectl'
+alias kk='kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
 alias kns='kubens'
 alias wk='watch -n.5 kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
 alias ktmux="tmux new-session -d 'watch -n.5 kubectl get nodes -L kops.k8s.io/instancegroup' && tmux split-window -h 'watch -n.5 kubectl get pods --all-namespaces' && tmux split-window -v -t 1 && tmux -2 attach-session -d"
