@@ -3,6 +3,9 @@
 sudo spctl --master-disable
 brew update
 
+# Remove install bazelisk
+rm '/usr/local/bin/bazelisk'
+
 # Remove casks and mas since they're big
 sed -i '' 's/^cask.*//g' Brewfile
 sed -i '' 's/^mas.*//g' Brewfile
