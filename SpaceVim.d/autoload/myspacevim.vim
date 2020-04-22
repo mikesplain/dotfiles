@@ -55,5 +55,4 @@ function! myspacevim#before() abort
   set synmaxcol=240
   " Time for spacevim bar to show up (ms)
   set timeoutlen=250
-  set mouse=r
 endfunction
