@@ -1,5 +1,5 @@
 minApprovals:
-  OWNER: 0
+  OWNER: 1
 blockingLabels: hold
 blockingTitleRegex: '\bWIP\b'
 reportStatus: true
