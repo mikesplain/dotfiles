@@ -1,0 +1,7 @@
+minApprovals:
+  OWNER: 0
+blockingLabels: hold
+blockingTitleRegex: '\bWIP\b'
+reportStatus: true
+updateBranch: true
+deleteBranchAfterMerge: true
