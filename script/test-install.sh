@@ -5,6 +5,8 @@ brew update
 
 # Remove install bazelisk
 rm '/usr/local/bin/bazelisk'
+# Removed installed bazel
+rm '/usr/local/bin/bazel'
 
 # Remove casks and mas since they're big
 sed -i '' 's/^cask.*//g' Brewfile
