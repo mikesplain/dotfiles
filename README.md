@@ -20,8 +20,7 @@ after checkout to symlink (or copy) everything in this directory to your home di
 ## Status
 I'm using these on all my personal machines.
 
-[![Build Status](https://travis-ci.org/mikesplain/dotfiles.svg?branch=master)](https://travis-ci.org/mikesplain/dotfiles)
-
+![GitHub Actions CI](https://github.com/mikesplain/dotfiles/workflows/GitHub%20Actions%20CI/badge.svg)
 
 ## License
 These dot files are licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
