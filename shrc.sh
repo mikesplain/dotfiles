@@ -89,6 +89,7 @@ alias kns='kubens'
 alias wk='watch -n.5 kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
 alias ktmux="tmux new-session -d 'watch -n.5 kubectl get nodes -L kops.k8s.io/instancegroup' && tmux split-window -h 'watch -n.5 kubectl get pods --all-namespaces --sort-by {.metadata.namespace}' && tmux split-window -v -t 1 && tmux -2 attach-session -d"
 alias clear_dns_cache="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias ktail="ktail --since-start"
 
 # Platform-specific stuff
 if quiet_which brew
