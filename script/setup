@@ -11,17 +11,25 @@ if [ "$LOGNAME" = "codespace" ]; then
   export CHSH_PREFIX=sudo
 fi
 
+echo before ohmyzsh
+
 # Install ohmyzsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   ! sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
+echo before auto suggestions
+
 # Setup zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+echo before unames
 
 [ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
+
+echo before for loop
 
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
@@ -53,6 +61,8 @@ for DOTFILE in *; do
     cp -rv "$DIRFILE" "$HOMEFILE"
   fi
 done
+
+echo before app configs
 
 # Setup specific app configs
 
