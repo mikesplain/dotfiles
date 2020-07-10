@@ -21,7 +21,15 @@ jobs:
     - name: Validate syntax
       run: bash -n *.sh
 
-    - name: Setup zsh
+    - name: zsh-macos
+      run: brew install zsh
+      if: matrix.os == 'macOS-latest'
+
+    - name: zsh-windows
+      run: apt install zsh
+      if: matrix.os == 'windows-latest'
+
+    - name: zsh-ubuntu
       run: sudo apt-get install zsh -yq
       if: matrix.os == 'ubuntu-latest'
 
@@ -36,6 +44,7 @@ jobs:
 
     - name: Test Install
       run: bash script/test-install.sh
+      if: matrix.os == 'macOS-latest'
 
   merge-me:
     name: Merge me!
