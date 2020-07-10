@@ -56,6 +56,7 @@ jobs:
           # pushing to protected branches.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MERGE_METHOD: MERGE
+          GITHUB_LOGIN: mikesplain
 
   notifications:
     runs-on: ubuntu-latest
