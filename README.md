@@ -23,5 +23,6 @@ I'm using these on all my personal machines.
 [![GitHub Actions CI](https://github.com/mikesplain/dotfiles/workflows/GitHub%20Actions%20CI/badge.svg)](https://github.com/mikesplain/dotfiles/actions?query=workflow%3ATests)
 
 ## License
-These dot files are licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
-The full license text is available in [LICENSE.txt](https://github.com/MikeMcQuaid/dotfiles/blob/master/LICENSE.txt).
+These dot files are licensed under the [Apache License 2.0
+](https://en.wikipedia.org/wiki/Apache_License#Version_2.0).
+The full license text is available in [LICENSE.txt](https://github.com/mikesplain/dotfiles/blob/master/LICENSE.txt).
