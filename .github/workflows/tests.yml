@@ -33,11 +33,9 @@ jobs:
 
     - name: Test zshrc
       run: zsh -c "source ~/.zshrc"
-      if: matrix.os == 'macOS-latest'
 
     - name: Test Install
       run: bash script/test-install.sh
-      if: matrix.os == 'macOS-latest'
 
   merge-me:
     name: Merge me!
