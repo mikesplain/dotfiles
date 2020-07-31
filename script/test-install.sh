@@ -4,7 +4,7 @@
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
-sudo spctl --master-disable
+[ $OSX ] && sudo spctl --master-disable
 brew update
 
 # Remove install bazelisk
