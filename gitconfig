@@ -95,6 +95,8 @@
 	                              --reuse-message=HEAD --date=\"$(date)\" #"
 	# Checkout the master branch and update it.
 	pull-master = !git checkout master && git pull
+	# Shortcut to above
+	master = !git pull-master
 	# Commit a work-in-progress commit (to use with
 	# fix-up-previous-commit)
 	work-in-progress = commit -a -m 'WIP'
