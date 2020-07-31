@@ -111,6 +111,8 @@ if [ $OSX ]; then
   # Show Pathbar in finder
   defaults write com.apple.finder ShowPathbar 1
 
+  # Auto unhide Library
+  chflags nohidden ~/Library
 fi
 
 
@@ -122,10 +124,6 @@ pip install neovim --upgrade
 
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash
-
-
-# Auto unhide Library
-chflags nohidden ~/Library
 
 git clone https://github.com/gpakosz/.tmux.git $HOME/.tmux
 ln -s -f $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
