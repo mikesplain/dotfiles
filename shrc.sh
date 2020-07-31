@@ -53,6 +53,9 @@ add_to_path_start "/usr/local/sbin"
 # add_to_path_start "/usr/local/opt/python@2/libexec/bin"
 # add_to_path_start "/usr/local/lib/python2.7/site-packages"
 
+# asdf
+. $HOME/.asdf/asdf.sh
+
 # Fix DYLD issue: https://stackoverflow.com/questions/58272830/python-crashing-on-macos-10-15-beta-19a582a-with-usr-lib-libcrypto-dylib
 export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
 

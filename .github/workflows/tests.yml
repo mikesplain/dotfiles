@@ -31,9 +31,10 @@ jobs:
       run: zsh -c "source ~/.zshrc"
       if: matrix.os == 'macOS-latest'
 
-    - name: Brewfile
+    - name: Test Install
       run: bash script/test-install.sh
       if: matrix.os == 'macOS-latest'
+
   merge-me:
     name: Merge me!
     needs:

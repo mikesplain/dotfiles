@@ -26,3 +26,7 @@ brew install node
 brew link --overwrite node
 
 brew bundle install --no-upgrade
+
+# ASDF Install
+source $HOME/.shrc
+asdf install
