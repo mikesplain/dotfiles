@@ -21,6 +21,10 @@ jobs:
     - name: Validate syntax
       run: bash -n *.sh
 
+    - name: Setup zsh
+      run: sudo apt-get install zsh -yq
+      if: matrix.os == 'ubuntu-latest'
+
     - name: Test script/setup
       run: bash script/setup
 
