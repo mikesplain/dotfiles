@@ -50,65 +50,71 @@ done
 
 # Setup specific app configs
 
-cd appconfigs
-for APPCONFIG in *; do
-  [ -f $APPCONFIG ] && continue
-  echo "Setting up $APPCONFIG"
-  "$APPCONFIG/setup"
-done
+if [ $OSX ]; then
+  cd appconfigs
+  for APPCONFIG in *; do
+    [ -f $APPCONFIG ] && continue
+    echo "Setting up $APPCONFIG"
+    "$APPCONFIG/setup"
+  done
 
-# Install additional things
-# if ! [ -d $HOME/.spf13-vim-3 ]; then
-#   echo "Installing spf13-vim3"
-#   curl https://j.mp/spf13-vim3 -L | sh
-# fi
+  # Install additional things
+  # if ! [ -d $HOME/.spf13-vim-3 ]; then
+  #   echo "Installing spf13-vim3"
+  #   curl https://j.mp/spf13-vim3 -L | sh
+  # fi
 
-# Setup Menumeters
+  # Setup Menumeters
 
-defaults write com.ragingmenace.MenuMeters \
-  CPUAverageMultiProcs \
-  -int 1
+  defaults write com.ragingmenace.MenuMeters \
+    CPUAverageMultiProcs \
+    -int 1
 
-defaults write com.ragingmenace.MenuMeters \
-  CPUDisplayMode \
-  -int 2
+  defaults write com.ragingmenace.MenuMeters \
+    CPUDisplayMode \
+    -int 2
 
-defaults write com.ragingmenace.MenuMeters \
-  MemDisplayMode \
-  -int 4
+  defaults write com.ragingmenace.MenuMeters \
+    MemDisplayMode \
+    -int 4
 
-defaults write com.ragingmenace.MenuMeters \
-  NetDisplayMode \
-  -int 2
+  defaults write com.ragingmenace.MenuMeters \
+    NetDisplayMode \
+    -int 2
 
-defaults write com.ragingmenace.MenuMeters \
-  com.ragingmenace.MenuMeterDisk \
-  -int 0
+  defaults write com.ragingmenace.MenuMeters \
+    com.ragingmenace.MenuMeterDisk \
+    -int 0
 
-# Fix Logitech MX Master
-# https://www.reddit.com/r/MouseReview/comments/79fb7z/mx_master_2s_thumbwheel_scrolling_lags_has_play/
-defaults write .GlobalPreferences com.apple.mouse.scaling -1
+  # Fix Logitech MX Master
+  # https://www.reddit.com/r/MouseReview/comments/79fb7z/mx_master_2s_thumbwheel_scrolling_lags_has_play/
+  defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
-# General Mac Config
+  # General Mac Config
 
-# Minimize to app
-defaults write com.apple.dock minimize-to-application -int 1
-# Switch to Dark theme
-# osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
-# Turn on tap to click by default
-sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-# Show battery percent by default
-defaults write com.apple.menuextra.battery ShowPercent -string YES
-# Minimize to app in tray
-defaults write com.apple.dock minimize-to-application -int 1
+  # Minimize to app
+  defaults write com.apple.dock minimize-to-application -int 1
+  # Switch to Dark theme
+  # osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
+  # Turn on tap to click by default
+  sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+  sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  # Show battery percent by default
+  defaults write com.apple.menuextra.battery ShowPercent -string YES
+  # Minimize to app in tray
+  defaults write com.apple.dock minimize-to-application -int 1
 
-# Finder
-# Show status bar with free space at bottom of finder
-defaults write com.apple.finder ShowStatusBar 1
-# Show Pathbar in finder
-defaults write com.apple.finder ShowPathbar 1
+  # Finder
+  # Show status bar with free space at bottom of finder
+  defaults write com.apple.finder ShowStatusBar 1
+  # Show Pathbar in finder
+  defaults write com.apple.finder ShowPathbar 1
+
+  # Auto unhide Library
+  chflags nohidden ~/Library
+fi
+
 
 # Setup go path
 mkdir -p $HOME/go
@@ -118,10 +124,6 @@ pip install neovim --upgrade
 
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash
-
-
-# Auto unhide Library
-chflags nohidden ~/Library
 
 git clone https://github.com/gpakosz/.tmux.git $HOME/.tmux
 ln -s -f $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
