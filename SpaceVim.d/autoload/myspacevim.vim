@@ -17,11 +17,9 @@ function! myspacevim#before() abort
   call SpaceVim#layers#load('lang#python')
   call SpaceVim#layers#load('lang#rust')
   call SpaceVim#layers#load('lang#swig')
-  call SpaceVim#layers#load('lang#tmux')
   call SpaceVim#layers#load('lang#vim')
   call SpaceVim#layers#load('lang#xml')
   call SpaceVim#layers#load('shell')
-  call SpaceVim#layers#load('tmux')
   call SpaceVim#layers#load('tools#screensaver')
   let g:spacevim_enable_vimfiler_welcome = 1
   let g:spacevim_enable_debug = 1
