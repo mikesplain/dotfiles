@@ -46,6 +46,7 @@ quiet_which() {
 
 # add_to_path_end "$HOME/Library/Python/2.7/bin"
 add_to_path_end "$HOME/Library/Python/3.6/bin"
+add_to_path_start "/usr/local/opt/python/libexec/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
 
