@@ -5,6 +5,12 @@ DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 
+# Setup chsh for codespaces
+if [ "$LOGNAME" = "codespace" ]; then
+  echo Discovered codespace, prefixing sudo
+  export CHSH_PREFIX=sudo
+fi
+
 # Install ohmyzsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   . "$DOTFILESDIR/script/ohmyzsh.sh"
