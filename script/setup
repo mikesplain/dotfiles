@@ -6,6 +6,7 @@ cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 
 # Setup chsh for codespaces
+# TODO: This can probably be removed since we switched to unattended
 if [ "$LOGNAME" = "codespace" ]; then
   echo Discovered codespace, prefixing sudo
   export CHSH_PREFIX=sudo
@@ -13,7 +14,7 @@ fi
 
 # Install ohmyzsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  . "$DOTFILESDIR/script/ohmyzsh.sh"
+  ! sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
 # Setup zsh-autosuggestions
