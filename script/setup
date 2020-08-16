@@ -1,9 +1,6 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
-
-DOTFILESDIRREL=$(dirname $0)
-cd $DOTFILESDIRREL/..
-DOTFILESDIR=$(pwd -P)
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" >/dev/null 2>&1 && pwd )"
 
 # Setup chsh for codespaces
 # TODO: This can probably be removed since we switched to unattended
@@ -27,7 +24,7 @@ uname -s | grep -q "_NT-" && export WINDOWS=1
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
-  DIRFILE="$DOTFILESDIR/$DOTFILE"
+  DIRFILE="$ROOT/$DOTFILE"
 
   echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$|^appconfigs/$)' && continue
 
@@ -126,8 +123,8 @@ fi
 # Setup go path
 mkdir -p $HOME/go
 
-pip install speedtest-cli --upgrade
-pip install neovim --upgrade
+pip3 install speedtest-cli --upgrade
+pip3 install neovim --upgrade
 
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash
