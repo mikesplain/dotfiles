@@ -1,6 +1,8 @@
 #!/bin/bash
 # Install all dotfiles into the home directory
-ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" >/dev/null 2>&1 && pwd )"
+DOTFILESDIRREL=$(dirname $0)
+cd $DOTFILESDIRREL/..
+ROOT=$(pwd -P)
 
 # Setup chsh for codespaces
 # TODO: This can probably be removed since we switched to unattended
