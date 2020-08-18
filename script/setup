@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Install all dotfiles into the home directory
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" >/dev/null 2>&1 && pwd )"
 
