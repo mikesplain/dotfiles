@@ -1,4 +1,4 @@
 kind 0.8.1
 golang 1.14.6
-sonobuoy 0.18.4
+sonobuoy 0.19.0
 fluxctl 1.20.1
