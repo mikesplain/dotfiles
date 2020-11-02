@@ -97,6 +97,14 @@
 	pull-master = !git checkout master && git pull
 	# Shortcut to above
 	master = !git pull-master
+	# Checkout the main branch and update it.
+	pull-main = !git checkout main && git pull
+	# Shortcut to above
+	main = !git pull-main
+	# Checkout the develop branch and update it.
+	pull-develop = !git checkout develop && git pull
+	# Shortcut to above
+	develop = !git pull-develop
 	# Commit a work-in-progress commit (to use with
 	# fix-up-previous-commit)
 	work-in-progress = commit -a -m 'WIP'
