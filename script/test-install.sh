@@ -23,7 +23,7 @@ if [ $OSX ]; then
   # For linux
   # brew cask install homebrew/cask-versions/java8
   brew unlink python
-  brew unlink python@2
+  brew unlink awscli
   brew upgrade python
   brew link --overwrite python
 

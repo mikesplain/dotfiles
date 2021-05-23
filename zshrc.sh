@@ -92,6 +92,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zprofile
 source ~/.shrc
 
+source <(kubectl completion zsh)
+
 # History file
 export HISTFILE=~/.zsh_history
 
