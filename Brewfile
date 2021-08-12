@@ -192,6 +192,6 @@ mas 'Notability', id: 736189492
 # mas 'Remote Desktop', id: 409907375
 mas 'The Unarchiver', id: 425424353
 mas 'Things3', id: 904280696
-mas 'Tweetbot', id: 557168941
+# mas 'Tweetbot', id: 557168941
 mas 'Wallcat', id: 1000397973
 # mas 'Xcode', id: 497799835
