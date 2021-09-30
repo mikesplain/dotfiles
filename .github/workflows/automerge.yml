@@ -1,36 +1,28 @@
 name: Automerge
 on:
-  push:
-    branches: main
   pull_request:
-    branches:
-      - main
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '0 12 * * *'
-  workflow_dispatch: {}
+    types:
+      - labeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+
 jobs:
-  merge-me:
-    name: Merge me!
-    needs:
-      - tests
+  enable-auto-merge:
     runs-on: ubuntu-latest
+
+    # Specifically check that dependabot (or another trusted party) created this pull-request, and that it has been labelled correctly.
+    # if: github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'dependencies')
     steps:
-      - name: Merge me!
-        uses: ridedott/merge-me-action@master
-        with:
-          # Depending on branch protection rules, a  manually populated
-          # `GITHUB_TOKEN_WORKAROUND` environment variable with permissions to
-          # push to a protected branch must be used. This variable can have an
-          # arbitrary name, as an example, this repository uses
-          # `GITHUB_TOKEN_DOTTBOTT`.
-          #
-          # When using a custom token, it is recommended to leave the following
-          # comment for other developers to be aware of the reasoning behind it:
-          #
-          # This must be used as GitHub Actions token does not support
-          # pushing to protected branches.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MERGE_METHOD: MERGE
-          GITHUB_LOGIN: mikesplain
-diff --git a/.github/workflows/tests.yml b/.github/workflows/tests.yml
+    - name: Get token
+      id: get_token
+      uses: mikesplain/actions-app-token@master
+      with:
+        APP_PEM: ${{ secrets.MERGEBOT_PEM }}
+        APP_ID: ${{ secrets.MERGEBOT_ID }}
+
+    - uses: alexwilson/enable-github-automerge-action@main
+      with:
+        github-token: '${{ steps.get_token.outputs.app_token }}'
