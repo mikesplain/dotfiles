@@ -106,6 +106,7 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-alias git-clean-branches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
+alias git-clean-branches-='git branch --merged main | grep -v "\* main" | xargs -n 1 git branch -d'
+alias git-clean-branches-master='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 
 alias gut='git'
