@@ -106,7 +106,7 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-if which zsh &>/dev/null; then
+if [ "${SHELL}" = "/bin/zsh" ]; then
   if which kubectl &>/dev/null; then
     source <(kubectl completion zsh)
   fi
