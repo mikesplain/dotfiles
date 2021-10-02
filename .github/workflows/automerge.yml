@@ -1,0 +1,28 @@
+name: Automerge
+on:
+  pull_request:
+    types:
+      - labeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+
+jobs:
+  enable-auto-merge:
+    runs-on: ubuntu-latest
+
+    # Specifically check that dependabot (or another trusted party) created this pull-request, and that it has been labelled correctly.
+    # if: github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'dependencies')
+    steps:
+    - name: Get token
+      id: get_token
+      uses: mikesplain/actions-app-token@master
+      with:
+        APP_PEM: ${{ secrets.MERGEBOT_PEM }}
+        APP_ID: ${{ secrets.MERGEBOT_ID }}
+
+    - uses: alexwilson/enable-github-automerge-action@main
+      with:
+        github-token: '${{ steps.get_token.outputs.app_token }}'
