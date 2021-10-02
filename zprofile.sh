@@ -106,8 +106,10 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-if which kubectl &>/dev/null; then
-  source <(kubectl completion zsh)
+if which zsh &>/dev/null; then
+  if which kubectl &>/dev/null; then
+    source <(kubectl completion zsh)
+  fi
 fi
 
 alias git-clean-branches='git branch --merged main | grep -v "\* main" | xargs -n 1 git branch -d'
