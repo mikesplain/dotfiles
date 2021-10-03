@@ -31,8 +31,10 @@ if [ $OSX ]; then
   brew link --overwrite node
 
   brew bundle install --no-upgrade
-
-  # ASDF Install
-  source $HOME/.shrc
-  asdf install
 fi
+
+
+# ASDF setup
+source $HOME/.shrc
+cut -d' ' -f1 .tool-versions|xargs -n1 asdf plugin add
+asdf install
