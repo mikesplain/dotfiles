@@ -31,8 +31,8 @@ if [ $OSX ]; then
   brew link --overwrite node
 
   brew bundle install --no-upgrade
-fi
 
-# ASDF Install
-source $HOME/.shrc
-asdf install
+  # ASDF Install
+  source $HOME/.shrc
+  asdf install
+fi
