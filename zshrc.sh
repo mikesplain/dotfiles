@@ -108,5 +108,3 @@ setopt share_history
 
 # Don't hang up background jobs
 setopt no_hup
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

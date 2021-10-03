@@ -106,6 +106,10 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
+if [ -f "$HOME/.iterm2_shell_integration.zsh" ]; then
+  source "$HOME/.iterm2_shell_integration.zsh"
+fi
+
 alias git-clean-branches='git branch --merged main | grep -v "\* main" | xargs -n 1 git branch -d'
 alias git-clean-branches-master='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 
