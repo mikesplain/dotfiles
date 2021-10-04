@@ -155,7 +155,4 @@ source $HOME/.shrc
 
 # Install plugins
 
-asdf plugin-add python https://github.com/danhper/asdf-python.git || true
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git || true
-asdf plugin-add sonobuoy https://github.com/mikesplain/asdf-sonobuoy.git || true
-asdf plugin-add fluxctl https://github.com/stefansedich/asdf-fluxctl || true
+cut -d' ' -f1 $HOME/.tool-versions | xargs -I {} asdf plugin add {}

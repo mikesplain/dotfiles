@@ -34,7 +34,7 @@ jobs:
       run: bash -c "source ~/.bashrc"
 
     - name: Test zshrc
-      run: zsh -c "source ~/.zshrc"
+      run: zsh -vc "source ~/.zshrc"
 
     - name: Test Install
       run: bash script/test-install.sh

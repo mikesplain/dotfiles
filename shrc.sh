@@ -62,10 +62,10 @@ export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
 
 # Run rbenv if it exists
 # quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
-rbenv() {
-  eval "$(command rbenv init -)"
-  rbenv "$@"
-}
+# rbenv() {
+#   eval "$(command rbenv init -)"
+#   rbenv "$@"
+# }
 
 # Aliases
 alias mkdir="mkdir -vp"
@@ -251,5 +251,7 @@ json() {
 
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
+# ASDF First
+force_add_to_path_start "${ASDF_DIR:-$HOME/.asdf}/shims"
 
 add_to_path_end "${KREW_ROOT:-$HOME/.krew}/bin"
