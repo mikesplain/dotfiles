@@ -9,36 +9,11 @@ on:
       - edited
       - ready_for_review
       - reopened
-  issue_comment:
-    types: [created]
+
 
 jobs:
-  prow:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: jpmcb/prow-github-actions@v1.1.3
-        with:
-          prow-commands: '/assign
-            /unassign
-            /approve
-            /retitle
-            /area
-            /kind
-            /priority
-            /remove
-            /lgtm
-            /close
-            /reopen
-            /lock
-            /milestone
-            /hold
-            /cc
-            /uncc'
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-
   label-checks:
     runs-on: ubuntu-latest
-    needs: prow
     steps:
     - uses: mheap/github-action-required-labels@v1
       with:
