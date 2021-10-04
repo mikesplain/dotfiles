@@ -155,4 +155,5 @@ source $HOME/.shrc
 
 # Install plugins
 
+cut -d' ' -f1 $HOME/.tool-versions | xargs -I {} echo {}
 cut -d' ' -f1 $HOME/.tool-versions | xargs -I {} asdf plugin add {}
