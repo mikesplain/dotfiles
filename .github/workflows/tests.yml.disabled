@@ -12,6 +12,7 @@ on:
 jobs:
   tests:
     runs-on: ${{ matrix.os }}
+    continue-on-error: true
     strategy:
       matrix:
         # https://github.com/actions/virtual-environments
