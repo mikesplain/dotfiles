@@ -1,5 +1,5 @@
 kind 0.8.1
 golang 1.16.7
 fluxctl 1.20.1
-nodejs 14.17.0
+nodejs 17.4.0
 yarn 1.22.10
