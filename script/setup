@@ -117,6 +117,11 @@ if [ $OSX ]; then
   # Show Pathbar in finder
   defaults write com.apple.finder ShowPathbar 1
 
+  # Remove dock delay
+  defaults write com.apple.dock autohide-delay -int 0
+  # Speed up autohide
+  defaults write com.apple.dock autohide-time-modifier -float 0.25;killall Dock
+
   # Auto unhide Library
   chflags nohidden ~/Library
 fi
