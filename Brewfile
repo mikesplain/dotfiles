@@ -161,7 +161,7 @@ cask 'signal'
 cask 'skype'
 cask 'slack'
 cask 'sourcetree'
-cask 'spectacle'
+cask 'rectangle' # Replaced spectacle (deprecated)
 cask 'spotify'
 cask 'superduper'
 # cask 'textual'
