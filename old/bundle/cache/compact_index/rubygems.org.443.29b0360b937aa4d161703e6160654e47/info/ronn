@@ -1,0 +1,8 @@
+---
+0.4 hpricot:~> 0.8.2,rdiscount:~> 1.5.8|checksum:6cd7b2d8a5ff82214e3efd38906cba6d2aead178b8fd9a80f317adef536f6354
+0.4.1 hpricot:~> 0.8.2,rdiscount:~> 1.5.8|checksum:8d48aab74d474f78ef55c87d9bb17a7f023409e6a6de6f4fc752006857c8ab8e
+0.5 hpricot:>= 0.8.2,rdiscount:>= 1.5.8|checksum:e284dead413cadcfdb865556f2ce9cc09924a3af69bb4630588e70186a24d993
+0.6.0 hpricot:>= 0.8.2,mustache:>= 0.7.0,rdiscount:>= 1.5.8|checksum:39774c8926ec6dda0bdf75a2c4d10ce7d4412322338b958d289b7e4dbd074f8e
+0.6.6 hpricot:>= 0.8.2,mustache:>= 0.7.0,rdiscount:>= 1.5.8|checksum:c2ffd650cc92db5145107d7486b7bb29fc96bbd7dfdf7e82623055e98675c543
+0.7.0 hpricot:>= 0.8.2,mustache:>= 0.7.0,rdiscount:>= 1.5.8|checksum:141ce6be1c56fbc9c7a9d7a0fe5f9de5ead9521766be75f623ff90bccc43e54d
+0.7.3 hpricot:>= 0.8.2,mustache:>= 0.7.0,rdiscount:>= 1.5.8|checksum:82df6fd4a3aa91734866710d2811a6387e50a7513fc528ce6c7d95ee7ad7f41e

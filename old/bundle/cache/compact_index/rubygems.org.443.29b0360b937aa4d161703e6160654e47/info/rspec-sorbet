@@ -1,0 +1,11 @@
+---
+1.0.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:4e25b1de870170f148b8c1777be58867f61e395dbf3f84000b1265c5b49f6270
+1.1.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:7fc21737b3be872baf75539ddb1ed236deae4b414e86a9bfbd3fd6c113b927c0
+1.2.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:d0040287469b853b59137ca9c444c226ac2536e13fffb4f1a6a283789095f4f7
+1.2.1 sorbet:>= 0,sorbet-runtime:>= 0|checksum:b00aa050bf23f8390646194cf79a84ac527c1272586e2961544d3bd6f49688fb
+1.3.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:0642acf15095bd79309de3583c7a9214f39ae88f4dc886b2256204373b1d3e73
+1.4.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:71678a962139157224fa17e712559570734e9a61899c728fc74f37237cf29ee1
+1.5.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:0f9c12f282389772b6189905c162449c9948cbe9158fa5f365a485ad2446a7a7
+1.7.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:aef9e85bc9ade881e8f7867f090a44daf21ddd97a7e78a14836220fb62542f5c
+1.6.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:9b7a11de17f0456f2d7043a1dd94b6334c29a7fcffdcee7e6eb2beb183413ef3
+1.8.0 sorbet:>= 0,sorbet-runtime:>= 0|checksum:7fec59343f63426de50a31036fe86d172f43a7c266dbd71f1edee67ad247f04e

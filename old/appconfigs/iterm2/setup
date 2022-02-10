@@ -1,0 +1,8 @@
+#!/bin/sh
+# Sets up the iterm2 plist
+
+APPCONFIGDIRREL=$(dirname $0)
+cd $APPCONFIGDIRREL
+APPCONFIGDIR=$(pwd -P)
+
+defaults import com.googlecode.iterm2 $APPCONFIGDIR/com.googlecode.iterm2.xml
