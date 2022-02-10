@@ -1,0 +1,24 @@
+matrix:
+  include:
+  - os: linux
+    env: CHSH_PREFIX=sudo
+  - os: osx
+    osx_image: xcode9.3
+    env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
+  - os: osx
+    osx_image: xcode9.4 
+    env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
+  - os: osx
+    osx_image: xcode10
+    env: CHSH_PREFIX=sudo PATH=/usr/local/Cellar/python/2.7.14/bin:$PATH
+sudo: required
+script:
+- bash -n *.sh
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then script/test-install.sh; else sudo apt-get update && sudo apt-get install zsh -y; fi
+- "./script/setup"
+- export PS1
+- bash -c "source ~/.bashrc"
+- zsh -c "source ~/.zshrc"
+notifications:
+  slack:
+    secure: RJJNNlayjRIistp6j55LVPQgkBGRrBD8M7+v2Z+HM8g3OcPnIP7XjkHN1ytkrzglqX4ztxvlS4WyumbhSVlreW+PSSWWwidVyq/SRAF2W+PKKVrqrHnTW7F+HTBa+/thsQ6vMHnvIyVDYjNmdYIKsnfCokdyfIsARThue8Sgqv/ZcNoaIzQSDXrBhb+a8PlD9Pz+Gh0VzPAe5xvwGMxa30Pc00BTrrbjBv2crnacAbg1G3Ae+ksJqDirRVRHpZrJ+WFzD4JJYk+e5UBpBkdQP6iOoUA2DpixIGImixYCZlSCDrN/qZEldqDEiSgxTC+gHaMecwPeCB6pof4Y6Nuev8Lssenh3TAtOlRJNp5kOR/yT1SZtwypOJCTHxH5/kbknm766JP+sf250yB4Wtc5UW0t3fEGl0vOOc7oY0Ltb4N/07Lvrjn4VjjgqVhTofWZRcT6JYrb1P2VoYMAp5uysnOoKz3dd9iHICwyK85opLTgUFU8NJfmoortgOTA3r3ZZ4xBFtYLjxlTSTRs4x2P+UvEcT1p3Cp3uESURULDbPND3kjb5crVdNrLHWbZ+agJWjPR7NNIM4bK3pJcSIqk1a3TAQmpoiR9Mvq9ToElM+vf4MmgGtfkdOuAN815fco1LdwSjIHUAHyXPRM3xvTGKVUAvu7zuoohOeK0Ou3ZxcM=
