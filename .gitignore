@@ -4,7 +4,6 @@ ssh/github_rsa*
 ssh/known_hosts
 ssh/google*
 ssh/*Github
-bundle/cache
 secrets
 rbenv/*/
 .DS_Store
