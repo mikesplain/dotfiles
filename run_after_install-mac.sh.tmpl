@@ -35,9 +35,10 @@ echo "Setting mac config"
   # Switch to Dark theme
   # osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
   # Turn on tap to click by default
-  sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-  sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-  sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+  defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
   # Show battery percent by default
   defaults write com.apple.menuextra.battery ShowPercent -string YES
   # Minimize to app in tray
