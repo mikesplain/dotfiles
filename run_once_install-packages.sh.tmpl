@@ -1,4 +1,8 @@
 #!/bin/sh
 
+{{ if eq .chezmoi.os "linux" -}}
+apt-get install fontconfig
+{{ end -}}
+
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash
