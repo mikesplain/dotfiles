@@ -1,9 +1,0 @@
----
-1.0.0.alpha.1 |checksum:510e93bf770339ba2323508cb429275db1bdb5cf5deff375277605fa4fc2a838,ruby:>= 2.3.0,rubygems:> 1.3.1
-1.0.0 |checksum:04f6419c0144e6c56c9dcb5a68877f4ca369c3e0172ac39ff4b892bb60e28f78,ruby:>= 2.3.0
-2.0.0.rc.1 rspec-core:~> 3.0|checksum:08590ad07cf745d197099da27b1985db049e2230736def1c34c3da888316b9ba,ruby:>= 2.3.0,rubygems:> 1.3.1
-2.0.0 rspec-core:~> 3.0|checksum:dee72d4b5e41dca58e9c93de7c5b9ddf11e43a5e239a006cfa7b98e52b64241b,ruby:>= 2.3.0
-2.1.0 rspec-core:~> 3.0|checksum:b494615ab4557c523f21ee98e21e4cea33cbb96a90d6f6a27fc094af5960fd80,ruby:>= 2.3.0
-2.2.0 rspec-core:~> 3.0|checksum:6f8ed8bf40bcf36753771a05b69cf144d3bda50515e29fbe79563d540ba7c465,ruby:>= 2.3.0
-2.3.0 rspec-core:~> 3.0|checksum:5a56c1a97403ee966e9b9195ddb3aca7cca4a024d964d82d5967348797b69a4b,ruby:>= 2.3.0
-2.3.1 rspec-core:~> 3.0|checksum:a638ea7a0e0b7cd68e99612b5846d6ab1c92fd9d95deb88c3c96ff972579e228,ruby:>= 2.4.0
