@@ -18,45 +18,45 @@ field() {
 
 # Setup paths
 remove_from_path() {
-  [ -d “$1” ] || return
-  PATHSUB=“:$PATH:”
+  [ -d "$1" ] || return
+  PATHSUB=":$PATH:"
   PATHSUB=${PATHSUB//:$1:/:}
   PATHSUB=${PATHSUB#:}
   PATHSUB=${PATHSUB%:}
-  export PATH=“$PATHSUB”
+  export PATH="$PATHSUB"
 }
 
 add_to_path_start() {
-  [ -d “$1” ] || return
-  remove_from_path “$1”
-  export PATH=“$1:$PATH”
+  [ -d "$1" ] || return
+  remove_from_path "$1"
+  export PATH="$1:$PATH"
 }
 
 add_to_path_end() {
-  [ -d “$1” ] || return
-  remove_from_path “$1”
-  export PATH=“$PATH:$1”
+  [ -d "$1" ] || return
+  remove_from_path "$1"
+  export PATH="$PATH:$1"
 }
 
 force_add_to_path_start() {
-  remove_from_path “$1”
-  export PATH=“$1:$PATH”
+  remove_from_path "$1"
+  export PATH="$1:$PATH"
 }
 
 quiet_which() {
-  command -v “$1” >/dev/null
+  command -v "$1" >/dev/null
 }
 
-
-# add_to_path_end "$HOME/Library/Python/2.7/bin"
-add_to_path_end "$HOME/Library/Python/3.6/bin"
-add_to_path_start "/usr/local/opt/python/libexec/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
+add_to_path_start "/usr/bin"
+add_to_path_start "/usr/sbin"
+add_to_path_start "/opt/homebrew/bin"
+add_to_path_start "/usr/local/opt/python/libexec/bin"
 
-# Brew python
-# add_to_path_start "/usr/local/opt/python@2/libexec/bin"
-# add_to_path_start "/usr/local/lib/python2.7/site-packages"
+# Setup Go development
+export GOPATH="$HOME/.gopath"
+add_to_path_end "$GOPATH/bin"
 
 # asdf
 . $HOME/.asdf/asdf.sh
@@ -157,6 +157,10 @@ then
   add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
 
+  add_to_path_start "/opt/homebrew/bin"
+  add_to_path_start "/opt/homebrew/sbin"
+  add_to_path_end "$HOMEBREW_PREFIX/opt/python/libexec/bin"
+
   if quiet_which exa
   then
     alias ls="exa -Fg"
@@ -252,9 +256,7 @@ json() {
   jsonlint "$1" | jq .
 }
 
-# Look in ./bin but do it last to avoid weird `which` results.
-force_add_to_path_start "bin"
 # ASDF First
 force_add_to_path_start "${ASDF_DIR:-$HOME/.asdf}/shims"
 
-add_to_path_end "${KREW_ROOT:-$HOME/.krew}/bin"
+# add_to_path_end "${KREW_ROOT:-$HOME/.krew}/bin"
