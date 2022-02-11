@@ -28,3 +28,11 @@ sourceDir: "{{ .chezmoi.sourceDir }}"
 data:
   name: "{{ $name }}"
   email: "{{ $email }}"
+
+edit:
+  command: "code"
+  args: ["--wait"]
+
+merge:
+  command: "opendiff"
+  args: ["{{ .Source }}", "{{ .Target }}", "-merge", "{{ .Destination }}"]

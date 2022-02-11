@@ -7,7 +7,14 @@
 
 .oh-my-zsh/custom/plugins/zsh-autosuggestions:
     type: archive
-    url: https://github.com/zsh-users/zsh-autosuggestions
+    url: https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz
+    exact: true
+    stripComponents: 1
+    refreshPeriod: 168h
+
+.SpaceVim:
+    type: archive
+    url: https://github.com/SpaceVim/SpaceVim/archive/master.tar.gz
     exact: true
     stripComponents: 1
     refreshPeriod: 168h
