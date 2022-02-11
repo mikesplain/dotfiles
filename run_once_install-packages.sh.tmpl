@@ -1,14 +1,21 @@
 #!/bin/sh
 
+# To rerun:
+# chezmoi state delete-bucket --bucket=scriptState
+
 {{ if eq .chezmoi.os "linux" -}}
 apt-get update
 apt-get install \
   fontconfig \
   xfonts-utils \
   neovim \
+  hub \
   -yq
+{{ else if eq .chezmoi.os "darwin" -}}
+echo "Installing homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install hub
 {{ end -}}
 
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash
-
