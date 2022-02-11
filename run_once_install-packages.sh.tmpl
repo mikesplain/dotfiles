@@ -2,8 +2,13 @@
 
 {{ if eq .chezmoi.os "linux" -}}
 apt-get update
-apt-get install fontconfig xfonts-utils -yq
+apt-get install \
+  fontconfig \
+  xfonts-utils \
+  neovim \
+  -yq
 {{ end -}}
 
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash
+
