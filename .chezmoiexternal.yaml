@@ -18,3 +18,15 @@
     exact: true
     stripComponents: 1
     refreshPeriod: 168h
+
+.tmux:
+    type: archive
+    url: https://github.com/gpakosz/.tmux/archive/master.tar.gz
+    exact: true
+    stripComponents: 1
+    refreshPeriod: 168h
+
+.tmux.conf:
+    type: "file"
+    url: "https://raw.githubusercontent.com/gpakosz/.tmux/master/.tmux.conf"
+    refreshPeriod: "168h"
