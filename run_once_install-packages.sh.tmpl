@@ -2,7 +2,7 @@
 
 {{ if eq .chezmoi.os "linux" -}}
 apt-get update
-apt-get install fontconfig -yq
+apt-get install fontconfig xfonts-utils -yq
 {{ end -}}
 
 # Install spacevim
