@@ -18,31 +18,35 @@ field() {
 
 # Setup paths
 remove_from_path() {
-  [ -d "$1" ] || return
-  # Doesn't work for first item in the PATH but I don't care.
-  export PATH=${PATH//:$1/}
+  [ -d “$1” ] || return
+  PATHSUB=“:$PATH:”
+  PATHSUB=${PATHSUB//:$1:/:}
+  PATHSUB=${PATHSUB#:}
+  PATHSUB=${PATHSUB%:}
+  export PATH=“$PATHSUB”
 }
 
 add_to_path_start() {
-  [ -d "$1" ] || return
-  remove_from_path "$1"
-  export PATH="$1:$PATH"
+  [ -d “$1” ] || return
+  remove_from_path “$1”
+  export PATH=“$1:$PATH”
 }
 
 add_to_path_end() {
-  [ -d "$1" ] || return
-  remove_from_path "$1"
-  export PATH="$PATH:$1"
+  [ -d “$1” ] || return
+  remove_from_path “$1”
+  export PATH=“$PATH:$1”
 }
 
 force_add_to_path_start() {
-  remove_from_path "$1"
-  export PATH="$1:$PATH"
+  remove_from_path “$1”
+  export PATH=“$1:$PATH”
 }
 
 quiet_which() {
-  which "$1" &>/dev/null
+  command -v “$1” >/dev/null
 }
+
 
 # add_to_path_end "$HOME/Library/Python/2.7/bin"
 add_to_path_end "$HOME/Library/Python/3.6/bin"
