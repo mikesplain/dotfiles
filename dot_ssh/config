@@ -31,10 +31,3 @@ Host *
 	ControlMaster auto
 	ControlPath /tmp/ssh-%C.socket
 
-# --- SourceTree Generated ---
-Host mikesplain-GitHub
-	HostName github.com
-	User mikesplain
-	PreferredAuthentications publickey
-	IdentityFile /Users/mike/.ssh/mikesplain_GitHub
-# ----------------------------
