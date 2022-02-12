@@ -15,11 +15,14 @@ $SUDO apt-get install \
   xfonts-utils \
   neovim \
   hub \
+  tmux \
   -yq
 {{ else if eq .chezmoi.os "darwin" -}}
 echo "Installing homebrew"
+export NONINTERACTIVE=true
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install hub
+brew install tmux
 {{ end -}}
 
 # Install spacevim
