@@ -4,6 +4,7 @@ LICENSE
 README.md
 
 .oh-my-zsh/cache/**
+.ssh/**id_**
 
 # Spacevim
 **/__pycache__
