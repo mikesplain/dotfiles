@@ -5,9 +5,9 @@
 
 {{ if eq .chezmoi.os "linux" -}}
 if [ "$USER" = "root" ]; then
-  $SUDO = ""
+  SUDO=""
 else
-  $SUDO = "sudo"
+  SUDO="sudo"
 fi
 $SUDO apt-get update
 $SUDO apt-get install \
