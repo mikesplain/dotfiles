@@ -4,8 +4,13 @@
 # chezmoi state delete-bucket --bucket=scriptState
 
 {{ if eq .chezmoi.os "linux" -}}
-apt-get update
-apt-get install \
+if [ "$USER" = "root" ]; then
+  $SUDO = ""
+else
+  $SUDO = "sudo"
+fi
+$SUDO apt-get update
+$SUDO apt-get install \
   fontconfig \
   xfonts-utils \
   neovim \
