@@ -32,7 +32,11 @@
 	# Don't prompt for commit messages for merge commits.
 	mergeoptions = --no-edit
     # editor = /usr/bin/vim
+	{{ if eq .chezmoi.os "darwin" -}}
+	editor = /opt/homebrew/bin/nvim
+	{{ else -}}
 	editor = /usr/local/bin/nvim
+	{{ end -}}
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
