@@ -65,6 +65,9 @@ chflags nohidden ~/Library
 rm '/usr/local/bin/bazelisk'
 # Removed installed bazel
 rm '/usr/local/bin/bazel'
+# Remove aws cli
+rm '/usr/local/bin/aws'
+
 
 # Remove casks and mas since they're big
 sed -i '' 's/^cask.*//g' $HOME/Brewfile
