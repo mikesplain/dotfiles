@@ -60,6 +60,32 @@ chflags nohidden ~/Library
 
 # Brew bundle
 
+{{ if env "CI" -}}
+# Remove install bazelisk
+rm '/usr/local/bin/bazelisk'
+# Removed installed bazel
+rm '/usr/local/bin/bazel'
+
+# Remove casks and mas since they're big
+sed -i '' 's/^cask.*//g' $HOME/Brewfile
+sed -i '' 's/^mas.*//g' $HOME/Brewfile
+
+# Remove iftop since it gives a sudo error
+sed -i '' 's/.*iftop.*//g' $HOME/Brewfile
+
+if [ $OSX ]; then
+  # For linux
+  # brew cask install homebrew/cask-versions/java8
+  brew unlink python
+  brew unlink awscli
+  brew upgrade python
+  brew link --overwrite python
+
+  brew install node
+  brew link --overwrite node
+fi
+{{ end -}}
+
 brew bundle --no-lock --file=$HOME/Brewfile
 
 {{ end -}}

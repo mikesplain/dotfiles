@@ -20,17 +20,6 @@ jobs:
     - name: Set up Git repository
       uses: actions/checkout@v2
 
-    - name: Remove mas
-      run: sed -i '' 's/^mas.*//g' Brewfile
-
-    # - name: Remove casks
-    #   run: sed -i '' 's/^cask.*//g' Brewfile
-
-    # Remove iftop since it gives a sudo error
-    # - name: Remove casks
-    #   run: sed -i '' 's/.*iftop.*//g' Brewfile
-
-
     - name: Test script/setup
       run: ./install.sh
 
@@ -53,30 +42,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required, but GitHub should automatically supply
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
       if: always() # Pick up events even if the job fails or is canceled.
-
-
-# # Remove install bazelisk
-# rm '/usr/local/bin/bazelisk'
-# # Removed installed bazel
-# rm '/usr/local/bin/bazel'
-
-# # Remove casks and mas since they're big
-# sed -i '' 's/^cask.*//g' Brewfile
-# sed -i '' 's/^mas.*//g' Brewfile
-
-# # Remove iftop since it gives a sudo error
-# sed -i '' 's/.*iftop.*//g' Brewfile
-
-# if [ $OSX ]; then
-#   # For linux
-#   # brew cask install homebrew/cask-versions/java8
-#   brew unlink python
-#   brew unlink awscli
-#   brew upgrade python
-#   brew link --overwrite python
-
-#   brew install node
-#   brew link --overwrite node
-
-#   brew bundle install --no-upgrade
-# fi
