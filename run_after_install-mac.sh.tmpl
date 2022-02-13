@@ -65,9 +65,8 @@ chflags nohidden ~/Library
 rm '/usr/local/bin/bazelisk'
 # Removed installed bazel
 rm '/usr/local/bin/bazel'
-# Remove golang symlink for ktail
-brew unlink go@1.15
-brew uninstall go
+# Remove golang for ktail/golang install
+rm '/usr/local/bin/go'
 
 # Remove casks and mas since they're big
 sed -i '' 's/^cask.*//g' $HOME/Brewfile
