@@ -67,6 +67,7 @@ rm '/usr/local/bin/bazelisk'
 rm '/usr/local/bin/bazel'
 # Remove golang symlink for ktail
 brew unlink go@1.15
+brew uninstall go
 
 # Remove casks and mas since they're big
 sed -i '' 's/^cask.*//g' $HOME/Brewfile
