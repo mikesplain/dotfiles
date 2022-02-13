@@ -98,6 +98,11 @@ alias ktmux="tmux new-session -d 'watch kubectl get nodes -L kops.k8s.io/instanc
 alias clear_dns_cache="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias ktail="ktail --since-start"
 
+alias git-clean-branches='git branch --merged main | grep -v "\* main" | xargs -n 1 git branch -d'
+alias git-clean-branches-master='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
+alias gut='git'
+alias cat='bat'
+
 # Platform-specific stuff
 if quiet_which brew
 then
