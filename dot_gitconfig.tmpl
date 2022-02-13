@@ -37,6 +37,7 @@
 	{{ else -}}
 	editor = /usr/local/bin/nvim
 	{{ end -}}
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
@@ -156,7 +157,7 @@
 	s = status --short --branch
 [diff]
 	# Use the OS X graphical three-way merge tool for graphical diffs.
-	tool = Kaleidoscope
+	tool = opendiff
 	# Use the slower but better patience diff algorithm
 	algorithm = patience
 	# Use new diff algorithm to make e.g. function diffs look better.
@@ -227,14 +228,22 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
-# [difftool "Kaleidoscope"]
-#     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
-# [mergetool "Kaleidoscope"]
-# 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-#     trustExitCode = true
-
 [diff "sopsdiffer"]
 	textconv = sops -d
 [pull]
 	rebase = true
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

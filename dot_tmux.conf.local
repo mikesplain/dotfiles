@@ -258,3 +258,7 @@ bind C-b send-prefix
 #set -g status-position top
 #
 
+
+# Fig Tmux Integration: Enabled
+source-file ~/.fig/tmux
+# End of Fig Tmux Integration
