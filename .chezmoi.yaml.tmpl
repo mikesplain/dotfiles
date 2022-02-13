@@ -35,4 +35,8 @@ edit:
 
 merge:
   command: "opendiff"
-  args: ["{{ .Source }}", "{{ .Target }}", "-merge", "{{ .Destination }}"]
+  args:
+  - "{{ "{{ .Source }}" }}"
+  - "{{ "{{ .Destination }}" }}"
+  - -merge
+  - "{{ "{{ .Target }}" }}"
