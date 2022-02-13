@@ -65,10 +65,8 @@ chflags nohidden ~/Library
 rm '/usr/local/bin/bazelisk'
 # Removed installed bazel
 rm '/usr/local/bin/bazel'
-# Remove aws cli
-rm '/usr/local/bin/aws'
-rm ‘/usr/local/bin/aws_completer’
-
+# Remove golang symlink for ktail
+brew unlink go@1.15
 
 # Remove casks and mas since they're big
 sed -i '' 's/^cask.*//g' $HOME/Brewfile
@@ -76,6 +74,8 @@ sed -i '' 's/^mas.*//g' $HOME/Brewfile
 
 # Remove iftop since it gives a sudo error
 sed -i '' 's/.*iftop.*//g' $HOME/Brewfile
+# Remove awscli since it's already installed and gives problems
+sed -i '' 's/.*awscli.*//g' $HOME/Brewfile
 
 if [ $OSX ]; then
   # For linux
