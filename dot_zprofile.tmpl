@@ -1,8 +1,10 @@
-
+{{ if eq .chezmoi.os "darwin" -}}
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the start of this file.
 [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
+{{ end -}}
+
 # load shared shell configuration
 source ~/.shprofile
 
@@ -115,7 +117,9 @@ if [ -f "$HOME/.iterm2_shell_integration.zsh" ]; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
+{{ if eq .chezmoi.os "darwin" -}}
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
 [ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
 #### END FIG ENV VARIABLES ####
+{{ end -}}

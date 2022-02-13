@@ -1,8 +1,9 @@
-
+{{ if eq .chezmoi.os "darwin" -}}
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the start of this file.
 [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
+{{ end -}}
 # load shared shell configuration
 [ "$(uname -s)" = "Darwin" ] && source ~/.bash_profile
 source ~/.shrc
@@ -13,7 +14,9 @@ export HISTCONTROL=ignoredups
 export PROMPT_COMMAND='history -a'
 export HISTIGNORE="&:ls:[bf]g:exit"
 
+{{ if eq .chezmoi.os "darwin" -}}
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
 [ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
 #### END FIG ENV VARIABLES ####
+{{ end -}}
