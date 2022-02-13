@@ -67,6 +67,7 @@ rm '/usr/local/bin/bazelisk'
 rm '/usr/local/bin/bazel'
 # Remove golang for ktail/golang install
 rm '/usr/local/bin/go'
+rm '/usr/local/bin/gofmt'
 
 # Remove casks and mas since they're big
 sed -i '' 's/^cask.*//g' $HOME/Brewfile
