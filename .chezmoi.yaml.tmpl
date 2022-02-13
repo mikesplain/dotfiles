@@ -36,7 +36,7 @@ edit:
 merge:
   command: "opendiff"
   args:
-  - "{{ "{{ .Source }}" }}"
   - "{{ "{{ .Destination }}" }}"
+  - "{{ "{{ .Source }}" }}"
   - -merge
   - "{{ "{{ .Target }}" }}"
