@@ -1,3 +1,12 @@
+{{- if eq .email "mike.splain@sonos.com" }}
+[github]
+	user = mikesplainsonos
+[user]
+	# Name used in commit messages.
+	name = Mike Splain
+	# Email used in commit messages.
+	email = mike.splain@sonos.com
+{{- else }}
 [github]
 	user = MikeSplain
 [user]
@@ -5,7 +14,7 @@
 	name = Mike Splain
 	# Email used in commit messages.
 	email = mike.splain@gmail.com
-
+{{- end }}
 [include]
 	path = ~/.gitconfig-user
 
