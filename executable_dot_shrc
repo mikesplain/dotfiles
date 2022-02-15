@@ -258,4 +258,7 @@ json() {
 # ASDF First
 force_add_to_path_start "${ASDF_DIR:-$HOME/.asdf}/shims"
 
+# More colours with grc
+[ -f "$HOME/.config/.splain.sh" ] && source "$HOME/.config/.splain.sh"
+
 # add_to_path_end "${KREW_ROOT:-$HOME/.krew}/bin"
