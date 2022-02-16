@@ -21,7 +21,6 @@ $SUDO apt-get install \
 {{ else if eq .chezmoi.os "darwin" -}}
 echo "Installing homebrew"
 export NONINTERACTIVE=true
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install hub \
               tmux \
               gpg \
