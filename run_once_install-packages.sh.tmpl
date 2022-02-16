@@ -22,9 +22,10 @@ $SUDO apt-get install \
 echo "Installing homebrew"
 export NONINTERACTIVE=true
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install hub
-brew install tmux
-brew install zsh
+brew install hub \
+              tmux \
+              gpg \
+              zsh
 {{ end -}}
 
 # Install spacevim
