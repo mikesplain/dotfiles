@@ -1,14 +1,14 @@
 Host *.brew.sh
-	User brewadmin
-	ForwardAgent yes
+  User brewadmin
+  ForwardAgent yes
 
 Host remote.github.net remote.github.com
-	ForwardAgent yes
-	User mikesplain
+  ForwardAgent yes
+  User mikesplain
 
 Host *.github.com *.github.net *.githubapp.com
-	ForwardAgent no
-	User mikesplain
+  ForwardAgent no
+  User mikesplain
 
 Host *.ec2.internal
   CanonicalizeHostname yes
@@ -21,13 +21,13 @@ Host *.us-east-2.compute.internal
   CanonicalDomains sslip.io
 
 Host bastion.*
-    ForwardAgent yes
+  ForwardAgent yes
 
 Host *
-	StrictHostKeyChecking ask
-	VerifyHostKeyDNS ask
-	NoHostAuthenticationForLocalhost yes
-	IdentityFile ~/.ssh/id_rsa
-	ControlMaster auto
-	ControlPath /tmp/ssh-%C.socket
-	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  StrictHostKeyChecking ask
+  VerifyHostKeyDNS ask
+  NoHostAuthenticationForLocalhost yes
+  # IdentityFile ~/.ssh/id_rsa
+  ControlMaster auto
+  ControlPath /tmp/ssh-%C.socket
