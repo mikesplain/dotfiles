@@ -3,6 +3,13 @@
 Template dotfiles repository, managed with [chezmoi](https://chezmoi.io/).
 
 ## Setup
+
+First setup homebrew (since it prompts us and we can't get user input during the current install):
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Now setup chezmoi:
 ```
 sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply mikesplain
 ```
