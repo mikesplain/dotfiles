@@ -41,7 +41,7 @@
 	# Don't prompt for commit messages for merge commits.
 	mergeoptions = --no-edit
     # editor = /usr/bin/vim
-	editor = /usr/local/bin/nvim
+	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [help]
   # Autocorrect mistyped commands.
@@ -252,3 +252,7 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+# Added due to bug in git 2.37.0
+# https://github.com/so-fancy/diff-so-fancy/issues/437
+[add "interactive"]
+	useBuiltin = false
