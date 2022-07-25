@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         # https://github.com/actions/virtual-environments
-        os: [ubuntu-latest, macos-latest, macos-10.15, macos-12]
+        os: [ubuntu-latest, macos-12, macos-11, macos-10.15]
     steps:
     - name: Set up Git repository
       uses: actions/checkout@v2
