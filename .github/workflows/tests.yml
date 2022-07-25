@@ -20,6 +20,9 @@ jobs:
     - name: Set up Git repository
       uses: actions/checkout@v2
 
+    - name: testtttttt env
+      run: env
+
     - name: Test Install Chezmoi
       run: ./install.sh
 
