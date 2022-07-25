@@ -4,6 +4,9 @@
 
 echo "Setting up opendiff with wait"
 
+# Create shims if it doesn't exist yet
+mkdir -p $HOME/.asdf/shims/
+
 cat > $HOME/.asdf/shims/opendiff-w <<EOF
 #!/bin/sh
 # opendiff returns immediately, without waiting for FileMerge to exit.
