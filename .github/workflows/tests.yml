@@ -32,7 +32,6 @@ jobs:
 
   notifications:
     runs-on: ubuntu-latest
-    needs: tests
     steps:
     - name: Slack Notice Action
       uses: sonots/slack-notice-action@v3.1.2

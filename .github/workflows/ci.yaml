@@ -7,7 +7,6 @@ on:
 jobs:
   clone-and-install:
     runs-on: ubuntu-latest
-    concurrency: clone-and-install
     container:
       image: mcr.microsoft.com/vscode/devcontainers/base:ubuntu
       env:
