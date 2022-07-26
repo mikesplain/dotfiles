@@ -1,6 +1,8 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/zsh
 
+. $HOME/.shrc
+
 asdf plugin list
 asdf list
 
