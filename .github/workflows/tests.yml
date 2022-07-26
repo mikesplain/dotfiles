@@ -30,7 +30,7 @@ jobs:
       run: zsh -vc "source ~/.zshrc"
 
     - name: Test diff-so-fancy
-      shell: zsh
+      shell: zsh -vc "{0}"
       run: diff-so-fancy
 
   notifications:
