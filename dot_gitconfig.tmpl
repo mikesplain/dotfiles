@@ -211,9 +211,11 @@
 	# Allows use of git:// for public repositories with push access
 	# (which is often faster).
 	pushInsteadOf = git://gitorious.org/
+{{ if eq .chezmoi.os "darwin" -}}
 [credential]
 	# Use OS X Keychain to store HTTP passwords.
 	helper = osxkeychain
+{{ end -}}
 [hub]
 	protocol = https
 # Settings for Git LFS
