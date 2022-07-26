@@ -12,7 +12,6 @@ on:
 jobs:
   tests:
     runs-on: ${{ matrix.os }}
-    concurrency: tests
     strategy:
       matrix:
         # https://github.com/actions/virtual-environments
