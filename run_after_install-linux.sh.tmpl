@@ -1,6 +1,11 @@
+{{ if eq .chezmoi.os "linux" -}}
 #!/bin/zsh
 
-{{ if eq .chezmoi.os "linux" -}}
+asdf plugin list
+asdf list
+
+which npm
+
 
 npm install -g diff-so-fancy
 
