@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/zsh
+
+# Containers need to be reinitialized with our new configs here.
+. $HOME/.shrc
+
+npm install -g diff-so-fancy
+
+{{ end -}}
