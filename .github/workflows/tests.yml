@@ -30,8 +30,10 @@ jobs:
       run: zsh -vc "source ~/.zshrc"
 
     - name: Test diff-so-fancy
-      shell: zsh -vc "{0}"
-      run: diff-so-fancy
+      run: |
+        #!/bin/zsh
+        . $HOME/.shrc
+        diff-so-fancy
 
   notifications:
     runs-on: ubuntu-latest
