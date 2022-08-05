@@ -2,13 +2,13 @@ Host *.brew.sh
   User brewadmin
   ForwardAgent yes
 
-Host remote.github.net remote.github.com
-  ForwardAgent yes
-  User mikesplain
+# Host remote.github.net remote.github.com
+#   ForwardAgent yes
+#   User mikesplain
 
-Host *.github.com *.github.net *.githubapp.com
-  ForwardAgent no
-  User mikesplain
+# Host *.github.com *.github.net *.githubapp.com
+#   ForwardAgent no
+#   User mikesplain
 
 Host *.ec2.internal
   CanonicalizeHostname yes
@@ -22,6 +22,20 @@ Host *.us-east-2.compute.internal
 
 Host bastion.*
   ForwardAgent yes
+
+# Personal GitHub
+Host personalgit
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/personal_git.pub
+  IdentitiesOnly yes
+
+# Work GitHub
+Host workgit
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/work_git.pub
+  IdentitiesOnly yes
 
 Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
