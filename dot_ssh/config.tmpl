@@ -23,6 +23,7 @@ Host *.us-east-2.compute.internal
 Host bastion.*
   ForwardAgent yes
 
+{{ if not (env "CI") -}}
 # Personal GitHub
 Host personalgit
   HostName github.com
@@ -36,6 +37,7 @@ Host workgit
   User git
   IdentityFile ~/.ssh/work_git.pub
   IdentitiesOnly yes
+{{ end -}}
 
 Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
