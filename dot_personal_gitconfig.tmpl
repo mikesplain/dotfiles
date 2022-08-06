@@ -7,7 +7,8 @@
 	email = mike.splain@gmail.com
 	signingkey = 9BBEA323
 
+{{ if not (env "CI") -}}
 [url "personalgit:"]
 	# Force 1password ssh keys
 	insteadOf = https://github.com/
-
+{{ end -}}
