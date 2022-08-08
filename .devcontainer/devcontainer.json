@@ -22,7 +22,6 @@
 		"kubectl-helm-minikube": "1.23",
 		"terraform": "1.2",
 		"github-cli": "latest",
-		"aws-cli": "latest",
 		"homebrew": "latest",
 		"python": "3.10",
 		"golang": "1.18"
