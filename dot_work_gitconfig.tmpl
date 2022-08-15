@@ -6,7 +6,7 @@
 	# Email used in commit messages.
 	email = mike.splain@sonos.com
 
-{{ if not (env "CI") -}}
+{{ if .interactive -}}
 [url "workgit:"]
 	# Force 1password ssh keys
 	insteadOf = https://github.com/
