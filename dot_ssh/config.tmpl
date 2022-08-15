@@ -23,7 +23,7 @@ Host *.us-east-2.compute.internal
 Host bastion.*
   ForwardAgent yes
 
-{{ if not (env "CI") -}}
+{{ if .interactive -}}
 # Personal GitHub
 Host personalgit
   HostName github.com
