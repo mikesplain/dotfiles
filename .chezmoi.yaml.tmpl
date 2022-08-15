@@ -28,7 +28,7 @@ sourceDir: "{{ .chezmoi.sourceDir }}"
 data:
   name: "{{ $name }}"
   email: "{{ $email }}"
-  interactive: "{{ $interactive }}"
+  interactive: {{ $interactive }}
 
 edit:
   command: "code"
