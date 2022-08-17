@@ -1,3 +1,13 @@
+{{ $path := "" -}}
+{{ $currentContext := "" -}}
+{{ $currentCluster := "" -}}
+{{ $screenDumpDir := "" -}}
+{{ if stat . -}}
+{{ $path = . -}}
+{{ $currentContext = output "yq" ".k9s.currentContext" $path | trim -}}
+{{ $currentCluster = output "yq" ".k9s.currentCluster" $path | trim -}}
+{{ $screenDumpDir = output "yq" ".k9s.screenDumpDir" $path | trim -}}
+{{ end -}}
 k9s:
   refreshRate: 2
   maxConnRetry: 5
@@ -15,10 +25,10 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: {{ output "yq" ".k9s.currentContext" . | trim }}
-  currentCluster: {{ output "yq" ".k9s.currentCluster" . | trim }}
+  currentContext: {{ $currentContext }}
+  currentCluster: {{ $currentCluster }}
   clusters:
-    {{- output "yq" ".k9s.clusters" . | trim | nindent 4 }}
+    {{- output "yq" ".k9s.clusters" $path | trim | nindent 4 }}
   thresholds:
     cpu:
       critical: 90
@@ -26,4 +36,4 @@ k9s:
     memory:
       critical: 90
       warn: 70
-  screenDumpDir: {{ output "yq" ".k9s.screenDumpDir" . | trim}}
+  screenDumpDir: {{ $screenDumpDir }}
