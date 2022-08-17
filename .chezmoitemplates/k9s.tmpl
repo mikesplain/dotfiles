@@ -1,0 +1,29 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 5
+  enableMouse: false
+  headless: true
+  logoless: true
+  crumbsless: false
+  readOnly: false
+  noExitOnCtrlC: false
+  noIcons: false
+  logger:
+    tail: 1000
+    buffer: 5000
+    sinceSeconds: 60
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  currentContext: {{ output "yq" ".k9s.currentContext" . | trim }}
+  currentCluster: {{ output "yq" ".k9s.currentCluster" . | trim }}
+  clusters:
+    {{- output "yq" ".k9s.clusters" . | trim | nindent 4 }}
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  screenDumpDir: {{ output "yq" ".k9s.screenDumpDir" . | trim}}

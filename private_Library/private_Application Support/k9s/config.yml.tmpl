@@ -1,36 +1,4 @@
-{{ $path := "" -}}
-{{ if eq .chezmoi.os "linux" -}}
-{{ $path = print .chezmoi.homeDir "/.config/k9s/config.yml" -}}
-{{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
-{{ $path = print .chezmoi.homeDir "/Library/Application Support/k9s/config.yml" -}}
-{{ end -}}
-k9s:
-  refreshRate: 2
-  maxConnRetry: 5
-  enableMouse: false
-  headless: true
-  logoless: true
-  crumbsless: false
-  readOnly: false
-  noExitOnCtrlC: false
-  noIcons: false
-  logger:
-    tail: 1000
-    buffer: 5000
-    sinceSeconds: 60
-    fullScreenLogs: false
-    textWrap: false
-    showTime: false
-  currentContext: {{ output "yq" ".k9s.currentContext" $path | trim }}
-  currentCluster: {{ output "yq" ".k9s.currentCluster" $path | trim }}
-  clusters:
-    {{- output "yq" ".k9s.clusters" $path | trim | nindent 4 }}
-  thresholds:
-    cpu:
-      critical: 90
-      warn: 70
-    memory:
-      critical: 90
-      warn: 70
-  screenDumpDir: {{ output "yq" ".k9s.screenDumpDir" $path | trim}}
+{{ $path := print .chezmoi.homeDir "/Library/Application Support/k9s/config.yml" -}}
+{{- template "k9s.tmpl" $path -}}
+{{ end -}}0
