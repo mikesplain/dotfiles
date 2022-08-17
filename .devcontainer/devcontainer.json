@@ -20,10 +20,6 @@
 	"features": {
 		"docker-in-docker": "20.10",
 		"kubectl-helm-minikube": "1.23",
-		"terraform": "1.2",
-		"github-cli": "latest",
-		"homebrew": "latest",
-		"python": "3.10",
-		"golang": "1.18"
+		"github-cli": "latest"
 	}
 }
