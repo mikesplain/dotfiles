@@ -1,4 +1,4 @@
 {{ if eq .chezmoi.os "darwin" -}}
 {{ $path := joinPath .chezmoi.homeDir "Library/Application Support/k9s/config.yml" -}}
 {{ template "k9s.tmpl" $path -}}
-{{ end -}}0
+{{ end -}}

@@ -17,7 +17,6 @@ $SUDO apt-get install \
   hub \
   tmux \
   zsh \
-  yq \
   -yq
 
 {{ else if eq .chezmoi.os "darwin" -}}
@@ -26,7 +25,6 @@ echo "Installing homebrew"
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "homebrew/cask-versions/1password-beta"
 cask "1password-cli"
-brew "yq" # for k9s config
 brew "hub"
 brew "tmux"
 brew "gpg"

@@ -6,9 +6,9 @@
 {{ if stat . -}}
 {{ $path = . -}}
 {{ $currentContext = (fromYaml (include $path)).k9s.currentContext | trim -}}
-{{ $currentCluster = output "yq" ".k9s.currentCluster" $path | trim -}}
-{{ $screenDumpDir = output "yq" ".k9s.screenDumpDir" $path | trim -}}
-{{ $clusters = output "yq" ".k9s.clusters" $path | trim -}}
+{{ $currentCluster = (fromYaml (include $path)).k9s.currentCluster | trim -}}
+{{ $screenDumpDir = (fromYaml (include $path)).k9s.screenDumpDir | trim -}}
+{{ $clusters = (fromYaml (include $path)).k9s.clusters | trim -}}
 {{ end -}}
 k9s:
   refreshRate: 2
