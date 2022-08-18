@@ -1,3 +1,5 @@
+[![Tests](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml) [![CI](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml)
+
 # dotfiles
 
 Template dotfiles repository, managed with [chezmoi](https://chezmoi.io/).
