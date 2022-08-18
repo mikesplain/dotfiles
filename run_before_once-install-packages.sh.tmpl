@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # To rerun:
 # chezmoi state delete-bucket --bucket=scriptState
@@ -18,13 +18,24 @@ $SUDO apt-get install \
   tmux \
   zsh \
   -yq
+
 {{ else if eq .chezmoi.os "darwin" -}}
 echo "Installing homebrew"
-export NONINTERACTIVE=true
-brew install hub \
-              tmux \
-              gpg \
-              zsh
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+cask "homebrew/cask-versions/1password-beta"
+cask "1password-cli"
+brew "hub"
+brew "tmux"
+brew "gpg"
+brew "zsh"
+EOF
+
+echo ""
+echo "Please setup 1password and 1password cli"
+read -p "Press any key to continue ..."
+echo ""
+
 {{ end -}}
 
 # Install spacevim

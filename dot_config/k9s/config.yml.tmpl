@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ $path := joinPath .chezmoi.homeDir ".config/k9s/config.yml" -}}
+{{ template "k9s.tmpl" $path -}}
+{{ end -}}
