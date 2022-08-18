@@ -2,11 +2,13 @@
 {{ $currentContext := "" -}}
 {{ $currentCluster := "" -}}
 {{ $screenDumpDir := "" -}}
+{{ $clusters := "" -}}
 {{ if stat . -}}
 {{ $path = . -}}
-{{ $currentContext = output "yq" ".k9s.currentContext" $path | trim -}}
+{{ $currentContext = (fromYaml (include $path)).k9s.currentContext | trim -}}
 {{ $currentCluster = output "yq" ".k9s.currentCluster" $path | trim -}}
 {{ $screenDumpDir = output "yq" ".k9s.screenDumpDir" $path | trim -}}
+{{ $clusters = output "yq" ".k9s.clusters" $path | trim -}}
 {{ end -}}
 k9s:
   refreshRate: 2
@@ -28,7 +30,7 @@ k9s:
   currentContext: {{ $currentContext }}
   currentCluster: {{ $currentCluster }}
   clusters:
-    {{- output "yq" ".k9s.clusters" $path | trim | nindent 4 }}
+    {{- $clusters | nindent 4 }}
   thresholds:
     cpu:
       critical: 90
