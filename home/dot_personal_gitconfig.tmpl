@@ -5,10 +5,20 @@
 	name = Mike Splain
 	# Email used in commit messages.
 	email = mike.splain@gmail.com
-	signingkey = 9BBEA323
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGvzmRdlx7fXEkn/ItH+xiwQc2jv/wkOJFLCOzPjzbLH
 
 {{ if .interactive -}}
 [url "personalgit:"]
 	# Force 1password ssh keys
 	insteadOf = https://github.com/
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+	gpgsign = true
+
 {{ end -}}
