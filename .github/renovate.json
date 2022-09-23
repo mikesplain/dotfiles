@@ -8,7 +8,7 @@
 	"platform": "github",
 	"includeForks": false,
 	"repositories": [
-		"mikesplain/home-flux"
+		"mikesplain/dotfiles"
 	],
 	"prHourlyLimit": 20,
 	"dependencyDashboard": true,
