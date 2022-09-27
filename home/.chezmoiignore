@@ -4,6 +4,7 @@ install.sh
 LICENSE
 README.md
 backup/
+brewfiles
 
 .oh-my-zsh/cache/**
 .ssh/**id_**
