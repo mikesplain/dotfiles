@@ -6,4 +6,17 @@
 
 npm install -g diff-so-fancy
 
+# Setup bat
+if [ "$USER" = "root" ]; then
+  SUDO=""
+else
+  SUDO="sudo"
+fi
+$SUDO apt-get update
+$SUDO apt-get install bat -yq
+
+# Rename batcat to bat
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
+
 {{ end -}}
