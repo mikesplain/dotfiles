@@ -45,7 +45,7 @@ jobs:
     needs: tests
     steps:
     - name: Slack Notice Action
-      uses: sonots/slack-notice-action@v3.1.5
+      uses: sonots/slack-notice-action@v3.1.6
       with:
         status: ${{ job.status }}
         icon_emoji: ':octocat:'
