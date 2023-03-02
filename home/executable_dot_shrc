@@ -222,7 +222,8 @@ fi
 quiet_which dircolors && eval $(dircolors -b)
 
 # More colours with grc
-[ -f "$HOMEBREW_PREFIX/etc/grc.bashrc" ] && source "$HOMEBREW_PREFIX/etc/grc.bashrc"
+GRC_ZSH="$HOMEBREW_PREFIX/etc/grc.zsh"
+[ -f "$GRC_ZSH" ] && source "$GRC_ZSH"
 
 # Save directory changes
 cd() {
