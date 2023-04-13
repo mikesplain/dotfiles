@@ -87,8 +87,6 @@ alias gist="gist --open --copy"
 alias svn="svn-git.sh"
 alias sha256="shasum -a 256"
 alias ack="ag"
-alias z="zeus"
-alias zt="zeus test"
 # alias git="hub"
 alias k='kubectl'
 alias kk='kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'

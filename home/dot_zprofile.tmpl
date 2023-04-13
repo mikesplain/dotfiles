@@ -5,13 +5,13 @@ source ~/.shprofile
 # Enable completions
 # autoload -U compinit && compinit
 # From https://gist.github.com/ctechols/ca1035271ad134841284
-setopt extendedglob
-autoload -Uz compinit
-if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
-	compinit;
-else
-	compinit -C;
-fi;
+# setopt extendedglob
+# autoload -Uz compinit
+# if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+# 	compinit;
+# else
+# 	compinit -C;
+# fi;
 
 if which brew &>/dev/null
 then
@@ -78,25 +78,20 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 export EVENT_NOKQUEUE=1
 
 
-# Shortcut and autocomplete for ~/code
-c() { cd ~/code/$1;  }
-
-_c() { _files -W ~/code -/; }
-compdef _c c
-
-# Shortcut and autocomplete for ~/go
-godir() { cd ~/go/$1;  }
-
-_godir() { _files -W ~/go -/; }
-compdef _godir godir
+# # Shortcut and autocomplete for ~/code
+# c() { cd ~/code/$1;  }
+#
+# _c() { _files -W ~/code -/; }
+# compdef _c c
+#
+# # Shortcut and autocomplete for ~/go
+# godir() { cd ~/go/$1;  }
+#
+# _godir() { _files -W ~/go -/; }
+# compdef _godir godir
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-
-# Source barkly file if it exists
-if [ -f "$HOME/.env/splain.sh" ]; then
-  source "$HOME/.env/splain.sh"
-fi
 
 if [ -f "$HOME/.env/kops.sh" ]; then
   source "$HOME/.env/kops.sh"
