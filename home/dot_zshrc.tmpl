@@ -54,17 +54,15 @@ DISABLE_AUTO_UPDATE="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Homebrew autocompletes (https://docs.brew.sh/Shell-Completion)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker zsh-autosuggestions kubectl aws colored-man-pages copybuffer copyfile zsh-autosuggestions docker terraform aliases asdf z zsh-interactive-cd )
-
-# Homebrew autocompletes (https://docs.brew.sh/Shell-Completion)
-if type /opt/homebrew/bin/brew &>/dev/null
-then
-  FPATH="$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
+plugins=(git docker kubectl aws colored-man-pages copybuffer copyfile zsh-autosuggestions docker terraform aliases asdf z zsh-interactive-cd )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,7 +102,7 @@ alias terragrunt='noglob terragrunt'
 source ~/.zprofile
 source ~/.shrc
 
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 # History file
 export HISTFILE=~/.zsh_history
