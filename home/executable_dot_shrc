@@ -51,7 +51,6 @@ add_to_path_start "/usr/bin"
 add_to_path_start "/usr/sbin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
-add_to_path_start "/opt/homebrew/bin"
 add_to_path_start "/usr/local/opt/python/libexec/bin"
 
 # Setup Go development
@@ -102,49 +101,49 @@ alias gut='git'
 alias cat='bat'
 alias diff='diff -u file_a file_b | diff-so-fancy'
 
-# Platform-specific stuff
-if quiet_which brew
-then
-  export BINTRAY_USER="$(git config bintray.username)"
-  export HOMEBREW_PREFIX=$(brew --prefix)
-  export BREW_REPO=$(brew --repo)
-  export HOMEBREW_DEVELOPER=1
-  export HOMEBREW_ANALYTICS=1
-  export HOMEBREW_AUTO_UPDATE=1
-  export HOMEBREW_FORCE_VENDOR_RUBY=1
+# # Platform-specific stuff
+# if quiet_which brew
+# then
+#   export BINTRAY_USER="$(git config bintray.username)"
+#   export HOMEBREW_PREFIX=$(brew --prefix)
+#   export BREW_REPO=$(brew --repo)
+#   export HOMEBREW_DEVELOPER=1
+#   export HOMEBREW_ANALYTICS=1
+#   export HOMEBREW_AUTO_UPDATE=1
+#   export HOMEBREW_FORCE_VENDOR_RUBY=1
 
-  export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-  if [ "$USER" = "brewadmin" ]
-  then
-    export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$HOMEBREW_PREFIX/bin"
-  fi
+#   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+#   if [ "$USER" = "brewadmin" ]
+#   then
+#     export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$HOMEBREW_PREFIX/bin"
+#   fi
 
-  alias hbc="cd $BREW_REPO/Library/Taps/homebrew/homebrew-core"
-  alias hbv="cd $BREW_REPO/Library/Taps/homebrew/homebrew-versions"
+#   alias hbc="cd $BREW_REPO/Library/Taps/homebrew/homebrew-core"
+#   alias hbv="cd $BREW_REPO/Library/Taps/homebrew/homebrew-versions"
 
-  # Output whether the dependencies for a Homebrew package are bottled.
-  brew_bottled_deps() {
-    for DEP in "$@"; do
-      echo "$DEP deps:"
-      brew deps $DEP | xargs brew info | grep stable
-      [ "$#" -ne 1 ] && echo
-    done
-  }
+#   # Output whether the dependencies for a Homebrew package are bottled.
+#   brew_bottled_deps() {
+#     for DEP in "$@"; do
+#       echo "$DEP deps:"
+#       brew deps $DEP | xargs brew info | grep stable
+#       [ "$#" -ne 1 ] && echo
+#     done
+#   }
 
-  # Output the most popular unbottled Homebrew packages
-  brew_popular_unbottled() {
-    brew deps --all |
-      awk '{ gsub(":? ", "\n") } 1' |
-      sort |
-      uniq -c |
-      sort |
-      tail -n 500 |
-      awk '{print $2}' |
-      xargs brew info |
-      grep stable |
-      grep -v bottled
-  }
-fi
+#   # Output the most popular unbottled Homebrew packages
+#   brew_popular_unbottled() {
+#     brew deps --all |
+#       awk '{ gsub(":? ", "\n") } 1' |
+#       sort |
+#       uniq -c |
+#       sort |
+#       tail -n 500 |
+#       awk '{print $2}' |
+#       xargs brew info |
+#       grep stable |
+#       grep -v bottled
+#   }
+# fi
 
 if [ $OSX ]
 then
@@ -154,8 +153,6 @@ then
   add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
   add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
-  add_to_path_start "/opt/homebrew/bin"
-  add_to_path_start "/opt/homebrew/sbin"
   add_to_path_end "$HOMEBREW_PREFIX/opt/python/libexec/bin"
 
   if quiet_which exa
@@ -188,33 +185,13 @@ then
 fi
 
 # Set up editor
-if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
-then
-  export EDITOR="rmate"
-  export GIT_EDITOR="$EDITOR -w"
-  export SVN_EDITOR=$GIT_EDITOR
-elif quiet_which mate
-then
-  export EDITOR="mate"
-  export GIT_EDITOR="$EDITOR -w"
-  export SVN_EDITOR="$GIT_EDITOR"
-elif quiet_which subl || quiet_which sublime_text
-then
-  quiet_which subl && export EDITOR="subl"
-  quiet_which sublime_text && export EDITOR="sublime_text" \
-    && alias subl="sublime_text"
-
-  export GIT_EDITOR="$EDITOR -w"
-  export SVN_EDITOR="$GIT_EDITOR"
-elif quiet_which nvim
+if quiet_which nvim
 then
   export EDITOR="nvim"
 elif quiet_which vi
 then
   export EDITOR="vi"
 fi
-
-# [ -f "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh" ] && source "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh"
 
 # Run dircolors if it exists
 quiet_which dircolors && eval $(dircolors -b)
