@@ -52,4 +52,8 @@ function! myspacevim#before() abort
   set synmaxcol=240
   " Time for spacevim bar to show up (ms)
   set timeoutlen=250
+  " Ignore case when searching (required for smartcase)
+  :set ignorecase
+  " ... except for when a capital letter is present
+  :set smartcase
 endfunction
