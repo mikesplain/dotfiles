@@ -55,8 +55,13 @@ DISABLE_AUTO_UPDATE="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 {{ if eq .chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.arch "arm64" -}}
+BREW_PATH=/opt/homebrew/bin/
+{{ else -}}
+BREW_PATH=/usr/local/bin/
+{{ end -}}
 # Homebrew autocompletes (https://docs.brew.sh/Shell-Completion)
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(${BREW_PATH}/brew shellenv)"
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 {{ end -}}
 
