@@ -53,10 +53,6 @@ add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
 add_to_path_start "/usr/local/opt/python/libexec/bin"
 
-# Setup Go development
-export GOPATH="$HOME/.gopath"
-add_to_path_end "$GOPATH/bin"
-
 # asdf
 . $HOME/.asdf/asdf.sh
 
@@ -88,6 +84,8 @@ alias sha256="shasum -a 256"
 alias ack="ag"
 # alias git="hub"
 alias k='kubectl'
+alias x='kubectx'
+alias kx='kubectx'
 alias kk='kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
 alias kns='kubens'
 alias wk='watch -n.5 kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
