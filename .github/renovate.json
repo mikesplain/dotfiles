@@ -25,8 +25,9 @@
 			"\\.yaml$"
 		]
 	},
-	"regexManagers": [
+	"customManagers": [
 		{
+			"customType": "regex",
 			"fileMatch": [
 				"\\.yaml$"
 			],
@@ -38,6 +39,7 @@
 			"datasourceTemplate": "helm"
 		},
 		{
+			"customType": "regex",
 			"fileMatch": [
 				"\\.yaml$"
 			],
