@@ -40,7 +40,8 @@
 	mergeoptions = --no-edit
     # editor = /usr/bin/vim
 	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	# pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
@@ -159,12 +160,13 @@
 	p = pull
 	s = status --short --branch
 [diff]
+	colorMoved = default
 	# Use the OS X graphical three-way merge tool for graphical diffs.
-	tool = opendiff
+	# tool = opendiff
 	# Use the slower but better patience diff algorithm
-	algorithm = patience
+	# algorithm = patience
 	# Use new diff algorithm to make e.g. function diffs look better.
-	compactionheuristic = true
+	# compactionheuristic = true
 [diff "xml"]
 	textconv = xmllint --format --recover
 [difftool "opendiff"]
@@ -172,7 +174,8 @@
 	path = opendiff
 [merge]
 	# Use the OS X graphical three-way merge tool for graphical merges.
-	tool = opendiff
+	# tool = opendiff
+	conflictstyle = diff3
 [mergetool]
 	# Don't prompt before opening the merge tool.
 	prompt = false
@@ -216,7 +219,10 @@
 [pull]
 	rebase = true
 [interactive]
-	diffFilter = less
+	diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
