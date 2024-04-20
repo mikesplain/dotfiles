@@ -29,7 +29,8 @@ jobs:
         hostname
         scutil --get LocalHostName
         sudo hostname testerrrrr
-        echo sudo run!
+        echo hostname run!
+        sudo scutil --set LocalHostName testerrrrr
         hostname
         scutil --get LocalHostName
         
