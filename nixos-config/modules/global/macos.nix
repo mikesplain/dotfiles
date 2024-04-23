@@ -42,11 +42,26 @@
   security.pam.enableSudoTouchIdAuth = true;
   services.nix-daemon.enable = true;
   system.defaults = {
-    finder.AppleShowAllExtensions = true;
-    dock.autohide = true;
-    finder._FXShowPosixPathInTitle = true;
-    NSGlobalDomain.AppleShowAllExtensions = true;
-    NSGlobalDomain.InitialKeyRepeat = 14;
-    NSGlobalDomain.KeyRepeat = 1;
+    finder = {
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = true;
+      ShowStatusBar = true;
+      ShowPathbar = true;
+      FXDefaultSearchScope = "SCcf";
+      FXPreferredViewStyle = "Nlsv";
+      _FXShowPosixPathInTitle = true;
+    };
+    NSGlobalDomain = {
+      AppleShowAllExtensions = true;
+      InitialKeyRepeat = 14;
+      KeyRepeat = 1;
+    };
+    dock = {
+      autohide = true;
+      minimize-to-application = true;
+      autohide-delay = 0.0;
+      autohide-time-modifier = 0.25;
+    };
+    screencapture.location = "/Users/${config.cfg.user.name}/Downloads";
   };
 }
