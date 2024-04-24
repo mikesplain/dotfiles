@@ -96,16 +96,18 @@ in {
           cat = "bat";
           grep = "grep --color=auto";
           sf = "sk8s find";
-          "..." = "../..";
-          "...." = "../../..";
-          "....." = "../../../..";
-          "......" = "../../../../..";
-          "......." = "../../../../../..";
           "cd ..." = "../..";
           "cd ...." = "../../..";
           "cd ....." = "../../../..";
           "cd ......" = "../../../../..";
           "cd ......." = "../../../../../..";
+        };
+        shellGlobalAliases = {
+          "..." = "../..";
+          "...." = "../../..";
+          "....." = "../../../..";
+          "......" = "../../../../..";
+          "......." = "../../../../../..";
         };
         sessionVariables = {
           SHELL = "${pkgs.zsh}/bin/zsh";
@@ -419,7 +421,7 @@ in {
           gh
           gnugrep
           jq
-          # k9s # Doesn't resolve properly on mac, using brew instead, see https://github.com/derailed/k9s/issues/780
+          k9s # Doesn't resolve properly on mac, using brew instead, see https://github.com/derailed/k9s/issues/780
           less
           nixfmt
           ripgrep
@@ -437,7 +439,7 @@ in {
           gnutar
           go
           gzip
-          # kubernetes-helm # no supported package
+          kubernetes-helm
           helmfile
           htop
           terragrunt
