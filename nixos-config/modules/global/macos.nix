@@ -29,7 +29,10 @@
     shells = with pkgs; [zsh];
     loginShell = pkgs.zsh;
     systemPackages = [pkgs.coreutils];
-    pathsToLink = ["/Applications"];
+    pathsToLink = [
+      "/Applications"
+      "/share/zsh"
+      ];
   };
 
   # users.users."mike.splain" = {
