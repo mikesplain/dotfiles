@@ -468,6 +468,10 @@ in {
           jfrog-cli
           minikube
           yarn
+          hashcat
+          hugo
+          kind
+          iperf
         ]
         ++ [
           cmatrix

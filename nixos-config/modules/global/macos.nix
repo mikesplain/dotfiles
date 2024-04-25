@@ -1,4 +1,11 @@
-{ config, lib, pkgs, options, pwnvim, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  options,
+  pwnvim,
+  ...
+}: {
   cfg.os.name = "macos";
   system.stateVersion = 4;
 
@@ -7,6 +14,7 @@
     brews = [
       "aws-sso-util"
       "k9s"
+      "hcxtools"
     ];
     casks = [
       "session-manager-plugin"
@@ -32,7 +40,7 @@
     pathsToLink = [
       "/Applications"
       "/share/zsh"
-      ];
+    ];
   };
 
   # users.users."mike.splain" = {
