@@ -148,31 +148,32 @@ in {
               set -g @tmux_power_theme 'coral'
             '';
           }
-          {
-            plugin = resurrect; # Used by tmux-continuum
+          # {
+          #   plugin = resurrect; # Used by tmux-continuum
 
-            # Use XDG data directory
-            # https://github.com/tmux-plugins/tmux-resurrect/issues/348
-            extraConfig = ''
-              set -g @resurrect-dir '$HOME/.cache/tmux/resurrect'
-              set -g @resurrect-capture-pane-contents 'on'
-              set -g @resurrect-pane-contents-area 'visible'
-            '';
-          }
-          {
-            plugin = continuum;
-            extraConfig = ''
-              set -g @continuum-restore 'on'
-              set -g @continuum-save-interval '5' # minutes
-            '';
-          }
+          #   # Use XDG data directory
+          #   # https://github.com/tmux-plugins/tmux-resurrect/issues/348
+          #   extraConfig = ''
+          #     set -g @resurrect-dir '$HOME/.cache/tmux/resurrect'
+          #     set -g @resurrect-capture-pane-contents 'on'
+          #     set -g @resurrect-pane-contents-area 'visible'
+          #   '';
+          # }
+          # {
+          #   plugin = continuum;
+          #   extraConfig = ''
+          #     set -g @continuum-restore 'on'
+          #     set -g @continuum-save-interval '5' # minutes
+          #   '';
+          # }
         ];
         extraConfig = ''
           # Remove Vim mode delays
           set -g focus-events on
 
           # Enable full mouse support
-          # set -g mouse on
+          set -g mouse on
+          set -g mouse-resize-pane on
 
           # -----------------------------------------------------------------------------
           # Key bindings
@@ -462,7 +463,6 @@ in {
           yq
           # Work
           argocd
-          # calicoctl # no supported package
           colima
           docker
           jfrog-cli
