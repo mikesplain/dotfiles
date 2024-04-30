@@ -18,6 +18,7 @@
     ];
     casks = [
       "session-manager-plugin"
+      "appcleaner"
     ];
 
     # casks = [];
