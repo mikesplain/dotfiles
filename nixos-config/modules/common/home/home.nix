@@ -172,8 +172,10 @@ in {
           set -g focus-events on
 
           # Enable full mouse support
-          set -g mouse on
-          set -g mouse-resize-pane on
+          # set -g mouse on
+          # set -g mouse-resize-pane on
+
+          bind m set-option mouse\; display-message "Mouse #{?mouse,enabled,disabled}"
 
           # -----------------------------------------------------------------------------
           # Key bindings
