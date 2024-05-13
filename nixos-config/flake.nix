@@ -72,6 +72,20 @@
       home-manager.darwinModules.home-manager
       # home-manager.darwinModules.default
       nix-homebrew.darwinModules.nix-homebrew
+      {
+      nix-homebrew = {
+            # inherit user;
+            enable = true;
+            user = "mike.splain";
+            taps = {
+              "homebrew/homebrew-core" = homebrew-core;
+              "homebrew/homebrew-cask" = homebrew-cask;
+              "homebrew/homebrew-bundle" = homebrew-bundle;
+            };
+            mutableTaps = false;
+            autoMigrate = true;
+          };
+      }
       # agenix.darwinModules.default
     ];
     # # linuxSystems = ["x86_64-linux" "aarch64-linux"];

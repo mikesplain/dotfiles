@@ -474,6 +474,7 @@ in {
           hugo
           kind
           iperf
+          python3
         ]
         ++ [
           cmatrix
