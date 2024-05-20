@@ -41,6 +41,8 @@ jobs:
           sudo mv /etc/shells /etc/shells.before-nix-darwin
 
       - name: Test
+        env: 
+          NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
           nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ./nixos-config
       # - run: nix build
