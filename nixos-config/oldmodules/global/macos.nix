@@ -7,6 +7,7 @@
   homebrew-core,
   homebrew-cask,
   homebrew-bundle,
+  homebrew-ffmpeg,
   ...
 }: let
   # nix-homebrew = {
