@@ -26,7 +26,6 @@ in {
     environment.systemPackages = with pkgs; [
       pkgs.pwnvim
       asdf-vm
-      eza
       awscli2
       bashInteractive
       bat
