@@ -1,6 +1,32 @@
-{ pkgs, ... }: {
-    home.packages = with pkgs; [
+{
+  config,
+  lib,
+  pkgs,
+  options,
+  pwnvim,
+  nixpkgs,
+  inputs,
+  ...
+}:
+with pkgs.stdenv;
+with lib; let
+in {
+  nixpkgs.overlays = [
+    (final: prev: {
+      pwnvim = inputs.pwnvim.packages."${system}".pwnvim;
+    })
+  ];
+
+  # environment.systemPackages = with pkgs; [
+  #   zoxide
+  #   inputs.pwnvim.packages."${system}".default
+  # ];
+
+# { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+      pkgs.pwnvim
       asdf-vm
+      eza
       awscli2
       bashInteractive
       bat

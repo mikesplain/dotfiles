@@ -14,6 +14,8 @@
   nix.settings.trusted-users = [ user.name ];
   nix.maxJobs = 10;
 
+  programs.zsh.enable = true;
+
   system.defaults = {
     # LaunchServices = {
     #   LSQuarantine = false;

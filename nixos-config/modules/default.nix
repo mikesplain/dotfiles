@@ -7,5 +7,7 @@ _: {
     # ./shell
     # ./system
     # ./terminal
+    ./packages
+    ./pwnvim
   ];
 }

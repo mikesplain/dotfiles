@@ -55,6 +55,7 @@
       EDITOR = "nvim";
       TERM = "xterm-256color";
     };
+
     initExtra = ''
     eval $(/opt/homebrew/bin/brew shellenv)
     autoload -U select-word-style
