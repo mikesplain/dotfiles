@@ -1,10 +1,5 @@
 { pkgs, ... }: {
-  # environment.systemPackages = [ pkgs.neofetch ];
-  # environment.etc = {
-  #   neofetch.source = neofetchConfig;
-  #   powerlevel10k.source = p10k;
-  #   "powerlevel10k.zsh".source = p10kScript;
-  # };
+
   programs.zsh = {
     enable = true;
     # enableBashCompletion = true;

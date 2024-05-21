@@ -17,11 +17,6 @@ in {
     })
   ];
 
-  # environment.systemPackages = with pkgs; [
-  #   zoxide
-  #   inputs.pwnvim.packages."${system}".default
-  # ];
-
 # { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       pkgs.pwnvim
