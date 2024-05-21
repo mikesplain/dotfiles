@@ -16,8 +16,14 @@
     # pwnvim.url = "github:zmre/pwnvim";
     pwnvim.url = "github:mikesplain/pwnvim";
 
+    our-brew-src = {
+      url = "github:Homebrew/brew/4.3.0";
+      flake = false;
+    };
+
     nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
+      url = "github:zhaofengli/nix-homebrew";
+      inputs.brew-src.follows = "our-brew-src";
     };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
@@ -71,7 +77,22 @@
       ./modules/global/macos.nix
       home-manager.darwinModules.home-manager
       # home-manager.darwinModules.default
-      nix-homebrew.darwinModules.nix-homebrew
+      ./modules/common/nix-homebrew.nix
+      # nix-homebrew.darwinModules.nix-homebrew
+      # {
+      # nix-homebrew = {
+      #   # inherit user;
+      #     enable = true;
+      #     user = "mike.splain";
+      #     taps = {
+      #       "homebrew/homebrew-core" = homebrew-core;
+      #       "homebrew/homebrew-cask" = homebrew-cask;
+      #       "homebrew/homebrew-bundle" = homebrew-bundle;
+      #     };
+      #     mutableTaps = false;
+      #     autoMigrate = true;
+      # };
+      # }
       # agenix.darwinModules.default
     ];
     # # linuxSystems = ["x86_64-linux" "aarch64-linux"];
