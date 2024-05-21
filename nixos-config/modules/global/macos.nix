@@ -25,6 +25,8 @@
   cfg.os.name = "macos";
   system.stateVersion = 4;
 
+  imports = [ ../common/nix-homebrew.nix ];
+
   homebrew = {
     enable = true;
     brews = [

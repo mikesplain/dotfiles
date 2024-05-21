@@ -77,7 +77,7 @@
       ./modules/global/macos.nix
       home-manager.darwinModules.home-manager
       # home-manager.darwinModules.default
-      ./modules/common/nix-homebrew.nix
+      # ./modules/common/nix-homebrew.nix
       # nix-homebrew.darwinModules.nix-homebrew
       # {
       # nix-homebrew = {
