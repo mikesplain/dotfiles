@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "brew-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716195221,
+        "narHash": "sha256-u+zjC7efKD3gBD9aKXsUTEhRhBQhYlP+KPFp1QbsgOo=",
+        "owner": "Homebrew",
+        "repo": "brew",
+        "rev": "e0bc557e7b991cb23583679e1cf1c8a92b793aeb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "ref": "4.3.1",
+        "repo": "brew",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "flake": false,
       "locked": {
@@ -247,9 +264,7 @@
     },
     "nix-homebrew": {
       "inputs": {
-        "brew-src": [
-          "our-brew-src"
-        ],
+        "brew-src": "brew-src",
         "flake-utils": "flake-utils",
         "nix-darwin": "nix-darwin_2",
         "nixpkgs": [
@@ -257,15 +272,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1712182779,
-        "narHash": "sha256-DchWIKi4c7Jl7CJXVzOxVetxy+SqnlAY3QuUNy8z+aE=",
-        "owner": "zhaofengli",
+        "lastModified": 1716393244,
+        "narHash": "sha256-fJs8VM7xXeCTYHgVzHHhgx43oHGYAnTGzSSVzju0mHs=",
+        "owner": "mikesplain",
         "repo": "nix-homebrew",
-        "rev": "445f7989e096fb90902eed4256b04d8b57c8b358",
+        "rev": "91e4dda4b8ffb1a8a770e4082c052281b6c00110",
         "type": "github"
       },
       "original": {
-        "owner": "zhaofengli",
+        "owner": "mikesplain",
+        "ref": "brew_4.3.1",
         "repo": "nix-homebrew",
         "type": "github"
       }
@@ -346,23 +362,6 @@
         "type": "github"
       }
     },
-    "our-brew-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1715659166,
-        "narHash": "sha256-5Cv/nV33eN3H0qU1TnzmmX/ZfrTfbZeSiDQhos+KAfw=",
-        "owner": "Homebrew",
-        "repo": "brew",
-        "rev": "8378cc825d83acffd125fb0fec041793df378a57",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Homebrew",
-        "ref": "4.3.0",
-        "repo": "brew",
-        "type": "github"
-      }
-    },
     "pwnvim": {
       "inputs": {
         "catppuccin": "catppuccin",
@@ -400,7 +399,6 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
-        "our-brew-src": "our-brew-src",
         "pwnvim": "pwnvim"
       }
     },

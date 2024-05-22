@@ -20,14 +20,10 @@
     # pwnvim.url = "github:zmre/pwnvim";
     pwnvim.url = "github:mikesplain/pwnvim";
 
-    our-brew-src = {
-      url = "github:Homebrew/brew/4.3.0";
-      flake = false;
-    };
-
     nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
-      inputs.brew-src.follows = "our-brew-src";
+      # For https://github.com/zhaofengli/nix-homebrew/issues/22
+      # url = "github:zhaofengli/nix-homebrew";
+      url = "github:mikesplain/nix-homebrew/brew_4.3.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-bundle = {
