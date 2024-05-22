@@ -26,7 +26,7 @@
     };
 
     nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
+      url = "github:zhaofengli/nix-homebrew?rev=40f5ee46b58e7c5f1927e2c5a583dc3d7e571ed9";
       inputs.brew-src.follows = "our-brew-src";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-darwin.follows = "nix-darwin";
