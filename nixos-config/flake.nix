@@ -28,6 +28,7 @@
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
       inputs.brew-src.follows = "our-brew-src";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
