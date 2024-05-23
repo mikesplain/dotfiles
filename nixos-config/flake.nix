@@ -23,7 +23,8 @@
     nix-homebrew = {
       # For https://github.com/zhaofengli/nix-homebrew/issues/22
       # url = "github:zhaofengli/nix-homebrew";
-      url = "github:mikesplain/nix-homebrew/brew_4.3.1";
+      url = "github:zhaofengli/nix-homebrew/brew-4.3.1";
+      # url = "github:mikesplain/nix-homebrew/brew_4.3.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-bundle = {
