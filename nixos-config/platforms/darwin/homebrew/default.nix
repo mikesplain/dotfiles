@@ -1,10 +1,10 @@
-{ inputs, lib, user, hostName, ...}:
+{ inputs, lib, user, hostName, osVersion, ...}:
 let
   inherit (inputs)
     homebrew-cask
     homebrew-core
     homebrew-bundle
-    homebrew-sk8s
+    # homebrew-sk8s
     nix-homebrew;
 in
 {
@@ -18,10 +18,13 @@ in
       # "Sonos-Inc/pdsw-engx-devops-sk8s/sk8s"
       "ncdu"
     ];
-    casks = [
+    casks = (if osVersion >= "14" then
+    [
+      "jordanbaird-ice"
+    ] else []) ++
+    [
       "session-manager-plugin"
       "appcleaner"
-      "jordanbaird-ice"
     ];
 
     # casks = [];
@@ -49,7 +52,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "homebrew/homebrew-bundle" = homebrew-bundle;
-      "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
+      # "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
     mutableTaps = false;
     autoMigrate = true;

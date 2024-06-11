@@ -208,22 +208,6 @@
         "type": "github"
       }
     },
-    "homebrew-sk8s": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1713364232,
-        "narHash": "sha256-Ez+zbE5BHQM4Fza8PUFBT06y7XVU3G/OLm1SberdkA4=",
-        "ref": "refs/heads/main",
-        "rev": "f59bac9c435f87b8ca2b0dc2cbf41a47d18cfa1a",
-        "revCount": 146,
-        "type": "git",
-        "url": "file:///Users/mike.splain/developer/homebrew-pdsw-devops"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///Users/mike.splain/developer/homebrew-pdsw-devops"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -393,7 +377,6 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-sk8s": "homebrew-sk8s",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
