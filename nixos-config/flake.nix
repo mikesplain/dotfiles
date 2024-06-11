@@ -174,6 +174,11 @@
         hostName = "SNS005454";
         # username = "mike.splain";
       };
+      defaultHostname = configuration.system {
+        system = "defaultSystem";
+        hostName = "defaultHostname";
+        # username = "mike.splain";
+      };
 
 
       # SNS005454 = nix-darwin.lib.darwinSystem {

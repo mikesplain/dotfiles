@@ -32,10 +32,9 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup
         run: |
-          sed -i '' "s/default/$(scutil --get LocalHostName)/g" nixos-config/hosts/default/configuration.nix
-          sed -i '' "s/mike.splain/runner/g" nixos-config/hosts/default/configuration.nix
-          sed -i '' "s/default = nix-darwin.lib.darwinSystem/$(scutil --get LocalHostName) = nix-darwin.lib.darwinSystem/g" nixos-config/flake.nix
-          sed -i '' "s/aarch64-darwin/${{matrix.os.arch}}/g" nixos-config/flake.nix
+          sed -i '' "s/defaultHostname/$(scutil --get LocalHostName)/g" nixos-config/flake.nix
+          sed -i '' "s/mike.splain/runner/g" nixos-config/flake.nix
+          sed -i '' "s/defaultHostname/${{matrix.os.arch}}/g" nixos-config/flake.nix
 
           sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
           sudo mv /etc/shells /etc/shells.before-nix-darwin
