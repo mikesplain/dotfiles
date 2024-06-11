@@ -4,7 +4,7 @@ let
     homebrew-cask
     homebrew-core
     homebrew-bundle
-    homebrew-sk8s
+    # homebrew-sk8s
     nix-homebrew;
 in
 {
@@ -49,7 +49,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "homebrew/homebrew-bundle" = homebrew-bundle;
-      "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
+      # "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
     mutableTaps = false;
     autoMigrate = true;
