@@ -93,7 +93,7 @@
       extraSpecialArgs = { inherit inputs user pwnvim; };
       users.${user.name} = { imports = [ ./home ]; };
     };
-    system = { system, hostName }: let
+    system = { system, hostName, osVersion }: let
       inherit (nixpkgs.lib.strings) hasInfix;
       platform = {
         isDarwin = hasInfix "darwin" system;
@@ -120,7 +120,7 @@
           #   home-manager = configuration.homeManager;
           # }
         ];
-      specialArgs = { inherit inputs hostName platform system user; };
+      specialArgs = { inherit inputs hostName osVersion platform system user; };
     in if platform.isDarwin
       then nix-darwin.lib.darwinSystem {
         inherit system modules specialArgs;
@@ -172,11 +172,13 @@
       SNS005454 = configuration.system {
         system = "aarch64-darwin";
         hostName = "SNS005454";
+        osVersion = "14";
         # username = "mike.splain";
       };
       defaultHostname = configuration.system {
         system = "defaultSystem";
         hostName = "defaultHostname";
+        osVersion = "defaultVersion";
         # username = "mike.splain";
       };
 

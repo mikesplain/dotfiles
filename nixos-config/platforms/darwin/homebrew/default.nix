@@ -1,4 +1,4 @@
-{ inputs, lib, user, hostName, ...}:
+{ inputs, lib, user, hostName, osVersion, ...}:
 let
   inherit (inputs)
     homebrew-cask
@@ -18,10 +18,13 @@ in
       # "Sonos-Inc/pdsw-engx-devops-sk8s/sk8s"
       "ncdu"
     ];
-    casks = [
+    casks = (if osVersion >= "14" then
+    [
+      "jordanbaird-ice"
+    ] else []) ++
+    [
       "session-manager-plugin"
       "appcleaner"
-      "jordanbaird-ice"
     ];
 
     # casks = [];
