@@ -4,8 +4,13 @@
 Referenced heavily: https://github.com/computercam/_unixconf_nix
 https://github.com/LnL7/nix-darwin
 
+New reference: https://github.com/eaksa/eaksa/blob/main/flake.nix
+
 ## Commands
 ```
+# Install nix if needed
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
 # Installing nix-darwin
 nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake .
 # Using nix-darwin
@@ -29,6 +34,10 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ## Uninstall
 - Nix darwin first
 ```
+# Make sure nixpkgs is setup:
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+nix-channel --update
+
 # this or the included darwin-uninstaller command.
 nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A uninstaller
 ./result/bin/darwin-uninstaller
