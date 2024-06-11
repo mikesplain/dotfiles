@@ -40,10 +40,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    homebrew-sk8s = {
-      url = "git+file:///Users/mike.splain/developer/homebrew-pdsw-devops";
-      flake = false;
-    };
+    # homebrew-sk8s = {
+    #   url = "git+file:///Users/mike.splain/developer/homebrew-pdsw-devops";
+    #   flake = false;
+    # };
     # kickstart-nix-nvim = {
     #   url = "github:nix-community/kickstart-nix.nvim";
     # };
