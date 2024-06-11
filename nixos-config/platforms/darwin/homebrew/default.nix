@@ -1,10 +1,10 @@
-{ inputs, lib, user, ...}:
+{ inputs, lib, user, hostName, ...}:
 let
   inherit (inputs)
     homebrew-cask
     homebrew-core
     homebrew-bundle
-    homebrew-ffmpeg
+    homebrew-sk8s
     nix-homebrew;
 in
 {
@@ -15,10 +15,13 @@ in
       "aws-sso-util"
       "k9s"
       "hcxtools"
+      # "Sonos-Inc/pdsw-engx-devops-sk8s/sk8s"
+      "ncdu"
     ];
     casks = [
       "session-manager-plugin"
       "appcleaner"
+      "jordanbaird-ice"
     ];
 
     # casks = [];
@@ -46,7 +49,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "homebrew/homebrew-bundle" = homebrew-bundle;
-      # "homebrew-ffmpeg/ffmpeg" = homebrew-ffmpeg;
+      "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
     mutableTaps = false;
     autoMigrate = true;

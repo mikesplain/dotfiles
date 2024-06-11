@@ -2,6 +2,7 @@
   description = "Example Darwin system flake";
 
   inputs = {
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
@@ -22,8 +23,8 @@
 
     nix-homebrew = {
       # For https://github.com/zhaofengli/nix-homebrew/issues/22
-      # url = "github:zhaofengli/nix-homebrew";
-      url = "github:zhaofengli/nix-homebrew/brew-4.3.1";
+      url = "github:zhaofengli/nix-homebrew";
+      # url = "github:zhaofengli/nix-homebrew/brew-4.3.1";
       # url = "github:mikesplain/nix-homebrew/brew_4.3.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -39,8 +40,8 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    homebrew-ffmpeg = {
-      url = "github:homebrew-ffmpeg/homebrew-ffmpeg";
+    homebrew-sk8s = {
+      url = "git+file:///Users/mike.splain/developer/homebrew-pdsw-devops";
       flake = false;
     };
     # kickstart-nix-nvim = {

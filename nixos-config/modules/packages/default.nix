@@ -69,7 +69,8 @@ in {
       mas
       maven
       moreutils
-      ncdu
+      # Disabling due to https://github.com/NixOS/nixpkgs/issues/317055
+      # ncdu
       nmap
       terraform
       wakeonlan
