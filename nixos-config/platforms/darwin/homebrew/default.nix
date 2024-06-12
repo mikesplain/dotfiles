@@ -25,6 +25,7 @@ in
     [
       "session-manager-plugin"
       "appcleaner"
+      "1password-cli"
     ];
 
     # casks = [];
