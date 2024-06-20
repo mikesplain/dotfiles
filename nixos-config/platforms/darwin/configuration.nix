@@ -5,14 +5,14 @@
   system.stateVersion = 4;
 
   security.pam.enableSudoTouchIdAuth = true;
-  fonts.fontDir.enable = true;
+  # fonts.fontDir.enable = true;
 # fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["Meslo"];})];
-  fonts.fonts = [(pkgs.nerdfonts)];
+  fonts.packages = [(pkgs.nerdfonts)];
 
   nix.package = pkgs.nix;
   nix.settings.auto-optimise-store = true;
   nix.settings.trusted-users = [ user.name ];
-  nix.maxJobs = 10;
+  nix.settings.max-jobs = 10;
 
   programs.zsh.enable = true;
 
@@ -47,7 +47,7 @@
   environment = {
     shells = with pkgs; [zsh];
     loginShell = pkgs.zsh;
-    systemPackages = with pkgs; [ nixfmt git coreutils ];
+    systemPackages = with pkgs; [ nixfmt-classic git coreutils ];
     pathsToLink = [
       "/Applications"
       "/share/zsh"

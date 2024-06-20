@@ -37,7 +37,7 @@ in {
       jq
       k9s # Doesn't resolve properly on mac, using brew instead, see https://github.com/derailed/k9s/issues/780
       less
-      nixfmt
+      nixfmt-classic
       ripgrep
       tree
       watch
