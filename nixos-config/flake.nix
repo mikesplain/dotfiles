@@ -2,7 +2,6 @@
   description = "Example Darwin system flake";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
@@ -40,6 +39,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    mikesplain-homebrew-tap = {
+      url = "github:mikesplain/homebrew-tap";
+      flake = false;
+    };
     # homebrew-sk8s = {
     #   url = "git+file:///Users/mike.splain/developer/homebrew-pdsw-devops";
     #   flake = false;
@@ -58,78 +61,83 @@
     pwnvim,
     ...
   }: let
-
-  user = {
-    name = "mike.splain";
-    # timeZone = "Asia/Jakarta";
-    # locale = "en_GB.UTF-8";
-  };
-
-  configuration = {
-    nix = {
-      nix.settings = { experimental-features = "nix-command flakes"; };
-      nixpkgs = {
-        config = { allowUnfree = true; };
-        overlays = [
-          nur.overlay
-          (final: prev: {
-            pwnvim = inputs.pwnvim.packages.${final.system}.pwnvim;
-          })
-
-        ];
-      };
+    user = {
+      name = "mike.splain";
+      # timeZone = "Asia/Jakarta";
+      # locale = "en_GB.UTF-8";
     };
 
-
-    environment.systemPackages = with nixpkgs; [
-      zoxide
-      inputs.pwnvim.packages."${final.system}".default
-    ];
-
-    homeManager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      backupFileExtension = "backup";
-      extraSpecialArgs = { inherit inputs user pwnvim; };
-      users.${user.name} = { imports = [ ./home ]; };
-    };
-    system = { system, hostName, osVersion }: let
-      inherit (nixpkgs.lib.strings) hasInfix;
-      platform = {
-        isDarwin = hasInfix "darwin" system;
-        isLinux = hasInfix "linux" system;
-        isx86_64 = hasInfix "x86_64" system;
-        isArm = hasInfix "aarch64" system;
+    configuration = {
+      nix = {
+        nix.settings = {experimental-features = "nix-command flakes";};
+        nixpkgs = {
+          config = {allowUnfree = true;};
+          overlays = [
+            nur.overlay
+            (final: prev: {
+              pwnvim = inputs.pwnvim.packages.${final.system}.pwnvim;
+            })
+          ];
+        };
       };
-      modules = if platform.isDarwin
-        then [
-          configuration.nix
-          ./platforms/darwin/configuration.nix
-          ./modules
-          home-manager.darwinModules.home-manager {
-            users.users.${user.name}.home = "/Users/${user.name}";
-            home-manager = configuration.homeManager;
+
+      environment.systemPackages = with nixpkgs; [
+        zoxide
+        inputs.pwnvim.packages."${final.system}".default
+      ];
+
+      homeManager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "backup";
+        extraSpecialArgs = {inherit inputs user pwnvim;};
+        users.${user.name} = {imports = [./home];};
+      };
+      system = {
+        system,
+        hostName,
+        osVersion,
+      }: let
+        inherit (nixpkgs.lib.strings) hasInfix;
+        platform = {
+          isDarwin = hasInfix "darwin" system;
+          isLinux = hasInfix "linux" system;
+          isx86_64 = hasInfix "x86_64" system;
+          isArm = hasInfix "aarch64" system;
+        };
+        modules =
+          if platform.isDarwin
+          then [
+            configuration.nix
+            ./platforms/darwin/configuration.nix
+            ./modules
+            home-manager.darwinModules.home-manager
+            {
+              users.users.${user.name}.home = "/Users/${user.name}";
+              home-manager = configuration.homeManager;
+            }
+          ]
+          else [
+            # configuration.nix
+            # ./platforms/linux/configuration.nix
+            # ./hosts/${hostName}/hardware-configuration.nix
+            # ./modules
+            # home-manager.nixosModules.home-manager {
+            #   home-manager = configuration.homeManager;
+            # }
+          ];
+        specialArgs = {inherit inputs hostName osVersion platform system user;};
+      in
+        if platform.isDarwin
+        then
+          nix-darwin.lib.darwinSystem {
+            inherit system modules specialArgs;
           }
-        ]
-        else [
-          # configuration.nix
-          # ./platforms/linux/configuration.nix
-          # ./hosts/${hostName}/hardware-configuration.nix
-          # ./modules
-          # home-manager.nixosModules.home-manager {
-          #   home-manager = configuration.homeManager;
-          # }
-        ];
-      specialArgs = { inherit inputs hostName osVersion platform system user; };
-    in if platform.isDarwin
-      then nix-darwin.lib.darwinSystem {
-        inherit system modules specialArgs;
-      }
-      else nixpkgs.lib.nixosSystem {
-        inherit system modules specialArgs;
-      };
+        else
+          nixpkgs.lib.nixosSystem {
+            inherit system modules specialArgs;
+          };
     };
-
     # # Source: https://github.com/computercam/_unixconf_nix/blob/master/flake.nix
     # globalModules = [
     #   {
@@ -166,7 +174,6 @@
     #   # }
     #   # agenix.darwinModules.default
     # ];
-
   in {
     darwinConfigurations = {
       SNS005454 = configuration.system {
@@ -181,7 +188,6 @@
         osVersion = "defaultVersion";
         # username = "mike.splain";
       };
-
 
       # SNS005454 = nix-darwin.lib.darwinSystem {
       #   system = "aarch64-darwin";
@@ -204,7 +210,6 @@
       #   modules = globalModulesMacos
       #     ++ [ ./hosts/default/configuration.nix ];
       # };
-
 
       # silicontundra = nix-darwin.lib.darwinSystem {
       #   system = "aarch64-darwin";

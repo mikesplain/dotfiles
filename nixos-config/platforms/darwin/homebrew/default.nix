@@ -1,14 +1,23 @@
-{ inputs, lib, user, hostName, osVersion, ...}:
-let
-  inherit (inputs)
+{
+  inputs,
+  lib,
+  user,
+  hostName,
+  osVersion,
+  ...
+}: let
+  inherit
+    (inputs)
     homebrew-cask
     homebrew-core
     homebrew-bundle
     # homebrew-sk8s
-    nix-homebrew;
-in
-{
-  imports = [ ./nix-homebrew.nix ];
+
+    nix-homebrew
+    mikesplain-homebrew-tap
+    ;
+in {
+  imports = [./nix-homebrew.nix];
   homebrew = {
     enable = true;
     brews = [
@@ -18,15 +27,19 @@ in
       # "Sonos-Inc/pdsw-engx-devops-sk8s/sk8s"
       "ncdu"
     ];
-    casks = (if osVersion >= "14" then
-    [
-      "jordanbaird-ice"
-    ] else []) ++
-    [
-      "session-manager-plugin"
-      "appcleaner"
-      "1password-cli"
-    ];
+    casks =
+      (
+        if osVersion >= "14"
+        then [
+          "mikesplain/homebrew-tap/jordanbaird-ice"
+        ]
+        else []
+      )
+      ++ [
+        "session-manager-plugin"
+        "appcleaner"
+        "1password-cli"
+      ];
 
     # casks = [];
     # These app IDs are from using the mas CLI app
@@ -53,6 +66,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "homebrew/homebrew-bundle" = homebrew-bundle;
+      "mikesplain/homebrew-tap" = mikesplain-homebrew-tap;
       # "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
     mutableTaps = false;
