@@ -10,7 +10,8 @@
   fonts.packages = [(pkgs.nerdfonts)];
 
   nix.package = pkgs.nix;
-  nix.settings.auto-optimise-store = true;
+  # Disabling due to https://github.com/NixOS/nix/issues/7273#issuecomment-1325073957
+  nix.settings.auto-optimise-store = false;
   nix.settings.trusted-users = [ user.name ];
   nix.settings.max-jobs = 10;
 
