@@ -9,7 +9,7 @@
 # fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["Meslo"];})];
   fonts.packages = [(pkgs.nerdfonts)];
 
-  nix.package = pkgs.nix;
+  nix.package = pkgs.nixVersions.latest;
   # Disabling due to https://github.com/NixOS/nix/issues/7273#issuecomment-1325073957
   nix.settings.auto-optimise-store = false;
   nix.settings.trusted-users = [ user.name ];
