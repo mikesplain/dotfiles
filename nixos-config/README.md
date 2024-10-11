@@ -41,6 +41,10 @@ nix-channel --update
 # this or the included darwin-uninstaller command.
 nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A uninstaller
 ./result/bin/darwin-uninstaller
+# Might need to run multiple times to make sure
+
+# Once successful run the nix uninstaller:
+/nix/nix-installer uninstall
 
 # If there are issues with the disk, might need to use hard coded path
 /usr/sbin/diskutil
