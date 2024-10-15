@@ -189,6 +189,13 @@
         # username = "mike.splain";
       };
 
+      Mikes-MBP-16 = configuration.system {
+        system = "x86_64-darwin";
+        hostName = "Mikes-MBP-16";
+        osVersion = "14";
+        # username = "mike.splain";
+      };
+
       # SNS005454 = nix-darwin.lib.darwinSystem {
       #   system = "aarch64-darwin";
       #   specialArgs = { inherit inputs; };
