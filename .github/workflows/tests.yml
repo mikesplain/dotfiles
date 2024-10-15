@@ -18,9 +18,9 @@ jobs:
         os:
           - ubuntu-22.04
           - ubuntu-20.04
-          - macos-12
           - macos-13
           - macos-14
+          - macos-15
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
