@@ -52,7 +52,7 @@
     };
 
     initExtra = ''
-    eval $(/opt/homebrew/bin/brew shellenv)
+    eval $(/run/current-system/sw/bin/brew shellenv)
     autoload -U select-word-style
     select-word-style bash
 

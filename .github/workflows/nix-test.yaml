@@ -41,6 +41,7 @@ jobs:
           sudo mv /etc/shells /etc/shells.before-nix-darwin
           sudo mv /opt/homebrew/Library/Taps /opt/homebrew/Library/Taps.before-nix-darwin || true
           sudo mv /usr/local/Homebrew/Library/Taps /usr/local/Homebrew/Library/Taps.before-nix-darwin || true
+          brew unlink python@3.12
 
           # Fix user migration
           curl --proto '=https' --tlsv1.2 -sSf -L https://github.com/NixOS/nix/raw/master/scripts/sequoia-nixbld-user-migration.sh | bash -
