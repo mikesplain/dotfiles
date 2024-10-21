@@ -2,6 +2,7 @@
   programs.tmux = {
     enable = true;
     terminal = "xterm-256color";
+    shell = "${pkgs.zsh}/bin/zsh";
     prefix = "C-b";
     escapeTime = 10;
     historyLimit = 50000;
@@ -96,6 +97,11 @@
       unbind C-b
       set -g prefix C-b
       bind C-b send-prefix
+
+      # Fix issue with tmux loading sh instead of zsh
+      # See https://github.com/nix-community/home-manager/issues/5952
+      set -gu default-command
+      set -g default-shell "$SHELL"
     '';
   };
 
