@@ -47,7 +47,6 @@
 
   environment = {
     shells = with pkgs; [zsh];
-    loginShell = pkgs.zsh;
     systemPackages = with pkgs; [ nixfmt-classic git coreutils ];
     pathsToLink = [
       "/Applications"
