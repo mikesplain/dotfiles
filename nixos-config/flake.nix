@@ -61,8 +61,8 @@
     pwnvim,
     ...
   }: let
-    user = {
-      name = "mike.splain";
+    mkUser = username: {
+      name = username;
       # timeZone = "Asia/Jakarta";
       # locale = "en_GB.UTF-8";
     };
@@ -86,24 +86,26 @@
         inputs.pwnvim.packages."${final.system}".default
       ];
 
-      homeManager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "backup";
-        extraSpecialArgs = {inherit inputs user pwnvim;};
-        users.${user.name} = {imports = [./home];};
-      };
       system = {
         system,
         hostName,
         osVersion,
+        username,
       }: let
+        user = mkUser username;
         inherit (nixpkgs.lib.strings) hasInfix;
         platform = {
           isDarwin = hasInfix "darwin" system;
           isLinux = hasInfix "linux" system;
           isx86_64 = hasInfix "x86_64" system;
           isArm = hasInfix "aarch64" system;
+        };
+        homeManagerConfig = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          backupFileExtension = "backup";
+          extraSpecialArgs = {inherit inputs pwnvim; user = mkUser username;};
+          users.${username} = {imports = [./home];};
         };
         modules =
           if platform.isDarwin
@@ -114,7 +116,7 @@
             home-manager.darwinModules.home-manager
             {
               users.users.${user.name}.home = "/Users/${user.name}";
-              home-manager = configuration.homeManager;
+              home-manager = homeManagerConfig;
             }
           ]
           else [
@@ -180,20 +182,20 @@
         system = "aarch64-darwin";
         hostName = "SNS005454";
         osVersion = "14";
-        # username = "mike.splain";
+        username = "mike.splain";
       };
       defaultHostname = configuration.system {
         system = "defaultSystem";
         hostName = "defaultHostname";
         osVersion = "defaultVersion";
-        # username = "mike.splain";
+        username = "root";
       };
 
       Mikes-MBP-16 = configuration.system {
         system = "x86_64-darwin";
         hostName = "Mikes-MBP-16";
         osVersion = "14";
-        # username = "mike.splain";
+        username = "mike";
       };
 
       # SNS005454 = nix-darwin.lib.darwinSystem {
