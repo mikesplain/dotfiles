@@ -188,7 +188,7 @@
         system = "defaultSystem";
         hostName = "defaultHostname";
         osVersion = "defaultVersion";
-        username = "root";
+        username = "runner";
       };
 
       Mikes-MBP-16 = configuration.system {

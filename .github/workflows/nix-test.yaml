@@ -33,7 +33,6 @@ jobs:
       - name: Setup
         run: |
           sed -i '' "s/defaultHostname/$(scutil --get LocalHostName)/g" nixos-config/flake.nix
-          sed -i '' "s/mike.splain/runner/g" nixos-config/flake.nix
           sed -i '' "s/defaultSystem/${{matrix.os.arch}}/g" nixos-config/flake.nix
           sed -i '' "s/defaultVersion/$(sw_vers --productVersion | cut -d. -f1)/g" nixos-config/flake.nix
 
