@@ -43,8 +43,8 @@ jobs:
           sudo mv /opt/homebrew/Library/Taps /opt/homebrew/Library/Taps.before-nix-darwin || true
           sudo mv /usr/local/Homebrew/Library/Taps /usr/local/Homebrew/Library/Taps.before-nix-darwin || true
           brew unlink python@3.12
-          brew unlink openssl@1.1
-          brew unlink openssl@3
+          brew uninstall --force openssl@1.1
+          brew uninstall --force openssl@3
 
       - name: Test - Nix Run
         env:
