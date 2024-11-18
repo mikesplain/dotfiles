@@ -5,7 +5,8 @@ in {
   home = {
     username = "${user.name}";
     homeDirectory = mkDefault "/home/${user.name}";
-    stateVersion = "23.11";
+    # https://nixos.org/manual/nixos/unstable/release-notes.html
+    stateVersion = "24.05";
 
     sessionVariables = {
         PAGER = "less";
