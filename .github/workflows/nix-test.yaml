@@ -28,11 +28,6 @@ jobs:
             arch: x86_64-darwin
     steps:
       - uses: actions/checkout@v4
-
-      # See: https://github.com/LnL7/nix-darwin/issues/970#issuecomment-2310233603
-      - name: Sequoia hack
-        if: matrix.os == 'macos-15'
-        run: sudo dscl . delete /Groups/nixbld GroupMembership _nixbld{1,2,3,4}
       - uses: cachix/install-nix-action@V27
         with:
           nix_path: nixpkgs=channel:nixos-unstable
