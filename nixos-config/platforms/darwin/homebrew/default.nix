@@ -14,7 +14,6 @@
     # homebrew-sk8s
 
     nix-homebrew
-    mikesplain-homebrew-tap
     ;
 in {
   imports = [./nix-homebrew.nix];
@@ -31,7 +30,7 @@ in {
       (
         if osVersion >= "14"
         then [
-          "mikesplain/homebrew-tap/jordanbaird-ice"
+          "jordanbaird-ice"
         ]
         else []
       )
@@ -66,7 +65,6 @@ in {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "homebrew/homebrew-bundle" = homebrew-bundle;
-      "mikesplain/homebrew-tap" = mikesplain-homebrew-tap;
       # "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
     mutableTaps = false;

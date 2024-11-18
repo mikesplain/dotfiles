@@ -179,11 +179,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1731939976,
-        "narHash": "sha256-V/1IQztvR7XHl4qTXn5ImIACOWJLSX3OydXgiSsNSfY=",
+        "lastModified": 1731947118,
+        "narHash": "sha256-jYqqdkrZl5Gflb016WyAnK4xt2Kh6GdVFN5MMroe1TQ=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "93a24e09a4af0781f2f8b9f5b9fcc634ec0cbe05",
+        "rev": "8a93fe7d63794718b60a2993a0ff57e20370db41",
         "type": "github"
       },
       "original": {
@@ -195,32 +195,16 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1731938081,
-        "narHash": "sha256-rBAHTyEg/soTQN06RY5CB/Ym9v3BDKF11Td8DuyCQIk=",
+        "lastModified": 1731948893,
+        "narHash": "sha256-gmPhL+4hFw7RZ7le5iCl1rNsYC7S19VRfGmrZ8fYnBg=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "58f2a78cc7a3d669065a0e3fad09aef990af24d9",
+        "rev": "3ffab0b96acecd594282c8e6379f8a5034bf6d88",
         "type": "github"
       },
       "original": {
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "type": "github"
-      }
-    },
-    "mikesplain-homebrew-tap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1720013068,
-        "narHash": "sha256-17/Rd0YeUU97zxLkvIaY6CnQ3qE8Vq5VCdWI01DlSRI=",
-        "owner": "mikesplain",
-        "repo": "homebrew-tap",
-        "rev": "af1cc6ef247e436bc970bcc9bbedb5eba799e6a5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mikesplain",
-        "repo": "homebrew-tap",
         "type": "github"
       }
     },
@@ -332,11 +316,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1731935357,
-        "narHash": "sha256-5+Q84V0hfMnwu67U/uWsw8cA62ppFBIKbwxjz0pIKRc=",
+        "lastModified": 1731948526,
+        "narHash": "sha256-OXvG3qPAKIRj/1wECJ89F/BhgiUpnwKooor2+5lZduE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b2bfcd53e1ad7e3864788aa80a15a4004292a2c2",
+        "rev": "b7d2ac2549d5585daae9582ee6d98fb8a72a9084",
         "type": "github"
       },
       "original": {
@@ -393,7 +377,6 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "mikesplain-homebrew-tap": "mikesplain-homebrew-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
