@@ -44,6 +44,8 @@ jobs:
           sudo mv /usr/local/Homebrew/Library/Taps /usr/local/Homebrew/Library/Taps.before-nix-darwin || true
           brew unlink python@3.12
           brew unlink openssl@1.1
+          brew list | grep openssl
+          echo splaintest
 
       - name: Test - Nix Run
         env:
