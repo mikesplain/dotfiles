@@ -94,7 +94,6 @@ sed -i '' 's/.*awscli.*//g' $HOME/Brewfile
 
 if [ $OSX ]; then
   # For linux
-  # brew cask install homebrew/cask-versions/java8
   brew unlink python
   brew unlink awscli
   brew upgrade python
