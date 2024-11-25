@@ -1,4 +1,4 @@
-[![Tests](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml) [![CI](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml)
+[![Tests](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml) [![Nix Test](https://github.com/mikesplain/dotfiles/actions/workflows/nix-test.yaml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/nix-test.yaml) [![CI](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml)
 
 # dotfiles
 
