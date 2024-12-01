@@ -49,6 +49,19 @@
     };
   };
 
+  programs.rio = {
+    enable = true;
+    settings = {
+      # https://raphamorim.io/rio/docs/config/
+      cursor = {
+        shape = "Block";
+      };
+      fonts = {
+        family = "MesloLGS Nerd Font Mono";
+      };
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     # Settings from dustinlyons
