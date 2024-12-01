@@ -7,7 +7,7 @@
   security.pam.enableSudoTouchIdAuth = true;
   # fonts.fontDir.enable = true;
 # fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["Meslo"];})];
-  fonts.packages = [(pkgs.nerdfonts)];
+  fonts.packages = [pkgs.nerd-fonts.meslo-lg];
 
   nix.package = pkgs.nixVersions.latest;
   # Disabling due to https://github.com/NixOS/nix/issues/7273#issuecomment-1325073957
