@@ -83,7 +83,7 @@ in {
       minikube
       yarn
       hashcat
-      hugo
+      # hugo
       kind
       iperf
       python3
