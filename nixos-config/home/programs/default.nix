@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     # TODO: configure git with nix
     # userName = config.cfg.user.name;
     # userEmail = config.cfg.user.email;
-};
+  };
 
   programs.fzf = {
     enable = true;
@@ -71,7 +71,7 @@
         style = "Block";
       };
 
-      shell = "${pkgs.zsh}/bin/zsh";
+      terminal.shell = "${pkgs.zsh}/bin/zsh";
 
       window = {
         opacity = 1.0;
@@ -173,5 +173,5 @@
       };
     };
   };
-
 }
+
