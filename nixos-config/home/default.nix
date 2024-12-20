@@ -1,4 +1,4 @@
-{ lib, user, system, ... }: let
+{ lib, user, system, config, ... }: let
   inherit (lib) mkDefault;
 in {
   programs.home-manager.enable = true;
@@ -12,6 +12,12 @@ in {
         PAGER = "less";
         CLICOLOR = 1;
         EDITOR = "nvim";
+    };
+
+    file = {
+      ".config/ghostty/config" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/share/chezmoi/home/dot_config/ghostty/config";
+      };
     };
   };
   imports = [
