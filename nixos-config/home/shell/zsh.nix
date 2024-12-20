@@ -56,6 +56,14 @@
     autoload -U select-word-style
     select-word-style bash
 
+    # https://github.com/ghostty-org/ghostty/discussions/2363#discussioncomment-11051274
+    bindkey "\e[1;3D" backward-word     # ⌥←
+    bindkey "\e[1;3C" forward-word      # ⌥→
+    bindkey "^[[1;9D" beginning-of-line # cmd+←
+    bindkey "^[[1;9C" end-of-line       # cmd+→
+    bindkey "^[[3~" delete-char         # delete key
+    bindkey "^[[3;3~" delete-word        # delete key
+
     . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
     . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
     '';
