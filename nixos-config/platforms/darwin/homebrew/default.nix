@@ -25,6 +25,7 @@ in {
       "hcxtools"
       # "Sonos-Inc/pdsw-engx-devops-sk8s/sk8s"
       "ncdu"
+      "hashcat"
     ];
     casks =
       (
@@ -38,6 +39,7 @@ in {
         "session-manager-plugin"
         "appcleaner"
         "1password-cli"
+        "ghostty"
       ];
 
     # casks = [];

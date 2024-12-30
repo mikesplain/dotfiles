@@ -79,7 +79,7 @@
         nixpkgs = {
           config = {allowUnfree = true;};
           overlays = [
-            nur.overlay
+            nur.overlays.default
             (final: prev: {
               pwnvim = inputs.pwnvim.packages.${final.system}.pwnvim;
             })

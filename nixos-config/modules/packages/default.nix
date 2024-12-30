@@ -82,7 +82,7 @@ in {
       jfrog-cli
       minikube
       yarn
-      hashcat
+      # hashcat
       # hugo
       kind
       iperf
