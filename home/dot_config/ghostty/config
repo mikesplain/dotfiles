@@ -9,6 +9,8 @@ clipboard-read = allow
 clipboard-write = allow
 background-opacity = 0.8
 
+cursor-style = block
+
 # From https://github.com/thomasschafer/dotfiles/blob/main/ghostty/config.template
 
 font-feature = -calt
