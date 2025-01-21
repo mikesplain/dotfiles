@@ -39,6 +39,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-services = {
+      url = "github:homebrew/homebrew-services";
+      flake = false;
+    };
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
 

@@ -11,6 +11,7 @@
     homebrew-cask
     homebrew-core
     homebrew-bundle
+    homebrew-services
     # homebrew-sk8s
 
     nix-homebrew
@@ -67,6 +68,7 @@ in {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "homebrew/homebrew-bundle" = homebrew-bundle;
+      "homebrew/homebrew-services" = homebrew-services;
       # "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
     mutableTaps = false;
