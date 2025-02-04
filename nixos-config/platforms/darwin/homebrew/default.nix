@@ -4,6 +4,7 @@
   user,
   hostName,
   osVersion,
+  platform,
   ...
 }: let
   inherit
@@ -36,13 +37,20 @@ in {
         ]
         else []
       )
+      ++
+      (
+        if platform.isArm
+        then [
+          "lm-studio"
+        ]
+        else []
+      )
       ++ [
         "session-manager-plugin"
         "appcleaner"
         "1password-cli"
         "ghostty"
         "shottr"
-        "lm-studio"
         "virtualbox"
       ];
 
