@@ -41,6 +41,9 @@ in {
         "appcleaner"
         "1password-cli"
         "ghostty"
+        "shottr"
+        "lm-studio"
+        "virtualbox"
       ];
 
     # casks = [];
