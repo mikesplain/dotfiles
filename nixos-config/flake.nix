@@ -43,14 +43,6 @@
       url = "github:homebrew/homebrew-services";
       flake = false;
     };
-    ghostty = {
-      url = "git+ssh://git@github.com/ghostty-org/ghostty";
-
-      # NOTE: The below 2 lines are only required on nixos-unstable,
-      # if you're on stable, they may break your build
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs";
-    };
 
     # homebrew-sk8s = {
     #   url = "git+file:///Users/mike.splain/developer/homebrew-pdsw-devops";
@@ -68,7 +60,6 @@
     home-manager,
     nur,
     pwnvim,
-    ghostty,
     ...
   }: let
     mkUser = username: {
@@ -94,7 +85,6 @@
       environment.systemPackages = with nixpkgs; [
         zoxide
         inputs.pwnvim.packages."${final.system}".default
-        ghostty.packages."${final.system}".default
       ];
 
       system = {
@@ -115,7 +105,7 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           backupFileExtension = "backup";
-          extraSpecialArgs = {inherit inputs pwnvim ghostty; user = mkUser username;};
+          extraSpecialArgs = {inherit inputs pwnvim; user = mkUser username;};
           users.${username} = {imports = [./home];};
         };
         modules =

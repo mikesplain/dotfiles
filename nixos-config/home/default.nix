@@ -14,11 +14,11 @@ in {
         EDITOR = "nvim";
     };
 
-    file = {
-      ".config/ghostty/config" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/share/chezmoi/home/dot_config/ghostty/config";
-      };
-    };
+    # file = {
+    #   ".config/ghostty/config" = {
+    #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/share/chezmoi/home/dot_config/ghostty/config";
+    #   };
+    # };
   };
   imports = [
     ./shell

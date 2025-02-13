@@ -1,7 +1,6 @@
 {pkgs, user, ...}: {
   imports = [ ./homebrew ];
 
-  services.nix-daemon.enable = true;
   system.stateVersion = 4;
 
   security.pam.enableSudoTouchIdAuth = true;

@@ -62,6 +62,33 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+
+    # Ghostty is currently marked as broken for macOS
+    package = null;
+
+    # enableBashIntegration = true;
+    # enableZshIntegration = true;
+    # Disabled due to package issue above
+    # installVimSyntax = true;
+
+
+    # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.ghostty.settings
+    settings = {
+      # Copied from dot_config/ghostty/config
+      clipboard-read = "allow";
+      clipboard-write = "allow";
+      background-opacity = 0.8;
+      shell-integration = "zsh";
+      shell-integration-features = "no-cursor";
+      cursor-style = "block";
+      cursor-style-blink = false;
+      font-feature = "-calt";
+      copy-on-select = "clipboard";
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     # Settings from dustinlyons
