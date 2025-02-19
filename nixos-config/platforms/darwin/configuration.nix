@@ -1,7 +1,7 @@
 {pkgs, user, ...}: {
   imports = [ ./homebrew ];
 
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 
   security.pam.enableSudoTouchIdAuth = true;
   # fonts.fontDir.enable = true;
