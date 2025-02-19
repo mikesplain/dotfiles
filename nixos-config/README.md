@@ -39,8 +39,7 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 nix-channel --update
 
 # this or the included darwin-uninstaller command.
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A uninstaller
-./result/bin/darwin-uninstaller
+nix --extra-experimental-features "nix-command flakes" run nix-darwin#darwin-uninstaller
 # Might need to run multiple times to make sure
 
 # Once successful run the nix uninstaller:
