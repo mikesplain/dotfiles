@@ -3,7 +3,7 @@
 
   system.stateVersion = 5;
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
   # fonts.fontDir.enable = true;
 # fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["Meslo"];})];
   fonts.packages = [pkgs.nerd-fonts.meslo-lg];
