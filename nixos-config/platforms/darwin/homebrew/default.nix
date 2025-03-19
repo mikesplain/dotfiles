@@ -69,14 +69,14 @@ in {
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
     #
-    masApps = {
+    masApps = if user.name != "runner" then {
       "GoodLinks" = 1474335294;
       "TestFlight" = 899247664;
       "The Unarchiver" = 425424353;
       "Things" = 904280696;
       "Velja" = 1607635845;
       "WireGuard" = 1451685025;
-    };
+    } else {};
   };
   nix-homebrew = {
     enable = true;
