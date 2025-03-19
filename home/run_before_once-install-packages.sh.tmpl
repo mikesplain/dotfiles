@@ -30,7 +30,7 @@ eval "$(${BREW_PATH}/brew shellenv)"
 
 echo "Installing homebrew packages"
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 cask "1password-cli"
 brew "hub"
 brew "tmux"
