@@ -47,8 +47,12 @@ in {
       ++ [
         "1password-cli"
         "appcleaner"
+        "disk-inventory-x"
+        "docker"
         "elgato-stream-deck"
         "ghostty"
+        "google-chrome"
+        "logi-options-plus"
         "raycast"
         "session-manager-plugin"
         "shottr"
