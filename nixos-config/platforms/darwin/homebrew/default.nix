@@ -45,6 +45,7 @@ in {
         else []
       )
       ++ [
+        "1password"
         "1password-cli"
         "appcleaner"
         "disk-inventory-x"
@@ -69,7 +70,12 @@ in {
     # $ mas search <app name>
     #
     masApps = {
-      # "1password" = 1333542190;
+      "GoodLinks" = 1474335294;
+      "TestFlight" = 899247664;
+      "The Unarchiver" = 425424353;
+      "Things" = 904280696;
+      "Velja" = 1607635845;
+      "WireGuard" = 1451685025;
     };
   };
   nix-homebrew = {
