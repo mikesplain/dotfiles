@@ -49,18 +49,75 @@
     };
   };
 
-  programs.rio = {
+  # Enable SSH Config: https://nix-community.github.io/home-manager/options.xhtml#opt-programs.ssh.enable
+  programs.ssh = {
     enable = true;
-    settings = {
-      # https://raphamorim.io/rio/docs/config/
-      cursor = {
-        shape = "Block";
-      };
-      fonts = {
-        family = "MesloLGS Nerd Font Mono";
-      };
-    };
+    extraConfig = ''
+      Host *.brew.sh
+        User brewadmin
+        ForwardAgent yes
+
+      # Host remote.github.net remote.github.com
+      #   ForwardAgent yes
+      #   User mikesplain
+
+      # Host *.github.com *.github.net *.githubapp.com
+      #   ForwardAgent no
+      #   User mikesplain
+
+      Host *.ec2.internal
+        CanonicalizeHostname yes
+        CanonicalizeMaxDots 3
+        CanonicalDomains sslip.io
+
+      Host *.us-east-2.compute.internal
+        CanonicalizeHostname yes
+        CanonicalizeMaxDots 3
+        CanonicalDomains sslip.io
+
+      Host bastion.*
+        ForwardAgent yes
+
+      # Personal GitHub
+      Host personalgit
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/personal_git.pub
+        IdentitiesOnly yes
+
+      # Work GitHub
+      Host workgit
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/work_git.pub
+        IdentitiesOnly yes
+
+      host i-* mi-*
+        ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+
+      Host *
+        IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+        StrictHostKeyChecking ask
+        VerifyHostKeyDNS ask
+        NoHostAuthenticationForLocalhost yes
+        # IdentityFile ~/.ssh/id_rsa
+        ControlMaster auto
+        ControlPath /tmp/ssh-%C.socket
+    '';
   };
+
+  # programs.rio = {
+  #   enable = true;
+  #   settings = {
+  #     # https://raphamorim.io/rio/docs/config/
+  #     cursor = {
+  #       shape = "Block";
+  #     };
+  #     fonts = {
+  #       family = "MesloLGS Nerd Font Mono";
+  #     };
+  #   };
+  # };
 
   programs.ghostty = {
     enable = true;
