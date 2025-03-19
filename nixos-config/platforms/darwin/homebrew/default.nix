@@ -23,11 +23,10 @@ in {
     enable = true;
     brews = [
       "aws-sso-util"
-      "k9s"
-      "hcxtools"
-      # "Sonos-Inc/pdsw-engx-devops-sk8s/sk8s"
-      "ncdu"
       "hashcat"
+      "hcxtools"
+      "k9s"
+      "ncdu"
     ];
     casks =
       (
@@ -46,11 +45,14 @@ in {
         else []
       )
       ++ [
-        "session-manager-plugin"
-        "appcleaner"
         "1password-cli"
+        "appcleaner"
+        "elgato-stream-deck"
         "ghostty"
+        "raycast"
+        "session-manager-plugin"
         "shottr"
+        "spotify"
         "virtualbox"
       ];
 
