@@ -9,7 +9,7 @@ New reference: https://github.com/eaksa/eaksa/blob/main/flake.nix
 ## Commands
 ```
 # Install nix if needed
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+sh <(curl -L https://nixos.org/nix/install)
 
 # Installing nix-darwin
 nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake .
@@ -28,7 +28,7 @@ Discovered via: https://github.com/DeterminateSystems/nix-installer/issues/749
 
 ```
 export PATH="/sbin:${PATH}"
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
 ## Uninstall
