@@ -23,11 +23,10 @@ in {
     enable = true;
     brews = [
       "aws-sso-util"
-      "k9s"
-      "hcxtools"
-      # "Sonos-Inc/pdsw-engx-devops-sk8s/sk8s"
-      "ncdu"
       "hashcat"
+      "hcxtools"
+      "k9s"
+      "ncdu"
     ];
     casks =
       (
@@ -46,11 +45,19 @@ in {
         else []
       )
       ++ [
-        "session-manager-plugin"
-        "appcleaner"
+        "1password"
         "1password-cli"
+        "appcleaner"
+        "disk-inventory-x"
+        "docker"
+        "elgato-stream-deck"
         "ghostty"
+        "google-chrome"
+        "logi-options-plus"
+        "raycast"
+        "session-manager-plugin"
         "shottr"
+        "spotify"
         "virtualbox"
       ];
 
@@ -62,9 +69,14 @@ in {
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
     #
-    masApps = {
-      # "1password" = 1333542190;
-    };
+    masApps = if user.name != "runner" then {
+      "GoodLinks" = 1474335294;
+      "TestFlight" = 899247664;
+      "The Unarchiver" = 425424353;
+      "Things" = 904280696;
+      "Velja" = 1607635845;
+      "WireGuard" = 1451685025;
+    } else {};
   };
   nix-homebrew = {
     enable = true;
