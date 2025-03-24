@@ -14,6 +14,7 @@
 	"dependencyDashboard": true,
 	"dependencyDashboardTitle": "Renovate Dashboard",
 	"commitBody": "Signed-off-by: Mike Splain <mikesplain@users.noreply.github.com>",
+	"gitIgnoredAuthors": ["90003754+private-renovatebot[bot]@users.noreply.github.com"],
 	"suppressNotifications": [
 		"prIgnoreNotification"
 	],
