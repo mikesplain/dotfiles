@@ -45,14 +45,15 @@ in {
         else []
       )
       ++ [
-        "1password"
         "1password-cli"
+        "1password"
         "appcleaner"
         "disk-inventory-x"
         "docker"
         "elgato-stream-deck"
         "ghostty"
         "google-chrome"
+        "gpg-suite"
         "logi-options-plus"
         "raycast"
         "session-manager-plugin"
