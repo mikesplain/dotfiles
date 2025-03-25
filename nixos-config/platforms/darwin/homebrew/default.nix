@@ -56,6 +56,7 @@ in {
         "gpg-suite"
         "logi-options-plus"
         "raycast"
+        "stats"
         "session-manager-plugin"
         "shottr"
         "spotify"
