@@ -41,6 +41,8 @@
       develop = "!git pull-develop";
       # Create a new branch by checking out another branch.
 	    checkout-as-new-branch = "checkout -b";
+      # Print the name of the current branch.
+	    current-branch = "symbolic-ref --short HEAD";
 
       ## Shortened 'New' Commands
       work-in-progress = "commit -a -m 'WIP'";
