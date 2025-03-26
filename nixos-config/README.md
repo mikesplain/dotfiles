@@ -49,8 +49,3 @@ nix --extra-experimental-features "nix-command flakes" run nix-darwin#darwin-uni
 /usr/sbin/diskutil
 /bin/launchctl
 ```
-
-## TODO
-- [ ] Fix brokenm option + arrow keys
-- [ ] Secrets, something like [ryantm/agenix](ryantm/agenix) via [this](https://github.com/dustinlyons/nixos-config/blob/7d6141768134a329b1cf4096d923268359c31a0d/flake.nix#L5C26-L5C39)
-- [ ] Speed of the term slowed down as soon as I added homebrew back. I should try to remove it or reduce autoloaded modules like autocomplete stuff

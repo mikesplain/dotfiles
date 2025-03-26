@@ -21,10 +21,7 @@
     pwnvim.url = "github:mikesplain/pwnvim";
 
     nix-homebrew = {
-      # For https://github.com/zhaofengli/nix-homebrew/issues/22
       url = "github:zhaofengli/nix-homebrew";
-      # url = "github:zhaofengli/nix-homebrew/brew-4.3.1";
-      # url = "github:mikesplain/nix-homebrew/brew_4.3.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-bundle = {
@@ -43,14 +40,6 @@
       url = "github:homebrew/homebrew-services";
       flake = false;
     };
-
-    # homebrew-sk8s = {
-    #   url = "git+file:///Users/mike.splain/developer/homebrew-pdsw-devops";
-    #   flake = false;
-    # };
-    # kickstart-nix-nvim = {
-    #   url = "github:nix-community/kickstart-nix.nvim";
-    # };
   };
 
   outputs = inputs @ {
@@ -105,7 +94,7 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           backupFileExtension = "backup";
-          extraSpecialArgs = {inherit inputs pwnvim; user = mkUser username;};
+          extraSpecialArgs = {inherit inputs hostName pwnvim; user = mkUser username;};
           users.${username} = {imports = [./home];};
         };
         modules =
@@ -141,42 +130,6 @@
             inherit system modules specialArgs;
           };
     };
-    # # Source: https://github.com/computercam/_unixconf_nix/blob/master/flake.nix
-    # globalModules = [
-    #   {
-    #     system.configurationRevision = self.rev or self.dirtyRev or null;
-    #     nixpkgs.config.allowUnfree = true;
-    #     services.nix-daemon.enable = true;
-    #   }
-    #   ./modules/global/global.nix
-    # ];
-    # # globalModulesNixos = globalModules ++ [
-    # #   ./modules/global/nixos.nix
-    # #   home-manager.nixosModules.default
-    # #   agenix.nixosModules.default
-    # # ];
-    # globalModulesMacos = globalModules ++ [
-    #   ./modules/global/macos.nix
-    #   home-manager.darwinModules.home-manager
-    #   # home-manager.darwinModules.default
-    #   # ./modules/common/nix-homebrew.nix
-    #   # nix-homebrew.darwinModules.nix-homebrew
-    #   # {
-    #   # nix-homebrew = {
-    #   #   # inherit user;
-    #   #     enable = true;
-    #   #     user = "mike.splain";
-    #   #     taps = {
-    #   #       "homebrew/homebrew-core" = homebrew-core;
-    #   #       "homebrew/homebrew-cask" = homebrew-cask;
-    #   #       "homebrew/homebrew-bundle" = homebrew-bundle;
-    #   #     };
-    #   #     mutableTaps = false;
-    #   #     autoMigrate = true;
-    #   # };
-    #   # }
-    #   # agenix.darwinModules.default
-    # ];
   in {
     darwinConfigurations = {
       SNS005454 = configuration.system {
@@ -198,34 +151,6 @@
         osVersion = "14";
         username = "mike";
       };
-
-      # SNS005454 = nix-darwin.lib.darwinSystem {
-      #   system = "aarch64-darwin";
-      #   specialArgs = { inherit inputs; };
-      #   pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
-      #   modules = globalModulesMacos
-      #     ++ [ ./hosts/SNS005454/configuration.nix ];
-      # };
-      # Mikes-MBP-16 = nix-darwin.lib.darwinSystem {
-      #   system = "x86_64-darwin";
-      #   specialArgs = { inherit inputs; };
-      #   pkgs = import nixpkgs { system = "x86_64-darwin"; config.allowUnfree = true; };
-      #   modules = globalModulesMacos
-      #     ++ [ ./hosts/Mikes-MBP-16/configuration.nix ];
-      # };
-      # default = nix-darwin.lib.darwinSystem {
-      #   system = "aarch64-darwin";
-      #   specialArgs = { inherit inputs; };
-      #   pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
-      #   modules = globalModulesMacos
-      #     ++ [ ./hosts/default/configuration.nix ];
-      # };
-
-      # silicontundra = nix-darwin.lib.darwinSystem {
-      #   system = "aarch64-darwin";
-      #   modules = globalModulesMacos
-      #     ++ [ ./hosts/silicontundra/configuration.nix ];
-      # };
     };
   };
 }

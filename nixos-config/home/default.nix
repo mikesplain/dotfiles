@@ -1,4 +1,4 @@
-{ lib, user, system, config, ... }: let
+{ lib, user, system, config, hostName, ... }: let
   inherit (lib) mkDefault;
 in {
   programs.home-manager.enable = true;
