@@ -27,6 +27,7 @@ in {
       "hcxtools"
       "k9s"
       "ncdu"
+      "telnet"
     ];
     casks =
       (
@@ -53,14 +54,20 @@ in {
         "elgato-stream-deck"
         "ghostty"
         "google-chrome"
+        # "google-chrome@canary"
+        # "google-chrome@dev"
         "gpg-suite"
+        "lm-studio"
         "logi-options-plus"
+        "obsidian"
         "raycast"
-        "stats"
         "session-manager-plugin"
         "shottr"
         "spotify"
+        "stats"
+        "vagrant"
         "virtualbox"
+        "zen-browser"
       ];
 
     # casks = [];
