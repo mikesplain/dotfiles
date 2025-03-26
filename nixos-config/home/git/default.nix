@@ -100,7 +100,7 @@
         enabled = true;
       };
       core = {
-		# Don't prompt for commit messages for merge commits.
+        	# Don't prompt for commit messages for merge commits.
           mergeoptions = "--no-edit";
           editor = "nvim";
           # pager = "delta";
