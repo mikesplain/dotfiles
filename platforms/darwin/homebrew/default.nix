@@ -57,7 +57,6 @@ in {
         # "google-chrome@canary"
         # "google-chrome@dev"
         "gpg-suite"
-        "lm-studio"
         "logi-options-plus"
         "obsidian"
         "raycast"
