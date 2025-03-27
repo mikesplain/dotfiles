@@ -1,4 +1,4 @@
-{ lib, user, system, config, ... }: let
+{ lib, user, system, config, hostName, ... }: let
   inherit (lib) mkDefault;
 in {
   programs.home-manager.enable = true;
@@ -14,11 +14,10 @@ in {
         EDITOR = "nvim";
     };
 
-    # file = {
-    #   ".config/ghostty/config" = {
-    #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/share/chezmoi/home/dot_config/ghostty/config";
-    #   };
-    # };
+    file = {
+      ".personal_gitconfig".source = ./git/dot_personal_gitconfig.tmpl;
+      ".work_gitconfig".source = ./git/dot_work_gitconfig.tmpl;
+    };
   };
   imports = [
     ./shell

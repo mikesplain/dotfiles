@@ -1,51 +1,53 @@
 [![Tests](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/tests.yml) [![Nix Test](https://github.com/mikesplain/dotfiles/actions/workflows/nix-test.yaml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/nix-test.yaml) [![CI](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/ci.yaml)
 
-# dotfiles
 
-Template dotfiles repository, managed with [chezmoi](https://chezmoi.io/).
+# Mike Splain's Nix Config / Dotfiles
 
-## Setup
+Referenced heavily: https://github.com/computercam/_unixconf_nix
+https://github.com/LnL7/nix-darwin
 
-First setup homebrew (since it prompts us and we can't get user input during the current install):
+New reference: https://github.com/eaksa/eaksa/blob/main/flake.nix
+
+## Commands
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install nix if needed
+sh <(curl -L https://nixos.org/nix/install)
+
+# Installing nix-darwin
+nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake .
+# Using nix-darwin
+darwin-rebuild switch --flake .
+# Update flakes
+nix flake update
+# Switch to new flakes, might need above command instead.
+home-manager switch
 ```
 
-Now setup chezmoi:
+## Reinstall mount error:
+If you get a mount error during reinstall of nix try checking path for sbin
+
+Discovered via: https://github.com/DeterminateSystems/nix-installer/issues/749
+
 ```
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply mikesplain
+export PATH="/sbin:${PATH}"
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
-## License
-
-MIT
-
-
-## List of links
+## Uninstall
+- Nix darwin first
 ```
-$ ls -lah | grep .dotfiles
-lrwxr-xr-x    28 mike staff 14 Sep  2021  .asdfrc -> /Users/mike/.dotfiles/asdfrc
-lrwxr-xr-x    36 mike staff 14 Sep  2021  .bash_logout -> /Users/mike/.dotfiles/bash_logout.sh
-lrwxr-xr-x    37 mike staff 14 Sep  2021  .bash_profile -> /Users/mike/.dotfiles/bash_profile.sh
-lrwxr-xr-x    31 mike staff 14 Sep  2021  .bashrc -> /Users/mike/.dotfiles/bashrc.sh
-lrwxr-xr-x    30 mike staff 14 Sep  2021  .Brewfile -> /Users/mike/.dotfiles/Brewfile
-lrwxr-xr-x    29 mike staff 14 Sep  2021  .bundle -> /Users/mike/.dotfiles/bundle/
-drwxr-xr-x     - mike staff 10 Feb 18:59  .dotfiles/
-lrwxr-xr-x    35 mike staff 14 Sep  2021  .gitattributes -> /Users/mike/.dotfiles/gitattributes
-lrwxr-xr-x    31 mike staff 14 Sep  2021  .gitconfig -> /Users/mike/.dotfiles/gitconfig
-lrwxr-xr-x    44 mike staff 14 Sep  2021  .gitconfig-user-example -> /Users/mike/.dotfiles/gitconfig-user-example
-lrwxr-xr-x    31 mike staff 14 Sep  2021  .gitignore -> /Users/mike/.dotfiles/gitignore
-lrwxr-xr-x    29 mike staff 14 Sep  2021  .LICENSE -> /Users/mike/.dotfiles/LICENSE
-lrwxr-xr-x    31 mike staff 14 Sep  2021  .logout -> /Users/mike/.dotfiles/logout.sh
-lrwxr-xr-x    28 mike staff 14 Sep  2021  .rbenv -> /Users/mike/.dotfiles/rbenv/
-lrwxr-xr-x    27 mike staff 14 Sep  2021  .setup -> /Users/mike/.dotfiles/setup
-lrwxr-xr-x    34 mike staff 14 Sep  2021  .shprofile -> /Users/mike/.dotfiles/shprofile.sh
-lrwxr-xr-x    29 mike staff 14 Sep  2021  .shrc -> /Users/mike/.dotfiles/shrc.sh
-lrwxr-xr-x    33 mike staff 14 Sep  2021  .SpaceVim.d -> /Users/mike/.dotfiles/SpaceVim.d/
-lrwxr-xr-x    26 mike staff 14 Sep  2021  .ssh -> /Users/mike/.dotfiles/ssh/
-lrwxr-xr-x    37 mike staff 14 Sep  2021  .tmux.conf.local -> /Users/mike/.dotfiles/tmux.conf.local
-lrwxr-xr-x    35 mike staff 14 Sep  2021  .tool-versions -> /Users/mike/.dotfiles/tool-versions
-lrwxr-xr-x    32 mike staff 14 Sep  2021  .zlogout -> /Users/mike/.dotfiles/zlogout.sh
-lrwxr-xr-x    33 mike staff 14 Sep  2021  .zprofile -> /Users/mike/.dotfiles/zprofile.sh
-lrwxr-xr-x    30 mike staff 14 Sep  2021  .zshrc -> /Users/mike/.dotfiles/zshrc.sh
+# Make sure nixpkgs is setup:
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+nix-channel --update
+
+# this or the included darwin-uninstaller command.
+nix --extra-experimental-features "nix-command flakes" run nix-darwin#darwin-uninstaller
+# Might need to run multiple times to make sure
+
+# Once successful run the nix uninstaller:
+/nix/nix-installer uninstall
+
+# If there are issues with the disk, might need to use hard coded path
+/usr/sbin/diskutil
+/bin/launchctl
 ```

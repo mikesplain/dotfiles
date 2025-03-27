@@ -1,14 +1,13 @@
 [github]
-	user = MikeSplain
+	user = mikesplainsonos
 [user]
 	# Name used in commit messages.
 	name = Mike Splain
 	# Email used in commit messages.
-	email = mike.splain@gmail.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGvzmRdlx7fXEkn/ItH+xiwQc2jv/wkOJFLCOzPjzbLH
+	email = mike.splain@sonos.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9X9lSoJev2swsh+myLsrgpUpVhSumYftP0QX3qDz18
 
-{{ if .interactive -}}
-[url "personalgit:"]
+[url "workgit:"]
 	# Force 1password ssh keys
 	insteadOf = https://github.com/
 
@@ -20,5 +19,3 @@
 
 [commit]
 	gpgsign = true
-
-{{ end -}}
