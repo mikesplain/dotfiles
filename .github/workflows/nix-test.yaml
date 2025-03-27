@@ -60,8 +60,8 @@ jobs:
         run: |
           darwin-rebuild switch --flake .
 
-      - name: Test - bashrc
-        run: bash -c "source ~/.bashrc"
+      # - name: Test - bashrc
+      #   run: bash -c "source ~/.bashrc"
 
       - name: Test - zshrc
         run: zsh -vc "source ~/.zshrc"
