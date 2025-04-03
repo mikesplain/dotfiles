@@ -132,11 +132,11 @@
     };
   in {
     darwinConfigurations = {
-      SNS005454 = configuration.system {
+      MSPLAIN-M-CH4Y = configuration.system {
         system = "aarch64-darwin";
-        hostName = "SNS005454";
+        hostName = "MSPLAIN-M-CH4Y";
         osVersion = "14";
-        username = "mike.splain";
+        username = "msplain";
       };
       defaultHostname = configuration.system {
         system = "defaultSystem";

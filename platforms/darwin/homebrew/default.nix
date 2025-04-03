@@ -66,6 +66,7 @@ in {
         "stats"
         "vagrant"
         "virtualbox"
+	      "visual-studio-code"
         "zen-browser"
       ];
 
