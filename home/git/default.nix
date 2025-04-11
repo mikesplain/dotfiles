@@ -189,6 +189,10 @@
         condition = "hasconfig:remote.*.url:https://github.com/homebrew/**";
         path = "~/.personal_gitconfig";
       }
+      {
+        condition = "hasconfig:remote.*.url:https://github.com/RobustIntelligence/**";
+        path = "~/.personal_gitconfig";
+      }
     ];
   };
 
