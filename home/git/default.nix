@@ -193,6 +193,10 @@
         condition = "hasconfig:remote.*.url:https://github.com/RobustIntelligence/**";
         path = "~/.personal_gitconfig";
       }
+      {
+        condition = "hasconfig:remote.*.url:https://github.com/cisco-sbg/**";
+        path = "~/.personal_gitconfig";
+      }
     ];
   };
 
