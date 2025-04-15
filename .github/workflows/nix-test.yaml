@@ -42,7 +42,7 @@ jobs:
           sudo mv /etc/shells /etc/shells.before-nix-darwin
           sudo mv /opt/homebrew/Library/Taps /opt/homebrew/Library/Taps.before-nix-darwin || true
           sudo mv /usr/local/Homebrew/Library/Taps /usr/local/Homebrew/Library/Taps.before-nix-darwin || true
-          brew unlink python@3.12
+          brew unlink python@3.13
           brew uninstall --ignore-dependencies --force openssl@1.1
           brew uninstall --ignore-dependencies --force openssl@3
 
