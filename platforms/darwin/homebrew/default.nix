@@ -22,7 +22,7 @@ in {
   homebrew = {
     enable = true;
     brews = [
-      "aws-sso-util"
+      # "aws-sso-util"
       "hashcat"
       "hcxtools"
       "k9s"
