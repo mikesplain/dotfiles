@@ -45,6 +45,9 @@
   # Enable SSH Config: https://nix-community.github.io/home-manager/options.xhtml#opt-programs.ssh.enable
   programs.ssh = {
     enable = true;
+    includes = [
+      "config.d/*"
+    ];
     extraConfig = ''
       Host *.brew.sh
         User brewadmin
@@ -85,7 +88,7 @@
         IdentityFile ~/.ssh/work_git.pub
         IdentitiesOnly yes
 
-      host i-* mi-*
+      Host i-* mi-*
         ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
 
       Host *

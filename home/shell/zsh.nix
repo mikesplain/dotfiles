@@ -64,6 +64,9 @@
     bindkey "^[[3~" delete-char         # delete key
     bindkey "^[[3;3~" delete-word        # delete key
 
+    # Cisco Specific Stuff
+    [[ -f $HOME/.zshrc-cisco ]] && source $HOME/.zshrc-cisco
+
     . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
     . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
     '';
