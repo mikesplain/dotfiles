@@ -103,7 +103,7 @@ in {
       "homebrew/homebrew-services" = homebrew-services;
       # "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
-    mutableTaps = false;
+    mutableTaps = true;
     autoMigrate = true;
   };
 }
