@@ -44,6 +44,8 @@
       "cd ....." = "../../../..";
       "cd ......" = "../../../../..";
       "cd ......." = "../../../../../..";
+      "dot" = "cd $HOME/.dotfiles";
+      "dotfiles" = "dot";
     };
     sessionVariables = {
       SHELL = "${pkgs.zsh}/bin/zsh";
