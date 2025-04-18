@@ -32,7 +32,7 @@
     NSGlobalDomain = {
       AppleShowAllExtensions = true;
       AppleInterfaceStyle = "Dark";
-      AppleInterfaceStyleSwitchesAutomatically = true;
+      AppleInterfaceStyleSwitchesAutomatically = false;
       InitialKeyRepeat = 14;
       KeyRepeat = 1;
       AppleKeyboardUIMode = 3;
