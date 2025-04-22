@@ -58,7 +58,6 @@ in {
       htop
       terragrunt
       httperf
-      hub
       iftop
       ipcalc
       jq
