@@ -1,48 +1,10 @@
 {pkgs, ...}: {
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-    defaultCommand = "rg --files --hidden --follow";
-    defaultOptions = ["-m --bind ctrl-a:select-all,ctrl-d:deselect-all"];
-  };
-
-  programs.eza.enable = true;
-  programs.bash.enable = true;
-  programs.bat.enable = true;
-  programs.bat.config.theme = "TwoDark";
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
+  # VSCode
   programs.vscode = {
     enable = true;
   };
 
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      kubernetes = {
-        #format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) ';
-        disabled = false;
-        contexts = [
-          {
-            context_pattern = "arn:aws:eks:(?P<region>[\\w-]+):.*\\/(?P<cluster>[\\w-]+)";
-            context_alias = "eks/$region/$cluster";
-          }
-        ];
-      };
-    };
-  };
-
-  # Enable SSH Config: https://nix-community.github.io/home-manager/options.xhtml#opt-programs.ssh.enable
+  # SSH Configuration
   programs.ssh = {
     enable = true;
     includes = [
@@ -52,14 +14,6 @@
       Host *.brew.sh
         User brewadmin
         ForwardAgent yes
-
-      # Host remote.github.net remote.github.com
-      #   ForwardAgent yes
-      #   User mikesplain
-
-      # Host *.github.com *.github.net *.githubapp.com
-      #   ForwardAgent no
-      #   User mikesplain
 
       Host *.ec2.internal
         CanonicalizeHostname yes
@@ -96,40 +50,16 @@
         StrictHostKeyChecking ask
         VerifyHostKeyDNS ask
         NoHostAuthenticationForLocalhost yes
-        # IdentityFile ~/.ssh/id_rsa
         ControlMaster auto
         ControlPath /tmp/ssh-%C.socket
     '';
   };
 
-  # programs.rio = {
-  #   enable = true;
-  #   settings = {
-  #     # https://raphamorim.io/rio/docs/config/
-  #     cursor = {
-  #       shape = "Block";
-  #     };
-  #     fonts = {
-  #       family = "MesloLGS Nerd Font Mono";
-  #     };
-  #   };
-  # };
-
+  # Terminal emulators
   programs.ghostty = {
     enable = true;
-
-    # Ghostty is currently marked as broken for macOS
-    package = null;
-
-    # enableBashIntegration = true;
-    # enableZshIntegration = true;
-    # Disabled due to package issue above
-    # installVimSyntax = true;
-
-
-    # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.ghostty.settings
+    package = null; # Ghostty is currently marked as broken for macOS
     settings = {
-      # Copied from dot_config/ghostty/config
       clipboard-read = "allow";
       clipboard-write = "allow";
       background-opacity = 0.8;
@@ -144,8 +74,6 @@
 
   programs.alacritty = {
     enable = true;
-    # Settings from dustinlyons
-    # https://alacritty.org/config-alacritty.html
     settings = {
       cursor = {
         style = "Block";
@@ -159,9 +87,6 @@
           x = 0;
           y = 0;
         };
-
-        # This option doesn't seem to work and can probably be removed later
-        # option_as_alt= "Both";
         dynamic_padding = true;
         decorations = "full";
         title = "Terminal";
@@ -208,18 +133,6 @@
         };
       };
 
-      # Enabling thse break bash and don't fix zsh so... they can be remove at some point
-      # https://github.com/alacritty/alacritty/issues/474
-      # keyboard = {
-      #   bindings = [
-      #     { key = "Left";     mods = "Alt";     chars = "\x1bb";                          } # Skip word left
-      #     { key = "Right";    mods = "Alt";     chars = "\x1bf";                          } # Skip word right
-      #     { key = "Left";     mods = "Command"; chars = "\x1bOH";   mode = "AppCursor";   } # Home
-      #     { key = "Right";    mods = "Command"; chars = "\x1bOF";   mode = "AppCursor";   } # End
-      #     { key = "Back";     mods = "Command"; chars = "\x15";                           } # Delete line
-      #     { key = "Back";     mods = "Alt";     chars = "\x1b\x7f";                       } # Delete word
-      #   ];
-      # };
       keyboard = {
         bindings = [
           {
@@ -254,4 +167,3 @@
     };
   };
 }
-
