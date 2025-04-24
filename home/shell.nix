@@ -61,14 +61,7 @@
       bindkey "^[[3~" delete-char         # delete key
       bindkey "^[[3;3~" delete-word        # delete key
 
-      # Add asdf to path
-      export PATH="''${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
-      # Add plugins and install asdf versions
-      asdf-install() {
-        cut -d' ' -f1 .tool-versions|xargs -I {} asdf plugin add {}
-        asdf install
-      }
+      eval "$(mise activate zsh)"'
 
       # Switch to the current flake
       switch() {
