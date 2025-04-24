@@ -55,7 +55,7 @@
       pwnvim
       zoxide
       # Development tools
-      asdf-vm
+      # asdf-vm
       awscli2
       bashInteractive
       bat

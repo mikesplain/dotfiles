@@ -22,6 +22,7 @@ in {
   homebrew = {
     enable = true;
     brews = [
+      "asdf"
       "hashcat"
       "hcxtools"
       "k9s"

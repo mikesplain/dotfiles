@@ -46,6 +46,8 @@
       TERM = "xterm-256color";
     };
 
+    #ADD .TOOLVERSIONS SYSTEM TO THIS FILE!!!
+
     initExtra = ''
       eval $(/run/current-system/sw/bin/brew shellenv)
       autoload -U select-word-style
@@ -59,11 +61,25 @@
       bindkey "^[[3~" delete-char         # delete key
       bindkey "^[[3;3~" delete-word        # delete key
 
+      # Add asdf to path
+      export PATH="''${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+      # Add plugins and install asdf versions
+      asdf-install() {
+        cut -d' ' -f1 .tool-versions|xargs -I {} asdf plugin add {}
+        asdf install
+      }
+
+      # Switch to the current flake
+      switch() {
+        darwin-rebuild switch --flake .
+      }
+
       # Cisco Specific Stuff
       [[ -f $HOME/.zshrc-cisco ]] && source $HOME/.zshrc-cisco
 
-      . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
-      . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
+
+
     '';
   };
 
