@@ -22,10 +22,14 @@
       url = "github:zhaofengli/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    homebrew-bundle.url = "github:homebrew/homebrew-bundle";
-    homebrew-core.url = "github:homebrew/homebrew-core";
-    homebrew-cask.url = "github:homebrew/homebrew-cask";
-    homebrew-services.url = "github:homebrew/homebrew-services";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
   outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nur, pwnvim, ... }:
