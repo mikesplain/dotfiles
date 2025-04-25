@@ -20,6 +20,7 @@ in {
   homebrew = {
     enable = true;
     brews = [
+      "gh"
       "hashcat"
       "hcxtools"
       "k9s"
