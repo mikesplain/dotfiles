@@ -39,7 +39,7 @@
       Host workgit
         HostName github.com
         User git
-        IdentityFile ~/.ssh/work_git.pub
+        IdentityFile ~/.ssh/personal_git.pub
         IdentitiesOnly yes
 
       Host i-* mi-*
