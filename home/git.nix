@@ -127,6 +127,9 @@
 
     includes = [
       {
+        path = "~/.additional_gitconfig";
+      }
+      {
         condition = "gitdir:~/.local/share/chezmoi";
         path = "~/.personal_gitconfig";
       }
