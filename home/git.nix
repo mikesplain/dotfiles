@@ -131,14 +131,6 @@
         path = "~/.personal_gitconfig";
       }
       {
-        condition = "hasconfig:remote.*.url:https://github.com/Sonos-Inc/**";
-        path = "~/.work_gitconfig";
-      }
-      {
-        condition = "hasconfig:remote.*.url:https://github.com/mikesplainsonos/**";
-        path = "~/.work_gitconfig";
-      }
-      {
         condition = "hasconfig:remote.*.url:https://github.com/mikesplain/**";
         path = "~/.personal_gitconfig";
       }
@@ -152,11 +144,11 @@
       }
       {
         condition = "hasconfig:remote.*.url:https://github.com/RobustIntelligence/**";
-        path = "~/.personal_gitconfig";
+        path = "~/.work_gitconfig";
       }
       {
         condition = "hasconfig:remote.*.url:https://github.com/cisco-sbg/**";
-        path = "~/.personal_gitconfig";
+        path = "~/.work_gitconfig";
       }
     ];
   };
