@@ -2,50 +2,35 @@
   inputs,
   lib,
   user,
-  hostName,
+  hostname,
   osVersion,
   platform,
   ...
 }: let
-  inherit
-    (inputs)
+  inherit (inputs)
     homebrew-cask
     homebrew-core
-    homebrew-bundle
-    homebrew-services
-    # homebrew-sk8s
-
-    nix-homebrew
-    ;
+    nix-homebrew;
 in {
-  imports = [./nix-homebrew.nix];
+  # Import the nix-homebrew module
+  imports = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+  ];
+
   homebrew = {
     enable = true;
     brews = [
-      # "aws-sso-util"
+      "gh"
       "hashcat"
       "hcxtools"
       "k9s"
+      "mise"
       "ncdu"
       "telnet"
     ];
     casks =
-      (
-        if osVersion >= "14"
-        then [
-          "jordanbaird-ice"
-        ]
-        else []
-      )
-      ++
-      (
-        if platform.isArm
-        then [
-          "lm-studio"
-        ]
-        else []
-      )
-      ++ [
+      (if osVersion >= "14" then [ "jordanbaird-ice" ] else []) ++
+      (if platform.isArm then [ "lm-studio" ] else []) ++ [
         "1password-cli"
         "1password"
         "appcleaner"
@@ -54,8 +39,6 @@ in {
         "elgato-stream-deck"
         "ghostty"
         "google-chrome"
-        # "google-chrome@canary"
-        # "google-chrome@dev"
         "gpg-suite"
         "logi-options-plus"
         "obsidian"
@@ -66,18 +49,14 @@ in {
         "stats"
         "vagrant"
         "virtualbox"
-	      "visual-studio-code"
+        "visual-studio-code"
         "zen-browser"
       ];
 
-    # casks = [];
-    # These app IDs are from using the mas CLI app
-    # mas = mac app store
-    # https://github.com/mas-cli/mas
-    #
+    # Mac App Store apps
+    # These app IDs are from using the mas CLI app (mac app store)
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
-    #
     masApps = if user.name != "runner" then {
       "GoodLinks" = 1474335294;
       "TestFlight" = 899247664;
@@ -87,21 +66,14 @@ in {
       "WireGuard" = 1451685025;
     } else {};
   };
+
+  # Nix-homebrew configuration
   nix-homebrew = {
     enable = true;
-
-    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-    # enableRosetta = true;
-
-    # User owning the Homebrew prefix
     user = user.name;
-
     taps = {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
-      "homebrew/homebrew-bundle" = homebrew-bundle;
-      "homebrew/homebrew-services" = homebrew-services;
-      # "Sonos-Inc/homebrew-pdsw-devops" = homebrew-sk8s;
     };
     mutableTaps = true;
     autoMigrate = true;

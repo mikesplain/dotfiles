@@ -1,53 +1,74 @@
+# Mike Splain's Nix Dotfiles
+
 [![Nix Test](https://github.com/mikesplain/dotfiles/actions/workflows/nix-test.yaml/badge.svg)](https://github.com/mikesplain/dotfiles/actions/workflows/nix-test.yaml)
 
+A simplified Nix configuration for setting up macOS machines with a consistent environment.
 
-# Mike Splain's Nix Config / Dotfiles
+## Directory Structure
 
-Referenced heavily: https://github.com/computercam/_unixconf_nix
-https://github.com/LnL7/nix-darwin
-
-New reference: https://github.com/eaksa/eaksa/blob/main/flake.nix
-
-## Commands
 ```
+flake.nix                  # Main entry point for Nix configuration
+darwin/                    # macOS specific configurations
+  default.nix              # Main system configuration
+  homebrew.nix             # Homebrew packages
+home/                      # Home-manager configurations
+  default.nix              # Main home-manager setup
+  git.nix                  # Git configuration
+  programs.nix             # Terminal and application configs
+  shell.nix                # Shell configurations (zsh)
+  tmux.nix                 # Tmux configuration
+templates/                 # Template files
+  gitconfig/               # Git configuration templates
+    personal.tmpl          # Personal git configuration
+    work.tmpl              # Work git configuration
+```
+
+## Installation
+
+```bash
 # Install nix if needed
 sh <(curl -L https://nixos.org/nix/install)
 
-# Installing nix-darwin
+# Clone this repository
+git clone https://github.com/mikesplain/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+
+# Initial installation
 nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake .
-# Using nix-darwin
+
+# Subsequent updates
 darwin-rebuild switch --flake .
+
 # Update flakes
 nix flake update
-# Switch to new flakes, might need above command instead.
-home-manager switch
 ```
 
-## Reinstall mount error:
-If you get a mount error during reinstall of nix try checking path for sbin
+## Troubleshooting
 
-Discovered via: https://github.com/DeterminateSystems/nix-installer/issues/749
+### Reinstall mount error
 
-```
+If you get a mount error during reinstall of nix, try checking path for sbin:
+
+```bash
 export PATH="/sbin:${PATH}"
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-## Uninstall
-- Nix darwin first
-```
+### Uninstallation
+
+```bash
 # Make sure nixpkgs is setup:
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 nix-channel --update
 
-# this or the included darwin-uninstaller command.
+# Uninstall darwin
 nix --extra-experimental-features "nix-command flakes" run nix-darwin#darwin-uninstaller
-# Might need to run multiple times to make sure
+# May need to run multiple times
 
-# Once successful run the nix uninstaller:
+# Uninstall nix
 /nix/nix-installer uninstall
 
-# If there are issues with the disk, might need to use hard coded path
+# If there are issues with disk access
 /usr/sbin/diskutil
 /bin/launchctl
 ```
