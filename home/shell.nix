@@ -61,6 +61,8 @@
       bindkey "^[[3~" delete-char         # delete key
       bindkey "^[[3;3~" delete-word        # delete key
 
+      export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
       eval "$(mise activate zsh)"'
 
       # Switch to the current flake
