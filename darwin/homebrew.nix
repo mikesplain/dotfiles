@@ -7,10 +7,12 @@
   platform,
   ...
 }: let
-  inherit (inputs)
+  inherit
+    (inputs)
     homebrew-cask
     homebrew-core
-    nix-homebrew;
+    nix-homebrew
+    ;
 in {
   # Import the nix-homebrew module
   imports = [
@@ -20,6 +22,7 @@ in {
   homebrew = {
     enable = true;
     brews = [
+      "ipcalc"
       "gh"
       "hashcat"
       "hcxtools"
@@ -29,10 +32,15 @@ in {
       "telnet"
     ];
     casks =
-      (if osVersion >= "14" then [ "jordanbaird-ice" ] else []) ++
+      (
+        if osVersion >= "14"
+        then ["jordanbaird-ice"]
+        else []
+      )
+      ++
       # Remove lm-studio since it can be flakey in CI.
       # (if platform.isArm then [ "lm-studio" ] else []) ++
-       [
+      [
         "1password-cli"
         "1password"
         "appcleaner"
@@ -59,14 +67,17 @@ in {
     # These app IDs are from using the mas CLI app (mac app store)
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
-    masApps = if user.name != "runner" then {
-      "GoodLinks" = 1474335294;
-      "TestFlight" = 899247664;
-      "The Unarchiver" = 425424353;
-      "Things" = 904280696;
-      "Velja" = 1607635845;
-      "WireGuard" = 1451685025;
-    } else {};
+    masApps =
+      if user.name != "runner"
+      then {
+        "GoodLinks" = 1474335294;
+        "TestFlight" = 899247664;
+        "The Unarchiver" = 425424353;
+        "Things" = 904280696;
+        "Velja" = 1607635845;
+        "WireGuard" = 1451685025;
+      }
+      else {};
   };
 
   # Nix-homebrew configuration
