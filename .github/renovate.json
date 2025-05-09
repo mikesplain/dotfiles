@@ -14,7 +14,9 @@
 	"dependencyDashboard": true,
 	"dependencyDashboardTitle": "Renovate Dashboard",
 	"commitBody": "Signed-off-by: Mike Splain <mikesplain@users.noreply.github.com>",
-	"gitIgnoredAuthors": ["90003754+private-renovatebot[bot]@users.noreply.github.com"],
+	"gitIgnoredAuthors": [
+		"90003754+private-renovatebot[bot]@users.noreply.github.com"
+	],
 	"suppressNotifications": [
 		"prIgnoreNotification"
 	],
@@ -22,15 +24,15 @@
 		"@mikesplain"
 	],
 	"helm-values": {
-		"fileMatch": [
-			"\\.yaml$"
+		"managerFilePatterns": [
+			"/\\.yaml$/"
 		]
 	},
 	"customManagers": [
 		{
 			"customType": "regex",
-			"fileMatch": [
-				"\\.yaml$"
+			"managerFilePatterns": [
+				"/\\.yaml$/"
 			],
 			"matchStrings": [
 				"kind: HelmRepository\n[\\s\\S]*?url: (?<registryUrl>.*?)\n[\\s\\S]*?---\n[\\s\\S]*?chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
@@ -41,8 +43,8 @@
 		},
 		{
 			"customType": "regex",
-			"fileMatch": [
-				"\\.yaml$"
+			"managerFilePatterns": [
+				"/\\.yaml$/"
 			],
 			"matchStrings": [
 				"image: (?<depName>.*?):(?<currentValue>.*)\n",
