@@ -60,7 +60,7 @@ in {
         "vagrant"
         "virtualbox"
         "visual-studio-code"
-        "zen-browser"
+        "zen"
       ];
 
     # Mac App Store apps
