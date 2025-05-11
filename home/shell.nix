@@ -50,6 +50,8 @@
 
     initContent = ''
       eval $(/run/current-system/sw/bin/brew shellenv)
+      PATH="$(brew --prefix)/opt/python@3.13/libexec/bin:$PATH"
+
       autoload -U select-word-style
       select-word-style bash
 

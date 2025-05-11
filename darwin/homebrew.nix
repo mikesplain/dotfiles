@@ -30,6 +30,7 @@ in {
       "mise"
       "ncdu"
       "telnet"
+      "python"
     ];
     casks =
       (
