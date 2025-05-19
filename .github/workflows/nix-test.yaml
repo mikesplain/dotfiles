@@ -49,6 +49,8 @@ jobs:
           sudo mv /opt/homebrew/Library/Taps /opt/homebrew/Library/Taps.before-nix-darwin || true
           sudo mv /usr/local/Homebrew/Library/Taps /usr/local/Homebrew/Library/Taps.before-nix-darwin || true
 
+          sudo rm -rf /usr/local/bin/idle3.13 || true
+
       - name: Test - Nix Run
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
