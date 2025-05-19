@@ -53,7 +53,7 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
+          sudo nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .
 
       - name: Test - Switch
         # See https://github.com/actions/runner-images/issues/264
