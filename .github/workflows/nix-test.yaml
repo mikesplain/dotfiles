@@ -49,11 +49,16 @@ jobs:
           sudo mv /opt/homebrew/Library/Taps /opt/homebrew/Library/Taps.before-nix-darwin || true
           sudo mv /usr/local/Homebrew/Library/Taps /usr/local/Homebrew/Library/Taps.before-nix-darwin || true
 
+          sudo rm -rf /usr/local/bin/idle3.13 || true
+          sudo rm -rf /usr/local/bin/pip3** || true
+          sudo rm -rf /usr/local/bin/pydoc** || true
+          sudo rm -rf m /usr/local/bin/python3** || true
+
       - name: Test - Nix Run
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake .
+          sudo -E nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .
 
       - name: Test - Switch
         # See https://github.com/actions/runner-images/issues/264
@@ -61,7 +66,7 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          darwin-rebuild switch --flake .
+          sudo -E darwin-rebuild switch --flake .
 
       # - name: Test - bashrc
       #   run: bash -c "source ~/.bashrc"
