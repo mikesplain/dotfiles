@@ -51,6 +51,7 @@ jobs:
 
           sudo rm -rf /usr/local/bin/idle3.13 || true
           sudo rm -rf /usr/local/bin/pip3** || true
+          sudo rm -rf /usr/local/bin/pydoc** || true
 
       - name: Test - Nix Run
         env:
