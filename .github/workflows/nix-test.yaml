@@ -55,12 +55,7 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          echo "Regular env:"
-          env
-          echo "sudo env:"
-          sudo env
-          nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- build --flake .
-          sudo nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .
+          sudo -E nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .
 
       - name: Test - Switch
         # See https://github.com/actions/runner-images/issues/264
@@ -68,7 +63,7 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          sudo darwin-rebuild switch --flake .
+          sudo -E darwin-rebuild switch --flake .
 
       # - name: Test - bashrc
       #   run: bash -c "source ~/.bashrc"
