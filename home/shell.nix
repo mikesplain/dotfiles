@@ -38,6 +38,7 @@
       "cd ......." = "../../../../../..";
       "dot" = "cd $HOME/.dotfiles";
       "dotfiles" = "dot";
+      w = "windsurf .";
     };
 
     sessionVariables = {
@@ -69,7 +70,7 @@
 
       # Switch to the current flake
       switch() {
-        darwin-rebuild switch --flake .
+        sudo darwin-rebuild switch --flake .
       }
 
       # Cisco Specific Stuff
