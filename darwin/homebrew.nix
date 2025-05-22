@@ -22,15 +22,16 @@ in {
   homebrew = {
     enable = true;
     brews = [
-      "ipcalc"
       "gh"
       "hashcat"
       "hcxtools"
+      "ipcalc"
       "k9s"
       "mise"
       "ncdu"
-      "telnet"
+      "ollama"
       "python"
+      "telnet"
     ];
     casks =
       (
