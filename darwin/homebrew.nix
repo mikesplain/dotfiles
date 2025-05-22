@@ -29,7 +29,6 @@ in {
       "k9s"
       "mise"
       "ncdu"
-      "ollama"
       "python"
       "telnet"
     ];
@@ -50,6 +49,7 @@ in {
         "docker"
         "elgato-stream-deck"
         "ghostty"
+        "ollama"
         "google-chrome"
         "gpg-suite"
         "logi-options-plus"
