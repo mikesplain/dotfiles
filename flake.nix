@@ -19,7 +19,8 @@
 
     # Homebrew inputs
     nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
+      # url = "github:zhaofengli/nix-homebrew";
+      url = "github:mikesplain/nix-homebrew/nix_4.5.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-core = {
