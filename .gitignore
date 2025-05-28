@@ -10,3 +10,5 @@ rbenv/*/
 
 SpaceVim.d/.netrwhist
 gitconfig-user
+
+.direnv

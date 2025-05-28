@@ -20,7 +20,6 @@
     # Homebrew inputs
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -121,5 +120,8 @@
         username = "runner";
       };
     };
+
+    # Add devShells output
+    devShells = (import ./devshell.nix) { inherit nixpkgs nur pwnvim; };
   };
 }
