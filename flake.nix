@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,12 +39,20 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    git-hooks-nix, # Add git-hooks-nix here
     nix-darwin,
     home-manager,
     nur,
     pwnvim,
     ...
   }: let
+    forAllSystems = inputs.nixpkgs.lib.genAttrs [
+      "aarch64-darwin"
+      "x86_64-darwin"
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+
     # Helper function to create user
     mkUser = username: {name = username;};
 
@@ -121,7 +134,8 @@
       };
     };
 
-    # Add devShells output
-    devShells = (import ./devshell.nix) { inherit nixpkgs nur pwnvim; };
+    # Import devShells from devshell.nix
+    devShells = (import ./devshell.nix) { inherit inputs; }; # Corrected to import and call the function directly
+
   };
 }
