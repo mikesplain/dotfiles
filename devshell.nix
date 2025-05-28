@@ -37,7 +37,6 @@ rec {
     {
       default = pkgs.mkShell {
         name = "dotfiles-shell-from-devshell";
-        inputsFrom = [ inputs.self.darwinConfigurations."MSPLAIN-M-CH4Y".config.system.build.toplevel ];
         buildInputs = [
           pkgs.hello
           pkgs.nixpkgs-fmt # For nix formatting
