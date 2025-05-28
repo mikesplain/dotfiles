@@ -10,3 +10,6 @@ rbenv/*/
 
 SpaceVim.d/.netrwhist
 gitconfig-user
+
+.direnv
+.pre-commit-config.yaml
