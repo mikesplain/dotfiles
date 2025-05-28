@@ -9,35 +9,42 @@ let
   ];
 in
 forAllSystems (system:
-  let
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [
-        inputs.nur.overlays.default
-        (final: prev: {
-          pwnvim = inputs.pwnvim.packages.${system}.pwnvim;
-        })
-      ];
+let
+  pkgs = import inputs.nixpkgs {
+    inherit system;
+    config.allowUnfree = true;
+    overlays = [
+      inputs.nur.overlays.default
+      (final: prev: {
+        pwnvim = inputs.pwnvim.packages.${system}.pwnvim;
+      })
+    ];
+  };
+  pre-commit-check = inputs.git-hooks-nix.lib.${system}.run {
+    src = ./.;
+    hooks = {
+      nixpkgs-fmt = {
+        enable = true;
+        description = "Format nix files using nixpkgs-fmt";
+      };
+      prettier = {
+        enable = true;
+        description = "Format various files using prettier";
+      };
     };
-    resolvedRunGitHooks = inputs.git-hooks-nix.lib.runGitHooks;
-    # DEBUG: Print available attributes in git-hooks-nix.lib
-    debugGitHooksLib = builtins.attrNames inputs.git-hooks-nix.lib;
-  in
-  {
-    default = pkgs.mkShell {
-      name = "dotfiles-shell-from-devshell"; # Renamed for clarity
-      # Note: self.darwinConfigurations... needs to be inputs.self.darwinConfigurations... if self is part of inputs
-      # Or, if darwinConfigurations is passed separately, adjust accordingly.
-      # Assuming 'self' is part of 'inputs' passed to this file.
-      inputsFrom = [ inputs.self.darwinConfigurations."MSPLAIN-M-CH4Y".config.system.build.toplevel ];
-      buildInputs = [
-        pkgs.hello # A simple package to test the shell
-        # Add other development tools here
-      ];
-      shellHook = ''
-        echo "Entered dotfiles dev shell (from devshell.nix)."
-        echo "DEBUG: git-hooks-nix.lib attributes: ${builtins.concatStringsSep ", " debugGitHooksLib}"
-      '';
-    };
-  })
+  };
+in
+{
+  default = pkgs.mkShell {
+    name = "dotfiles-shell-from-devshell";
+    inputsFrom = [ inputs.self.darwinConfigurations."MSPLAIN-M-CH4Y".config.system.build.toplevel ];
+    buildInputs = [
+      pkgs.hello
+      pkgs.nixpkgs-fmt # For nix formatting
+      pkgs.nodePackages.prettier # For general formatting
+      pkgs.convco # For conventional commits
+    ] ++ pre-commit-check.enabledPackages;
+
+    inherit (pre-commit-check) shellHook;
+  };
+})
