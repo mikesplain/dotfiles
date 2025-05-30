@@ -1,10 +1,14 @@
-{pkgs, user, inputs, platform, osVersion, ...}: {
+{ pkgs, user, inputs, platform, osVersion, ... }: {
   imports = [ ./homebrew.nix ];
 
   system.stateVersion = 5;
 
+  system.activationScripts.extraActivation.text = ''
+    ln -sf "${pkgs.jdk}/zulu-17.jdk" "/Library/Java/JavaVirtualMachines/"
+  '';
+
   security.pam.services.sudo_local.touchIdAuth = true;
-  fonts.packages = [pkgs.nerd-fonts.meslo-lg];
+  fonts.packages = [ pkgs.nerd-fonts.meslo-lg ];
 
   nix = {
     package = pkgs.nixVersions.latest;
@@ -18,7 +22,7 @@
 
   programs.zsh.enable = true;
 
-  system= {
+  system = {
     primaryUser = user.name;
     defaults = {
       finder = {
@@ -49,7 +53,7 @@
   };
 
   environment = {
-    shells = with pkgs; [zsh];
+    shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       # Core packages
       nixfmt-classic
@@ -65,8 +69,9 @@
       curl
       delta
       fd
-      kubectx
+      jdk
       jq
+      kubectx
       ripgrep
       tree
       wget
