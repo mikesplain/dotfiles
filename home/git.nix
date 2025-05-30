@@ -1,17 +1,18 @@
-{
-  inputs,
-  pkgs,
-  hostname,
-  ...
+{ inputs
+, pkgs
+, hostname
+, ...
 }: {
   programs.git = {
     enable = true;
     userName = "Mike Splain";
     userEmail = (
       if hostname == "SNS005454"
-        then "mike.splain@sonos.com"
-        else "mike.splain@gmail.com"
+      then "mike.splain@sonos.com"
+      else "mike.splain@gmail.com"
     );
+
+    lfs.enable = true;
 
     aliases = {
       # Print the name of the current upstream tracking branch.
@@ -75,8 +76,8 @@
     extraConfig = {
       github.user = (
         if hostname == "SNS005454"
-          then "mike.splain@sonos.com"
-          else "mike.splain@gmail.com"
+        then "mike.splain@sonos.com"
+        else "mike.splain@gmail.com"
       );
       color.ui = true;
       gist.browse = true;
