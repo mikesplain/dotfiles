@@ -20,7 +20,7 @@
     };
 
     nur.url = "github:nix-community/NUR";
-    pwnvim.url = "github:mikesplain/pwnvim";
+    pwnvim.url = "github:zmre/pwnvim";
 
     # Homebrew inputs
     nix-homebrew = {
