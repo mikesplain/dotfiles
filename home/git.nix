@@ -35,6 +35,10 @@
       pull-main = "!git checkout main && git pull";
       # Shortcut to above
       main = "!git pull-main";
+      # Checkout the master branch and update it.
+      pull-master = "!git checkout master && git pull";
+      # Shortcut to above
+      master = "!git pull-master";
       # Checkout the develop branch and update it.
       pull-develop = "!git checkout develop && git pull";
       # Shortcut to above
