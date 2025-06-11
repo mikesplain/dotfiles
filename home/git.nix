@@ -163,3 +163,4 @@
 
   programs.gitui.enable = true;
 }
+
