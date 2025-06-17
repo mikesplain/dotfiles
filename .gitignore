@@ -13,3 +13,4 @@ gitconfig-user
 
 .direnv
 .pre-commit-config.yaml
+.prettierignore

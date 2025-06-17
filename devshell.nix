@@ -8,7 +8,8 @@ rec {
     "x86_64-linux"
   ];
 
-  devShells = forAllSystems (system:
+  devShells = forAllSystems (
+    system:
     let
       pkgs = import inputs.nixpkgs {
         inherit system;
@@ -23,9 +24,9 @@ rec {
       pre-commit-check = inputs.git-hooks-nix.lib.${system}.run {
         src = ./.;
         hooks = {
-          nixpkgs-fmt = {
+          nixfmt-rfc-style = {
             enable = true;
-            description = "Format nix files using nixpkgs-fmt";
+            description = "Format nix files using nixfmt-rfc-style";
           };
           prettier = {
             enable = true;
@@ -43,7 +44,10 @@ rec {
           pkgs.nodePackages.prettier # For general formatting
         ] ++ pre-commit-check.enabledPackages;
 
-        inherit (pre-commit-check) shellHook;
+        shellHook = ''
+          echo "flake.lock" > .prettierignore
+          ${pre-commit-check.shellHook}
+        '';
       };
     }
   );
