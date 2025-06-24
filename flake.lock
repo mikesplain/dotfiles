@@ -337,15 +337,15 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1750355220,
-        "narHash": "sha256-kmZp3RVgB5OIMqr5Aw9FOmQu8ZnMhikKHD2SW0hZbfA=",
-        "owner": "zmre",
+        "lastModified": 1750790944,
+        "narHash": "sha256-JooMgxQgZhQ+WzaU6VOOs15/Rdbf/pbZ3WFghYW1bO8=",
+        "owner": "mikesplain",
         "repo": "pwnvim",
-        "rev": "9bbfe537978e3e55cb7e16a9dd3ab9ae0d107987",
+        "rev": "5a68822398d9dd6fe27a81949a57d6d5c8929716",
         "type": "github"
       },
       "original": {
-        "owner": "zmre",
+        "owner": "mikesplain",
         "repo": "pwnvim",
         "type": "github"
       }

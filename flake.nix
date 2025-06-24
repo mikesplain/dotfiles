@@ -20,7 +20,10 @@
     };
 
     nur.url = "github:nix-community/NUR";
-    pwnvim.url = "github:zmre/pwnvim";
+
+    # Commenting out because of nodejs dependency of this package: https://github.com/mikesplain/pwnvim/commit/5a68822398d9dd6fe27a81949a57d6d5c8929716
+    # pwnvim.url = "github:zmre/pwnvim";
+    pwnvim.url = "github:mikesplain/pwnvim";
 
     # Homebrew inputs
     nix-homebrew = {
@@ -37,14 +40,15 @@
   };
 
   outputs =
-    inputs @ { self
-    , nixpkgs
-    , git-hooks-nix
-    , nix-darwin
-    , home-manager
-    , nur
-    , pwnvim
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      git-hooks-nix,
+      nix-darwin,
+      home-manager,
+      nur,
+      pwnvim,
+      ...
     }:
     let
       # Import forAllSystems from devshell.nix
@@ -55,11 +59,11 @@
 
       # Creates a Darwin configuration with the given parameters
       mkDarwinSystem =
-        { system
-        , hostname
-        , osVersion
-        , username
-        ,
+        {
+          system,
+          hostname,
+          osVersion,
+          username,
         }:
         let
           user = mkUser username;
@@ -84,7 +88,17 @@
         in
         nix-darwin.lib.darwinSystem {
           inherit system;
-          specialArgs = { inherit inputs hostname osVersion platform system user pkgs; };
+          specialArgs = {
+            inherit
+              inputs
+              hostname
+              osVersion
+              platform
+              system
+              user
+              pkgs
+              ;
+          };
           modules = [
             # Core system config
             ./darwin
@@ -97,10 +111,17 @@
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 extraSpecialArgs = {
-                  inherit inputs hostname pwnvim platform;
+                  inherit
+                    inputs
+                    hostname
+                    pwnvim
+                    platform
+                    ;
                   user = user;
                 };
-                users.${username} = { imports = [ ./home ]; };
+                users.${username} = {
+                  imports = [ ./home ];
+                };
               };
 
               # Set home directory correctly for macOS
