@@ -1,4 +1,12 @@
-{ pkgs, user, inputs, platform, osVersion, ... }: {
+{
+  pkgs,
+  user,
+  inputs,
+  platform,
+  osVersion,
+  ...
+}:
+{
   imports = [ ./homebrew.nix ];
 
   system.stateVersion = 5;
@@ -20,6 +28,7 @@
       trusted-users = [ user.name ];
       max-jobs = 10;
       experimental-features = "nix-command flakes";
+      download-buffer-size = 524288000; # See https://github.com/NixOS/nix/issues/11728
     };
   };
 
@@ -62,7 +71,6 @@
       nixfmt-classic
       git
       coreutils
-      pwnvim
       zoxide
       # Development tools
       # asdf-vm
