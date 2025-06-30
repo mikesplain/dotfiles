@@ -6,14 +6,15 @@
   osVersion,
   platform,
   ...
-}: let
-  inherit
-    (inputs)
+}:
+let
+  inherit (inputs)
     homebrew-cask
     homebrew-core
     nix-homebrew
     ;
-in {
+in
+{
   # Import the nix-homebrew module
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
@@ -28,16 +29,13 @@ in {
       "ipcalc"
       "k9s"
       "mise"
+      "node"
       "ncdu"
       "python"
       "telnet"
     ];
     casks =
-      (
-        if osVersion >= "14"
-        then ["jordanbaird-ice"]
-        else []
-      )
+      (if osVersion >= "14" then [ "jordanbaird-ice" ] else [ ])
       ++
       # Remove lm-studio since it can be flakey in CI.
       # (if platform.isArm then [ "lm-studio" ] else []) ++
@@ -70,16 +68,17 @@ in {
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
     masApps =
-      if user.name != "runner"
-      then {
-        "GoodLinks" = 1474335294;
-        "TestFlight" = 899247664;
-        "The Unarchiver" = 425424353;
-        "Things" = 904280696;
-        "Velja" = 1607635845;
-        "WireGuard" = 1451685025;
-      }
-      else {};
+      if user.name != "runner" then
+        {
+          "GoodLinks" = 1474335294;
+          "TestFlight" = 899247664;
+          "The Unarchiver" = 425424353;
+          "Things" = 904280696;
+          "Velja" = 1607635845;
+          "WireGuard" = 1451685025;
+        }
+      else
+        { };
   };
 
   # Nix-homebrew configuration
