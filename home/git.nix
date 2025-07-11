@@ -1,16 +1,14 @@
-{ inputs
-, pkgs
-, hostname
-, ...
-}: {
+{
+  inputs,
+  pkgs,
+  hostname,
+  ...
+}:
+{
   programs.git = {
     enable = true;
     userName = "Mike Splain";
-    userEmail = (
-      if hostname == "SNS005454"
-      then "mike.splain@sonos.com"
-      else "mike.splain@gmail.com"
-    );
+    userEmail = (if hostname == "SNS005454" then "mike.splain@sonos.com" else "mike.splain@gmail.com");
 
     lfs.enable = true;
 
@@ -79,9 +77,7 @@
 
     extraConfig = {
       github.user = (
-        if hostname == "SNS005454"
-        then "mike.splain@sonos.com"
-        else "mike.splain@gmail.com"
+        if hostname == "SNS005454" then "mike.splain@sonos.com" else "mike.splain@gmail.com"
       );
       color.ui = true;
       gist.browse = true;
@@ -98,11 +94,11 @@
       help.autocorrect = 1;
       diff.colorMoved = "default";
       merge.conflictstyle = "diff3";
-      mergetool = {
-        prompt = false;
-        keepBackup = false;
-        keepTemporaries = false;
-      };
+      # mergetool = {
+      #   prompt = false;
+      #   keepBackup = false;
+      #   keepTemporaries = false;
+      # };
       apply.whitespace = "fix";
       rebase = {
         autosquash = true;
@@ -163,4 +159,3 @@
 
   programs.gitui.enable = true;
 }
-
