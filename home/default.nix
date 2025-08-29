@@ -1,6 +1,15 @@
-{ lib, user, system, config, hostname, ... }: let
+{
+  lib,
+  user,
+  system,
+  config,
+  hostname,
+  ...
+}:
+let
   inherit (lib) mkDefault;
-in {
+in
+{
   programs.home-manager.enable = true;
 
   home = {
@@ -10,6 +19,7 @@ in {
 
     sessionVariables = {
       PAGER = "less";
+      LESS = "-R";
       CLICOLOR = 1;
       EDITOR = "nvim";
     };

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -43,8 +44,8 @@
 
     sessionVariables = {
       SHELL = "${pkgs.zsh}/bin/zsh";
-      EDITOR = "nvim";
       TERM = "xterm-256color";
+      LESS = "-R";
     };
 
     #ADD .TOOLVERSIONS SYSTEM TO THIS FILE!!!
@@ -52,6 +53,9 @@
     initContent = ''
       eval $(/run/current-system/sw/bin/brew shellenv)
       PATH="$(brew --prefix)/opt/python@3.13/libexec/bin:$PATH"
+
+      # Explicitly set LESS variable
+      export LESS="-R"
 
       autoload -U select-word-style
       select-word-style bash
@@ -96,7 +100,7 @@
     enable = true;
     enableZshIntegration = true;
     defaultCommand = "rg --files --hidden --follow";
-    defaultOptions = ["-m --bind ctrl-a:select-all,ctrl-d:deselect-all"];
+    defaultOptions = [ "-m --bind ctrl-a:select-all,ctrl-d:deselect-all" ];
   };
 
   programs.eza.enable = true;
