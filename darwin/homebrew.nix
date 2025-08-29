@@ -49,7 +49,7 @@ in
         "ghostty"
         "google-chrome"
         "gpg-suite"
-        "logi-options-plus"
+        # "logi-options-plus"
         "obsidian"
         # "ollama"
         "raycast"
