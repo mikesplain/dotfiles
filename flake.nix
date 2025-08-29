@@ -23,9 +23,9 @@
 
     nur.url = "github:nix-community/NUR";
 
-    # Commenting out because of nodejs dependency of this package: https://github.com/mikesplain/pwnvim/commit/5a68822398d9dd6fe27a81949a57d6d5c8929716
-    # pwnvim.url = "github:zmre/pwnvim";
-    pwnvim.url = "github:mikesplain/pwnvim";
+    # Try using the original pwnvim which might have the proper fzf-lua configuration
+    pwnvim.url = "github:zmre/pwnvim";
+    # pwnvim.url = "github:mikesplain/pwnvim";
 
     # Homebrew inputs
     nix-homebrew = {
