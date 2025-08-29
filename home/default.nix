@@ -35,6 +35,5 @@ in
     ./tmux.nix
     ./programs.nix
     ./git.nix
-    ./neovim.nix
   ];
 }
