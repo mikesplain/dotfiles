@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # VSCode
   programs.vscode = {
     enable = true;
@@ -7,52 +8,78 @@
   # SSH Configuration
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false; # Disable deprecated default config
     includes = [
       "config.d/*"
     ];
-    extraConfig = ''
-      Host *.brew.sh
-        User brewadmin
-        ForwardAgent yes
 
-      Host *.ec2.internal
-        CanonicalizeHostname yes
-        CanonicalizeMaxDots 3
-        CanonicalDomains sslip.io
+    matchBlocks = {
+      "*.brew.sh" = {
+        user = "brewadmin";
+        forwardAgent = true;
+      };
 
-      Host *.us-east-2.compute.internal
-        CanonicalizeHostname yes
-        CanonicalizeMaxDots 3
-        CanonicalDomains sslip.io
+      "*.ec2.internal" = {
+        extraOptions = {
+          CanonicalizeHostname = "yes";
+          CanonicalizeMaxDots = "3";
+          CanonicalDomains = "sslip.io";
+        };
+      };
 
-      Host bastion.*
-        ForwardAgent yes
+      "*.us-east-2.compute.internal" = {
+        extraOptions = {
+          CanonicalizeHostname = "yes";
+          CanonicalizeMaxDots = "3";
+          CanonicalDomains = "sslip.io";
+        };
+      };
+
+      "bastion.*" = {
+        forwardAgent = true;
+      };
 
       # Personal GitHub
-      Host personalgit
-        HostName github.com
-        User git
-        IdentityFile ~/.ssh/personal_git.pub
-        IdentitiesOnly yes
+      "personalgit" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/personal_git.pub";
+        identitiesOnly = true;
+      };
 
       # Work GitHub
-      Host workgit
-        HostName github.com
-        User git
-        IdentityFile ~/.ssh/personal_git.pub
-        IdentitiesOnly yes
+      "workgit" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/personal_git.pub";
+        identitiesOnly = true;
+      };
 
-      Host i-* mi-*
-        ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+      "i-* mi-*" = {
+        extraOptions = {
+          ProxyCommand = "sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"";
+        };
+      };
 
-      Host *
-        IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-        StrictHostKeyChecking ask
-        VerifyHostKeyDNS ask
-        NoHostAuthenticationForLocalhost yes
-        ControlMaster auto
-        ControlPath /tmp/ssh-%C.socket
-    '';
+      # Default configuration for all hosts
+      "*" = {
+        extraOptions = {
+          IdentityAgent = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+          StrictHostKeyChecking = "ask";
+          VerifyHostKeyDNS = "ask";
+          NoHostAuthenticationForLocalhost = "yes";
+          ControlMaster = "auto";
+          ControlPath = "/tmp/ssh-%C.socket";
+          # Add common SSH defaults that home-manager usually provides
+          AddKeysToAgent = "yes";
+          Compression = "yes";
+          ServerAliveInterval = "60";
+          ServerAliveCountMax = "3";
+          HashKnownHosts = "yes";
+          ControlPersist = "1800";
+        };
+      };
+    };
   };
 
   # Terminal emulators
