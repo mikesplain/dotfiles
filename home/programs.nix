@@ -55,6 +55,14 @@
         identitiesOnly = true;
       };
 
+      # Managed Work GitHub
+      "workgit_managed" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/workgit_managed.pub";
+        identitiesOnly = true;
+      };
+
       "i-* mi-*" = {
         extraOptions = {
           ProxyCommand = "sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"";

@@ -154,6 +154,10 @@
         condition = "hasconfig:remote.*.url:https://github.com/cisco-sbg/**";
         path = "~/.work_gitconfig";
       }
+      {
+        condition = "hasconfig:remote.*.url:https://github.com/cisco-aispg/**";
+        path = "~/.work_gitconfig_managed";
+      }
     ];
   };
 
