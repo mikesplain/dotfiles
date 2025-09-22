@@ -35,7 +35,14 @@ in
       "telnet"
     ];
     casks =
-      (if osVersion >= "14" then [ "jordanbaird-ice" ] else [ ])
+      (
+        if osVersion >= "26" then
+          [ "jordanbaird-ice@beta" ]
+        else if osVersion >= "14" then
+          [ "jordanbaird-ice" ]
+        else
+          [ ]
+      )
       ++
       # Remove lm-studio since it can be flakey in CI.
       # (if platform.isArm then [ "lm-studio" ] else []) ++

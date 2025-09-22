@@ -137,7 +137,7 @@
         "MSPLAIN-M-CH4Y" = mkDarwinSystem {
           system = "aarch64-darwin";
           hostname = "MSPLAIN-M-CH4Y";
-          osVersion = "14";
+          osVersion = "26";
           username = "msplain";
         };
 
