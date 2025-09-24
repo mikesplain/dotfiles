@@ -144,7 +144,7 @@
         "Mikes-MBP-16" = mkDarwinSystem {
           system = "x86_64-darwin";
           hostname = "Mikes-MBP-16";
-          osVersion = "14";
+          osVersion = "26";
           username = "mike";
         };
 
