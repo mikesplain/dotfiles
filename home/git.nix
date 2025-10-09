@@ -161,5 +161,5 @@
     ];
   };
 
-  programs.gitui.enable = true;
+  # gitui is now installed via Homebrew (see darwin/homebrew.nix)
 }

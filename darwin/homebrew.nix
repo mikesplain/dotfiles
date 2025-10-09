@@ -23,7 +23,9 @@ in
   homebrew = {
     enable = true;
     brews = [
+      "awscli"
       "gh"
+      "gitui"
       "hashcat"
       "hcxtools"
       "ipcalc"

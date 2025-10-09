@@ -2,9 +2,7 @@
   description = "Mike Splain's macOS configuration";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Switching to master to pick up https://github.com/NixOS/nixpkgs/pull/437049 # TODO: Remove
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";

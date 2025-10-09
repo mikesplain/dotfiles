@@ -1,4 +1,12 @@
-{ pkgs, user, inputs, platform, osVersion, ... }: {
+{
+  pkgs,
+  user,
+  inputs,
+  platform,
+  osVersion,
+  ...
+}:
+{
   imports = [ ./homebrew.nix ];
 
   system.stateVersion = 5;
@@ -66,7 +74,7 @@
       zoxide
       # Development tools
       # asdf-vm
-      awscli2
+      # awscli is now installed via Homebrew (see homebrew.nix)
       bashInteractive
       bat
       curl
