@@ -29,6 +29,15 @@
       max-jobs = 10;
       experimental-features = "nix-command flakes";
     };
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 30d";
+      interval = {
+        Weekday = 0; # Run on Sunday
+        Hour = 3; # At 3 AM
+        Minute = 0;
+      };
+    };
   };
 
   programs.zsh.enable = true;
