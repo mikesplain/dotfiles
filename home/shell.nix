@@ -52,7 +52,7 @@
 
     initContent = ''
       eval $(/run/current-system/sw/bin/brew shellenv)
-      PATH="$(brew --prefix)/opt/python@3.13/libexec/bin:$PATH"
+      PATH="$(brew --prefix)/opt/python@3.14/libexec/bin:$PATH"
 
       # Explicitly set LESS variable
       export LESS="-R"
