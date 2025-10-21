@@ -30,6 +30,7 @@ in
       "hcxtools"
       "ipcalc"
       "k9s"
+      "logdy"
       "mise"
       "node"
       "ncdu"
