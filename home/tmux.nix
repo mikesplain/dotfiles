@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.tmux = {
     enable = true;
     terminal = "xterm-256color";
@@ -7,7 +8,7 @@
     escapeTime = 10;
     historyLimit = 50000;
     keyMode = "vi";
-    mouse = false;
+    mouse = true;
 
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
