@@ -97,7 +97,7 @@
     settings = {
       clipboard-read = "allow";
       clipboard-write = "allow";
-      background-opacity = 0.8;
+      background-opacity = 0.9;
       shell-integration = "zsh";
       shell-integration-features = "no-cursor";
       cursor-style = "block";
