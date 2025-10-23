@@ -22,6 +22,10 @@ in
 
   homebrew = {
     enable = true;
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+    };
     brews = [
       "awscli"
       "gh"
