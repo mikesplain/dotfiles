@@ -60,8 +60,8 @@
       bind BTab switch-client -l  # move to last session
 
       # Window splitting
-      bind - split-window -v
-      bind _ split-window -h
+      bind - split-window -v -c "#{pane_current_path}"
+      bind _ split-window -h -c "#{pane_current_path}"
 
       # Pane navigation
       bind -r h select-pane -L  # move left
