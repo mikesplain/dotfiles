@@ -27,6 +27,8 @@ in
     file = {
       ".personal_gitconfig".source = ../templates/gitconfig/personal.tmpl;
       ".work_gitconfig".source = ../templates/gitconfig/work.tmpl;
+      "Library/Application Support/k9s/config.yaml".source = ../templates/k9s.config.yaml;
+      "Library/Application Support/k9s/hotkeys.yaml".source = ../templates/k9s.hotkeys.yaml;
     };
   };
 

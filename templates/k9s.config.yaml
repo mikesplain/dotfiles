@@ -1,0 +1,40 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 5
+  readOnly: false
+  noExitOnCtrlC: false
+  liveViewAutoRefresh: true
+  screenDumpDir: /Users/msplain/Library/Application Support/k9s/screen-dumps
+  portForwardAddress: localhost
+  skipLatestRevCheck: false
+  disablePodCounting: false
+  ui:
+    enableMouse: false
+    headless: true
+    logoless: true
+    crumbsless: false
+    splashless: true
+    reactive: true
+    noIcons: false
+    defaultsToFullScreen: true
+    useFullGVRTitle: false
+  shellPod:
+    image: busybox:1.35.0
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi
+  logger:
+    tail: 10000
+    buffer: 10000
+    sinceSeconds: -1
+    textWrap: true
+    disableAutoscroll: false
+    showTime: false
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
