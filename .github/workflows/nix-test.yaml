@@ -43,20 +43,16 @@ jobs:
           sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin || true
           sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin || true
 
-          brew unlink python@3.13 || true
-          brew uninstall --ignore-dependencies --force python@3.13 || true
-          brew uninstall --ignore-dependencies --force openssl@1.1 || true
-          brew uninstall --ignore-dependencies --force openssl@3 || true
-          brew uninstall --ignore-dependencies --force azure/bicep/bicep || true
-          brew untap azure/bicep || true
-
-          sudo mv /opt/homebrew/Library/Taps /opt/homebrew/Library/Taps.before-nix-darwin || true
-          sudo mv /usr/local/Homebrew/Library/Taps /usr/local/Homebrew/Library/Taps.before-nix-darwin || true
-
-          sudo rm -rf /usr/local/bin/idle3.13 || true
-          sudo rm -rf /usr/local/bin/pip3** || true
-          sudo rm -rf /usr/local/bin/pydoc** || true
-          sudo rm -rf m /usr/local/bin/python3** || true
+          # Remove all Homebrew formulae, casks, and taps before testing
+          if [ -n "$(brew list --formula)" ]; then
+            brew uninstall --force --ignore-dependencies $(brew list --formula) || true
+          fi
+          if [ -n "$(brew list --cask)" ]; then
+            brew uninstall --cask --force $(brew list --cask) || true
+          fi
+          if [ -n "$(brew tap)" ]; then
+            brew untap $(brew tap) || true
+          fi
 
       - name: Test - Nix Run
         env:
