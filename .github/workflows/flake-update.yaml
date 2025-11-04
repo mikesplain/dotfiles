@@ -93,7 +93,8 @@ jobs:
         if: steps.diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
-          token: "x-access-token:${{ steps.generate_token.outputs.token }}"
+          token: ${{ steps.generate_token.outputs.token }}
+          branch-token: ${{ steps.generate_token.outputs.token }}
           base: ${{ env.BASE_BRANCH }}
           branch: ${{ env.UPDATE_BRANCH }}
           commit-message: ${{ steps.metadata.outputs.title }}
