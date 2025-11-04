@@ -65,6 +65,10 @@ jobs:
           git add -A
           git commit -m "${{ steps.metadata.outputs.title }}"
 
+      - name: Push update branch
+        if: steps.diff.outputs.changed == 'true'
+        run: git push --force-with-lease origin "$UPDATE_BRANCH"
+
       - name: Create or update pull request
         id: cpr
         if: steps.diff.outputs.changed == 'true'
@@ -75,7 +79,6 @@ jobs:
           branch: ${{ env.UPDATE_BRANCH }}
           commit-message: ${{ steps.metadata.outputs.title }}
           title: ${{ steps.metadata.outputs.title }}
-          update-existing-pr: true
           body: |
             ## Summary
             - Automated flake update run on ${{ steps.metadata.outputs.date }}
