@@ -37,6 +37,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      - name: Ensure update branch exists
+        run: |
+          if ! git ls-remote --exit-code --heads origin "$UPDATE_BRANCH" >/dev/null 2>&1; then
+            git push origin "HEAD:$UPDATE_BRANCH"
+          fi
+
       - name: Prepare metadata
         id: metadata
         run: |
@@ -64,10 +70,6 @@ jobs:
           git checkout -B "$UPDATE_BRANCH"
           git add -A
           git commit -m "${{ steps.metadata.outputs.title }}"
-
-      - name: Push update branch
-        if: steps.diff.outputs.changed == 'true'
-        run: git push --force-with-lease origin "$UPDATE_BRANCH"
 
       - name: Create or update pull request
         id: cpr
