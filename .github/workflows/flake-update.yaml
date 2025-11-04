@@ -1,0 +1,125 @@
+name: Daily Flake Update
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: flake-update
+  cancel-in-progress: false
+
+jobs:
+  flake-update:
+    runs-on: ubuntu-latest
+    env:
+      BASE_BRANCH: main
+      UPDATE_BRANCH: automation/flake-update
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Prepare metadata
+        id: metadata
+        run: |
+          DATE=$(date -u "+%Y-%m-%d")
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "title=chore: update flake ($DATE)" >> "$GITHUB_OUTPUT"
+
+      - name: Update flake inputs
+        env:
+          NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+        run: nix --extra-experimental-features "nix-command flakes" flake update
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git status --porcelain | grep -q .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit changes
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git checkout -B "$UPDATE_BRANCH"
+          git add -A
+          git commit -m "${{ steps.metadata.outputs.title }}"
+
+      - name: Create or update pull request
+        id: cpr
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: ${{ env.BASE_BRANCH }}
+          branch: ${{ env.UPDATE_BRANCH }}
+          commit-message: ${{ steps.metadata.outputs.title }}
+          title: ${{ steps.metadata.outputs.title }}
+          update-existing-pr: true
+          body: |
+            ## Summary
+            - Automated flake update run on ${{ steps.metadata.outputs.date }}
+            - Ran `nix flake update`
+
+            ## Details
+            This PR updates the Nix flake inputs. The branch `${{ env.UPDATE_BRANCH }}` is force-refreshed on each scheduled run so only one proposal stays open.
+
+      - name: Synchronize PR metadata
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+          PR_TITLE: ${{ steps.metadata.outputs.title }}
+        with:
+          script: |
+            const prNumber = Number(process.env.PR_NUMBER);
+            const date = '${{ steps.metadata.outputs.date }}';
+            const updateBranch = process.env.UPDATE_BRANCH;
+            const bodyLines = [
+              '## Summary',
+              `- Automated flake update run on ${date}`,
+              '- Ran `nix flake update`',
+              '',
+              '## Details',
+              `This PR updates the Nix flake inputs. The branch \`${updateBranch}\` is force-refreshed on each scheduled run so only one proposal stays open.`
+            ];
+            const body = bodyLines.join('\n');
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              title: process.env.PR_TITLE,
+              body
+            });
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
+
+      - name: No changes detected
+        if: steps.diff.outputs.changed != 'true'
+        run: echo "No flake changes detected; skipping PR update."
