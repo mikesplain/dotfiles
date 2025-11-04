@@ -31,11 +31,28 @@ jobs:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate automation token
+        id: generate_token
+        uses: tibdex/github-app-token@v2.1.0
+        with:
+          app_id: ${{ secrets.RENOVATE_APP_ID }}
+          private_key: ${{ secrets.RENOVATE_PEM }}
+
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Configure credentials
+        env:
+          APP_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          if [ -z "$APP_TOKEN" ]; then
+            echo "GitHub App token not available" >&2
+            exit 1
+          fi
+          git remote set-url origin "https://x-access-token:${APP_TOKEN}@github.com/${{ github.repository }}"
 
       - name: Ensure update branch exists
         run: |
@@ -76,7 +93,7 @@ jobs:
         if: steps.diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: "x-access-token:${{ steps.generate_token.outputs.token }}"
           base: ${{ env.BASE_BRANCH }}
           branch: ${{ env.UPDATE_BRANCH }}
           commit-message: ${{ steps.metadata.outputs.title }}
