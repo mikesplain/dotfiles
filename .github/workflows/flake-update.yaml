@@ -109,7 +109,7 @@ jobs:
 
       - name: Synchronize PR metadata
         if: steps.cpr.outputs.pull-request-number != ''
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
           PR_TITLE: ${{ steps.metadata.outputs.title }}
