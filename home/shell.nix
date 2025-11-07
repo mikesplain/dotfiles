@@ -77,6 +77,44 @@
         sudo darwin-rebuild switch --flake .
       }
 
+      # Flip k9s nodeShell flags to true across stored cluster configs
+      enable_k9s_node_shell() {
+        local cluster_dir="$HOME/Library/Application Support/k9s/clusters"
+        if [[ ! -d "$cluster_dir" ]]; then
+          echo "k9s cluster directory not found: $cluster_dir" >&2
+          return 1
+        fi
+
+        local -i updates=0
+        while IFS= read -r -d $'\0' file; do
+          # Skip binary files to avoid mangling them
+          if LC_ALL=C grep -qI "" "$file" && LC_ALL=C grep -q "nodeShell:[[:space:]]*false" "$file"; then
+            local tmp_file
+            if tmp_file=$(mktemp); then
+              if LC_ALL=C sed -E 's/nodeShell:[[:space:]]*false/nodeShell: true/g' "$file" > "$tmp_file"; then
+                if cat "$tmp_file" > "$file"; then
+                  printf 'Updated %s\n' "$file"
+                  updates=$((updates + 1))
+                else
+                  printf 'Failed to write %s\n' "$file" >&2
+                fi
+              else
+                printf 'Failed to update %s\n' "$file" >&2
+              fi
+              rm -f "$tmp_file"
+            else
+              printf 'Failed to create temp file for %s\n' "$file" >&2
+            fi
+          fi
+        done < <(find "$cluster_dir" -type f -print0)
+
+        if [[ $updates -eq 0 ]]; then
+          printf 'No nodeShell flags needed changes in %s\n' "$cluster_dir"
+        else
+          printf 'Updated %d file(s)\n' "$updates"
+        fi
+      }
+
       # Cisco Specific Stuff
       [[ -f $HOME/.zshrc-cisco ]] && source $HOME/.zshrc-cisco
 
