@@ -53,6 +53,11 @@
         user = "git";
         identityFile = "~/.ssh/personal_git.pub";
         identitiesOnly = true;
+        extraOptions = {
+          ControlMaster = "auto";
+          ControlPath = "/tmp/ssh-workgit-%C.socket";
+          ControlPersist = "10m";
+        };
       };
 
       # Managed Work GitHub
@@ -61,6 +66,11 @@
         user = "git";
         identityFile = "~/.ssh/workgit_managed.pub";
         identitiesOnly = true;
+        extraOptions = {
+          ControlMaster = "auto";
+          ControlPath = "/tmp/ssh-workgit_managed-%C.socket";
+          ControlPersist = "10m";
+        };
       };
 
       "i-* mi-*" = {
