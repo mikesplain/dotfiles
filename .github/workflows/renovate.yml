@@ -28,7 +28,7 @@ jobs:
           private_key: ${{ secrets.RENOVATE_PEM }}
 
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Validate Renovate JSON
         run: jq empty .github/renovate.json
