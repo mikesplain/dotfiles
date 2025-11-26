@@ -40,6 +40,7 @@
       "dot" = "cd $HOME/.dotfiles";
       "dotfiles" = "dot";
       w = "windsurf .";
+      c = "cursor .";
     };
 
     sessionVariables = {
