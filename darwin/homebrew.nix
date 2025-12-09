@@ -60,7 +60,7 @@ in
         "disk-inventory-x"
         # "docker"
         "elgato-stream-deck"
-        "ghostty"
+        "ghostty@tip" # TODO: swap to regular ghostty once `find` is generally available
         "google-chrome"
         "gpg-suite"
         # "logi-options-plus"
