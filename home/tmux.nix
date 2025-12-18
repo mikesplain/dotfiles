@@ -19,6 +19,7 @@
         plugin = power-theme;
         extraConfig = ''
           set -g @tmux_power_theme 'coral'
+          set -g @tmux_power_time_format '%T %Z |  #(TZ=UTC date +%%T) UTC'
         '';
       }
     ];
