@@ -51,6 +51,8 @@
       set -g visual-activity off
 
       # -- Navigation ----------------------------------------------------------------
+      # Reduce repeat window; set to 0 to disable repeat completely.
+      set -g repeat-time 200
       # Create session
       bind C-c new-session
 
