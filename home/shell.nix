@@ -39,6 +39,7 @@
       "cd ......." = "../../../../../..";
       "dot" = "cd $HOME/.dotfiles";
       "dotfiles" = "dot";
+      update_flake_from_pr = "__flake_update_merge";
       w = "windsurf .";
       c = "cursor .";
     };
@@ -76,6 +77,151 @@
       # Switch to the current flake
       switch() {
         sudo darwin-rebuild switch --flake .
+      }
+
+      # Merge latest successful flake update PR and pull locally.
+      __flake_update_merge() {
+        local workflow="flake-update.yaml"
+        local repo_dir="$HOME/.dotfiles"
+        local pr_arg="$1"
+
+        if [[ ! -d "$repo_dir/.git" ]]; then
+          echo "dotfiles repo not found at $repo_dir" >&2
+          return 1
+        fi
+
+        if ! command -v gh >/dev/null 2>&1; then
+          echo "gh CLI is not available" >&2
+          return 1
+        fi
+
+        (
+          cd "$repo_dir" || exit 1
+
+          local run_fields
+          if ! run_fields=$(gh run list --workflow "$workflow" --limit 1 --json status,conclusion,headBranch,url --jq 'if length == 0 then "" else .[0] | "\(.status)\t\(.conclusion)\t\(.headBranch)\t\(.url)" end'); then
+            echo "Failed to list runs for $workflow" >&2
+            exit 1
+          fi
+          if [[ -z "$run_fields" ]]; then
+            echo "No runs found for $workflow" >&2
+            exit 1
+          fi
+
+          local run_status run_conclusion run_branch run_url
+          IFS=$'\t' read -r run_status run_conclusion run_branch run_url <<< "$run_fields"
+
+          if [[ "$run_status" != "completed" || "$run_conclusion" != "success" ]]; then
+            echo "Latest run is not successful: $run_status/$run_conclusion ($run_url)" >&2
+            exit 1
+          fi
+
+          local default_branch
+          default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+          if [[ -z "$default_branch" ]]; then
+            default_branch="main"
+          fi
+
+          local pr_fields=""
+          if [[ -n "$pr_arg" ]]; then
+            if [[ "$pr_arg" == <-> ]]; then
+              if ! pr_fields=$(gh pr view "$pr_arg" --json number,url,state --jq 'select(.state == "OPEN") | "\(.number)\t\(.url)"'); then
+                echo "Failed to read PR $pr_arg" >&2
+                exit 1
+              fi
+            else
+              if ! pr_fields=$(gh pr list --state open --head "$pr_arg" --json number,url --jq 'if length == 0 then "" else .[0] | "\(.number)\t\(.url)" end'); then
+                echo "Failed to list PRs for branch $pr_arg" >&2
+                exit 1
+              fi
+            fi
+            if [[ -z "$pr_fields" ]]; then
+              echo "No open PR found for selector $pr_arg" >&2
+              exit 1
+            fi
+          elif [[ "$run_branch" != "$default_branch" ]]; then
+            if ! pr_fields=$(gh pr list --state open --head "$run_branch" --json number,url --jq 'if length == 0 then "" else .[0] | "\(.number)\t\(.url)" end'); then
+              echo "Failed to list PRs for branch $run_branch" >&2
+              exit 1
+            fi
+          fi
+
+          local pr_number pr_url
+          if [[ -n "$pr_fields" ]]; then
+            IFS=$'\t' read -r pr_number pr_url <<< "$pr_fields"
+          else
+            local pr_list
+            if ! pr_list=$(gh pr list --state open --limit 50 --json number,url,title,headRefName,author --jq '.[] | "\(.number)\t\(.url)\t\(.title)\t\(.headRefName)\t\(.author.login)"'); then
+              echo "Failed to list open PRs" >&2
+              exit 1
+            fi
+            if [[ -z "$pr_list" ]]; then
+              echo "No open PRs found" >&2
+              exit 1
+            fi
+
+            local -a candidates candidate_urls candidate_titles candidate_heads
+            local pr_number_item pr_url_item pr_title_item pr_head_item pr_author_item
+            while IFS=$'\t' read -r pr_number_item pr_url_item pr_title_item pr_head_item pr_author_item; do
+              local files
+              if ! files=$(gh pr view "$pr_number_item" --json files --jq '.files[].path'); then
+                echo "Failed to read files for PR $pr_number_item" >&2
+                exit 1
+              fi
+              if echo "$files" | grep -Fxq "flake.lock"; then
+                candidates+=("$pr_number_item")
+                candidate_urls+=("$pr_url_item")
+                candidate_titles+=("$pr_title_item")
+                candidate_heads+=("$pr_head_item")
+              fi
+            done <<< "$pr_list"
+
+            local candidate_count=$#candidates
+            if [[ "$candidate_count" -eq 0 ]]; then
+              echo "No open PRs updating flake.lock found" >&2
+              exit 1
+            fi
+            if [[ "$candidate_count" -gt 1 ]]; then
+              echo "Multiple open PRs update flake.lock; pass a PR number to merge:" >&2
+              local i=1
+              while [[ "$i" -le "$candidate_count" ]]; do
+                echo "#$candidates[$i] $candidate_titles[$i] ($candidate_heads[$i]) $candidate_urls[$i]" >&2
+                i=$((i + 1))
+              done
+              exit 1
+            fi
+
+            pr_number=$candidates[1]
+            pr_url=$candidate_urls[1]
+          fi
+
+          if [[ -z "$pr_number" ]]; then
+            echo "No open PR matched the flake update criteria" >&2
+            exit 1
+          fi
+
+          local total_checks failing_checks
+          if ! total_checks=$(gh pr view "$pr_number" --json statusCheckRollup --jq '.statusCheckRollup | length'); then
+            echo "Failed to read status checks for PR $pr_url" >&2
+            exit 1
+          fi
+          if [[ "$total_checks" -eq 0 ]]; then
+            echo "No status checks found for PR $pr_url" >&2
+            exit 1
+          fi
+
+          if ! failing_checks=$(gh pr view "$pr_number" --json statusCheckRollup --jq '[.statusCheckRollup[] | select(.status != "COMPLETED" or .conclusion != "SUCCESS")] | length'); then
+            echo "Failed to evaluate checks for PR $pr_url" >&2
+            exit 1
+          fi
+          if [[ "$failing_checks" -ne 0 ]]; then
+            echo "PR checks are not all green for $pr_url" >&2
+            exit 1
+          fi
+
+          gh pr merge "$pr_number" --merge || exit 1
+          git pull --ff-only || exit 1
+        )
       }
 
       # Flip k9s nodeShell flags to true across stored cluster configs
