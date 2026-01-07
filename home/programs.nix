@@ -73,11 +73,12 @@
         };
       };
 
-      "i-* mi-*" = {
-        extraOptions = {
-          ProxyCommand = "sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"";
-        };
-      };
+      # This won't work in most cases because this requires the public key to already be on the instance and we don't use keys.
+      # "i-* mi-*" = {
+      #   extraOptions = {
+      #     ProxyCommand = "sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"";
+      #   };
+      # };
 
       # Default configuration for all hosts
       "*" = {
