@@ -70,7 +70,7 @@
         help                    Show this list
         dot, dotfiles           cd $HOME/.dotfiles
         switch                  darwin-rebuild switch --flake .
-        update_flake_from_pr    Merge latest successful flake update PR and pull
+        update_flake_from_pr    Approve + merge latest successful flake update PR and pull
         w                       windsurf .
         c                       cursor .
         clear_dns_cache         Flush macOS DNS cache
@@ -136,7 +136,7 @@
               sudo darwin-rebuild switch --flake .
             }
 
-            # Merge latest successful flake update PR and pull locally.
+            # Approve + merge latest successful flake update PR and pull locally.
             __flake_update_merge() {
               local workflow="flake-update.yaml"
               local repo_dir="$HOME/.dotfiles"
@@ -274,6 +274,38 @@
                 if [[ "$failing_checks" -ne 0 ]]; then
                   echo "PR checks are not all green for $pr_url" >&2
                   exit 1
+                fi
+
+                gh pr review "$pr_number" --approve || exit 1
+
+                local pr_state pr_automerge
+                if ! pr_state=$(gh pr view "$pr_number" --json state --jq '.state'); then
+                  echo "Failed to read PR state for $pr_url" >&2
+                  exit 1
+                fi
+                if [[ "$pr_state" == "MERGED" ]]; then
+                  git pull --ff-only || exit 1
+                  exit 0
+                fi
+
+                if ! pr_automerge=$(gh pr view "$pr_number" --json autoMergeRequest --jq 'if .autoMergeRequest == null then "" else "enabled" end'); then
+                  echo "Failed to read auto-merge state for $pr_url" >&2
+                  exit 1
+                fi
+                if [[ -n "$pr_automerge" ]]; then
+                  local attempt=0
+                  while [[ "$attempt" -lt 10 ]]; do
+                    if ! pr_state=$(gh pr view "$pr_number" --json state --jq '.state'); then
+                      echo "Failed to read PR state for $pr_url" >&2
+                      exit 1
+                    fi
+                    if [[ "$pr_state" == "MERGED" ]]; then
+                      git pull --ff-only || exit 1
+                      exit 0
+                    fi
+                    sleep 3
+                    attempt=$((attempt + 1))
+                  done
                 fi
 
                 gh pr merge "$pr_number" --merge || exit 1
