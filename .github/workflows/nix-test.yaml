@@ -103,4 +103,4 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          nix run nixpkgs#home-manager -- switch --flake .#linux-ci
+          nix run nixpkgs#home-manager -- switch -b backup --flake .#linux-ci
