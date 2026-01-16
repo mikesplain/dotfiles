@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  platform,
+  ...
+}:
 {
   # VSCode
   programs.vscode = {
@@ -83,7 +88,6 @@
       # Default configuration for all hosts
       "*" = {
         extraOptions = {
-          IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
           StrictHostKeyChecking = "ask";
           VerifyHostKeyDNS = "ask";
           NoHostAuthenticationForLocalhost = "yes";
@@ -96,6 +100,9 @@
           ServerAliveCountMax = "3";
           HashKnownHosts = "yes";
           ControlPersist = "1800";
+        }
+        // lib.optionalAttrs platform.isDarwin {
+          IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
         };
       };
     };
