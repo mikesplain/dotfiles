@@ -22,10 +22,16 @@ jobs:
         os:
           - name: macos-26
             arch: aarch64-darwin
+            kind: darwin
           - name: macos-15
             arch: aarch64-darwin
+            kind: darwin
           - name: macos-14
             arch: aarch64-darwin
+            kind: darwin
+          - name: ubuntu-latest
+            arch: x86_64-linux
+            kind: linux
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
@@ -33,6 +39,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup
+        if: matrix.os.kind == 'darwin'
         run: |
           sed -i '' "s/defaultHostname/$(scutil --get LocalHostName)/g" flake.nix
           sed -i '' "s/defaultSystem/${{matrix.os.arch}}/g" flake.nix
@@ -55,6 +62,7 @@ jobs:
           fi
 
       - name: Test - Nix Run
+        if: matrix.os.kind == 'darwin'
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
@@ -62,6 +70,7 @@ jobs:
 
       - name: Test - Switch
         # See https://github.com/actions/runner-images/issues/264
+        if: matrix.os.kind == 'darwin'
         shell: zsh {0}
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
@@ -72,4 +81,26 @@ jobs:
       #   run: bash -c "source ~/.bashrc"
 
       - name: Test - zshrc
+        if: matrix.os.kind == 'darwin'
         run: zsh -vc "source ~/.zshrc && help"
+
+      - name: Test - Flake Check
+        if: matrix.os.kind == 'linux'
+        env:
+          NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          nix flake check
+
+      - name: Test - Home Manager Activation
+        if: matrix.os.kind == 'linux'
+        env:
+          NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          nix build .#homeConfigurations.linux-ci.activationPackage
+
+      - name: Test - Home Manager Switch
+        if: matrix.os.kind == 'linux'
+        env:
+          NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          nix run nixpkgs#home-manager -- switch --flake .#linux-ci
