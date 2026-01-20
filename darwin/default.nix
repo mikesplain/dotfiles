@@ -22,7 +22,8 @@
   fonts.packages = [ pkgs.nerd-fonts.meslo-lg ];
 
   nix = {
-    package = pkgs.nixVersions.latest;
+    # Prefer stable to maximize cache hits; latest can trigger full source builds/tests.
+    package = pkgs.nixVersions.stable;
     settings = {
       auto-optimise-store = false; # Disabled due to https://github.com/NixOS/nix/issues/7273#issuecomment-1325073957
       trusted-users = [ user.name ];
