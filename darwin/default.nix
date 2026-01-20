@@ -77,7 +77,7 @@
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       # Core packages
-      nixfmt-classic
+      nixfmt
       git
       coreutils
       pwnvim

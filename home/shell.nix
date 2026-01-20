@@ -116,7 +116,7 @@
 
       Utilities (Home Manager + Flake)
         bat, coreutils, curl, delta, direnv, eza, fd, fzf, git, jq, kubectx,
-        nixfmt-classic, pwnvim, ripgrep, starship, tree, wget, zoxide
+        nixfmt, pwnvim, ripgrep, starship, tree, wget, zoxide
       EOF
             }
 
