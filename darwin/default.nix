@@ -80,7 +80,7 @@
       nixfmt
       git
       coreutils
-      pwnvim
+      neovim
       zoxide
       # Development tools
       # asdf-vm
