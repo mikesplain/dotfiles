@@ -22,7 +22,10 @@
     nur.url = "github:nix-community/NUR";
 
     # Try using the original pwnvim which might have the proper fzf-lua configuration
-    pwnvim.url = "github:zmre/pwnvim";
+    pwnvim = {
+      url = "github:zmre/pwnvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # pwnvim.url = "github:mikesplain/pwnvim";
 
     # Homebrew inputs
