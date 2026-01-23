@@ -21,9 +21,9 @@ rec {
       pre-commit-check = inputs.git-hooks-nix.lib.${system}.run {
         src = ./.;
         hooks = {
-          nixfmt-rfc-style = {
+          nixfmt = {
             enable = true;
-            description = "Format nix files using nixfmt-rfc-style";
+            description = "Format nix files using nixfmt";
           };
           prettier = {
             enable = true;
@@ -37,7 +37,7 @@ rec {
         name = "dotfiles-shell-from-devshell";
         buildInputs = [
           pkgs.hello
-          pkgs.nixpkgs-fmt # For nix formatting
+          pkgs.nixfmt # For nix formatting
           pkgs.nodePackages.prettier # For general formatting
         ]
         ++ pre-commit-check.enabledPackages;
