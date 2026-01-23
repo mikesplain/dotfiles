@@ -16,9 +16,6 @@ rec {
         config.allowUnfree = true;
         overlays = [
           inputs.nur.overlays.default
-          (final: prev: {
-            pwnvim = inputs.pwnvim.packages.${system}.pwnvim;
-          })
         ];
       };
       pre-commit-check = inputs.git-hooks-nix.lib.${system}.run {
@@ -42,7 +39,8 @@ rec {
           pkgs.hello
           pkgs.nixpkgs-fmt # For nix formatting
           pkgs.nodePackages.prettier # For general formatting
-        ] ++ pre-commit-check.enabledPackages;
+        ]
+        ++ pre-commit-check.enabledPackages;
 
         shellHook = ''
           echo "flake.lock" > .prettierignore

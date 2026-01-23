@@ -4,16 +4,16 @@
 set -e
 
 # Check if Nix is installed
-if ! command -v nix &> /dev/null; then
-    echo "Nix is not installed. Installing now..."
-    sh <(curl -L https://nixos.org/nix/install)
+if ! command -v nix &>/dev/null; then
+  echo "Nix is not installed. Installing now..."
+  sh <(curl -L https://nixos.org/nix/install)
 
-    # Source nix
-    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
+  # Source nix
+  if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+  fi
 else
-    echo "Nix is already installed."
+  echo "Nix is already installed."
 fi
 
 # Enable experimental features
@@ -22,8 +22,8 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 # Clone repository if not already there
 DOTFILES_DIR="$HOME/.dotfiles"
 if [ ! -d "$DOTFILES_DIR" ]; then
-    echo "Cloning dotfiles repository..."
-    git clone https://github.com/mikesplain/dotfiles.git "$DOTFILES_DIR"
+  echo "Cloning dotfiles repository..."
+  git clone https://github.com/mikesplain/dotfiles.git "$DOTFILES_DIR"
 fi
 
 # Enter the dotfiles directory

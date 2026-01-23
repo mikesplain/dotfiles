@@ -21,10 +21,6 @@
 
     nur.url = "github:nix-community/NUR";
 
-    # Try using the original pwnvim which might have the proper fzf-lua configuration
-    pwnvim.url = "github:zmre/pwnvim";
-    # pwnvim.url = "github:mikesplain/pwnvim";
-
     # Homebrew inputs
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
@@ -47,7 +43,6 @@
       nix-darwin,
       home-manager,
       nur,
-      pwnvim,
       ...
     }:
     let
@@ -73,7 +68,13 @@
             overlays = [
               nur.overlays.default
               (final: prev: {
-                pwnvim = inputs.pwnvim.packages.${system}.pwnvim;
+                vscode-lldb-adapter =
+                  if prev.stdenv.isDarwin && prev.stdenv.isx86_64 then
+                    prev.vscode-lldb-adapter.override {
+                      llvmPackages = prev.llvmPackages_18;
+                    }
+                  else
+                    prev.vscode-lldb-adapter;
               })
             ];
           };
@@ -114,7 +115,6 @@
                   inherit
                     inputs
                     hostname
-                    pwnvim
                     platform
                     ;
                   user = user;
