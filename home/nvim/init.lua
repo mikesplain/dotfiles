@@ -114,6 +114,19 @@ if ok_autopairs then
   autopairs.setup({})
 end
 
+local ok_blink, blink = pcall(require, "blink.cmp")
+if ok_blink then
+  blink.setup({
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+    },
+    completion = {
+      documentation = { auto_show = false },
+    },
+    fuzzy = { implementation = "lua" },
+  })
+end
+
 local ok_treesitter, treesitter = pcall(require, "nvim-treesitter.configs")
 if ok_treesitter then
   treesitter.setup({
@@ -161,7 +174,19 @@ local function on_attach(client, bufnr)
   end
 end
 
+local function with_blink_capabilities(config)
+  local ok_blink_caps, blink_caps = pcall(require, "blink.cmp")
+  if not ok_blink_caps then
+    return config
+  end
+
+  config = config or {}
+  config.capabilities = blink_caps.get_lsp_capabilities(config.capabilities)
+  return config
+end
+
 local function enable_lsp(name, config)
+  config = with_blink_capabilities(config)
   if vim.lsp and vim.lsp.config and vim.lsp.enable then
     if config then
       vim.lsp.config(name, config)

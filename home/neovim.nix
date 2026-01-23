@@ -46,6 +46,8 @@ in
       nvim-autopairs
       catppuccin-nvim
       nvim-lspconfig
+      blink-cmp
+      friendly-snippets
       trouble-nvim
       nvim-navic
       nui-nvim
