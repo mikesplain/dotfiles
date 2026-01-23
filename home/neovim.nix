@@ -1,3 +1,4 @@
+# Based on https://github.com/zmre/pwnvim but more lightweight
 { pkgs, ... }:
 let
   treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (
@@ -49,6 +50,7 @@ in
       vim-repeat
       comment-nvim
       oil-nvim
+      snacks-nvim
       nvim-autopairs
       catppuccin-nvim
       nvim-lspconfig
@@ -56,6 +58,8 @@ in
       nvim-lint
       blink-cmp
       friendly-snippets
+      nvim-notify
+      noice-nvim
       trouble-nvim
       nvim-navic
       nui-nvim

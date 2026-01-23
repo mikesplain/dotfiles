@@ -46,6 +46,7 @@ if ok_which_key then
     { "<leader>l", group = "lsp" },
     { "<leader>g", group = "git" },
     { "<leader>q", group = "trouble" },
+    { "<leader>f", group = "find" },
   })
 end
 
@@ -64,6 +65,80 @@ if ok_lualine then
       section_separators = "",
       component_separators = "",
     },
+  })
+end
+
+local ok_snacks, snacks = pcall(require, "snacks")
+if ok_snacks then
+  snacks.setup({
+    picker = { enabled = true },
+  })
+  vim.keymap.set("n", "<leader>ff", function()
+    snacks.picker.files()
+  end, { desc = "Find files" })
+  vim.keymap.set("n", "<leader>fg", function()
+    snacks.picker.grep()
+  end, { desc = "Grep" })
+  vim.keymap.set("n", "<leader>fb", function()
+    snacks.picker.buffers()
+  end, { desc = "Buffers" })
+  vim.keymap.set("n", "<leader>/", function()
+    snacks.picker.grep()
+  end, { desc = "Grep" })
+end
+
+local ok_notify, notify = pcall(require, "notify")
+if ok_notify then
+  notify.setup({
+    stages = "static",
+    timeout = 5000,
+  })
+  vim.notify = notify
+end
+
+local ok_noice, noice = pcall(require, "noice")
+if ok_noice then
+  noice.setup({
+    lsp = {
+      override = {
+        ["vim.lsp.util.stylize_markdown"] = false,
+      },
+      progress = {
+        enabled = true,
+        view = "mini",
+        format = "lsp_progress",
+        format_done = "lsp_progress_done",
+        throttle = 1000 / 30,
+      },
+      hover = {
+        enabled = true,
+        silent = false,
+      },
+      signature = {
+        enabled = true,
+        auto_open = { enabled = true, trigger = true, throttle = 50 },
+      },
+      message = {
+        enabled = true,
+        view = "notify",
+      },
+    },
+    presets = {
+      bottom_search = true,
+      long_message_to_split = true,
+      lsp_doc_border = true,
+    },
+    cmdline = { enabled = true, view = "cmdline" },
+    messages = {
+      enabled = true,
+      view = "mini",
+      view_error = "notify",
+      view_warn = "notify",
+      view_history = "messages",
+      view_search = "virtualtext",
+    },
+    popupmenu = { enabled = true, backend = "nui" },
+    notify = { enabled = true, view = "notify" },
   })
 end
 
