@@ -127,6 +127,46 @@ if ok_blink then
   })
 end
 
+local ok_conform, conform = pcall(require, "conform")
+if ok_conform then
+  conform.setup({
+    format_on_save = {
+      timeout_ms = 800,
+      lsp_fallback = true,
+    },
+    formatters_by_ft = {
+      go = { "gofmt" },
+      python = { "ruff_format" },
+      sh = { "shfmt" },
+      bash = { "shfmt" },
+      zsh = { "shfmt" },
+      terraform = { "terraform_fmt" },
+      hcl = { "hcl" },
+      json = { "jq" },
+      jsonc = { "jq" },
+      yaml = { "yamlfmt" },
+    },
+  })
+end
+
+local ok_lint, lint = pcall(require, "lint")
+if ok_lint then
+  lint.linters_by_ft = {
+    python = { "ruff" },
+    sh = { "shellcheck" },
+    bash = { "shellcheck" },
+    zsh = { "shellcheck" },
+  }
+
+  local lint_group = vim.api.nvim_create_augroup("msplain_lint", { clear = true })
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    group = lint_group,
+    callback = function()
+      lint.try_lint()
+    end,
+  })
+end
+
 local ok_treesitter, treesitter = pcall(require, "nvim-treesitter.configs")
 if ok_treesitter then
   treesitter.setup({
@@ -155,7 +195,11 @@ local function on_attach(client, bufnr)
   map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
   map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
   map("n", "<leader>lf", function()
-    vim.lsp.buf.format({ async = true })
+    if ok_conform then
+      conform.format({ timeout_ms = 800, lsp_fallback = true })
+    else
+      vim.lsp.buf.format({ async = true })
+    end
   end, "Format buffer")
   map("n", "<leader>e", vim.diagnostic.open_float, "Line diagnostics")
   map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")

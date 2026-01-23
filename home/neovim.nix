@@ -46,6 +46,8 @@ in
       nvim-autopairs
       catppuccin-nvim
       nvim-lspconfig
+      conform-nvim
+      nvim-lint
       blink-cmp
       friendly-snippets
       trouble-nvim
@@ -66,8 +68,11 @@ in
       terraform-ls
       terraform
       hclfmt
+      jq
+      yamlfmt
       shfmt
       shellcheck
+      ruff
       solargraph
       ruby
     ];
