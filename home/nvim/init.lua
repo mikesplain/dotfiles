@@ -140,11 +140,19 @@ if ok_conform then
       sh = { "shfmt" },
       bash = { "shfmt" },
       zsh = { "shfmt" },
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      css = { "prettier" },
+      scss = { "prettier" },
+      html = { "prettier" },
       terraform = { "terraform_fmt" },
       hcl = { "hcl" },
-      json = { "jq" },
-      jsonc = { "jq" },
+      json = { "prettier" },
+      jsonc = { "prettier" },
       yaml = { "yamlfmt" },
+      nix = { "alejandra" },
     },
   })
 end
@@ -156,6 +164,7 @@ if ok_lint then
     sh = { "shellcheck" },
     bash = { "shellcheck" },
     zsh = { "shellcheck" },
+    nix = { "statix" },
   }
 
   local lint_group = vim.api.nvim_create_augroup("msplain_lint", { clear = true })
@@ -249,6 +258,7 @@ enable_lsp("gopls", { on_attach = on_attach })
 enable_lsp("pyright", { on_attach = on_attach })
 enable_lsp("bashls", { on_attach = on_attach })
 enable_lsp("solargraph", { on_attach = on_attach })
+enable_lsp("nixd", { on_attach = on_attach })
 enable_lsp("yamlls", {
   on_attach = on_attach,
   settings = {
@@ -258,6 +268,9 @@ enable_lsp("yamlls", {
   },
 })
 enable_lsp("jsonls", { on_attach = on_attach })
+enable_lsp("ts_ls", { on_attach = on_attach })
+enable_lsp("html", { on_attach = on_attach })
+enable_lsp("cssls", { on_attach = on_attach })
 enable_lsp("terraformls", { on_attach = on_attach })
 
 local group = vim.api.nvim_create_augroup("msplain_filetypes", { clear = true })

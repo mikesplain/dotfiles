@@ -7,10 +7,16 @@ let
       gomod
       gowork
       gosum
+      nix
       python
       ruby
       yaml
       json
+      javascript
+      typescript
+      tsx
+      css
+      html
       hcl
       terraform
       lua
@@ -61,10 +67,16 @@ in
     extraPackages = with pkgs; [
       gopls
       go
+      nixd
+      alejandra
+      statix
       pyright
       bash-language-server
       yaml-language-server
       vscode-langservers-extracted
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      nodePackages.prettier
       terraform-ls
       terraform
       hclfmt
