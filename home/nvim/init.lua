@@ -47,6 +47,9 @@ if ok_which_key then
     { "<leader>g", group = "git" },
     { "<leader>q", group = "trouble" },
     { "<leader>f", group = "find" },
+    { "<leader>b", group = "buffer" },
+    { "<leader>t", group = "terminal" },
+    { "<leader>z", group = "zen" },
   })
 end
 
@@ -81,11 +84,19 @@ end
 local ok_snacks, snacks = pcall(require, "snacks")
 if ok_snacks then
   snacks.setup({
+    bufdelete = { enabled = true },
+    explorer = { enabled = true },
+    indent = { enabled = true },
     picker = { enabled = true },
+    terminal = { enabled = true },
+    zen = { enabled = true },
   })
   vim.keymap.set("n", "<leader>ff", function()
     snacks.picker.files()
   end, { desc = "Find files" })
+  vim.keymap.set("n", "<leader>fe", function()
+    snacks.explorer()
+  end, { desc = "File explorer" })
   vim.keymap.set("n", "<leader>fg", function()
     snacks.picker.grep()
   end, { desc = "Grep" })
@@ -95,6 +106,37 @@ if ok_snacks then
   vim.keymap.set("n", "<leader>/", function()
     snacks.picker.grep()
   end, { desc = "Grep" })
+  vim.keymap.set("n", "<leader>bd", function()
+    snacks.bufdelete()
+  end, { desc = "Delete buffer" })
+  vim.keymap.set("n", "<leader>tt", function()
+    snacks.terminal()
+  end, { desc = "Toggle terminal" })
+  vim.keymap.set("n", "<leader>zz", function()
+    snacks.zen()
+  end, { desc = "Zen mode" })
+end
+
+local ok_colorizer, colorizer = pcall(require, "colorizer")
+if ok_colorizer then
+  colorizer.setup({})
+end
+
+local ok_marks, marks = pcall(require, "marks")
+if ok_marks then
+  marks.setup({
+    default_mappings = false,
+    builtin_marks = { "<", ">", "^", ";", "'" },
+    cyclic = true,
+    force_write_shada = false,
+    refresh_interval = 250,
+    sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
+  })
+end
+
+local ok_flash, flash = pcall(require, "flash")
+if ok_flash then
+  flash.setup({})
 end
 
 local ok_notify, notify = pcall(require, "notify")

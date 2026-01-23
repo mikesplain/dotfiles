@@ -53,6 +53,9 @@ in
       comment-nvim
       oil-nvim
       snacks-nvim
+      nvim-colorizer-lua
+      marks-nvim
+      flash-nvim
       nvim-autopairs
       catppuccin-nvim
       nvim-lspconfig
