@@ -57,6 +57,16 @@ if ok_gitsigns then
   })
 end
 
+local ok_diffview, diffview = pcall(require, "diffview")
+if ok_diffview then
+  diffview.setup({})
+end
+
+vim.keymap.set("n", "<leader>gs", "<cmd>Git<cr>", { desc = "Git status" })
+vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "Git blame" })
+vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Diffview open" })
+vim.keymap.set("n", "<leader>gD", "<cmd>DiffviewClose<cr>", { desc = "Diffview close" })
+
 local ok_lualine, lualine = pcall(require, "lualine")
 if ok_lualine then
   lualine.setup({

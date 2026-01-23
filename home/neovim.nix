@@ -42,6 +42,8 @@ in
       plenary-nvim
       nvim-web-devicons
       gitsigns-nvim
+      vim-fugitive
+      diffview-nvim
       lualine-nvim
       which-key-nvim
       nvim-surround
