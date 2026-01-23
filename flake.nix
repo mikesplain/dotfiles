@@ -129,6 +129,48 @@
             }
           ];
         };
+
+      # Creates a Home Manager configuration for non-NixOS Linux
+      mkHomeSystem =
+        {
+          system,
+          hostname,
+          username,
+        }:
+        let
+          user = mkUser username;
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = [
+              nur.overlays.default
+              (final: prev: {
+                pwnvim = inputs.pwnvim.packages.${system}.pwnvim;
+              })
+            ];
+          };
+
+          # Platform detection
+          platform = {
+            isDarwin = nixpkgs.lib.strings.hasInfix "darwin" system;
+            isLinux = nixpkgs.lib.strings.hasInfix "linux" system;
+            isx86_64 = nixpkgs.lib.strings.hasInfix "x86_64" system;
+            isArm = nixpkgs.lib.strings.hasInfix "aarch64" system;
+          };
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit
+              inputs
+              hostname
+              platform
+              system
+              user
+              ;
+          };
+          modules = [ ./home ];
+        };
     in
     {
       darwinConfigurations = {
@@ -154,6 +196,38 @@
           username = "runner";
         };
       };
+
+      homeConfigurations = {
+        "linux-ci" = mkHomeSystem {
+          system = "x86_64-linux";
+          hostname = "linux-ci";
+          username = "runner";
+        };
+
+        "linux-ci-arm" = mkHomeSystem {
+          system = "aarch64-linux";
+          hostname = "linux-ci-arm";
+          username = "runner";
+        };
+      };
+
+      checks = forAllSystems (
+        system:
+        let
+          isLinux = nixpkgs.lib.strings.hasInfix "linux" system;
+        in
+        if isLinux then
+          {
+            "home-${system}" = (
+              if system == "x86_64-linux" then
+                self.homeConfigurations."linux-ci".activationPackage
+              else
+                self.homeConfigurations."linux-ci-arm".activationPackage
+            );
+          }
+        else
+          { }
+      );
 
       # Import devShells from devshell.nix
       inherit (import ./devshell.nix { inherit inputs; }) devShells;
