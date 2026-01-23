@@ -46,6 +46,11 @@ in
       nvim-autopairs
       catppuccin-nvim
       nvim-lspconfig
+      trouble-nvim
+      nvim-navic
+      nui-nvim
+      nvim-navbuddy
+      dropbar-nvim
       treesitter
     ];
 

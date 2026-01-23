@@ -45,6 +45,7 @@ if ok_which_key then
   which_key.add({
     { "<leader>l", group = "lsp" },
     { "<leader>g", group = "git" },
+    { "<leader>q", group = "trouble" },
   })
 end
 
@@ -64,6 +65,30 @@ if ok_lualine then
       component_separators = "",
     },
   })
+end
+
+local ok_trouble, trouble = pcall(require, "trouble")
+if ok_trouble then
+  trouble.setup({})
+  vim.keymap.set("n", "<leader>qd", function()
+    trouble.toggle("diagnostics")
+  end, { desc = "Diagnostics (Trouble)" })
+  vim.keymap.set("n", "<leader>qf", function()
+    trouble.toggle("qflist")
+  end, { desc = "Quickfix (Trouble)" })
+  vim.keymap.set("n", "<leader>ql", function()
+    trouble.toggle("loclist")
+  end, { desc = "Loclist (Trouble)" })
+end
+
+local ok_navbuddy, navbuddy = pcall(require, "nvim-navbuddy")
+if ok_navbuddy then
+  navbuddy.setup({})
+end
+
+local ok_dropbar, dropbar = pcall(require, "dropbar")
+if ok_dropbar then
+  dropbar.setup({})
 end
 
 local ok_oil, oil = pcall(require, "oil")
@@ -122,6 +147,18 @@ local function on_attach(client, bufnr)
   map("n", "<leader>e", vim.diagnostic.open_float, "Line diagnostics")
   map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
   map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+
+  if client.server_capabilities.documentSymbolProvider then
+    local ok_navic, navic = pcall(require, "nvim-navic")
+    if ok_navic then
+      navic.attach(client, bufnr)
+    end
+    local ok_navbuddy, navbuddy = pcall(require, "nvim-navbuddy")
+    if ok_navbuddy then
+      navbuddy.attach(client, bufnr)
+      map("n", "<leader>ls", navbuddy.open, "Symbols")
+    end
+  end
 end
 
 local function enable_lsp(name, config)
