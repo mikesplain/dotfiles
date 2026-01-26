@@ -4,6 +4,7 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
 vim.opt.termguicolors = true
+vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.signcolumn = "yes"
