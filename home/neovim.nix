@@ -36,7 +36,7 @@ in
     withNodeJs = false;
     withRuby = false;
 
-    extraLuaConfig = builtins.readFile ./nvim/init.lua;
+    initLua = builtins.readFile ./nvim/init.lua;
 
     plugins = with pkgs.vimPlugins; [
       plenary-nvim
