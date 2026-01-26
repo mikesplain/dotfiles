@@ -16,8 +16,8 @@
   '';
 
   security.pam.services.sudo_local.touchIdAuth = true;
-  # Disable Watch ID auth in CI and on Apple Silicon while Swift builds crash.
-  security.pam.services.sudo_local.watchIdAuth = user.name != "runner" && !platform.isArm;
+  # Disable Watch ID auth in CI where Swift builds can fail.
+  security.pam.services.sudo_local.watchIdAuth = user.name != "runner";
   security.pam.services.sudo_local.reattach = true;
 
   fonts.packages = [ pkgs.nerd-fonts.meslo-lg ];
@@ -30,15 +30,6 @@
       trusted-users = [ user.name ];
       max-jobs = 10;
       experimental-features = "nix-command flakes";
-      substituters = [
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-      fallback = false;
     };
     gc = {
       automatic = true;
