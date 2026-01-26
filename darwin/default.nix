@@ -16,8 +16,7 @@
   '';
 
   security.pam.services.sudo_local.touchIdAuth = true;
-  # Disable Watch ID auth in CI where Swift builds can fail.
-  security.pam.services.sudo_local.watchIdAuth = user.name != "runner";
+  security.pam.services.sudo_local.watchIdAuth = true;
   security.pam.services.sudo_local.reattach = true;
 
   fonts.packages = [ pkgs.nerd-fonts.meslo-lg ];
