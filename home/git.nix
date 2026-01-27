@@ -20,8 +20,8 @@
         upstream = "!git config --get branch.$(git current-branch).remote || echo origin";
         # Cherry-pick a commit with your signature.
         sign = "cherry-pick --signoff";
-        # Create a pull request on GitHub using the `hub` command.
-        pull-request = "!hub pull-request -o";
+        # Create a pull request on GitHub using the `gh` command.
+        pull-request = "!gh pr create -w";
         # Push the current branch upstream to origin using the same branch
         # name for the remote branch.
         upstream-current-branch = "!git push --set-upstream origin $(git current-branch)";
