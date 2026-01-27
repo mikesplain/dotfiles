@@ -38,6 +38,7 @@ in
       "mise"
       "node"
       "ncdu"
+      "opencode"
       "python"
       "telnet"
     ];
