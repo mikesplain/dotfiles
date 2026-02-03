@@ -4,8 +4,8 @@
   inputs = {
     # nixpkgs-unstable currently breaks Swift builds; pinned per
     # https://github.com/NixOS/nixpkgs/issues/483584#issuecomment-3797863218
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
 
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
