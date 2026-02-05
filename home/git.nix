@@ -62,9 +62,7 @@
         s = "status --short --branch";
       };
 
-      github.user = (
-        if hostname == "SNS005454" then "mike.splain@sonos.com" else "mike.splain@gmail.com"
-      );
+      github.user = ("mike.splain@gmail.com");
       gist.browse = true;
       push = {
         default = "simple";
