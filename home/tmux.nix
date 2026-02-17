@@ -38,6 +38,14 @@
       set -g display-time 1000      # slightly longer status messages display time
       set -g status-interval 10     # redraw status line every 10 seconds
 
+      # Window status styles: keep active and activity states visually distinct
+      setw -g window-status-style "fg=colour245,bg=default"
+      setw -g window-status-format " #I:#W#{?window_flags,#{window_flags},} "
+      setw -g window-status-current-style "fg=colour231,bg=colour45,bold"
+      setw -g window-status-current-format " #[fg=colour231,bg=colour45,bold] #I:#W #[default] "
+      setw -g window-status-activity-style "fg=colour16,bg=colour220,bold"
+      setw -g window-status-bell-style "fg=colour16,bg=colour220,bold"
+
       # Clear both screen and history
       bind -n C-l send-keys C-l \; run 'sleep 0.2' \; clear-history
 
