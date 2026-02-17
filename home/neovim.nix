@@ -86,8 +86,6 @@ in
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.prettier
-      terraform-ls
-      terraform
       hclfmt
       jq
       yamlfmt

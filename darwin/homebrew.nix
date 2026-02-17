@@ -40,6 +40,8 @@ in
       "ncdu"
       "opencode"
       "python"
+      "terraform"
+      "terraform-ls"
       "telnet"
     ];
     casks =
