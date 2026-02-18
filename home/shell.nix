@@ -42,7 +42,7 @@
       update_flake_from_pr = "__flake_update_merge";
       w = "windsurf .";
       c = "cursor .";
-      codex = "GITHUB_PAT_TOKEN=$(gh auth token) command codex --yolo";
+      codex = "set -a; source /Users/msplain/.config/codex/.env; set +a; command codex --yolo";
       opencode = "GITHUB_PAT_TOKEN=$(gh auth token) command opencode";
       o = "opencode";
     };
