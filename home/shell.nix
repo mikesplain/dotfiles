@@ -116,6 +116,9 @@
       Terminal
         clear-screen-and-scrollback  Clear screen + scrollback (Ctrl+L)
 
+      Tmux
+        C-b w                   Open window selector
+
       Utilities (Home Manager + Flake)
         bat, coreutils, curl, delta, direnv, eza, fd, fzf, git, jq, kubectx,
         nixfmt, ripgrep, starship, tree, wget, zoxide
