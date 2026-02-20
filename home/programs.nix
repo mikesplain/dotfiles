@@ -11,6 +11,7 @@
     enableDefaultConfig = false; # Disable deprecated default config
     includes = [
       "config.d/*"
+      "1Password/config"
     ];
 
     matchBlocks = {
