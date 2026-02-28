@@ -12,7 +12,7 @@
     settings = {
       user = {
         name = "Mike Splain";
-        email = (if hostname == "SNS005454" then "mike.splain@sonos.com" else "mike.splain@gmail.com");
+        email = "mike.splain@gmail.com"
       };
 
       alias = {
