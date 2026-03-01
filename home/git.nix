@@ -12,7 +12,7 @@
     settings = {
       user = {
         name = "Mike Splain";
-        email = "mike.splain@gmail.com"
+        email = "mike.splain@gmail.com";
       };
 
       alias = {
