@@ -23,6 +23,7 @@ jobs:
       CI_HOSTNAME: ci-${{ matrix.os.name }}
     runs-on: ${{ matrix.os.name }}
     strategy:
+      fail-fast: false
       matrix:
         os:
           - name: macos-26
