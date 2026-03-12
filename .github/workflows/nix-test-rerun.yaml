@@ -25,7 +25,7 @@ jobs:
       - name: Wait before retry
         run: sleep 900
 
-      - name: Rerun single failed matrix job
+      - name: Rerun failed matrix jobs
         uses: actions/github-script@v8
         with:
           script: |
@@ -43,6 +43,10 @@ jobs:
             const relevantJobs = jobs.filter((job) => job.name.startsWith("tests ("));
             const failedJobs = relevantJobs.filter((job) => job.conclusion === "failure");
             const nonSuccessJobs = relevantJobs.filter((job) => job.conclusion !== "success");
+            const retryableConclusions = new Set(["failure", "cancelled", "timed_out"]);
+            const retryableJobs = nonSuccessJobs.filter((job) =>
+              retryableConclusions.has(job.conclusion)
+            );
 
             core.info(
               `Run ${runId} has ${relevantJobs.length} matrix jobs, ` +
@@ -54,19 +58,30 @@ jobs:
               return;
             }
 
-            if (failedJobs.length !== 1 || nonSuccessJobs.length !== 1) {
-              core.info("Skipping rerun because the failure pattern does not look transient.");
+            if (retryableJobs.length === 0) {
+              core.info("No retryable failed jobs found; skipping rerun.");
               return;
             }
 
-            const failedJob = failedJobs[0];
-            core.info(`Rerunning failed job ${failedJob.id}: ${failedJob.name}`);
+            if (retryableJobs.length !== nonSuccessJobs.length) {
+              core.info(
+                "Skipping rerun because at least one non-success job has a non-retryable conclusion."
+              );
+              return;
+            }
 
-            await github.request(
-              "POST /repos/{owner}/{repo}/actions/jobs/{job_id}/rerun",
-              {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                job_id: failedJob.id,
-              }
+            core.info(
+              `Rerunning ${retryableJobs.length} matrix job(s): ` +
+              retryableJobs.map((job) => `${job.id} (${job.name})`).join(", ")
             );
+
+            for (const job of retryableJobs) {
+              await github.request(
+                "POST /repos/{owner}/{repo}/actions/jobs/{job_id}/rerun",
+                {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  job_id: job.id,
+                }
+              );
+            }
