@@ -94,6 +94,7 @@
       jq
       kubectx
       ripgrep
+      nixd
       tree
       wget
     ];
