@@ -161,6 +161,11 @@
               (
                 cd "$repo_dir" || exit 1
 
+                if ! gh auth switch --user mikesplain; then
+                  echo "Failed to switch gh auth to mikesplain" >&2
+                  exit 1
+                fi
+
                 local run_fields
                 if ! run_fields=$(gh run list --workflow "$workflow" --limit 1 --json status,conclusion,headBranch,url --jq 'if length == 0 then "" else .[0] | "\(.status)\t\(.conclusion)\t\(.headBranch)\t\(.url)" end'); then
                   echo "Failed to list runs for $workflow" >&2
