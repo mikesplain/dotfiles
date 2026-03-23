@@ -18,8 +18,19 @@ rec {
           inputs.nur.overlays.default
         ];
       };
+      preCommitNoDotnet = pkgs.pre-commit.overridePythonAttrs (old: {
+        # nixpkgs packages extra hook-language test runtimes into pre-commit.
+        # We don't use .NET hooks in this repo, so trim that test-only input.
+        doCheck = false;
+        preCheck = "";
+        postCheck = "";
+        nativeCheckInputs = pkgs.lib.filter (
+          pkg: (pkgs.lib.getName pkg) != "dotnet-sdk"
+        ) old.nativeCheckInputs;
+      });
       pre-commit-check = inputs.git-hooks-nix.lib.${system}.run {
         src = ./.;
+        package = preCommitNoDotnet;
         hooks = {
           nixfmt = {
             enable = true;
