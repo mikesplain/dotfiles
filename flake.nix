@@ -68,6 +68,19 @@
             overlays = [
               nur.overlays.default
               (final: prev: {
+                direnv = prev.direnv.overrideAttrs (old: {
+                  # Temporary workaround for nixpkgs-unstable while it is still
+                  # behind the upstream direnv Darwin fix:
+                  # - https://github.com/NixOS/nixpkgs/issues/502464
+                  # - https://github.com/NixOS/nixpkgs/pull/502769
+                  postPatch = (old.postPatch or "") + ''
+                    if grep -q " -linkmode=external" GNUmakefile; then
+                      substituteInPlace GNUmakefile --replace-fail " -linkmode=external" ""
+                    fi
+                  '';
+                });
+              })
+              (final: prev: {
                 vscode-lldb-adapter =
                   if prev.stdenv.isDarwin && prev.stdenv.isx86_64 then
                     prev.vscode-lldb-adapter.override {
