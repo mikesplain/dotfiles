@@ -9,6 +9,7 @@
 }:
 let
   inherit (inputs)
+    homebrew-brew
     homebrew-cask
     homebrew-core
     nix-homebrew
@@ -94,6 +95,10 @@ in
   # Nix-homebrew configuration
   nix-homebrew = {
     enable = true;
+    package = homebrew-brew // {
+      name = "brew-${homebrew-brew.shortRev}";
+      version = homebrew-brew.shortRev;
+    };
     user = user.name;
     taps = {
       "homebrew/homebrew-core" = homebrew-core;

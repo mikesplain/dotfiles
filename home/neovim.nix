@@ -83,9 +83,9 @@ in
       bash-language-server
       yaml-language-server
       vscode-langservers-extracted
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.prettier
+      typescript
+      typescript-language-server
+      prettier
       hclfmt
       jq
       yamlfmt

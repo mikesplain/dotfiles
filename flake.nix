@@ -25,6 +25,10 @@
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
     };
+    homebrew-brew = {
+      url = "github:Homebrew/brew";
+      flake = false;
+    };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;

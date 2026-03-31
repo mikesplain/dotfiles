@@ -48,7 +48,7 @@ rec {
         buildInputs = [
           pkgs.hello
           pkgs.nixfmt # For nix formatting
-          pkgs.nodePackages.prettier # For general formatting
+          pkgs.prettier # For general formatting
         ]
         ++ pre-commit-check.enabledPackages;
 
