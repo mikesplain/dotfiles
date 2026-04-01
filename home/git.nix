@@ -8,6 +8,8 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
+    # Allow conditional include files to choose the signing format explicitly.
+    signing.format = null;
 
     settings = {
       user = {
