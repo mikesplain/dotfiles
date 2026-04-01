@@ -139,7 +139,7 @@
 
             darwin_flake_target() {
               local target="$1"
-              local repo_dir="${"2:-$HOME/.dotfiles"}"
+              local repo_dir="''${2:-$HOME/.dotfiles}"
               local target_file="$repo_dir/darwin/local-flake-target"
 
               if [[ -n "$target" ]]; then
@@ -164,7 +164,7 @@
             switch() {
               local target
               target=$(darwin_flake_target "$1") || return 1
-              sudo darwin-rebuild switch --flake ".#${target}"
+              sudo darwin-rebuild switch --flake ".#''${target}"
             }
 
             # Approve + merge latest successful flake update PR and pull locally.
