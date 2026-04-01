@@ -60,7 +60,6 @@
       mkDarwinSystem =
         {
           system,
-          hostname,
           osVersion,
           username,
         }:
@@ -109,7 +108,6 @@
           specialArgs = {
             inherit
               inputs
-              hostname
               osVersion
               platform
               system
@@ -131,7 +129,6 @@
                 extraSpecialArgs = {
                   inherit
                     inputs
-                    hostname
                     platform
                     ;
                   user = user;
@@ -146,31 +143,30 @@
             }
           ];
         };
-    in
-    {
-      darwinConfigurations = {
-        "MSPLAIN-M-CH4Y" = mkDarwinSystem {
+
+      publicDarwinConfigurations = {
+        darwin-arm64 = mkDarwinSystem {
           system = "aarch64-darwin";
-          hostname = "MSPLAIN-M-CH4Y";
           osVersion = "26";
           username = "msplain";
         };
 
-        "Mikes-MBP-16" = mkDarwinSystem {
+        darwin-x86_64 = mkDarwinSystem {
           system = "x86_64-darwin";
-          hostname = "Mikes-MBP-16";
           osVersion = "26";
           username = "mike";
         };
 
         # For CI and testing
-        "defaultHostname" = mkDarwinSystem {
+        ci = mkDarwinSystem {
           system = "defaultSystem";
-          hostname = "defaultHostname";
           osVersion = "defaultVersion";
           username = "runner";
         };
       };
+    in
+    {
+      darwinConfigurations = publicDarwinConfigurations;
 
       # Import devShells from devshell.nix
       inherit (import ./devshell.nix { inherit inputs; }) devShells;

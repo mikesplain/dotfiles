@@ -3,7 +3,6 @@
   user,
   system,
   config,
-  hostname,
   ...
 }:
 let

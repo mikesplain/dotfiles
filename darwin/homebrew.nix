@@ -2,7 +2,6 @@
   inputs,
   lib,
   user,
-  hostname,
   osVersion,
   platform,
   ...

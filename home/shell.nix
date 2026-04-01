@@ -72,7 +72,7 @@
       High-level
         help                    Show this list
         dot, dotfiles           cd $HOME/.dotfiles
-        switch                  darwin-rebuild switch --flake .
+        switch [target]         darwin-rebuild switch --flake .#<target>
         update_flake_from_pr    Approve + merge latest successful flake update PR and pull
         w                       windsurf .
         c                       cursor .
@@ -137,9 +137,34 @@
 
             eval "$(mise activate zsh)"
 
+            darwin_flake_target() {
+              local target="$1"
+              local repo_dir="${"2:-$HOME/.dotfiles"}"
+              local target_file="$repo_dir/darwin/local-flake-target"
+
+              if [[ -n "$target" ]]; then
+                print -r -- "$target"
+                return 0
+              fi
+
+              if [[ -f "$target_file" ]]; then
+                target=$(grep -Ev '^[[:space:]]*(#|$)' "$target_file" | head -n 1)
+                if [[ -n "$target" ]]; then
+                  print -r -- "$target"
+                  return 0
+                fi
+              fi
+
+              echo "No default Darwin flake target configured." >&2
+              echo "Pass a target like 'switch darwin-arm64' or create $target_file." >&2
+              return 1
+            }
+
             # Switch to the current flake
             switch() {
-              sudo darwin-rebuild switch --flake .
+              local target
+              target=$(darwin_flake_target "$1") || return 1
+              sudo darwin-rebuild switch --flake ".#${target}"
             }
 
             # Approve + merge latest successful flake update PR and pull locally.

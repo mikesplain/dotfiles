@@ -19,19 +19,30 @@ Opinionated `nix-darwin` and Home Manager configuration for bringing a clean mac
    cd ~/.dotfiles
    ```
 
-3. Perform the first system activation with the same command CI runs:
+3. Perform the first system activation with the public flake target that matches your machine:
 
    ```bash
-   nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .
+   nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .#darwin-arm64
    ```
 
-4. For day-to-day updates after the initial activation:
+   Use `darwin-arm64` for Apple Silicon machines and `darwin-x86_64` for Intel machines.
+
+4. Optionally set a private default target on each machine so the `switch` shell helper can stay host-agnostic:
 
    ```bash
-   darwin-rebuild switch --flake .
+   cp darwin/local-flake-target.example darwin/local-flake-target
+   $EDITOR darwin/local-flake-target
    ```
 
-5. Drop into the development shell whenever you need project tooling (`nixfmt`, `prettier`, git hooks, etc.):
+5. For day-to-day updates after the initial activation:
+
+   ```bash
+   switch
+   ```
+
+   You can also continue to use `darwin-rebuild switch --flake .#darwin-arm64` explicitly.
+
+6. Drop into the development shell whenever you need project tooling (`nixfmt`, `prettier`, git hooks, etc.):
 
    ```bash
    nix develop
@@ -60,14 +71,16 @@ bootstrap.sh          # Convenience script for bootstrapping fresh machines
 
 ## Everyday Commands
 
-- `darwin-rebuild switch --flake .` — Apply configuration changes to the current machine.
+- `switch [target]` — Apply configuration changes using a private local default or an explicit public target.
+- `darwin-rebuild switch --flake .#darwin-arm64` — Apply the Apple Silicon configuration explicitly.
+- `darwin-rebuild switch --flake .#darwin-x86_64` — Apply the Intel configuration explicitly.
 - `nix develop` — Enter the dev shell with formatters and pre-commit hooks configured.
 - `pre-commit run --all-files` — Lint and format Nix and text assets to match CI.
 - `nix flake update` — Refresh inputs and rewrite `flake.lock` when bumping dependencies.
 
 ## Validation & Testing
 
-- Run `darwin-rebuild switch --flake .` (or the CI command from Quick Start) after edits to confirm the macOS build succeeds.
+- Run `switch` or `darwin-rebuild switch --flake .#<public-target>` after edits to confirm the macOS build succeeds.
 - Use `nix flake check` to evaluate Home Manager modules on both `aarch64-darwin` and `x86_64-darwin`.
 - Source the interactive shell with `zsh -vc "source ~/.zshrc"` to ensure the login environment stays clean.
 
