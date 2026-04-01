@@ -5,6 +5,7 @@ ssh/known_hosts
 ssh/google*
 ssh/*Github
 secrets
+darwin/local-flake-target
 rbenv/*/
 .DS_Store
 

@@ -2,7 +2,6 @@
   inputs,
   lib,
   user,
-  hostname,
   osVersion,
   platform,
   ...
@@ -24,7 +23,9 @@ in
   homebrew = {
     enable = true;
     onActivation = {
-      autoUpdate = true;
+      # Avoid Homebrew self-updating on every rebuild while still allowing
+      # managed formula and cask upgrades during activation.
+      autoUpdate = false;
       upgrade = true;
     };
     brews = [
@@ -71,7 +72,6 @@ in
         "vagrant"
         "virtualbox"
         "visual-studio-code"
-        "zen"
       ];
 
     # Mac App Store apps

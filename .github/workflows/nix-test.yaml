@@ -20,7 +20,7 @@ jobs:
       contents: read
       id-token: write
     env:
-      CI_HOSTNAME: ci-${{ matrix.os.name }}
+      CI_FLAKE_TARGET: ci
     runs-on: ${{ matrix.os.name }}
     strategy:
       fail-fast: false
@@ -47,7 +47,6 @@ jobs:
           use-gha-cache: enabled
       - name: Setup
         run: |
-          sed -i '' "s/defaultHostname/${CI_HOSTNAME}/g" flake.nix
           sed -i '' "s/defaultSystem/${{matrix.os.arch}}/g" flake.nix
           sed -i '' "s/defaultVersion/$(sw_vers --productVersion | cut -d. -f1)/g" flake.nix
 
@@ -71,7 +70,7 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          sudo -E nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .#${CI_HOSTNAME}
+          sudo -E nix run nix-darwin/master#darwin-rebuild --extra-experimental-features "nix-command flakes" -- switch --flake .#${CI_FLAKE_TARGET}
 
       - name: Test - Switch
         # See https://github.com/actions/runner-images/issues/264
@@ -79,7 +78,7 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         run: |
-          sudo -E darwin-rebuild switch --flake .#${CI_HOSTNAME}
+          sudo -E darwin-rebuild switch --flake .#${CI_FLAKE_TARGET}
 
       # - name: Test - bashrc
       #   run: bash -c "source ~/.bashrc"

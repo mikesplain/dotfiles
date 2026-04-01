@@ -1,0 +1,8 @@
+# Copy this file to darwin/local-flake-target on each machine and keep the
+# selected target private.
+#
+# Valid public targets:
+# - darwin-arm64
+# - darwin-x86_64
+
+darwin-arm64
