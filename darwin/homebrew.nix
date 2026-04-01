@@ -23,10 +23,10 @@ in
   homebrew = {
     enable = true;
     onActivation = {
-      # Keep rebuilds idempotent and avoid getting blocked on flaky GUI app
-      # upgrade/install behavior during system activation.
+      # Avoid Homebrew self-updating on every rebuild while still allowing
+      # managed formula and cask upgrades during activation.
       autoUpdate = false;
-      upgrade = false;
+      upgrade = true;
     };
     brews = [
       "awscli"
@@ -75,9 +75,21 @@ in
       ];
 
     # Mac App Store apps
-    # Keep App Store installs out of activation. `mas` sign-in and purchase state
-    # are not reliably idempotent, which can block unrelated rebuilds.
-    masApps = { };
+    # These app IDs are from using the mas CLI app (mac app store)
+    # $ nix shell nixpkgs#mas
+    # $ mas search <app name>
+    masApps =
+      if user.name != "runner" then
+        {
+          "GoodLinks" = 1474335294;
+          "TestFlight" = 899247664;
+          "The Unarchiver" = 425424353;
+          "Things" = 904280696;
+          "Velja" = 1607635845;
+          "WireGuard" = 1451685025;
+        }
+      else
+        { };
   };
 
   # Nix-homebrew configuration
