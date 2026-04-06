@@ -26,7 +26,6 @@
       gut = "git";
       cat = "bat";
       grep = "grep --color=auto";
-      sf = "sk8s find";
       "..." = "../..";
       "...." = "../../..";
       "....." = "../../../..";
@@ -40,7 +39,6 @@
       "dot" = "cd $HOME/.dotfiles";
       "dotfiles" = "dot";
       update_flake_from_pr = "__flake_update_merge";
-      w = "windsurf .";
       c = "cursor .";
       codex = "set -a; source /Users/msplain/.config/codex/.env; set +a; command codex --yolo";
       opencode = "GITHUB_PAT_TOKEN=$(gh auth token) command opencode";
@@ -74,7 +72,6 @@
         dot, dotfiles           cd $HOME/.dotfiles
         switch [target]         darwin-rebuild switch --flake .#<target>
         update_flake_from_pr    Approve + merge latest successful flake update PR and pull
-        w                       windsurf .
         c                       cursor .
         clear_dns_cache         Flush macOS DNS cache
 
@@ -110,7 +107,6 @@
         x, kx                   kubectx
         kns                     kubens
         ktmux                   tmux layout for cluster watches
-        sf                      sk8s find
         enable_k9s_node_shell   Enable nodeShell in k9s configs
 
       Terminal
