@@ -117,11 +117,6 @@
         GloballyEnabled = false;
         HideDesktop = true;
       };
-      CustomUserPreferences = {
-        "com.apple.Safari" = {
-          PrivateBrowsingRequiresAuthentication = true;
-        };
-      };
       screencapture.location = "/Users/${user.name}/Downloads";
     };
   };
