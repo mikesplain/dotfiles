@@ -75,7 +75,7 @@ local ok_lualine, lualine = pcall(require, "lualine")
 if ok_lualine then
   lualine.setup({
     options = {
-      theme = "catppuccin",
+      theme = "catppuccin-nvim",
       section_separators = "",
       component_separators = "",
     },
