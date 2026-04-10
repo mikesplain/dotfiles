@@ -26,7 +26,7 @@ jobs:
         run: sleep 900
 
       - name: Rerun failed matrix jobs
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const runId = context.payload.workflow_run.id;
