@@ -2,18 +2,18 @@ name: Renovate
 on:
   schedule:
     # At minute 3 past hour 4
-    - cron: '3 4 * * *'
+    - cron: "3 4 * * *"
   workflow_dispatch:
   pull_request:
     paths:
-      - '.github/renovate*'
-      - '.github/workflows/renovate*'
+      - ".github/renovate*"
+      - ".github/workflows/renovate*"
   push:
     branches:
-      - 'main'
+      - "main"
     paths:
-      - '.github/renovate*'
-      - '.github/workflows/renovate*'
+      - ".github/renovate*"
+      - ".github/workflows/renovate*"
 
 jobs:
   renovate:
@@ -42,12 +42,11 @@ jobs:
         if: ${{ github.ref != 'refs/heads/main' }}
         with:
           configurationFile: .github/renovate-dry-run.json
-          token: 'x-access-token:${{ steps.generate_token.outputs.token }}'
+          token: "x-access-token:${{ steps.generate_token.outputs.token }}"
 
       - name: Renovate
         uses: renovatebot/github-action@v46.1.7
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           configurationFile: .github/renovate.json
-          token: 'x-access-token:${{ steps.generate_token.outputs.token }}'
-
+          token: "x-access-token:${{ steps.generate_token.outputs.token }}"
