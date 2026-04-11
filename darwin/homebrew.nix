@@ -42,9 +42,12 @@ in
       "ncdu"
       "opencode"
       "python"
+      "ripgrep"
       "terraform"
       "terraform-ls"
       "telnet"
+      "usage"
+
     ];
     casks =
       (if osVersion >= "14" then [ "thaw" ] else [ ])
@@ -56,13 +59,18 @@ in
         "1password"
         "appcleaner"
         "disk-inventory-x"
-        # "docker"
+        "claude-code"
+        "codex"
+        "cursor"
+        "draw-things"
+        "docker-desktop"
         "elgato-stream-deck"
         "ghostty"
         "google-chrome"
         "gpg-suite"
-        "logi-options-plus"
         "handy"
+        "lm-studio"
+        "logi-options-plus"
         "obsidian"
         "ollama"
         "raycast"
@@ -70,9 +78,11 @@ in
         "shottr"
         "spotify"
         "stats"
+        "thaw"
         "vagrant"
         "virtualbox"
         "visual-studio-code"
+
       ];
 
     # Mac App Store apps
