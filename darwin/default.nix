@@ -118,6 +118,10 @@
         HideDesktop = true;
       };
       screencapture.location = "/Users/${user.name}/Downloads";
+      screensaver = {
+        askForPassword = true;
+        askForPasswordDelay = 0;
+      };
     };
   };
 

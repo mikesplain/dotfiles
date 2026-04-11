@@ -145,6 +145,11 @@
         };
 
       publicDarwinConfigurations = {
+        personal-darwin-arm64 = mkDarwinSystem {
+          system = "aarch64-darwin";
+          osVersion = "26";
+          username = "mike";
+        };
         darwin-arm64 = mkDarwinSystem {
           system = "aarch64-darwin";
           osVersion = "26";
