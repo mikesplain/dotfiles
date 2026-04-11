@@ -47,7 +47,6 @@ in
       "terraform-ls"
       "telnet"
       "usage"
-
     ];
     casks =
       (if osVersion >= "14" then [ "thaw" ] else [ ])
@@ -82,7 +81,6 @@ in
         "vagrant"
         "virtualbox"
         "visual-studio-code"
-
       ];
 
     # Mac App Store apps
