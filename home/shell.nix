@@ -121,7 +121,9 @@
       EOF
             }
 
-            # Better key bindings for terminal navigation
+             # Case-insensitive completion (matches both ways)
+             zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
             bindkey "\e[1;3D" backward-word     # ⌥←
             bindkey "\e[1;3C" forward-word      # ⌥→
             bindkey "^[[1;9D" beginning-of-line # cmd+←
