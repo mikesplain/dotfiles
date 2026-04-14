@@ -43,7 +43,6 @@ in
       "opencode"
       "python"
       "ripgrep"
-      "terraform"
       "terraform-ls"
       "telnet"
       "usage"
@@ -112,6 +111,7 @@ in
     taps = {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
+      "hashicorp/tap" = inputs.hashicorp-tap;
     };
     mutableTaps = true;
     autoMigrate = true;

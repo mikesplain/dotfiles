@@ -2,7 +2,7 @@
   description = "Mike Splain's macOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/9d29d5f667d7467f98efc31881e824fa586c927e"; # TODO: Unpin once resolved (https://github.com/NixOS/nixpkgs/issues/509248)
 
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
@@ -21,9 +21,13 @@
 
     nur.url = "github:nix-community/NUR";
 
-    # Homebrew inputs
+    hashicorp-tap = {
+      url = "github:hashicorp/homebrew-tap";
+      flake = false;
+    };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
+      flake = false;
     };
     homebrew-brew = {
       url = "github:Homebrew/brew";
