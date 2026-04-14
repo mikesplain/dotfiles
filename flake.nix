@@ -2,7 +2,7 @@
   description = "Mike Splain's macOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/9d29d5f667d7467f98efc31881e824fa586c927e"; # TODO: Unpin once resolved (https://github.com/NixOS/nixpkgs/issues/509248)
+    nixpkgs.url = "github:NixOS/nixpkgs/051da568320af663533b070b3affe2b775114752"; # TODO: Unpin once resolved (https://github.com/NixOS/nixpkgs/issues/509248)
 
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
