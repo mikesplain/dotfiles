@@ -43,7 +43,6 @@ in
       "opencode"
       "python"
       "ripgrep"
-      "terraform"
       "terraform-ls"
       "telnet"
       "usage"
