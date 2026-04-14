@@ -21,9 +21,13 @@
 
     nur.url = "github:nix-community/NUR";
 
-    # Homebrew inputs
+    hashicorp-tap = {
+      url = "github:hashicorp/homebrew-tap";
+      flake = false;
+    };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
+      flake = false;
     };
     homebrew-brew = {
       url = "github:Homebrew/brew";

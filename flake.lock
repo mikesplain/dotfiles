@@ -97,6 +97,22 @@
         "type": "github"
       }
     },
+    "hashicorp-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775589786,
+        "narHash": "sha256-sBwz27LdLLMUKYGUH8Jx6YXQ/WjhPz4yyRQRCePDV6E=",
+        "owner": "hashicorp",
+        "repo": "homebrew-tap",
+        "rev": "59b840f3a2fd320cfedd243aa8fd6302f9f6eff3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hashicorp",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -258,6 +274,7 @@
     "root": {
       "inputs": {
         "git-hooks-nix": "git-hooks-nix",
+        "hashicorp-tap": "hashicorp-tap",
         "home-manager": "home-manager",
         "homebrew-brew": "homebrew-brew",
         "homebrew-cask": "homebrew-cask",
