@@ -80,6 +80,7 @@ in
         "vagrant"
         "virtualbox"
         "visual-studio-code"
+        "utm"
       ];
 
     # Mac App Store apps
