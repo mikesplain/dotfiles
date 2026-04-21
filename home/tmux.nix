@@ -27,6 +27,8 @@
     extraConfig = ''
       # Remove Vim mode delays
       set -g focus-events on
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
 
       # Window and pane configuration
       set -g base-index 1           # start windows numbering at 1
