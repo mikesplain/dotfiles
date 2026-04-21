@@ -41,6 +41,7 @@ in
       "node"
       "ncdu"
       "opencode"
+      "pi-coding-agent"
       "python"
       "ripgrep"
       "terraform-ls"
