@@ -40,6 +40,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    xykong-tap = {
+      url = "github:xykong/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs =

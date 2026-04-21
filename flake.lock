@@ -282,7 +282,24 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "xykong-tap": "xykong-tap"
+      }
+    },
+    "xykong-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776700307,
+        "narHash": "sha256-Lhb0YNBEPMVOxruXfm9ReiQdcQLWVjcVVhBz2fcTebg=",
+        "owner": "xykong",
+        "repo": "homebrew-tap",
+        "rev": "96e6b4226ebbec185d4cec91cd652c3d6055bae0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xykong",
+        "repo": "homebrew-tap",
+        "type": "github"
       }
     }
   },

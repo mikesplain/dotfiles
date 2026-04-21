@@ -63,6 +63,8 @@ in
         "codex-app"
         "cursor"
         "draw-things"
+        "xykong/tap/flux-markdown"
+        "linearmouse"
         "docker-desktop"
         "elgato-stream-deck"
         "ghostty"
@@ -115,6 +117,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "hashicorp/tap" = inputs.hashicorp-tap;
+      "xykong/tap" = inputs.xykong-tap;
     };
     mutableTaps = true;
     autoMigrate = true;
