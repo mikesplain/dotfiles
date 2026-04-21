@@ -23,6 +23,10 @@ in
       EDITOR = "nvim";
     };
 
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
+
     file = {
       ".personal_gitconfig".source = ../templates/gitconfig/personal.tmpl;
       ".work_gitconfig".source = ../templates/gitconfig/work.tmpl;
