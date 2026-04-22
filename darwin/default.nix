@@ -62,10 +62,24 @@
         InitialKeyRepeat = 14;
         KeyRepeat = 1;
         AppleKeyboardUIMode = 3;
+        AppleEnableMouseSwipeNavigateWithScrolls = true;
+        AppleEnableSwipeNavigateWithScrolls = true;
+        "com.apple.swipescrolldirection" = true;
+      };
+      trackpad = {
+        TrackpadFourFingerHorizSwipeGesture = 2;
+        TrackpadFourFingerPinchGesture = 2;
+        TrackpadFourFingerVertSwipeGesture = 2;
       };
       dock = {
         autohide = true;
         minimize-to-application = true;
+
+        showAppExposeGestureEnabled = true;
+        showDesktopGestureEnabled = true;
+        showLaunchpadGestureEnabled = true;
+        showMissionControlGestureEnabled = true;
+
         autohide-delay = 0.0;
         autohide-time-modifier = 0.25;
         tilesize = 40;

@@ -72,7 +72,6 @@ in
         "gpg-suite"
         "handy"
         "lm-studio"
-        "logi-options+"
         "obsidian"
         "ollama-app"
         "raycast"
