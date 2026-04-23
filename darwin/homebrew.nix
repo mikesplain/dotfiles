@@ -37,6 +37,7 @@ in
       "ipcalc"
       "k9s"
       "logdy"
+      "mactop"
       "mise"
       "node"
       "ncdu"
