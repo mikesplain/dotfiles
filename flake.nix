@@ -2,7 +2,7 @@
   description = "Mike Splain's macOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/051da568320af663533b070b3affe2b775114752"; # TODO: Unpin once resolved (https://github.com/NixOS/nixpkgs/issues/509248)
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
@@ -78,17 +78,23 @@
             overlays = [
               nur.overlays.default
               (final: prev: {
-                direnv = prev.direnv.overrideAttrs (old: {
-                  # Temporary workaround for nixpkgs-unstable while it is still
-                  # behind the upstream direnv Darwin fix:
-                  # - https://github.com/NixOS/nixpkgs/issues/502464
-                  # - https://github.com/NixOS/nixpkgs/pull/502769
-                  postPatch = (old.postPatch or "") + ''
-                    if grep -q " -linkmode=external" GNUmakefile; then
-                      substituteInPlace GNUmakefile --replace-fail " -linkmode=external" ""
-                    fi
-                  '';
-                });
+                direnv =
+                  if prev.stdenv.isDarwin then
+                    prev.direnv.overrideAttrs (_old: {
+                      # Temporary Darwin workaround for flaky shell integration
+                      # checks while nixpkgs tracks the fish/zsh failures:
+                      # https://github.com/NixOS/nixpkgs/issues/507531
+                      nativeCheckInputs = [ prev.writableTmpDirAsHomeHook ];
+                      checkPhase = ''
+                        runHook preCheck
+
+                        make test-go test-bash
+
+                        runHook postCheck
+                      '';
+                    })
+                  else
+                    prev.direnv;
               })
               (final: prev: {
                 vscode-lldb-adapter =
@@ -129,6 +135,8 @@
             # Home Manager module
             home-manager.darwinModules.home-manager
             {
+              nixpkgs.pkgs = pkgs;
+
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
