@@ -116,7 +116,7 @@
         C-b w                   Open window selector
 
       Utilities (Home Manager + Flake)
-        bat, coreutils, curl, delta, direnv, eza, fd, fzf, git, jq, kubectx,
+        bat, coreutils, curl, direnv, eza, fd, fzf, git, hunk, jq, kubectx,
         nixfmt, ripgrep, starship, tree, wget, zoxide
       EOF
             }

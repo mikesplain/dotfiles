@@ -182,6 +182,22 @@
         "type": "github"
       }
     },
+    "modem-homebrew-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778435160,
+        "narHash": "sha256-GHi8SNnTeUl+PtRGXY1IhsXOvi+9Y7fBL0S/XjnDbOw=",
+        "owner": "modem-dev",
+        "repo": "homebrew-tap",
+        "rev": "194c65822ba503d7dc741c16878446a8d283145a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "modem-dev",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -279,6 +295,7 @@
         "homebrew-brew": "homebrew-brew",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "modem-homebrew-tap": "modem-homebrew-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",

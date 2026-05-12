@@ -74,6 +74,13 @@
       core = {
         mergeoptions = "--no-edit";
         editor = "nvim";
+        pager = "hunk pager";
+      };
+      pager = {
+        blame = "hunk pager";
+        diff = "hunk pager";
+        log = "hunk pager";
+        show = "hunk pager";
       };
       help.autocorrect = 1;
       diff.colorMoved = "default";
@@ -155,15 +162,13 @@
     ];
   };
 
-  programs.delta = {
-    enable = true;
-    enableGitIntegration = true;
-    options = {
-      navigate = true;
-      light = false;
-      line-numbers = true;
-    };
-  };
+  xdg.configFile."hunk/config.toml".text = ''
+    theme = "graphite"
+    mode = "auto"
+    exclude_untracked = false
+    line_numbers = true
+    wrap_lines = false
+  '';
 
   # gitui is now installed via Homebrew (see darwin/homebrew.nix)
 }

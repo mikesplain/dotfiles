@@ -25,6 +25,10 @@
       url = "github:hashicorp/homebrew-tap";
       flake = false;
     };
+    modem-homebrew-tap = {
+      url = "github:modem-dev/homebrew-tap";
+      flake = false;
+    };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
     };

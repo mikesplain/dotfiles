@@ -11,6 +11,7 @@ let
     homebrew-brew
     homebrew-cask
     homebrew-core
+    modem-homebrew-tap
     nix-homebrew
     ;
 in
@@ -39,6 +40,7 @@ in
       "logdy"
       "mactop"
       "mise"
+      "modem-dev/tap/hunk"
       "node"
       "ncdu"
       "opencode"
@@ -117,6 +119,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "hashicorp/tap" = inputs.hashicorp-tap;
+      "modem-dev/tap" = modem-homebrew-tap;
       "xykong/tap" = inputs.xykong-tap;
     };
     mutableTaps = true;

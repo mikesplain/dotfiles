@@ -154,7 +154,6 @@
       bashInteractive
       bat
       curl
-      delta
       fd
       jdk
       jq
