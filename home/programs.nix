@@ -14,90 +14,78 @@
       "1Password/config"
     ];
 
-    matchBlocks = {
+    settings = {
       "*.brew.sh" = {
-        user = "brewadmin";
-        forwardAgent = true;
+        User = "brewadmin";
+        ForwardAgent = true;
       };
 
       "*.ec2.internal" = {
-        extraOptions = {
-          CanonicalizeHostname = "yes";
-          CanonicalizeMaxDots = "3";
-          CanonicalDomains = "sslip.io";
-        };
+        CanonicalizeHostname = "yes";
+        CanonicalizeMaxDots = "3";
+        CanonicalDomains = "sslip.io";
       };
 
       "*.us-east-2.compute.internal" = {
-        extraOptions = {
-          CanonicalizeHostname = "yes";
-          CanonicalizeMaxDots = "3";
-          CanonicalDomains = "sslip.io";
-        };
+        CanonicalizeHostname = "yes";
+        CanonicalizeMaxDots = "3";
+        CanonicalDomains = "sslip.io";
       };
 
       "bastion.*" = {
-        forwardAgent = true;
+        ForwardAgent = true;
       };
 
       # Personal GitHub
       "personalgit" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/personal_git.pub";
-        identitiesOnly = true;
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/personal_git.pub";
+        IdentitiesOnly = true;
       };
 
       # Work GitHub
       "workgit" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/personal_git.pub";
-        identitiesOnly = true;
-        extraOptions = {
-          ControlMaster = "auto";
-          ControlPath = "/tmp/ssh-workgit-%C.socket";
-          ControlPersist = "10m";
-        };
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/personal_git.pub";
+        IdentitiesOnly = true;
+        ControlMaster = "auto";
+        ControlPath = "/tmp/ssh-workgit-%C.socket";
+        ControlPersist = "10m";
       };
 
       # Managed Work GitHub
       "workgit_managed" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/workgit_managed.pub";
-        identitiesOnly = true;
-        extraOptions = {
-          ControlMaster = "auto";
-          ControlPath = "/tmp/ssh-workgit_managed-%C.socket";
-          ControlPersist = "10m";
-        };
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/workgit_managed.pub";
+        IdentitiesOnly = true;
+        ControlMaster = "auto";
+        ControlPath = "/tmp/ssh-workgit_managed-%C.socket";
+        ControlPersist = "10m";
       };
 
       # This won't work in most cases because this requires the public key to already be on the instance and we don't use keys.
       # "i-* mi-*" = {
-      #   extraOptions = {
-      #     ProxyCommand = "sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"";
-      #   };
+      #   ProxyCommand = "sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"";
       # };
 
       # Default configuration for all hosts
       "*" = {
-        extraOptions = {
-          IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
-          StrictHostKeyChecking = "ask";
-          VerifyHostKeyDNS = "ask";
-          NoHostAuthenticationForLocalhost = "yes";
-          ControlMaster = "auto";
-          ControlPath = "/tmp/ssh-%C.socket";
-          # Add common SSH defaults that home-manager usually provides
-          AddKeysToAgent = "yes";
-          Compression = "yes";
-          ServerAliveInterval = "60";
-          ServerAliveCountMax = "3";
-          HashKnownHosts = "yes";
-          ControlPersist = "1800";
-        };
+        IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
+        StrictHostKeyChecking = "ask";
+        VerifyHostKeyDNS = "ask";
+        NoHostAuthenticationForLocalhost = "yes";
+        ControlMaster = "auto";
+        ControlPath = "/tmp/ssh-%C.socket";
+        # Add common SSH defaults that home-manager usually provides
+        AddKeysToAgent = "yes";
+        Compression = "yes";
+        ServerAliveInterval = "60";
+        ServerAliveCountMax = "3";
+        HashKnownHosts = "yes";
+        ControlPersist = "1800";
       };
     };
   };
