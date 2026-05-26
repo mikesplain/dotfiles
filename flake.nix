@@ -25,6 +25,10 @@
       url = "github:hashicorp/homebrew-tap";
       flake = false;
     };
+    jundot-omlx = {
+      url = "github:jundot/omlx";
+      flake = false;
+    };
     modem-homebrew-tap = {
       url = "github:modem-dev/homebrew-tap";
       flake = false;
