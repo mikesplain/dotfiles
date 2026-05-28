@@ -11,7 +11,7 @@ let
     homebrew-brew
     homebrew-cask
     homebrew-core
-    jundot-omlx
+    mikesplain-homebrew-omlx
     modem-homebrew-tap
     nix-homebrew
     ;
@@ -37,7 +37,6 @@ in
       "hashcat"
       "hcxtools"
       "ipcalc"
-      "jundot/omlx/omlx"
       "k9s"
       "logdy"
       "mactop"
@@ -77,6 +76,7 @@ in
         "gpg-suite"
         "handy"
         "lm-studio"
+        "mikesplain/omlx/omlx"
         "obsidian"
         #"ollama-app"
         "raycast"
@@ -121,7 +121,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "hashicorp/tap" = inputs.hashicorp-tap;
-      "jundot/homebrew-omlx" = jundot-omlx;
+      "mikesplain/omlx" = mikesplain-homebrew-omlx;
       "modem-dev/tap" = modem-homebrew-tap;
       "xykong/tap" = inputs.xykong-tap;
     };

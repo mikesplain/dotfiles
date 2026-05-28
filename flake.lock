@@ -182,19 +182,19 @@
         "type": "github"
       }
     },
-    "jundot-omlx": {
+    "mikesplain-homebrew-omlx": {
       "flake": false,
       "locked": {
-        "lastModified": 1779958399,
-        "narHash": "sha256-kKSMt6HeFea1ADpFTg3ZfQ+NLRmd8tKO1RMebOC9SAA=",
-        "owner": "jundot",
-        "repo": "omlx",
-        "rev": "a1ade10c080e668abe5cc58b81dbf561d7ad1b85",
+        "lastModified": 1779993734,
+        "narHash": "sha256-gmG4cbTEr5LsVLFtwztCudNsl5UaNKg5DcSZB+jmsHU=",
+        "owner": "mikesplain",
+        "repo": "homebrew-omlx",
+        "rev": "2c7a099c4d2881723b7295aac706e22347545e1a",
         "type": "github"
       },
       "original": {
-        "owner": "jundot",
-        "repo": "omlx",
+        "owner": "mikesplain",
+        "repo": "homebrew-omlx",
         "type": "github"
       }
     },
@@ -311,7 +311,7 @@
         "homebrew-brew": "homebrew-brew",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "jundot-omlx": "jundot-omlx",
+        "mikesplain-homebrew-omlx": "mikesplain-homebrew-omlx",
         "modem-homebrew-tap": "modem-homebrew-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
