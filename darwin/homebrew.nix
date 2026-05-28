@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   user,
   osVersion,
   platform,
@@ -15,6 +16,20 @@ let
     modem-homebrew-tap
     nix-homebrew
     ;
+  # Temporary override until jundot/omlx's Homebrew formula catches up with
+  # the latest release. Remove this and point the tap back at `jundot-omlx`
+  # once upstream's Formula/omlx.rb ships the same version.
+  omlxVersion = "0.3.11";
+  patchedJundotOmlx = pkgs.runCommand "jundot-homebrew-omlx-${omlxVersion}" { } ''
+    mkdir -p "$out"
+    cp -R ${jundot-omlx}/. "$out"
+    chmod -R u+w "$out"
+    substituteInPlace "$out/Formula/omlx.rb" \
+      --replace-fail 'url "https://github.com/jundot/omlx/archive/refs/tags/v0.3.10.tar.gz"' \
+                     'url "https://github.com/jundot/omlx/archive/refs/tags/v${omlxVersion}.tar.gz"' \
+      --replace-fail 'sha256 "59165b90fdb53cdff6c6b9f36f4a372700f2c259181d7ee4953f4f00b5d1f554"' \
+                     'sha256 "51a109052403ce6daf975bb0657b0656ad53f20cd3c9700beac1fefcfe6dc372"'
+  '';
 in
 {
   # Import the nix-homebrew module
@@ -121,7 +136,7 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "hashicorp/tap" = inputs.hashicorp-tap;
-      "jundot/homebrew-omlx" = jundot-omlx;
+      "jundot/homebrew-omlx" = patchedJundotOmlx;
       "modem-dev/tap" = modem-homebrew-tap;
       "xykong/tap" = inputs.xykong-tap;
     };
