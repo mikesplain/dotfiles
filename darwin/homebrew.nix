@@ -78,6 +78,7 @@ in
         "lm-studio"
         "mikesplain/omlx/omlx"
         "obsidian"
+        "passepartout"
         #"ollama-app"
         "raycast"
         "session-manager-plugin"
@@ -103,7 +104,7 @@ in
           "The Unarchiver" = 425424353;
           "Things" = 904280696;
           "Velja" = 1607635845;
-          "WireGuard" = 1451685025;
+          # WireGuard removed — app has not been maintained
         }
       else
         { };
