@@ -41,6 +41,7 @@
       update_flake_from_pr = "__flake_update_merge";
       c = "cursor .";
       codex = "set -a; source /Users/msplain/.config/codex/.env; set +a; command codex --yolo";
+      cline = "set -a; source /Users/msplain/.config/codex/.env; set +a; command npx kanban";
       opencode = "GITHUB_PAT_TOKEN=$(gh auth token) command opencode";
       o = "opencode";
     };
@@ -73,6 +74,7 @@
         switch [target]         darwin-rebuild switch --flake .#<target>
         update_flake_from_pr    Approve + merge latest successful flake update PR and pull
         c                       cursor .
+        cline                   npx kanban with Codex env
         clear_dns_cache         Flush macOS DNS cache
 
       Git
