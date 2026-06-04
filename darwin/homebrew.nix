@@ -122,9 +122,9 @@ in
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
       "hashicorp/tap" = inputs.hashicorp-tap;
-      "mikesplain/omlx" = mikesplain-homebrew-omlx;
-      "modem-dev/tap" = modem-homebrew-tap;
-      "xykong/tap" = inputs.xykong-tap;
+      "mikesplain/homebrew-omlx" = mikesplain-homebrew-omlx;
+      "modem-dev/homebrew-tap" = modem-homebrew-tap;
+      "xykong/homebrew-tap" = inputs.xykong-tap;
     };
     mutableTaps = true;
     autoMigrate = true;
