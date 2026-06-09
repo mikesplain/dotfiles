@@ -63,16 +63,6 @@ jobs:
             brew untap $(brew tap) || true
           fi
 
-      - name: Trust Homebrew taps
-        run: |
-          if brew trust --help >/dev/null 2>&1; then
-            brew trust --tap \
-              hashicorp/tap \
-              mikesplain/omlx \
-              modem-dev/tap \
-              xykong/tap
-          fi
-
       - name: Test - Nix Run
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
