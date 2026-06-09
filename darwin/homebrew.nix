@@ -15,6 +15,7 @@ let
     modem-homebrew-tap
     nix-homebrew
     ;
+  brewBin = if platform.isArm then "/opt/homebrew/bin/brew" else "/usr/local/bin/brew";
 in
 {
   # Import the nix-homebrew module
@@ -129,4 +130,17 @@ in
     mutableTaps = true;
     autoMigrate = true;
   };
+
+  system.activationScripts.homebrew.text = lib.mkOrder 600 ''
+    # Trust managed non-official taps after nix-homebrew creates them and
+    # before nix-darwin runs Homebrew Bundle.
+    if [ -x "${brewBin}" ] && sudo --user=${lib.escapeShellArg user.name} --set-home "${brewBin}" trust --help >/dev/null 2>&1; then
+      echo >&2 "Trusting Homebrew taps..."
+      sudo --user=${lib.escapeShellArg user.name} --set-home "${brewBin}" trust --tap \
+        hashicorp/tap \
+        mikesplain/omlx \
+        modem-dev/tap \
+        xykong/tap
+    fi
+  '';
 }
