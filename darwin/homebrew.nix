@@ -47,7 +47,7 @@ in
       "ncdu"
       "opencode"
       "pi-coding-agent"
-      "python"
+      "python@3.14"
       "ripgrep"
       "terraform-ls"
       "telnet"
