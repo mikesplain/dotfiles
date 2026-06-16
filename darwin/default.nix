@@ -25,7 +25,8 @@
     # Prefer stable to maximize cache hits; latest can trigger full source builds/tests.
     package = pkgs.nixVersions.stable;
     settings = {
-      auto-optimise-store = false; # Disabled due to https://github.com/NixOS/nix/issues/7273#issuecomment-1325073957
+      # Deduplicate store files incrementally as paths are added.
+      auto-optimise-store = true;
       trusted-users = [ user.name ];
       max-jobs = 10;
       experimental-features = "nix-command flakes";
