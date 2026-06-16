@@ -85,15 +85,6 @@
             config.allowUnfree = true;
             overlays = [
               nur.overlays.default
-              (final: prev: {
-                vscode-lldb-adapter =
-                  if prev.stdenv.isDarwin && prev.stdenv.isx86_64 then
-                    prev.vscode-lldb-adapter.override {
-                      llvmPackages = prev.llvmPackages_18;
-                    }
-                  else
-                    prev.vscode-lldb-adapter;
-              })
             ];
           };
 
