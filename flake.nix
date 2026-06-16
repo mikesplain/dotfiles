@@ -86,25 +86,6 @@
             overlays = [
               nur.overlays.default
               (final: prev: {
-                direnv =
-                  if prev.stdenv.isDarwin then
-                    prev.direnv.overrideAttrs (_old: {
-                      # Temporary Darwin workaround for flaky shell integration
-                      # checks while nixpkgs tracks the fish/zsh failures:
-                      # https://github.com/NixOS/nixpkgs/issues/507531
-                      nativeCheckInputs = [ prev.writableTmpDirAsHomeHook ];
-                      checkPhase = ''
-                        runHook preCheck
-
-                        make test-go test-bash
-
-                        runHook postCheck
-                      '';
-                    })
-                  else
-                    prev.direnv;
-              })
-              (final: prev: {
                 vscode-lldb-adapter =
                   if prev.stdenv.isDarwin && prev.stdenv.isx86_64 then
                     prev.vscode-lldb-adapter.override {
