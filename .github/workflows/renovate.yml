@@ -19,41 +19,34 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     concurrency: renovate-${{ github.ref }}
-    env:
-      HAS_RENOVATE_APP_CREDENTIALS: ${{ secrets.RENOVATE_CLIENT_ID != '' && secrets.RENOVATE_PEM != '' }}
     steps:
+      - name: Generate token
+        id: generate_token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.RENOVATE_CLIENT_ID }}
+          private-key: ${{ secrets.RENOVATE_PEM }}
+
       - name: Checkout
         uses: actions/checkout@v6
 
       - name: Validate Renovate JSON
         run: jq empty .github/renovate.json
 
-      - name: Skip Renovate when app credentials are unavailable
-        if: ${{ env.HAS_RENOVATE_APP_CREDENTIALS != 'true' }}
-        run: echo "Renovate app credentials are unavailable in this workflow context; skipping Renovate execution."
-
-      - name: Generate token
-        id: generate_token
-        if: ${{ env.HAS_RENOVATE_APP_CREDENTIALS == 'true' }}
-        uses: actions/create-github-app-token@v3
-        with:
-          client-id: ${{ secrets.RENOVATE_CLIENT_ID }}
-          private-key: ${{ secrets.RENOVATE_PEM }}
-
       - name: Generate Dry Run
-        if: ${{ github.ref != 'refs/heads/main' && env.HAS_RENOVATE_APP_CREDENTIALS == 'true' }}
+        if: ${{ github.ref != 'refs/heads/main' }}
         run: jq '.dryRun = "true"' .github/renovate.json > .github/renovate-dry-run.json
 
       - name: Renovate - Dry Run
         uses: renovatebot/github-action@v46.1.15
-        if: ${{ github.ref != 'refs/heads/main' && env.HAS_RENOVATE_APP_CREDENTIALS == 'true' }}
+        if: ${{ github.ref != 'refs/heads/main' }}
         with:
           configurationFile: .github/renovate-dry-run.json
           token: "x-access-token:${{ steps.generate_token.outputs.token }}"
 
       - name: Renovate
         uses: renovatebot/github-action@v46.1.15
-        if: ${{ github.ref == 'refs/heads/main' && env.HAS_RENOVATE_APP_CREDENTIALS == 'true' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           configurationFile: .github/renovate.json
           token: "x-access-token:${{ steps.generate_token.outputs.token }}"
