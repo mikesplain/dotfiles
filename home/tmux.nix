@@ -44,7 +44,7 @@
       setw -g window-status-style "fg=colour245,bg=default"
       setw -g window-status-format " #I:#W#{?window_flags,#{window_flags},} "
       setw -g window-status-current-style "fg=colour231,bg=colour45,bold"
-      setw -g window-status-current-format " #[fg=colour231,bg=colour45,bold] #I:#W #[default] "
+      setw -g window-status-current-format " #[fg=colour231,bg=colour45,bold] #I:#W#{?window_zoomed_flag, #[fg=colour16#,bg=colour45#,bold] #[fg=colour231#,bg=colour45#,bold],} #[default] "
       setw -g window-status-activity-style "fg=colour16,bg=colour220,bold"
       setw -g window-status-bell-style "fg=colour16,bg=colour220,bold"
 
