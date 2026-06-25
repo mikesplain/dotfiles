@@ -22,6 +22,7 @@
       kx = "kubectx";
       kns = "kubens";
       ktmux = "tmux new-session -d 'watch kubectl get nodes -L kops.k8s.io/instancegroup,node.kubernetes.io/instance-type' && tmux split-window -h 'watch kubectl get pods --all-namespaces --sort-by {.metadata.namespace}' && tmux split-window -v -t 1 && tmux -2 attach-session -d";
+      reload_tmux = "tmux source-file $HOME/.config/tmux/tmux.conf";
       clear_dns_cache = "dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
       gut = "git";
       cat = "bat";
@@ -116,6 +117,7 @@
 
       Tmux
         C-b w                   Open window selector
+        reload_tmux             Reload ~/.config/tmux/tmux.conf
 
       Utilities (Home Manager + Flake)
         bat, coreutils, curl, direnv, eza, fd, fzf, git, hunk, jq, kubectx,
