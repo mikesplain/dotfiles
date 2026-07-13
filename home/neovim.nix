@@ -85,7 +85,6 @@ in
       vscode-langservers-extracted
       typescript
       typescript-language-server
-      prettier
       hclfmt
       jq
       yamlfmt
