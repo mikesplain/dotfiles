@@ -47,6 +47,7 @@ in
       "ncdu"
       "opencode"
       "pi-coding-agent"
+      "prettier"
       "python@3.14"
       "ripgrep"
       "terraform-ls"
