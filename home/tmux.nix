@@ -22,6 +22,14 @@
           set -g @tmux_power_time_format '%T %Z |  #(TZ=UTC date +%%T) UTC'
         '';
       }
+      resurrect
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '10'
+        '';
+      }
     ];
 
     extraConfig = ''
