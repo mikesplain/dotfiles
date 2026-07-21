@@ -33,6 +33,7 @@ in
     };
     brews = [
       "awscli"
+      "btop"
       "gh"
       "gitui"
       "hashcat"
