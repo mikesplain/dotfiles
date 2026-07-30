@@ -93,7 +93,7 @@
   # Terminal emulators
   programs.ghostty = {
     enable = true;
-    package = null; # Ghostty is currently marked as broken for macOS
+    package = null; # Managed via Homebrew cask instead for faster updates
     settings = {
       clipboard-read = "allow";
       clipboard-write = "allow";
