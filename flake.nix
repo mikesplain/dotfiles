@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
 
+    # Temporary: pin only pam-watchid to the last cached revision so routine
+    # nixpkgs updates do not trigger a local Swift toolchain rebuild.
+    pamWatchIdNixpkgs.url = "github:NixOS/nixpkgs/e0c84f9d0ad137f076dc957494f5b39885597d4f";
+
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,6 +66,7 @@
       nix-darwin,
       home-manager,
       nur,
+      pamWatchIdNixpkgs,
       ...
     }:
     let
@@ -80,11 +85,17 @@
         }:
         let
           user = mkUser username;
+          pamWatchIdPkgs = import pamWatchIdNixpkgs {
+            inherit system;
+          };
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
             overlays = [
               nur.overlays.default
+              # Temporary: keep Apple Watch sudo authentication while reusing
+              # the cached pam-watchid/Swift closure from the pinned revision.
+              (_final: _prev: { pam-watchid = pamWatchIdPkgs.pam-watchid; })
             ];
           };
 
