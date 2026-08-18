@@ -49,7 +49,6 @@
 
     sessionVariables = {
       SHELL = "${pkgs.zsh}/bin/zsh";
-      TERM = "xterm-256color";
       LESS = "-R";
     };
 

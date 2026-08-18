@@ -2,7 +2,7 @@
 {
   programs.tmux = {
     enable = true;
-    terminal = "xterm-256color";
+    terminal = "tmux-256color";
     shell = "${pkgs.zsh}/bin/zsh";
     prefix = "C-b";
     escapeTime = 10;
