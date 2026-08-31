@@ -28,8 +28,6 @@ jobs:
         os:
           - name: macos-26
             arch: aarch64-darwin
-          - name: macos-15
-            arch: aarch64-darwin
     steps:
       - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
