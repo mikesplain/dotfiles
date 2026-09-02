@@ -60,6 +60,7 @@ in
       "appcleaner"
       # Disabled by Homebrew because it does not pass the macOS Gatekeeper check (2026-09-01).
       # "disk-inventory-x"
+      "neodisk"
       "claude-code"
       "codex"
       "chatgpt"
