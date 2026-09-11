@@ -64,7 +64,6 @@ in
       "claude-code"
       "codex"
       "chatgpt"
-      "cursor"
       "draw-things"
       "xykong/tap/flux-markdown"
       "linearmouse"
