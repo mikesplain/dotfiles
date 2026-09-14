@@ -59,6 +59,11 @@
       # Clear both screen and history
       bind -n C-l send-keys C-l \; run 'sleep 0.2' \; clear-history
 
+      # tmux 3.6 cannot auto-detect OSC 8 hyperlink support for Ghostty, so
+      # advertise it explicitly; pi probes client_termfeatures for "hyperlinks"
+      # and only then emits clickable links behind tmux
+      set -as terminal-features 'xterm-ghostty:hyperlinks'
+
       # Toggle mouse support so ctrl-click continues to open URLs when mouse mode is off
       bind m if-shell -F "#{mouse}" \
         "set -g mouse off \; display-message 'Mouse mode: off (Ctrl-click URLs enabled)'" \
