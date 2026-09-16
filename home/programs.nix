@@ -104,6 +104,7 @@
       cursor-style-blink = false;
       font-feature = "-calt";
       copy-on-select = "clipboard";
+      confirm-close-surface = false;
     };
   };
 
