@@ -1,9 +1,11 @@
-name: Daily Flake Update
+name: Flake Update
 
 on:
   schedule:
     - cron: "0 7 * * *"
   workflow_dispatch:
+  repository_dispatch:
+    types: [flake-update]
 
 permissions:
   contents: write
