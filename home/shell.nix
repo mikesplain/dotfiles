@@ -41,7 +41,8 @@
       "dotfiles" = "dot";
       update_flake_from_pr = "__flake_update_merge";
       c = "code .";
-      codex = "set -a; source /Users/msplain/.config/codex/.env; set +a; command codex --yolo";
+      # MCP credentials are loaded by codex-mcp-session-env, not by the CLI shell.
+      codex = "command codex --yolo";
       cline = "set -a; source /Users/msplain/.config/codex/.env; set +a; command npx kanban";
       opencode = "GITHUB_PAT_TOKEN=$(gh auth token) command opencode";
       o = "opencode";
