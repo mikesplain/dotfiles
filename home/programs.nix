@@ -36,16 +36,22 @@
         ForwardAgent = true;
       };
 
-      # GitHub: one shared endpoint for all three accounts.
-      #
-      # No IdentityFile: the 1Password SSH agent (see
-      # ~/.config/1Password/ssh/agent.toml) offers the git keys in order and GitHub
-      # accepts the one registered for the target account. Keys are pulled live from
-      # the agent, so rotating a key in 1Password needs no changes here.
-      #
-      # ControlMaster is disabled for github.com specifically: a shared master would
-      # cache the first account's auth and break pushes to the other accounts on the
-      # same host.
+      # GitHub authentication must select an account before the repository path
+      # reaches GitHub. Bookmark ssh://git@github-{personal,work,managed} on each
+      # corresponding key in 1Password and enable generated SSH config files.
+      # The included 1Password/config supplies the matching public key; do not pin
+      # generated fingerprints here. IdentityFile none suppresses default files
+      # when a bookmark is missing, while retaining keys from the earlier include.
+      "github-personal github-work github-managed" = {
+        HostName = "github.com";
+        User = "git";
+        IdentitiesOnly = true;
+        IdentityFile = "none";
+        # Avoid sharing authenticated connections between GitHub identities.
+        ControlMaster = "no";
+        ControlPath = "none";
+      };
+
       "github.com" = {
         User = "git";
         ControlMaster = "no";

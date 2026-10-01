@@ -34,15 +34,14 @@ in
       "Library/Application Support/k9s/config.yaml".source = ../templates/k9s.config.yaml;
       "Library/Application Support/k9s/hotkeys.yaml".source = ../templates/k9s.hotkeys.yaml;
 
-      # 1Password SSH agent: expose the git *auth* keys first so each identity's key
-      # is reached within the first three offers (GitHub caps a connection at six
-      # keys), followed by the git *signing* keys (used by op-ssh-sign), then the
-      # remaining non-git keys. Item names are used, so rotating a key in 1Password
-      # needs no change here.
+      # Expose authentication and signing keys through the 1Password agent.
+      # SSH Bookmarks select one authentication key for each GitHub host alias;
+      # key order alone cannot select the correct GitHub account. Item names keep
+      # agent discovery independent of key fingerprints.
       ".config/1Password/ssh/agent.toml".text = ''
         # 1Password SSH agent configuration.
         #
-        # Git auth keys come first to stay within GitHub's per-connection key limit.
+        # Git auth keys are available to the SSH Bookmarks host mappings.
         # Order: [git auth] then [git signing] then [other keys].
 
         # --- GitHub auth (offer first) ---
