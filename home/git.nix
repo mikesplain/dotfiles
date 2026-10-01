@@ -96,6 +96,10 @@
         autoStash = true;
       };
       hub.protocol = "https";
+      # Route all GitHub HTTPS remotes over SSH. The 1Password agent supplies the
+      # correct key per account, so one global rewrite replaces the old
+      # per-identity rewrites (personalgit:/workgit:/workgit_managed:).
+      url."git@github.com:".insteadOf = "https://github.com/";
       commit.verbose = true;
       pull.rebase = true;
 

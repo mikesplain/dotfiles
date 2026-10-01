@@ -36,34 +36,19 @@
         ForwardAgent = true;
       };
 
-      # Personal GitHub
-      "personalgit" = {
-        HostName = "github.com";
+      # GitHub: one shared endpoint for all three accounts.
+      #
+      # No IdentityFile: the 1Password SSH agent (see
+      # ~/.config/1Password/ssh/agent.toml) offers the git keys in order and GitHub
+      # accepts the one registered for the target account. Keys are pulled live from
+      # the agent, so rotating a key in 1Password needs no changes here.
+      #
+      # ControlMaster is disabled for github.com specifically: a shared master would
+      # cache the first account's auth and break pushes to the other accounts on the
+      # same host.
+      "github.com" = {
         User = "git";
-        IdentityFile = "~/.ssh/personal_git.pub";
-        IdentitiesOnly = true;
-      };
-
-      # Work GitHub
-      "workgit" = {
-        HostName = "github.com";
-        User = "git";
-        IdentityFile = "~/.ssh/personal_git.pub";
-        IdentitiesOnly = true;
-        ControlMaster = "auto";
-        ControlPath = "/tmp/ssh-workgit-%C.socket";
-        ControlPersist = "10m";
-      };
-
-      # Managed Work GitHub
-      "workgit_managed" = {
-        HostName = "github.com";
-        User = "git";
-        IdentityFile = "~/.ssh/workgit_managed.pub";
-        IdentitiesOnly = true;
-        ControlMaster = "auto";
-        ControlPath = "/tmp/ssh-workgit_managed-%C.socket";
-        ControlPersist = "10m";
+        ControlMaster = "no";
       };
 
       # This won't work in most cases because this requires the public key to already be on the instance and we don't use keys.
@@ -73,6 +58,14 @@
 
       # Default configuration for all hosts
       "*" = {
+        # Use the 1Password SSH agent for key discovery (works even when
+        # SSH_AUTH_SOCK isn't inherited, e.g. IDEs/cron). OpenSSH expands the
+        # leading ~ in this quoted value. All of this machine's SSH keys live in
+        # the 1Password agent, so pointing every host at it is safe.
+        # NOTE: home-manager's ssh module renders values verbatim and does not
+        # auto-quote, so the surrounding quotes must be in the value itself — the
+        # path contains a space ("Group Containers"). Without them ssh splits it
+        # into two tokens and the whole config fails to parse.
         IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
         StrictHostKeyChecking = "ask";
         VerifyHostKeyDNS = "ask";
