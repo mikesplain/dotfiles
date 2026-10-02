@@ -78,16 +78,9 @@ in
         vault = "Private"
 
         [[ssh-keys]]
-        item = "Renovate Private Key"
-        vault = "Private"
-
-        [[ssh-keys]]
         item = "Proxmox VM SSH Key"
         vault = "Private"
 
-        [[ssh-keys]]
-        item = "Hetzner"
-        vault = "Private"
       '';
 
       # Resolves the git SSH signing key for the current identity live from the
