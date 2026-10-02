@@ -13,7 +13,7 @@
 [gpg "ssh"]
 	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 	# Signs with the same Cisco key as work, resolved live from the 1Password agent.
-	defaultKeyCommand = 1pw-sign managed
+	defaultKeyCommand = "\"@1PW_SIGN@\" managed"
 
 [commit]
 	gpgsign = true

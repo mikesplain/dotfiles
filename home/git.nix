@@ -1,8 +1,35 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
+let
+  # includeIf matches stored remote URLs before insteadOf rewrites them. Cover
+  # conventional URLs as well as explicit account aliases and older checkouts.
+  githubIncludes =
+    path: organizations: aliases:
+    map
+      (pattern: {
+        condition = "hasconfig:remote.*.url:${pattern}";
+        inherit path;
+      })
+      (
+        lib.concatMap (
+          organization:
+          map (prefix: "${prefix}${organization}/**") [
+            "https://github.com/"
+            "git@github.com:"
+            "ssh://git@github.com/"
+          ]
+        ) organizations
+        ++ lib.concatMap (alias: [
+          "${alias}:*/**"
+          "git@${alias}:*/**"
+          "ssh://git@${alias}/**"
+        ]) aliases
+      );
+in
 {
   programs.git = {
     enable = true;
@@ -105,6 +132,8 @@
           "git@github.com:"
           "ssh://git@github.com/"
           "personalgit:"
+          "git@personalgit:"
+          "ssh://git@personalgit/"
         ];
         "git@github-work:cisco-sbg/".insteadOf = [
           "https://github.com/cisco-sbg/"
@@ -122,8 +151,16 @@
           "ssh://git@github.com/cisco-aispg/"
         ];
         # Support older checkouts while their stored URLs are migrated.
-        "git@github-work:".insteadOf = "workgit:";
-        "git@github-managed:".insteadOf = "workgit_managed:";
+        "git@github-work:".insteadOf = [
+          "workgit:"
+          "git@workgit:"
+          "ssh://git@workgit/"
+        ];
+        "git@github-managed:".insteadOf = [
+          "workgit_managed:"
+          "git@workgit_managed:"
+          "ssh://git@workgit_managed/"
+        ];
       };
       commit.verbose = true;
       pull.rebase = true;
@@ -164,31 +201,29 @@
         condition = "gitdir:~/.local/share/chezmoi";
         path = "~/.personal_gitconfig";
       }
-      {
-        condition = "hasconfig:remote.*.url:https://github.com/mikesplain/**";
-        path = "~/.personal_gitconfig";
-      }
-      {
-        condition = "hasconfig:remote.*.url:https://github.com/kubernetes/**";
-        path = "~/.personal_gitconfig";
-      }
-      {
-        condition = "hasconfig:remote.*.url:https://github.com/homebrew/**";
-        path = "~/.personal_gitconfig";
-      }
-      {
-        condition = "hasconfig:remote.*.url:https://github.com/RobustIntelligence/**";
-        path = "~/.work_gitconfig";
-      }
-      {
-        condition = "hasconfig:remote.*.url:https://github.com/cisco-sbg/**";
-        path = "~/.work_gitconfig";
-      }
-      {
-        condition = "hasconfig:remote.*.url:https://github.com/cisco-aispg/**";
-        path = "~/.work_gitconfig_managed";
-      }
-    ];
+    ]
+    ++
+      githubIncludes "~/.personal_gitconfig"
+        [
+          "mikesplain"
+          "kubernetes"
+          "homebrew"
+        ]
+        [ "github-personal" "personalgit" ]
+    ++
+      githubIncludes "~/.work_gitconfig"
+        [
+          "RobustIntelligence"
+          "cisco-sbg"
+        ]
+        [ "github-work" "workgit" ]
+    ++
+      githubIncludes "~/.work_gitconfig_managed"
+        [ "cisco-aispg" ]
+        [
+          "github-managed"
+          "workgit_managed"
+        ];
   };
 
   xdg.configFile."hunk/config.toml".text = ''

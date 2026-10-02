@@ -43,7 +43,13 @@
       # generated fingerprints here. IdentityFile none suppresses default files
       # when a bookmark is missing, while retaining keys from the earlier include.
       "github-personal github-work github-managed" = {
-        HostName = "github.com";
+        # SSH over port 443 avoids networks that intermittently block port 22.
+        # Both GitHub endpoints use the same host keys.
+        HostName = "ssh.github.com";
+        Port = 443;
+        HostKeyAlias = "github.com";
+        ConnectTimeout = 10;
+        ConnectionAttempts = 1;
         User = "git";
         IdentitiesOnly = true;
         IdentityFile = "none";
