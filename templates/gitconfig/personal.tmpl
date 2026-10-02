@@ -5,17 +5,15 @@
 	name = Mike Splain
 	# Email used in commit messages.
 	email = mike.splain@gmail.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGvzmRdlx7fXEkn/ItH+xiwQc2jv/wkOJFLCOzPjzbLH
-
-[url "personalgit:"]
-	# Force 1password ssh keys
-	insteadOf = https://github.com/
+	# Signing key is resolved live from the 1Password agent (label: personal). No key
+	# material is stored here, so rotating the key in 1Password is all that's needed.
 
 [gpg]
 	format = ssh
 
 [gpg "ssh"]
 	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	defaultKeyCommand = "\"@1PW_SIGN@\" personal"
 
 [commit]
 	gpgsign = true

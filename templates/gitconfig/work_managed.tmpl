@@ -1,0 +1,19 @@
+[github]
+	user = mikesplain
+[user]
+	# Name used in commit messages.
+	name = Mike Splain
+	# Email used in commit messages. Managed (cisco-aispg) defaults to the work
+	# identity; if that org commits under a different address, change this line.
+	email = msplain@cisco.com
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	# Signs with the same Cisco key as work, resolved live from the 1Password agent.
+	defaultKeyCommand = "\"@1PW_SIGN@\" managed"
+
+[commit]
+	gpgsign = true

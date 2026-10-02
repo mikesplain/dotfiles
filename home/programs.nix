@@ -36,34 +36,30 @@
         ForwardAgent = true;
       };
 
-      # Personal GitHub
-      "personalgit" = {
+      # GitHub authentication must select an account before the repository path
+      # reaches GitHub. Bookmark ssh://git@github-{personal,work,managed} on each
+      # corresponding key in 1Password and enable generated SSH config files.
+      # The included 1Password/config supplies the matching public key; do not pin
+      # generated fingerprints here. IdentityFile none suppresses default files
+      # when a bookmark is missing, while retaining keys from the earlier include.
+      "github-personal github-work github-managed" = {
+        # Use the standard SSH endpoint; the work VPN resets SSH on port 443.
         HostName = "github.com";
+        Port = 22;
+        HostKeyAlias = "github.com";
+        ConnectTimeout = 10;
+        ConnectionAttempts = 1;
         User = "git";
-        IdentityFile = "~/.ssh/personal_git.pub";
         IdentitiesOnly = true;
+        IdentityFile = "none";
+        # Avoid sharing authenticated connections between GitHub identities.
+        ControlMaster = "no";
+        ControlPath = "none";
       };
 
-      # Work GitHub
-      "workgit" = {
-        HostName = "github.com";
+      "github.com" = {
         User = "git";
-        IdentityFile = "~/.ssh/personal_git.pub";
-        IdentitiesOnly = true;
-        ControlMaster = "auto";
-        ControlPath = "/tmp/ssh-workgit-%C.socket";
-        ControlPersist = "10m";
-      };
-
-      # Managed Work GitHub
-      "workgit_managed" = {
-        HostName = "github.com";
-        User = "git";
-        IdentityFile = "~/.ssh/workgit_managed.pub";
-        IdentitiesOnly = true;
-        ControlMaster = "auto";
-        ControlPath = "/tmp/ssh-workgit_managed-%C.socket";
-        ControlPersist = "10m";
+        ControlMaster = "no";
       };
 
       # This won't work in most cases because this requires the public key to already be on the instance and we don't use keys.
@@ -73,6 +69,14 @@
 
       # Default configuration for all hosts
       "*" = {
+        # Use the 1Password SSH agent for key discovery (works even when
+        # SSH_AUTH_SOCK isn't inherited, e.g. IDEs/cron). OpenSSH expands the
+        # leading ~ in this quoted value. All of this machine's SSH keys live in
+        # the 1Password agent, so pointing every host at it is safe.
+        # NOTE: home-manager's ssh module renders values verbatim and does not
+        # auto-quote, so the surrounding quotes must be in the value itself — the
+        # path contains a space ("Group Containers"). Without them ssh splits it
+        # into two tokens and the whole config fails to parse.
         IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
         StrictHostKeyChecking = "ask";
         VerifyHostKeyDNS = "ask";
