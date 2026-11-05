@@ -3,6 +3,23 @@
   # VSCode
   programs.vscode = {
     enable = true;
+
+    # Remove once release-26.05 includes nixpkgs PRs #525492 and #543899.
+    package = pkgs.vscode.overrideAttrs (old: {
+      postPatch =
+        if pkgs.lib.versionAtLeast old.version "1.129.0" then
+          let
+            platform = if pkgs.stdenv.hostPlatform.isAarch64 then "darwin-arm64" else "darwin-x64";
+          in
+          builtins.replaceStrings
+            [ "Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg" ]
+            [
+              "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/${platform}/rg"
+            ]
+            old.postPatch
+        else
+          old.postPatch;
+    });
   };
 
   # SSH Configuration
