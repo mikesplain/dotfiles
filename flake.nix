@@ -21,10 +21,6 @@
 
     nur.url = "github:nix-community/NUR";
 
-    abue-ammar-tinycast = {
-      url = "github:abue-ammar/tinycast";
-      flake = false;
-    };
     hashicorp-tap = {
       url = "github:hashicorp/homebrew-tap";
       flake = false;

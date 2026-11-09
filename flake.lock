@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "abue-ammar-tinycast": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1794158467,
-        "narHash": "sha256-R0vLHF8X1PLC2Qmm3O0wqBdt1ASoSEENt0l+tz30Hy0=",
-        "owner": "abue-ammar",
-        "repo": "tinycast",
-        "rev": "58168bf7e0b721f7c5fbfc7f4e8a068a48cff446",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abue-ammar",
-        "repo": "tinycast",
-        "type": "github"
-      }
-    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -300,7 +284,6 @@
     },
     "root": {
       "inputs": {
-        "abue-ammar-tinycast": "abue-ammar-tinycast",
         "git-hooks-nix": "git-hooks-nix",
         "hashicorp-tap": "hashicorp-tap",
         "home-manager": "home-manager",
