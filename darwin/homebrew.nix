@@ -8,7 +8,6 @@
 }:
 let
   inherit (inputs)
-    abue-ammar-tinycast
     homebrew-brew
     homebrew-cask
     homebrew-core
@@ -58,7 +57,6 @@ in
     casks = [
       "1password-cli"
       "1password"
-      "abue-ammar/tinycast/tinycast"
       "appcleaner"
       # Disabled by Homebrew because it does not pass the macOS Gatekeeper check (2026-09-01).
       # "disk-inventory-x"
@@ -85,6 +83,7 @@ in
       "spotify"
       "stats"
       "thaw"
+      "tinycast"
       "vagrant"
       "virtualbox"
       "visual-studio-code"
@@ -120,7 +119,6 @@ in
     taps = {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
-      "abue-ammar/tinycast" = abue-ammar-tinycast;
       "hashicorp/tap" = inputs.hashicorp-tap;
       "mikesplain/homebrew-omlx" = mikesplain-homebrew-omlx;
       "modem-dev/homebrew-tap" = modem-homebrew-tap;
@@ -136,7 +134,6 @@ in
     if [ -x "${brewBin}" ] && sudo --user=${lib.escapeShellArg user.name} --set-home "${brewBin}" trust --help >/dev/null 2>&1; then
       echo >&2 "Trusting Homebrew taps..."
       sudo --user=${lib.escapeShellArg user.name} --set-home "${brewBin}" trust --tap \
-        abue-ammar/tinycast \
         hashicorp/tap \
         mikesplain/omlx \
         modem-dev/tap \
