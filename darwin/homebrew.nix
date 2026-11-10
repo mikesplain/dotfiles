@@ -79,7 +79,10 @@ in
       "passepartout"
       #"ollama-app"
       "session-manager-plugin"
-      "shottr"
+      # Disabled: vendor re-released Shottr 1.10.0 without bumping the version, so the
+      # sha256 recorded by Homebrew no longer matches the download (2026-11-10).
+      # Re-enable once homebrew-cask updates the checksum.
+      # "shottr"
       "spotify"
       "stats"
       "thaw"
