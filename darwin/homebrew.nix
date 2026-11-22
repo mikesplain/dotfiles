@@ -34,6 +34,7 @@ in
     brews = [
       "awscli"
       "btop"
+      "container"
       "gh"
       "gitui"
       "hashcat"
